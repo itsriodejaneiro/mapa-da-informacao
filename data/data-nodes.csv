@@ -1,0 +1,52 @@
+tipo,id,nome
+base,crc,CRC
+doc,crcnasc,Cert. Nascimento
+doc,crccas,Cert. Casamento
+doc,crcobt,Cert. Óbito
+orgao,arpen,Arpen Brasil
+politica,estatistica_nacional,Estatística Nacional
+base,cpf,CPF
+doc,doccpf,CPF
+orgao,internet,Internet
+orgao,receita,Receita Federal
+orgao,fazenda,Ministério da Fazenda
+orgao,serpro,Serpro
+orgao,correios,Correios
+orgao,bb,Banco do Brasil
+orgao,caixa,Caixa Econômica Federal
+orgao,cartorios,Cartórios
+servico,ir,Imposto de Renda
+servico,servicos_bancarios,Serviços Bancários
+politica,bolsa_familia,Programa Bolsa Família
+app,aplicativo_cpf,App Pessoa Física
+base,ctps,CTPS
+doc,docctps,Carteira de Trabalho
+orgao,trabalho,Ministério do Trabalho
+app,app_ctps,CTPS Digital
+base,nis,NIS
+politica,politicas_trabalho,Políticas de Trabalho
+politica,previdencia,Previdência
+politica,minhacasa,Minha Casa Minha Vida
+politica,bolsaverde,Bolsa Verde
+app,app_fgts,FGTS
+app,app_caixa_trabalhador,Caixa Trabalhador
+app,app_caixa_bolsafamilia,Bolsa Família CAIXA
+base,icn,ICN
+orgao,cg_icn,Comitê Gestor do ICN
+orgao,tse,Tribunal Superior Eleitoral
+politica,processo_eleitoral,Processo eleitoral
+servico,voos_nacionais,Vôos nacionais
+app,dni,DNI - Documento Nacional de Identidade
+base,cadunico,CadÚnico
+orgao,mindessoc,Ministério do Desenvolvimento Social
+politica,pol1,Brasil Alfabetizado
+politica,pol2,Reforma agrária
+politica,pol3,Facultativo de Baixa Renda
+politica,pol4,Carteira do Idoso
+politica,pol5,Telefone Popular
+base,cadsus,CadSUS
+base,sinasc,SINASC
+base,sim,SIM
+orgao,datasus,DataSUS
+orgao,secsaude,Secretaria de Vigilância em Saúde
+app,digisus,Meu digiSUS

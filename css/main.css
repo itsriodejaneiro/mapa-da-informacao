@@ -1,0 +1,129 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+body {
+	background: #222;
+	color: #fff;
+	font-family: 'Fira Mono', monospace;
+}
+
+.overlay {
+	width: 100vw;
+	height: 100vw;
+	max-width: 960px;
+	max-height: 960px;
+	overflow: hidden;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 0 auto;
+}
+
+svg {
+	/*background: rgba(0,0,0,0.1);*/
+	width: 100vw;
+	height: 100vw;
+	max-width: 960px;
+	max-height: 960px;
+}
+
+.links path {
+	stroke: #fff;
+	stroke-opacity: 0.2;
+	stroke-width: 1px;
+	fill: none;
+	transition: stroke-opacity 0.2s, stroke-width 0.2s;
+}
+
+.links.is_highlight path {
+	stroke-opacity: 0.1;
+}
+
+.links.is_highlight path.highlight {
+	stroke-opacity: 0.5;
+	stroke-width: 2px;
+}
+
+.node circle {
+	/*stroke: #fff;*/
+	/*stroke-width: 1.5px;*/
+	cursor: pointer;
+	transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+}
+
+.node circle:hover {
+	fill: #fff;
+	stroke: #000;
+	stroke-width: 4px;
+	transform: scale(1.2);
+}
+
+.label {
+	font-size: 11px;
+	fill: #fff;
+	pointer-events: none;
+/*	stroke: #000;
+	stroke-width: 4px;
+	stroke-linecap: round;
+	stroke-linejoin: miter;
+	paint-order: stroke;*/
+	transition: opacity 0.3s;
+}
+
+.label.node-politica,
+.label.node-app,
+.label.node-servico,
+.label.node-orgao {
+	opacity: 0;
+}
+
+.label.show {
+	opacity: 1;
+}
+
+.label.hidden {
+	opacity: 0;
+}
+
+.tooltip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	/*transition: opacity 0.3s;*/
+	opacity: 0;
+	width: 400px;
+	text-align: center;
+	margin-left: -200px;
+	display: none;
+}
+
+.tooltip.show {
+	/*transition: opacity 0.1s;*/
+	opacity: 1;
+	display: block;
+}
+
+.tooltip-wrapper {
+	background: rgba(0,0,0,0.8);
+	padding: 10px 12px;
+	display: inline-block;
+}
+
+.tooltip-title {
+	font-size: 9px;
+	text-align: left;
+	text-transform: uppercase;
+	margin-bottom: 4px;
+}
+
+.tooltip-text {
+	font-size: 14px;
+}
+
+.dud {
+	opacity: 0.3;
+}
