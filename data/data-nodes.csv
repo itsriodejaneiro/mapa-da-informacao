@@ -11,7 +11,6 @@ orgao,policiacivil,Polícia Civil,
 orgao,detranrj,DETRAN-RJ,
 base,cpf,CPF,CPF. Cadastro de Pessoa Física
 doc,doccpf,CPF,Cadastro de Pessoa Física
-orgao,internet,Internet,
 orgao,receita,Receita Federal,
 orgao,fazenda,Ministério da Fazenda,
 orgao,serpro,Serpro,Serpro. Serviço de Processamento de Dados Federal

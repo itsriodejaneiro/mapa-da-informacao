@@ -12,7 +12,6 @@ ic,gestao,detranrj
 cpf,docs,doccpf
 cpf,gestao,receita
 cpf,operacao,serpro
-cpf,canais,internet
 cpf,canais,receita
 cpf,canais,fazenda
 cpf,canais,correios
