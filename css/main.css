@@ -33,18 +33,18 @@ svg {
 
 .links path {
 	stroke: #fff;
-	stroke-opacity: 0.2;
+	stroke-opacity: 0.1;
 	stroke-width: 1px;
 	fill: none;
 	transition: stroke-opacity 0.2s, stroke-width 0.2s;
 }
 
 .links.is_highlight path {
-	stroke-opacity: 0.1;
+	stroke-opacity: 0.05;
 }
 
 .links.is_highlight path.highlight {
-	stroke-opacity: 0.5;
+	stroke-opacity: 0.25;
 	stroke-width: 2px;
 }
 
@@ -95,9 +95,9 @@ svg {
 	left: 0;
 	/*transition: opacity 0.3s;*/
 	opacity: 0;
-	width: 400px;
+	width: 300px;
 	text-align: center;
-	margin-left: -200px;
+	margin-left: -150px;
 	display: none;
 }
 
@@ -108,8 +108,8 @@ svg {
 }
 
 .tooltip-wrapper {
-	background: rgba(0,0,0,0.8);
-	padding: 10px 12px;
+	background: rgba(0,0,0,0.85);
+	padding: 12px 20px 10px 14px;
 	display: inline-block;
 }
 
@@ -121,7 +121,9 @@ svg {
 }
 
 .tooltip-text {
-	font-size: 14px;
+	font-size: 12px;
+	text-align: left;
+	line-height: 1.4em;
 }
 
 .dud {
