@@ -1,52 +1,83 @@
-tipo,id,nome
-base,crc,CRC
-doc,crcnasc,Cert. Nascimento
-doc,crccas,Cert. Casamento
-doc,crcobt,Cert. Óbito
-orgao,arpen,Arpen Brasil
-politica,estatistica_nacional,Estatística Nacional
-base,cpf,CPF
-doc,doccpf,CPF
-orgao,internet,Internet
-orgao,receita,Receita Federal
-orgao,fazenda,Ministério da Fazenda
-orgao,serpro,Serpro
-orgao,correios,Correios
-orgao,bb,Banco do Brasil
-orgao,caixa,Caixa Econômica Federal
-orgao,cartorios,Cartórios
-servico,ir,Imposto de Renda
-servico,servicos_bancarios,Serviços Bancários
-politica,bolsa_familia,Programa Bolsa Família
-app,aplicativo_cpf,App Pessoa Física
-base,ctps,CTPS
-doc,docctps,Carteira de Trabalho
-orgao,trabalho,Ministério do Trabalho
-app,app_ctps,CTPS Digital
-base,nis,NIS
-politica,politicas_trabalho,Políticas de Trabalho
-politica,previdencia,Previdência
-politica,minhacasa,Minha Casa Minha Vida
-politica,bolsaverde,Bolsa Verde
-app,app_fgts,FGTS
-app,app_caixa_trabalhador,Caixa Trabalhador
-app,app_caixa_bolsafamilia,Bolsa Família CAIXA
-base,icn,ICN
-orgao,cg_icn,Comitê Gestor do ICN
-orgao,tse,Tribunal Superior Eleitoral
-politica,processo_eleitoral,Processo eleitoral
-servico,voos_nacionais,Vôos nacionais
-app,dni,DNI - Documento Nacional de Identidade
-base,cadunico,CadÚnico
-orgao,mindessoc,Ministério do Desenvolvimento Social
-politica,pol1,Brasil Alfabetizado
-politica,pol2,Reforma agrária
-politica,pol3,Facultativo de Baixa Renda
-politica,pol4,Carteira do Idoso
-politica,pol5,Telefone Popular
-base,cadsus,CadSUS
-base,sinasc,SINASC
-base,sim,SIM
-orgao,datasus,DataSUS
-orgao,secsaude,Secretaria de Vigilância em Saúde
-app,digisus,Meu digiSUS
+tipo,id,nome,nomecompleto
+base,crc,CRC,CRC. Central de Informações do Registro Civil
+doc,crcnasc,Cert.Nascimento,Certidão de Nascimento
+doc,crccas,Cert.Casamento,Certidão de Casamento
+doc,crcobt,Cert.Óbito,Certidão de Óbito
+orgao,arpen,Arpen Brasil,Arpen Brasil. Associação Nacional dos Registradores de Pessoas Naturais
+politica,estatistica_nacional,Estatística Nacional,
+base,ic,ID Civil,Identidade Civil
+doc,rg,RG,Registro Geral
+orgao,policiacivil,Polícia Civil,
+orgao,detranrj,DETRAN-RJ,
+base,cpf,CPF,CPF. Cadastro de Pessoa Física
+doc,doccpf,CPF,Cadastro de Pessoa Física
+orgao,internet,Internet,
+orgao,receita,Receita Federal,
+orgao,fazenda,Ministério da Fazenda,
+orgao,serpro,Serpro,Serpro. Serviço de Processamento de Dados Federal
+orgao,correios,Correios,
+orgao,bb,Banco do Brasil,
+orgao,caixa,Caixa Econômica Federal,
+orgao,cartorios,Cartórios,
+servico,ir,Imposto de Renda,
+servico,servicos_bancarios,Serviços Bancários,
+politica,bolsa_familia,Programa Bolsa Família,
+app,aplicativo_cpf,App Pessoa Física,
+base,ctps,CTPS,CTPS. Carteira de Trabalho e Previdência Social
+doc,docctps,Cart.Trabalho,Carteira de Trabalho
+orgao,trabalho,Ministério do Trabalho,
+app,app_ctps,CTPS Digital,
+base,nis,NIS,NIS. Número de Informação Social
+politica,politicas_trabalho,Políticas de Trabalho,
+politica,previdencia,Previdência,
+politica,minhacasa,Minha Casa Minha Vida,
+politica,bolsaverde,Bolsa Verde,
+app,app_fgts,FGTS,
+app,app_caixa_trabalhador,Caixa Trabalhador,
+app,app_caixa_bolsafamilia,Bolsa Família CAIXA,
+app,app_idjovem,ID Jovem,
+base,icn,ICN,ICN. Identidade Civil Nacional
+orgao,cg_icn,Comitê Gestor do ICN,
+orgao,tse,Tribunal Superior Eleitoral,
+politica,processo_eleitoral,Processo eleitoral,
+servico,voos_nacionais,Vôos nacionais,
+app,dni,DNI,DNI - Documento Nacional de Identidade
+base,cadunico,CadÚnico,CadÚnico. Cadastro Único para Programas Sociais
+orgao,mindessoc,Ministério do Desenvolvimento Social,
+politica,pol1,Tarifa Social de Energia Elétrica,
+politica,pol2,Isenção de taxa para concurso público,
+politica,pol3,Facultativo de Baixa Renda,
+politica,pol4,Água para todos,
+politica,pol5,Cisternas,
+politica,pol6,Reforma agrária,
+politica,pol7,Ater,
+politica,pol8,Programa Nacional do Crédito Fundiário,
+politica,pol9,Serviços Socioassistenciais,
+politica,pol10,Programa de Erradicação do Trabalho Infantil,
+politica,pol11,Brasil Alfabetizado,
+politica,pol12,Carteira do Idoso,
+politica,pol13,Telefone Popular,
+base,cadsus,CadSUS,CadSUS. Cartão Nacional de Saúde
+base,sinasc,SINASC,SINASC. Sistema de Informações sobre Nascidos Vivos
+doc,dnv,DNV,DNV. Declaração de Nascido Vivo
+base,sim,SIM,SIM. Sistema de Informações de Mortalidade
+doc,do,DO,Declaração de Óbito
+orgao,datasus,DataSUS,DataSUS. Ministério da Saúde
+orgao,secsaude,Sec. de Vigilância em Saúde,Secretaria de Vigilância em Saúde. Ministério da Saúde
+app,digisus,Meu digiSUS,
+base,sirc,SIRC,SIRC. Sistema Nacional de Informações de Registro Civil
+orgao,comitesirc,Comitê Gestor do SIRC - INSS,
+orgao,dataprev,Dataprev,
+base,cnh,CNH,Carteira Nacional de Habilitação
+doc,cnhdoc,CNH,Carteira Nacional de Habilitação
+orgao,denatran,DENATRAN,DENATRAN. Departamento Nacional de Trânsito
+app,app_cnhdigitall,CNH Digital,
+base,passaporte,Passaporte,
+doc,passaportedoc,Passaporte,
+orgao,policiafederal,Polícia federal,
+base,rani,RANI,RANI. Registro Administrativo de Nascimento de Indígena
+doc,ranidoc,RANI,Registro Administrativo de Nascimento de Indígena
+orgao,funai,Funai,
+base,cam,CAM,CAM. Certificado de alistamento militar
+doc,certreservista,Reservista,Certificado de Reservista
+orgao,mindefesa,Ministério da Defesa,
