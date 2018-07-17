@@ -74,10 +74,10 @@ svg {
 	transition: opacity 0.3s;
 }
 
+.label.node-doc,
 .label.node-politica,
 .label.node-app,
-.label.node-servico,
-.label.node-orgao {
+.label.node-servico {
 	opacity: 0;
 }
 

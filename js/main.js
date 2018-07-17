@@ -1,5 +1,10 @@
 // START VIS
 
+// soundfx
+var sound_over = new Howl({ src: ['./snd/mouseclick1.wav'] })
+var sound_click = new Howl({ src: ['./snd/switch37.wav'] })
+
+// vis variables
 var width = 960 //window.innerWidth,
 var height = 960 //window.innerHeight;
 
@@ -7,16 +12,12 @@ var svg = d3.select("svg")
 	.attr("preserveAspectRatio", "xMinYMin meet")
 	.attr("viewBox", `0 0 ${width} ${height}`)
 
-
-var sound_over = new Howl({ src: ['./snd/mouseclick1.wav'] })
-var sound_click = new Howl({ src: ['./snd/switch37.wav'] })
-
 var viewport = svg.append("g")
 	.attr("class", "viewport")
 
 var manyBody = d3.forceManyBody()
 
-manyBody.strength(200)
+//manyBody.strength(200)
 //manyBody.theta(0.6)
 
 var simulation = d3.forceSimulation()
@@ -31,9 +32,12 @@ var simulation = d3.forceSimulation()
 	.alphaDecay(0.1)
 	.alphaMin(0.0100000001)
 
+// tooltip
 var tooltip = d3.select('.tooltip')
 var fx = new TextScramble(document.querySelector('.tooltip-text'),15)
 var fxto = null
+
+// force graph
 
 var graph = {}
 
@@ -46,7 +50,54 @@ var _nodes = viewport.append("g")
 var _labels = viewport.append("g")
 	.attr("class", "labels")
 
-var _fxs = {}
+
+// UTILS
+
+var color = d3.scaleOrdinal(d3.schemeCategory20)
+
+var templates = {
+	orgao    : { size: 10, cluster: { y: 1.0, k: 4, size: 200 }, delay: 0, color: 4 },
+	doc      : { size: 10, cluster: { y: 2.7, k: 4, size: 100 }, delay: 1, color: 1 },
+	app      : { size:  5, cluster: { y: 3.2, k: 4, size: 100 }, delay: 2, color: 2 },
+	base     : { size: 20, cluster: { y: 4.5, k: 4, size: 200 }, delay: 3, color: 3 },
+	servico  : { size:  5, cluster: { y: 6.0, k: 4, size: 100 }, delay: 4, color: 5 },
+	politica : { size:  5, cluster: { y: 6.5, k: 4, size: 100 }, delay: 5, color: 6 },
+}
+
+
+function node_size(d){
+	console.log('node.size',d.id,d.weight)
+	return templates[d.tipo].size + d.weight
+}
+
+function node_color(t){
+	return color(templates[t].color)
+}
+
+function node_cluster(t){
+	return templates[t].cluster.y
+}
+
+function node_delay(t,i){
+	return templates[t].delay * 100 + i * 50
+}
+
+function tipo_label(t){
+	switch(t){
+		case 'orgao':
+			return 'Órgão'
+		case 'base':
+			return 'Base'
+		case 'servico':
+			return 'Serviços'
+		case 'politica':
+			return 'Políticas Públicas'
+		case 'app':
+			return 'App'
+		case 'doc':
+			return 'Documento'
+	}
+}
 
 // LOAD DATA
 
@@ -63,8 +114,8 @@ d3.csv('./data/data-nodes.csv')
 		var _linksori = []
 		
 		_relations.map(function(d){
-			_links.push({source: d.source, target: d.target})	
-			_linksori.push({source: d.source, target: d.target})	
+			_links.push({source: d.source, relation: d.relation, target: d.target})	
+			_linksori.push({source: d.source, relation: d.relation, target: d.target})	
 		})
 
 		var k = {
@@ -77,20 +128,38 @@ d3.csv('./data/data-nodes.csv')
 		}
 
 		_nodes.map(function(d){
+			
 			// offset
-			var step = d.tipo == 'base' ? 50 : 25
-			var loop = d.tipo == 'base' ? 200 : 125
+			
+			var loop = templates[d.tipo].cluster.size
+			var step = loop / templates[d.tipo].cluster.k
+
 			d.offsetY = k[d.tipo]
 			k[d.tipo] += step
 			k[d.tipo] = k[d.tipo] % loop
-			// radius
+
+			// weight
 			if(d.tipo == 'base'){
+
 				var arr = _.filter(_linksori, function(o) { return o.source  == d.id })
-				d.links = arr.length
+				d.weight = arr.length
+
+			} else if(d.tipo == 'orgao') {
+
+				var related_bases = _.filter(_linksori, function(o) { return o.target  == d.id })
+				var weight = related_bases.length * 7
+
+				console.log(d.nome, 'total', weight)
+
+				d.weight = weight
+
 			} else {
+
 				var arr = _.filter(_linksori, function(o) { return o.target  == d.id })
-				d.links = arr.length
+				d.weight = arr.length
+
 			}
+
 		})
 
 		//console.log(_nodes)
@@ -101,68 +170,6 @@ d3.csv('./data/data-nodes.csv')
 		update(graph.nodes, graph.links)
 	})
 })
-
-function ticked() {
-
-	//simulation.alpha(0.1)
-
-	//nodes.filter(function(d){return d.id == 'governo'}).attr('fx',0).attr('fy',0)
-
-	var nodes  = _nodes.selectAll('.node')
-	var links  = _links.selectAll('.link')
-	var labels = _labels.selectAll('.label')
-
-	if(nodes){
-
-		nodes.each(function(d, i) {
-			ky = 0.1
-			d.x -= (d.x - width / 2) * 8 * 0.0001;
-			d.y -= (d.y + d.offsetY - (node_cluster(d.tipo) + 1) * 120) * 5 * ky;
-		})
-
-		nodes
-			.attr("transform", function(d) {
-				d.x = Math.max(Math.min(d.x,width-100),100)
-				return "translate(" + d.x + "," + d.y + ")";
-			})
-	}
-
-	if(links){
-		links
-			.attr("d", positionLink)
-			// .attr("x1", function(d) { return d.source.x; })
-			// .attr("y1", function(d) { return d.source.y; })
-			// .attr("x2", function(d) { return d.target.x; })
-			// .attr("y2", function(d) { return d.target.y; });
-	}
-	if(labels){
-		labels
-			.attr("transform", function(d) {
-				return "translate(" + d.x + "," + d.y + ")";
-			})
-	}
-
-}
-
-function positionLink(d) {
-
-	var offset = 30;
-
-	var midpoint_x = (d.source.x + d.target.x) / 2;
-	var midpoint_y = (d.source.y + d.target.y) / 2;
-
-	var dx = (d.target.x - d.source.x);
-	var dy = (d.target.y - d.source.y);
-
-	var normalise = Math.sqrt((dx * dx) + (dy * dy));
-
-	var offSetX = midpoint_x + offset*(dy/normalise);
-	var offSetY = midpoint_y - offset*(dx/normalise);
-
-	return  "M" + d.source.x + "," + d.source.y +
-			"S" + offSetX + "," + offSetY +
-			" " + d.target.x + "," + d.target.y;
-}
 
 function update(data_n,data_l){
 
@@ -256,6 +263,68 @@ function update(data_n,data_l){
 
 }
 
+function ticked() {
+
+	//simulation.alpha(0.1)
+
+	//nodes.filter(function(d){return d.id == 'governo'}).attr('fx',0).attr('fy',0)
+
+	var nodes  = _nodes.selectAll('.node')
+	var links  = _links.selectAll('.link')
+	var labels = _labels.selectAll('.label')
+
+	if(nodes){
+
+		nodes.each(function(d, i) {
+			ky = 0.1
+			d.x -= (d.x - width / 2) * 8 * 0.0001;
+			d.y -= (d.y + d.offsetY - (node_cluster(d.tipo) + 1) * 120) * 5 * ky;
+		})
+
+		nodes
+			.attr("transform", function(d) {
+				d.x = Math.max(Math.min(d.x,width-100),100)
+				return "translate(" + d.x + "," + d.y + ")";
+			})
+	}
+
+	if(links){
+		links
+			.attr("d", positionLink)
+			// .attr("x1", function(d) { return d.source.x; })
+			// .attr("y1", function(d) { return d.source.y; })
+			// .attr("x2", function(d) { return d.target.x; })
+			// .attr("y2", function(d) { return d.target.y; });
+	}
+	if(labels){
+		labels
+			.attr("transform", function(d) {
+				return "translate(" + d.x + "," + d.y + ")";
+			})
+	}
+
+}
+
+function positionLink(d) {
+
+	var offset = 30;
+
+	var midpoint_x = (d.source.x + d.target.x) / 2;
+	var midpoint_y = (d.source.y + d.target.y) / 2;
+
+	var dx = (d.target.x - d.source.x);
+	var dy = (d.target.y - d.source.y);
+
+	var normalise = Math.sqrt((dx * dx) + (dy * dy));
+
+	var offSetX = midpoint_x + offset*(dy/normalise);
+	var offSetY = midpoint_y - offset*(dx/normalise);
+
+	return  "M" + d.source.x + "," + d.source.y +
+			"S" + offSetX + "," + offSetY +
+			" " + d.target.x + "," + d.target.y;
+}
+
 // DRAG
 
 var drag_handler = d3.drag()
@@ -325,9 +394,7 @@ function node_mouseover(d) {
 	var text = d3.select('.label[label_id="' + d.id + '"]')
 		//.classed('show', true)
 
-	if(d.tipo != 'base' && d.tipo != 'doc' ){
-		
-	} else {
+	if(d.tipo == 'base' || d.tipo == 'orgao' ){
 		text.classed('hidden',true)
 	}
 
@@ -384,9 +451,7 @@ function node_mouseout(d) {
 	var text = d3.select('.label[label_id="' + d.id + '"]')
 		.classed('show', false)
 
-	if(d.tipo != 'base' && d.tipo != 'doc' ){	
-		
-	} else {
+	if(d.tipo == 'base' || d.tipo == 'orgao' ){	
 		text.classed('hidden', false)
 	}
 
@@ -402,50 +467,3 @@ function node_mouseout(d) {
 	tooltip.classed('show', false)	
 }
 
-// UTILS
-
-var color = d3.scaleOrdinal(d3.schemeCategory20)
-
-var templates = {
-	doc      : { size: 15, cluster_y: 1.0, delay: 0, color: 1 },
-	app      : { size:  5, cluster_y: 2.3, delay: 5, color: 2 },
-	base     : { size: 20, cluster_y: 4.0, delay: 1, color: 3 },
-	orgao    : { size: 10, cluster_y: 6.0, delay: 2, color: 4 },
-	servico  : { size:  5, cluster_y: 7.0, delay: 3, color: 5 },
-	politica : { size:  5, cluster_y: 7.5, delay: 4, color: 6 },
-}
-
-
-function node_size(d){
-	var extra = d.tipo == 'base' ? d.links : d.links * 2
-	return templates[d.tipo].size + extra
-}
-
-function node_color(t){
-	return color(templates[t].color)
-}
-
-function node_cluster(t){
-	return templates[t].cluster_y
-}
-
-function node_delay(t,i){
-	return templates[t].delay * 100 + i * 50
-}
-
-function tipo_label(t){
-	switch(t){
-		case 'orgao':
-			return 'Órgão'
-		case 'base':
-			return 'Base'
-		case 'servico':
-			return 'Serviços'
-		case 'politica':
-			return 'Políticas Públicas'
-		case 'app':
-			return 'App'
-		case 'doc':
-			return 'Documento'
-	}
-}
