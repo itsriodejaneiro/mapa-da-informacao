@@ -7,7 +7,7 @@ orgao,arpen,Arpen,Arpen Brasil. Associação Nacional dos Registradores de Pesso
 politica,estatistica_nacional,Estatística Nacional,
 base,ic,ID Civil,Identidade Civil
 doc,rg,RG,Registro Geral
-orgao,policiacivil,Polícia Civil,
+orgao,policiacivil,P.Civil,Polícia Civil
 orgao,detranrj,DETRAN-RJ,
 base,cpf,CPF,CPF. Cadastro de Pessoa Física
 doc,doccpf,CPF,Cadastro de Pessoa Física
@@ -15,7 +15,7 @@ orgao,receita,Receita,Receita Federal
 orgao,fazenda,Fazenda,Ministério da Fazenda
 orgao,serpro,Serpro,Serpro. Serviço de Processamento de Dados Federal
 orgao,correios,Correios,
-orgao,bb,Banco do Brasil,
+orgao,bb,BB,Banco do Brasil
 orgao,caixa,Caixa, Caixa Econômica Federal
 orgao,cartorios,Cartórios,
 servico,ir,Imposto de Renda,
@@ -26,6 +26,19 @@ base,ctps,CTPS,CTPS. Carteira de Trabalho e Previdência Social
 doc,docctps,Cart.Trabalho,Carteira de Trabalho
 orgao,trabalho,Min.Trabalho,Ministério do Trabalho
 app,app_ctps,CTPS Digital,
+base,cnh,CNH,Carteira Nacional de Habilitação
+doc,cnhdoc,CNH,Carteira Nacional de Habilitação
+orgao,denatran,Denatran,DENATRAN. Departamento Nacional de Trânsito
+app,app_cnhdigitall,CNH Digital,
+base,passaporte,Passaporte,
+doc,passaportedoc,Passaporte,
+orgao,policiafederal,P.Federal,Polícia Federal
+base,rani,RANI,RANI. Registro Administrativo de Nascimento de Indígena
+doc,ranidoc,RANI,Registro Administrativo de Nascimento de Indígena
+orgao,funai,Funai,
+base,cam,CAM,CAM. Certificado de alistamento militar
+doc,certreservista,Reservista,Certificado de Reservista
+orgao,mindefesa,Min.Defesa,Ministério da Defesa
 base,nis,NIS,NIS. Número de Informação Social
 politica,politicas_trabalho,Políticas de Trabalho,
 politica,previdencia,Previdência,
@@ -36,7 +49,7 @@ app,app_caixa_trabalhador,Caixa Trabalhador,
 app,app_caixa_bolsafamilia,Bolsa Família CAIXA,
 app,app_idjovem,ID Jovem,
 base,icn,ICN,ICN. Identidade Civil Nacional
-orgao,cg_icn,Comitê ICN,Comitê Gestor do ICN
+orgao,cg_icn,CG ICN,Comitê Gestor do ICN
 orgao,tse,TSE,Tribunal Superior Eleitoral
 politica,processo_eleitoral,Processo eleitoral,
 servico,voos_nacionais,Vôos nacionais,
@@ -65,18 +78,5 @@ orgao,datasus,DataSUS,DataSUS. Ministério da Saúde
 orgao,secsaude,Sec.Vig.Saúde,Secretaria de Vigilância em Saúde. Ministério da Saúde
 app,digisus,Meu digiSUS,
 base,sirc,SIRC,SIRC. Sistema Nacional de Informações de Registro Civil
-orgao,comitesirc,Comitê SIRC,Comitê Gestor do SIRC - INSS
+orgao,comitesirc,CG SIRC,Comitê Gestor do SIRC - INSS
 orgao,dataprev,Dataprev,
-base,cnh,CNH,Carteira Nacional de Habilitação
-doc,cnhdoc,CNH,Carteira Nacional de Habilitação
-orgao,denatran,Denatran,DENATRAN. Departamento Nacional de Trânsito
-app,app_cnhdigitall,CNH Digital,
-base,passaporte,Passaporte,
-doc,passaportedoc,Passaporte,
-orgao,policiafederal,Pol.Federal,Polícia Federal
-base,rani,RANI,RANI. Registro Administrativo de Nascimento de Indígena
-doc,ranidoc,RANI,Registro Administrativo de Nascimento de Indígena
-orgao,funai,Funai,
-base,cam,CAM,CAM. Certificado de alistamento militar
-doc,certreservista,Reservista,Certificado de Reservista
-orgao,mindefesa,Min.Defesa,Ministério da Defesa

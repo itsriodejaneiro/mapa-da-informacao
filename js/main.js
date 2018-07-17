@@ -5,7 +5,7 @@ var sound_over = new Howl({ src: ['./snd/mouseclick1.wav'] })
 var sound_click = new Howl({ src: ['./snd/switch37.wav'] })
 
 // vis variables
-var width = 960 //window.innerWidth,
+var width = 1280 //window.innerWidth,
 var height = 960 //window.innerHeight;
 
 var svg = d3.select("svg")
@@ -37,33 +37,19 @@ var tooltip = d3.select('.tooltip')
 var fx = new TextScramble(document.querySelector('.tooltip-text'),15)
 var fxto = null
 
-// force graph
-
-var graph = {}
-
-var _links = viewport.append("g")
-	.attr("class", "links")
-
-var _nodes = viewport.append("g")
-	.attr("class", "nodes")
-
-var _labels = viewport.append("g")
-	.attr("class", "labels")
-
 
 // UTILS
 
 var color = d3.scaleOrdinal(d3.schemeCategory20)
 
 var templates = {
-	orgao    : { size: 10, cluster: { y: 1.0, k: 4, size: 200 }, delay: 0, color: 4 },
-	doc      : { size: 10, cluster: { y: 2.7, k: 4, size: 100 }, delay: 1, color: 1 },
-	app      : { size:  5, cluster: { y: 3.2, k: 4, size: 100 }, delay: 2, color: 2 },
-	base     : { size: 20, cluster: { y: 4.5, k: 4, size: 200 }, delay: 3, color: 3 },
-	servico  : { size:  5, cluster: { y: 6.0, k: 4, size: 100 }, delay: 4, color: 5 },
-	politica : { size:  5, cluster: { y: 6.5, k: 4, size: 100 }, delay: 5, color: 6 },
+	doc      : { size: 20, cluster: { y: 0.3, k: 4, size: 100 }, delay: 1, color: 1 },
+	app      : { size:  5, cluster: { y: 1.2, k: 2, size:  60 }, delay: 2, color: 2 },
+	orgao    : { size: 10, cluster: { y: 3.0, k: 4, size: 200 }, delay: 0, color: 4 },
+	base     : { size: 20, cluster: { y: 5.2, k: 4, size: 200 }, delay: 3, color: 3 },
+	servico  : { size:  5, cluster: { y: 6.5, k: 4, size: 100 }, delay: 4, color: 5 },
+	politica : { size:  5, cluster: { y: 7.0, k: 4, size: 100 }, delay: 5, color: 6 },
 }
-
 
 function node_size(d){
 	console.log('node.size',d.id,d.weight)
@@ -98,6 +84,49 @@ function tipo_label(t){
 			return 'Documento'
 	}
 }
+
+// force graph
+
+var graph = {}
+
+var legendas = [
+	{ y:  10, text: 'Documentos'},
+	{ y: 190, text: 'Aplicativos'},
+	{ y: 260, text: 'Órgãos'},
+	{ y: 520, text: 'Bases'},
+	{ y: 780, text: 'Serviços e Políticas Públicas'},
+]
+
+var legendas_g = viewport.append("g")
+	.attr("class", "legenda")
+	.selectAll('g')
+	.data(legendas)
+
+var legenda = legendas_g.enter().append('g')
+
+legenda
+	.append('line')
+	.attr("class", 'legenda-line')
+	.attr("x1", 20 )
+	.attr("y1", function(d) { return d.y })
+	.attr("x2", width)
+	.attr("y2", function(d) { return d.y });
+
+legenda
+	.append('text')
+	.attr("class", 'legenda-text')
+	.text(function(d) { return d.text })
+	.attr('x', 20)
+	.attr('y', function(d){ return d.y + 30 })
+
+var _links = viewport.append("g")
+	.attr("class", "links")
+
+var _nodes = viewport.append("g")
+	.attr("class", "nodes")
+
+var _labels = viewport.append("g")
+	.attr("class", "labels")
 
 // LOAD DATA
 
@@ -283,7 +312,7 @@ function ticked() {
 
 		nodes
 			.attr("transform", function(d) {
-				d.x = Math.max(Math.min(d.x,width-100),100)
+				d.x = Math.max(Math.min(d.x,width-100),200)
 				return "translate(" + d.x + "," + d.y + ")";
 			})
 	}
@@ -394,7 +423,7 @@ function node_mouseover(d) {
 	var text = d3.select('.label[label_id="' + d.id + '"]')
 		//.classed('show', true)
 
-	if(d.tipo == 'base' || d.tipo == 'orgao' ){
+	if(_.indexOf(['base','doc','orgao'], d.tipo) != -1){
 		text.classed('hidden',true)
 	}
 
@@ -451,7 +480,7 @@ function node_mouseout(d) {
 	var text = d3.select('.label[label_id="' + d.id + '"]')
 		.classed('show', false)
 
-	if(d.tipo == 'base' || d.tipo == 'orgao' ){	
+	if(_.indexOf(['base','doc','orgao'], d.tipo) != -1){
 		text.classed('hidden', false)
 	}
 
