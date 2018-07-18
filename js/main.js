@@ -43,21 +43,21 @@ var fxto = null
 var color = d3.scaleOrdinal(d3.schemeCategory20)
 
 var templates = {
-	doc      : { size: 20, cluster: { y: 0.3, k: 4, size: 100 }, delay: 1, color: 1 },
-	app      : { size:  5, cluster: { y: 1.2, k: 2, size:  60 }, delay: 2, color: 2 },
-	orgao    : { size: 10, cluster: { y: 3.0, k: 4, size: 200 }, delay: 0, color: 4 },
-	base     : { size: 20, cluster: { y: 5.2, k: 4, size: 200 }, delay: 3, color: 3 },
-	servico  : { size:  5, cluster: { y: 6.5, k: 4, size: 100 }, delay: 4, color: 5 },
-	politica : { size:  5, cluster: { y: 7.0, k: 4, size: 100 }, delay: 5, color: 6 },
+	doc      : { size: 20, cluster: { y: 0.3, k: 4, size: 100 }, delay: 1, color: '#aec7e8' },
+	app      : { size:  5, cluster: { y: 1.2, k: 2, size:  60 }, delay: 2, color: '#98df89' },
+	orgao    : { size: 10, cluster: { y: 3.0, k: 4, size: 200 }, delay: 0, color: '#e07145' },
+	base     : { size: 20, cluster: { y: 5.2, k: 4, size: 200 }, delay: 3, color: '#2077b4' },
+	servico  : { size:  5, cluster: { y: 6.5, k: 4, size: 100 }, delay: 4, color: '#2d9f2c' },
+	politica : { size:  5, cluster: { y: 7.0, k: 4, size: 100 }, delay: 5, color: '#ffbc78' },
 }
 
 function node_size(d){
-	console.log('node.size',d.id,d.weight)
+	//console.log('node.size',d.id,d.weight)
 	return templates[d.tipo].size + d.weight
 }
 
 function node_color(t){
-	return color(templates[t].color)
+	return templates[t].color
 }
 
 function node_cluster(t){
@@ -85,16 +85,30 @@ function tipo_label(t){
 	}
 }
 
-// force graph
+function tipo_rel(t){
+	switch(t){
+		case 'gestao':
+			return 'Gestão'
+		case 'operacao':
+			return 'Operação'
+		case 'canais':
+			return 'Canal de acesso'
+	}
+}
 
-var graph = {}
+var orgao_scale = d3.scaleLinear()
+        .domain([1, 4])
+        .range(['#fcd9b2', '#e07145'])
+        .interpolate(d3.interpolateHcl)
+
+// LEGENDAS UI
 
 var legendas = [
 	{ y:  10, text: 'Documentos'},
 	{ y: 190, text: 'Aplicativos'},
 	{ y: 260, text: 'Órgãos'},
 	{ y: 520, text: 'Bases'},
-	{ y: 780, text: 'Serviços e Políticas Públicas'},
+	{ y: 800, text: 'Serviços e Políticas Públicas'}
 ]
 
 var legendas_g = viewport.append("g")
@@ -118,6 +132,10 @@ legenda
 	.text(function(d) { return d.text })
 	.attr('x', 20)
 	.attr('y', function(d){ return d.y + 30 })
+
+// GRAPH
+
+var graph = {}
 
 var _links = viewport.append("g")
 	.attr("class", "links")
@@ -167,26 +185,54 @@ d3.csv('./data/data-nodes.csv')
 			k[d.tipo] += step
 			k[d.tipo] = k[d.tipo] % loop
 
-			// weight
+			// weight, color and label
 			if(d.tipo == 'base'){
 
 				var arr = _.filter(_linksori, function(o) { return o.source  == d.id })
 				d.weight = arr.length
+				d.color = node_color(d.tipo)
+				d.tipo_label = tipo_label(d.tipo)
 
 			} else if(d.tipo == 'orgao') {
 
 				var related_bases = _.filter(_linksori, function(o) { return o.target  == d.id })
 				var weight = related_bases.length * 7
 
-				console.log(d.nome, 'total', weight)
+				var cats = _.map(_.uniqBy(related_bases,'relation'),'relation')
+
+				// if(related_bases.length > cats.length){
+				// 	console.log(d.nome,related_bases.length, cats.length, related_bases,cats)
+				// }
+
+				//console.log(d.nome, 'total', weight)
+
+				var num_color = cats.length > 1 ? 4 : _.indexOf(['canais','operacao','gestao'], cats[0]) + 1
+				var label = ''
+
+				cats.map(function(t,i){
+					if(i > 0){
+						if(i < cats.length - 1){
+							label += ', '
+						} else {
+							label += ' & '
+						}
+						
+					}
+					label += tipo_rel(t)
+				})
 
 				d.weight = weight
+				d.color = orgao_scale(num_color)
+				d.tipo_label = label
+
+				console.log(d.nome, num_color, _.indexOf(['gestao','operacao','canais'], cats[0]), label)
 
 			} else {
 
 				var arr = _.filter(_linksori, function(o) { return o.target  == d.id })
 				d.weight = arr.length
-
+				d.color = node_color(d.tipo)
+				d.tipo_label = tipo_label(d.tipo)
 			}
 
 		})
@@ -231,7 +277,7 @@ function update(data_n,data_l){
 		.transition(t)
 		.delay(function(d, i) { return node_delay(d.tipo,i) })
 		.attr("r", function(d){ return node_size(d) } )
-		.attr("fill", function(d) { return node_color(d.tipo); })
+		.attr("fill", function(d) { return d.color })
 		
 
 	// LABELS
@@ -450,9 +496,11 @@ function node_mouseover(d) {
 
 	//console.log(svg_w, scale, top, left)
 
+	console.log(d)
+
 	d3.selectAll('.tooltip-title')
-		.text(tipo_label(d.tipo))
-		.style('color', node_color(d.tipo))
+		.text(d.tipo_label)
+		.style('color', function(){ return d.color })
 
 	tooltip
 		.classed('show', true)
