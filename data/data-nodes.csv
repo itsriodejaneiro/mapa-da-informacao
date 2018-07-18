@@ -8,7 +8,7 @@ politica,estatistica_nacional,Estatística Nacional,
 base,ic,ID Civil,Identidade Civil
 doc,rg,RG,Registro Geral
 orgao,policiacivil,P.Civil,Polícia Civil
-orgao,detranrj,DETRAN-RJ,
+orgao,detranrj,Detran RJ,DETRAN-RJ
 base,cpf,CPF,CPF. Cadastro de Pessoa Física
 doc,doccpf,CPF,Cadastro de Pessoa Física
 orgao,receita,Receita,Receita Federal
