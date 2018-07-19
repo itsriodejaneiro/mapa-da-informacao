@@ -8,7 +8,7 @@ var sound_click = new Howl({ src: ['./snd/switch37.wav'] })
 var width = 1280 //window.innerWidth,
 var height = 960 //window.innerHeight;
 
-var svg = d3.select("svg")
+var svg = d3.select(".mapa-vis")
 	.attr("preserveAspectRatio", "xMinYMin meet")
 	.attr("viewBox", `0 0 ${width} ${height}`)
 
@@ -149,14 +149,19 @@ var _labels = viewport.append("g")
 // LOAD DATA
 
 d3.csv('./data/data-nodes.csv')
-  .row(d3.dsvParse).get(function(d){
+  .row(d3.dsvParse).get(function(data){
 
-	var _nodes = d
+	var _nodes = data
+	var _nodesori = []
+
+	data.map(function(o){
+		_nodesori.push(o)
+	})
 
 	d3.csv('./data/data-links.csv')
-	  .row(d3.dsvParse).get(function(d){
+	  .row(d3.dsvParse).get(function(data){
 
-		var _relations = d
+		var _relations = data
 		var _links = []
 		var _linksori = []
 		
@@ -192,16 +197,17 @@ d3.csv('./data/data-nodes.csv')
 				d.weight = arr.length
 				d.color = node_color(d.tipo)
 				d.tipo_label = tipo_label(d.tipo)
+				d.rel_ids = _.uniq(_.map(arr,'target'))
 
 			} else if(d.tipo == 'orgao') {
 
-				var related_bases = _.filter(_linksori, function(o) { return o.target  == d.id })
-				var weight = related_bases.length * 7
+				var arr = _.filter(_linksori, function(o) { return o.target  == d.id })
+				var weight = arr.length * 7
 
-				var cats = _.map(_.uniqBy(related_bases,'relation'),'relation')
+				var cats = _.map(_.uniqBy(arr,'relation'),'relation')
 
-				// if(related_bases.length > cats.length){
-				// 	console.log(d.nome,related_bases.length, cats.length, related_bases,cats)
+				// if(arr.length > cats.length){
+				// 	console.log(d.nome,arr.length, cats.length, arr,cats)
 				// }
 
 				//console.log(d.nome, 'total', weight)
@@ -224,8 +230,9 @@ d3.csv('./data/data-nodes.csv')
 				d.weight = weight
 				d.color = orgao_scale(num_color)
 				d.tipo_label = label
+				d.rel_ids = _.uniq(_.map(arr,'source'))
 
-				console.log(d.nome, num_color, _.indexOf(['gestao','operacao','canais'], cats[0]), label)
+				//console.log(d.nome, num_color, _.indexOf(['gestao','operacao','canais'], cats[0]), label)
 
 			} else {
 
@@ -233,14 +240,18 @@ d3.csv('./data/data-nodes.csv')
 				d.weight = arr.length
 				d.color = node_color(d.tipo)
 				d.tipo_label = tipo_label(d.tipo)
+				d.rel_ids = _.uniq(_.map(arr,'source'))
 			}
 
 		})
 
-		//console.log(_nodes)
-
 		graph.nodes = _nodes
 		graph.links = _links
+		graph.data = {}
+		graph.data.nodes = _nodesori
+		graph.data.links = _linksori
+
+		console.log(graph.data)
 		
 		update(graph.nodes, graph.links)
 	})
@@ -264,7 +275,9 @@ function update(data_n,data_l){
 
 	nodes.enter()
 		.append("g")
-		.attr("class", "node")
+		.attr("class", function(d) {
+			return "node " + d.id + " " + d.rel_ids.join(" ")
+		})
 		.attr('node_id', function(d) {
 			return d.id;
 		})
@@ -284,8 +297,9 @@ function update(data_n,data_l){
 
 	labels.enter()
 		.append("g")
-		.attr("class", "label")
-		.attr("class", function(d) { return d3.select(this).attr("class") + " node-" + d.tipo; })
+		.attr("class", function(d) {
+			return "label node-" + d.tipo + " " + d.id + " " + d.rel_ids.join(" ")
+		})
 		.attr('label_id', function(d) {
 			return d.id;
 		})
@@ -457,17 +471,12 @@ function resize() {
 
 // EVENTS
 
-function node_click(d) {
-	sound_click.play()
-	console.log('click', d)
-}
-
 function node_mouseover(d) {
 
 	// label
 
 	var text = d3.select('.label[label_id="' + d.id + '"]')
-		//.classed('show', true)
+	//.classed('show', true)
 
 	if(_.indexOf(['base','doc','orgao'], d.tipo) != -1){
 		text.classed('hidden',true)
@@ -475,12 +484,13 @@ function node_mouseover(d) {
 
 	// links
 
-	d3.selectAll('.links').classed('is_highlight', true)
+	d3.selectAll('.mapa').classed('highlight', true)
 	d3.selectAll('.link.' + d.id).classed('highlight',true)
+	d3.selectAll('.node.' + d.id).classed('highlight',true)
 
 	// tooltip
 
-	var svg_w = d3.select('.overlay').node().getBoundingClientRect().width
+	var svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
 	var scale = svg_w / width
 
 	var top = d.y < height * .8
@@ -526,7 +536,7 @@ function node_mouseout(d) {
 	// label
 
 	var text = d3.select('.label[label_id="' + d.id + '"]')
-		.classed('show', false)
+	//.classed('show', false)
 
 	if(_.indexOf(['base','doc','orgao'], d.tipo) != -1){
 		text.classed('hidden', false)
@@ -534,8 +544,9 @@ function node_mouseout(d) {
 
 	// links
 
-	d3.selectAll('.links').classed('is_highlight', false)
+	d3.selectAll('.mapa').classed('highlight', false)
 	d3.selectAll('.link.' + d.id).classed('highlight', false)
+	d3.selectAll('.node.' + d.id).classed('highlight', false)
 
 	// tooltip
 
@@ -544,3 +555,84 @@ function node_mouseout(d) {
 	tooltip.classed('show', false)	
 }
 
+function node_click(d) {
+	sound_click.play()
+	console.log('click', d)
+
+	if(current_id == d.id){
+		closeInfo()
+	} else {
+		if (d.tipo == 'orgao') {
+			showInfoOrgao(d.id)
+		} else if (d.tipo == 'base') {
+			showInfoBase(d.id)
+		} else {
+			var base = _.find(graph.data.links, function(o) { return o.target == d.id })
+			showInfoBase(base.source)
+		}
+	}
+}
+
+function showInfo(id) {
+
+	var vis = d3.select(".mapa")
+	vis.classed("show-info", true)
+
+	// old
+	d3.selectAll('.link.show').classed('show', false)
+	d3.selectAll('.node.show').classed('show', false)
+	d3.selectAll('.label.show').classed('show', false)
+
+	// new 
+	d3.selectAll('.link.' + id).classed('show', true)
+	d3.selectAll('.node.' + id).classed('show', true)
+	d3.selectAll('.label.' + id).classed('show', true)
+
+	current_id = id
+}
+
+var current_id = null
+
+function showInfoOrgao(id){
+
+	console.log('open orgao',id)
+	showInfo(id)
+
+	var node = _.find(graph.nodes, function(o){ return id == o.id })
+	console.log(node)
+	d3.select('.mapa-info-content').text(node.nomecompleto || node.nome)
+
+}
+
+function showInfoBase(id){
+	
+	console.log('open base',id)
+	showInfo(id)
+
+	var node = _.find(graph.nodes, function(o){ return id == o.id })
+	console.log(node)
+	d3.select('.mapa-info-content').text(node.nomecompleto || node.nome)
+
+}
+
+function closeInfo(){
+
+	vis = d3.select(".mapa")
+	vis.classed("show-info", false)
+
+	d3.selectAll('.link.show').classed('show', false)
+	d3.selectAll('.node.show').classed('show', false)
+	d3.selectAll('.label.show').classed('show', false)
+
+	current_id = null
+
+}
+
+d3.select(".mapa-info-close").on("click",function(e){
+
+	d3.event.preventDefault()
+
+	sound_click.play()
+	closeInfo()
+
+})

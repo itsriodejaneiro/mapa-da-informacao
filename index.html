@@ -4,18 +4,31 @@
     <meta charset="utf-8">
     <title>ITS – Mapa da Informação</title>
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+    <link href="https://unpkg.com/ionicons@4.2.4/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
-    <div class="overlay">
-      <svg width="1280" height="960"></svg>
-      <div class="tooltip">
-        <div class="tooltip-wrapper">
-          <div class="tooltip-title"></div>
-          <div class="tooltip-text"></div>
+
+    <section class="mapa">
+      <div class="mapa-viewport">
+        <svg class="mapa-vis" width="1280" height="960"></svg>
+        <div class="tooltip">
+          <div class="tooltip-wrapper">
+            <div class="tooltip-title"></div>
+            <div class="tooltip-text"></div>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="mapa-info">
+        <a href="#" class="mapa-info-close"><i class="icon ion-md-close"></i></a>
+        <div class="mapa-info-content">
+          
+        </div>
+        <br>
+        <img src="./img/loading.gif" width="40" alt="">
+      </div>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>

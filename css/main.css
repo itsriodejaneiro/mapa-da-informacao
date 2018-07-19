@@ -11,25 +11,73 @@ body {
 	font-family: 'Fira Mono', monospace;
 }
 
-.overlay {
-	width: 100vw;
-	height: 75vw;
-	max-width: 1280px;
-	max-height: 960px;
-	overflow: hidden;
-	position: relative;
-	top: 0;
-	left: 0;
-	margin: 0 auto;
+a {
+	color: #fff;
 }
 
-svg {
-	/*background: rgba(0,0,0,0.1);*/
+a:hover {
+	color: #ddd;
+}
+
+/* MAPA */
+
+.mapa {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	max-width: 1280px;
+}
+
+.mapa-viewport,
+.mapa-vis {
 	width: 100vw;
 	height: 75vw;
 	max-width: 1280px;
 	max-height: 960px;
-}
+	transition: all 0.3s;
+	overflow: hidden;
+	}
+
+	.show-info .mapa-viewport,
+	.show-info .mapa-vis {
+		width: calc(100vw - 300px);
+		height: calc(75vw - 225px);
+	}
+
+	@media screen and (min-width: 1280px) {
+		.show-info .mapa-viewport,
+		.show-info .mapa-vis {
+			width: calc(1280px - 300px);
+			height: calc(1280px - 225px);
+		}
+	}
+
+.mapa-info {
+	position: absolute;
+	width: 300px;
+	top: 0;
+	right: 0;
+	transform: translate(300px,0);
+	transition: all 0.3s;
+	padding: 30px;
+	box-sizing: border-box;
+	background: rgba(0,0,0,.1);
+	}
+	.show-info .mapa-info {
+		transform: translate(0,0);	
+	}
+
+	.mapa-info-close {
+		float: right;
+	}
+
+	.mapa-info-content {
+		clear: both;
+		margin-top: 10px;
+		font-size: 14px;
+	}
+
+/* MAPA VIS D3 */
 
 .legenda .legenda-line {
 	stroke: #fff;
@@ -48,14 +96,21 @@ svg {
 	stroke-opacity: 0.1;
 	stroke-width: 1px;
 	fill: none;
-	transition: stroke-opacity 0.2s, stroke-width 0.2s;
+	/*transition: stroke-opacity 0.2s, stroke-width 0.2s;*/
 }
 
-.links.is_highlight path {
+.show-info.highlight path.highlight,
+.highlight path {
 	stroke-opacity: 0.05;
 }
 
-.links.is_highlight path.highlight {
+.show-info path {
+	stroke-opacity: 0;
+}
+
+.show-info path.show,
+.show-info path.show.highlight,
+.highlight path.highlight {
 	stroke-opacity: 0.25;
 	stroke-width: 2px;
 }
@@ -74,6 +129,15 @@ svg {
 	transform: scale(1.2);
 }
 
+.show-info .node circle {
+	opacity: 0.5;
+}
+
+.highlight .node.highlight circle,
+.show-info .node.show circle {
+	opacity: 1;
+}
+
 .label {
 	font-size: 11px;
 	fill: #fff;
@@ -88,17 +152,23 @@ svg {
 
 .label.node-politica,
 .label.node-app,
-.label.node-servico {
+.label.node-servico,
+.show-info .label,
+.show-info .label.show.node-politica,
+.show-info .label.show.node-app,
+.show-info .label.show.node-servico {
 	opacity: 0;
 }
 
-.label.show {
+.show-info .label.show {
 	opacity: 1;
 }
 
 .label.hidden {
 	opacity: 0;
 }
+
+/* TOOLTIP */
 
 .tooltip {
 	position: absolute;
@@ -137,6 +207,6 @@ svg {
 	line-height: 1.4em;
 }
 
-.dud {
+.tooltip .dud {
 	opacity: 0.3;
 }
