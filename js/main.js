@@ -45,10 +45,10 @@ var fxto = null
 var color = d3.scaleOrdinal(d3.schemeCategory20)
 
 var templates = {
-	doc      : { size: 20, cluster: { y: 0.3, k: 4, size: 100 }, delay: 1, color: '#aec7e8' },
-	app      : { size:  5, cluster: { y: 1.2, k: 2, size:  60 }, delay: 2, color: '#98df89' },
-	orgao    : { size: 10, cluster: { y: 3.0, k: 4, size: 200 }, delay: 0, color: '#e07145' },
-	base     : { size: 20, cluster: { y: 5.2, k: 4, size: 200 }, delay: 3, color: '#2077b4' },
+	doc      : { size: 20, cluster: { y: 0.3, k: 4, size: 100 }, delay: 0, color: '#aec7e8' },
+	app      : { size:  5, cluster: { y: 1.2, k: 2, size:  60 }, delay: 1, color: '#98df89' },
+	base     : { size: 20, cluster: { y: 3.0, k: 4, size: 200 }, delay: 2, color: '#2077b4' },
+	orgao    : { size:  9, cluster: { y: 5.3, k: 4, size: 200 }, delay: 3, color: '#e07145' },
 	servico  : { size:  5, cluster: { y: 6.5, k: 4, size: 100 }, delay: 4, color: '#2d9f2c' },
 	politica : { size:  5, cluster: { y: 7.0, k: 4, size: 100 }, delay: 5, color: '#ffbc78' },
 }
@@ -106,10 +106,10 @@ var orgao_scale = d3.scaleLinear()
 // LEGENDAS UI
 
 var legendas = [
-	{ y:  10, text: 'Documentos'},
-	{ y: 190, text: 'Aplicativos'},
-	{ y: 260, text: 'Órgãos'},
-	{ y: 520, text: 'Bases'},
+	{ y:   5, text: 'Documentos'},
+	{ y: 175, text: 'Aplicativos'},
+	{ y: 250, text: 'Bases'},
+	{ y: 520, text: 'Órgãos'},
 	{ y: 800, text: 'Serviços e Políticas Públicas'}
 ]
 
@@ -592,6 +592,8 @@ function showInfo(id) {
 	d3.selectAll('.label.' + id).classed('show', true)
 
 	current_id = id
+
+	doScroll( $('.mapa').offset().top )
 }
 
 function showInfoOrgao(id){
@@ -654,6 +656,12 @@ function closeInfo(){
 	d3.selectAll('.label.show').classed('show', false)
 
 	current_id = null
+
+}
+
+function doScroll(top){
+
+	$('html, body').animate({scrollTop: top}, 300)
 
 }
 
