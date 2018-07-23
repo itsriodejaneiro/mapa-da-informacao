@@ -125,7 +125,7 @@ legenda
 	.attr("class", 'legenda-line')
 	.attr("x1", 20 )
 	.attr("y1", function(d) { return d.y })
-	.attr("x2", width)
+	.attr("x2", width - 20)
 	.attr("y2", function(d) { return d.y });
 
 legenda
