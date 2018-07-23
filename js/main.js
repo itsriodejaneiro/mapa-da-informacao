@@ -1,5 +1,7 @@
 // START VIS
 
+var now = new Date().getTime()
+
 // soundfx
 var sound_over = new Howl({ src: ['./snd/mouseclick1.wav'] })
 var sound_click = new Howl({ src: ['./snd/switch37.wav'] })
@@ -468,7 +470,6 @@ function resize() {
 //d3.select(window).on("resize", resize)
 //resize()
 
-
 // EVENTS
 
 function node_mouseover(d) {
@@ -573,6 +574,8 @@ function node_click(d) {
 	}
 }
 
+var current_id = null
+
 function showInfo(id) {
 
 	var vis = d3.select(".mapa")
@@ -591,27 +594,53 @@ function showInfo(id) {
 	current_id = id
 }
 
-var current_id = null
-
 function showInfoOrgao(id){
 
 	console.log('open orgao',id)
-	showInfo(id)
+	
+	var info = d3.select('.mapa-info')
+	var content = d3.select('.mapa-info-content')
+
+	info.classed('is-loading',true)
+	content.html('')
 
 	var node = _.find(graph.nodes, function(o){ return id == o.id })
-	console.log(node)
-	d3.select('.mapa-info-content').text(node.nomecompleto || node.nome)
+
+	d3.text("./data/orgaos/" + id + ".yml?v=" + now, function(error, text) {
+		if (error) throw error
+		var data = jsyaml.safeLoad(text)
+		data.title = node.nomecompleto || node.nome
+		content.html(template_orgaos(data))
+		info.classed('is-loading',false)
+	})
+
+	showInfo(id)
 
 }
 
 function showInfoBase(id){
 	
 	console.log('open base',id)
-	showInfo(id)
+	
+	var info = d3.select('.mapa-info')
+	var content = d3.select('.mapa-info-content')
+
+	info.classed('is-loading',true)
+	content.html('')
 
 	var node = _.find(graph.nodes, function(o){ return id == o.id })
-	console.log(node)
-	d3.select('.mapa-info-content').text(node.nomecompleto || node.nome)
+
+	d3.text("./data/bases/" + id + ".yml?v=" + now, function(error, text) {
+		if (error) throw error
+		var data = jsyaml.safeLoad(text)
+		data.title = node.nomecompleto || node.nome
+		content.html(template_bases(data))
+		info.classed('is-loading',false)
+	})
+
+	showInfo(id)
+
+	
 
 }
 

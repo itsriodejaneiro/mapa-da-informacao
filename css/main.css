@@ -59,7 +59,7 @@ a:hover {
 	right: 0;
 	transform: translate(300px,0);
 	transition: all 0.3s;
-	padding: 30px;
+	padding: 20px 30px 30px;
 	box-sizing: border-box;
 	background: rgba(0,0,0,.1);
 	}
@@ -72,10 +72,53 @@ a:hover {
 	}
 
 	.mapa-info-content {
+		font-family: 'Fira Sans', sans-serif;
+		font-weight: 200;
+		font-size: 12px;
 		clear: both;
-		margin-top: 10px;
-		font-size: 14px;
+		margin-top: 15px;
+		color: rgba(255,255,255,0.8);
 	}
+	
+	.mapa-info-content .title {
+		font-weight: 400;
+		font-size: 14px;
+		color: #fff;
+	}
+
+	.mapa-info-content .subtitle {
+		font-weight: 400;
+		font-size: 10px;
+		color: #fff;
+	}
+
+	.mapa-info-content strong {
+		font-weight: 400;
+	}
+
+	.mapa-info .loading {
+		display: none;
+		margin-top: 10px;
+	}
+	
+	.mapa-info.is-loading .loading {
+		display: block;
+	}
+
+	.mapa-info-content ul {
+		margin: 0;
+		padding: 0;
+		margin-left: 14px;
+	}
+
+	.mapa-info-content li {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		list-style-position:inside;
+	}
+
+
 
 /* MAPA VIS D3 */
 
@@ -87,7 +130,7 @@ a:hover {
 
 .legenda .legenda-text {
 	fill: #fff;
-	opacity: 0.2;
+	opacity: 0.5;
 	font-size: 11px;
 }
 

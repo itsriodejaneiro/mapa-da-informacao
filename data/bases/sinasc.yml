@@ -1,0 +1,4 @@
+texto: O SINASC é o repositório de informações sobre nascidos no Brasil, capturando informações essenciais sobre as condições e características dos nascimentos para geração das estatísticas vitais. É a fonte do primeiro documento atribuído ao indivíduo, a Declaração de Nascido Vivo - DNV. Esse documento é exigido como documento originário para o registro de nascimento.
+gestao: Secretaria de Vigilância em Saúde – Ministério da Saúde
+operacao: Datasus - Ministério da Saúde
+canais: A DNV é emitida nas unidades de saúde onde ocorrem nascimentos

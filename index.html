@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>ITS – Mapa da Informação</title>
-    <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans:200,400,600" rel="stylesheet">
     <link href="https://unpkg.com/ionicons@4.2.4/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
   </head>
@@ -20,19 +20,36 @@
         </div>
       </div>
       <div class="mapa-info">
-        <a href="#" class="mapa-info-close"><i class="icon ion-md-close"></i></a>
-        <div class="mapa-info-content">
-          
+        <a href="#" class="mapa-info-close" style="font-size: 22px;margin-right: -13px;margin-top: -8px;"><i class="icon ion-md-close"></i></a>
+        <div class="mapa-info-content"></div>
+        <div class="loading">
+          <img src="./img/loading.gif" width="40" alt="">
         </div>
-        <br>
-        <img src="./img/loading.gif" width="40" alt="">
+        <script id="template-info-bases" type="text/x-handlebars-template">
+          <p class="title">{{title}}</p>
+          <p>{{texto}}</p>
+          {{#if gestaooperacao}}<p><span class="subtitle">Gestão e Operação</span><br>{{gestaooperacao}}</p>{{/if}}
+          {{#if gestao}}<p><span class="subtitle">Gestão</span><br>{{gestao}}</p>{{/if}}
+          {{#if operacao}}<p><span class="subtitle">Operação</span><br>{{operacao}}</p>{{/if}}
+          {{#if canais}}<p><span class="subtitle">Canais de acesso pelo cidadão</span><br>{{canais}}</p>{{/if}}
+          <p><a href="#">Mais informações</a></p>
+        </script>
+        <script id="template-info-orgaos" type="text/x-handlebars-template">
+          <p class="title">{{title}}</p>
+          <p>{{texto}}</p>
+          {{#if gestao}}<p><span class="subtitle">Gestor de</span><br>{{gestao}}</p>{{/if}}
+          {{#if operacao}}<p><span class="subtitle">Operador de</span><br>{{operacao}}</p>{{/if}}
+          {{#if canais}}<p><span class="subtitle">Canal de acesso para</span><br>{{canais}}</p>{{/if}}
+        </script>
       </div>
     </section>
-
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.12.0/js-yaml.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="./js/fx.js"></script>
+    <script src="./js/templates.js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>
