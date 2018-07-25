@@ -95,7 +95,7 @@ a:hover {
 
 	.mapa-info-content .subtitle {
 		font-weight: 400;
-		font-size: 0.625em;
+		font-size: 0.8333em;
 		color: #fff;
 	}
 
@@ -149,13 +149,16 @@ a:hover {
 	/*transition: stroke-opacity 0.2s, stroke-width 0.2s;*/
 }
 
-.show-info.highlight path.highlight,
 .highlight path {
 	stroke-opacity: 0.05;
 }
 
 .show-info path {
 	stroke-opacity: 0;
+}
+
+.show-info.highlight path.highlight {
+	stroke-opacity: 0.1;
 }
 
 .show-info path.show,
@@ -168,20 +171,26 @@ a:hover {
 .show-info path.show.highlight.gestao,
 .highlight path.highlight.gestao {
 	stroke-width: 2px;
-	stroke-opacity: 0.4;
 }
 
 .show-info path.show.canais,
 .show-info path.show.highlight.canais,
 .highlight path.highlight.canais {
 	stroke-dasharray: 2,4;
-	stroke-opacity: 0.4;
 }
 
 .show-info path.show.operacao,
 .show-info path.show.highlight.operacao,
 .highlight path.highlight.operacao {
 	stroke-dasharray: 6,6;
+}
+
+.show-info path.show.operacao,
+.show-info path.show.highlight.operacao,
+.show-info path.show.canais,
+.show-info path.show.highlight.canais,
+.show-info path.show.gestao,
+.show-info path.show.highlight.gestao {
 	stroke-opacity: 0.4;
 }
 
