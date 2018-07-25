@@ -84,7 +84,6 @@ sim,gestao,secsaude
 sim,operacao,datasus
 sirc,gestao,comitesirc
 sirc,operacao,dataprev
-sirc,canais,cartorios
 cnh,docs,cnhdoc
 cnh,gestao,denatran
 cnh,apps,app_cnhdigitall
