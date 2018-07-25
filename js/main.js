@@ -106,11 +106,11 @@ var orgao_scale = d3.scaleLinear()
 // LEGENDAS UI
 
 var legendas = [
-	{ y:   5, text: 'Documentos'},
-	{ y: 175, text: 'Aplicativos'},
-	{ y: 250, text: 'Bases'},
-	{ y: 520, text: 'Órgãos'},
-	{ y: 780, text: 'Serviços e Políticas Públicas'}
+	{ y:   5, text: 'Documentos', desc: "Documentos físicos do cidadão"},
+	{ y: 175, text: 'Aplicativos', desc: "Apps disponíveis pro cidadão"},
+	{ y: 250, text: 'Bases', desc: "Bases de dados dos registros e cadastros"},
+	{ y: 520, text: 'Órgãos', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
+	{ y: 780, text: 'Serviços e Políticas Públicas', desc: "Serviços e políticas públicas para o cidadão"}
 ]
 
 var legendas_g = viewport.append("g")
@@ -134,6 +134,8 @@ legenda
 	.text(function(d) { return d.text })
 	.attr('x', 20)
 	.attr('y', function(d){ return d.y + 25 })
+	.on("mouseover", legenda_mouseover)
+	.on("mouseout", legenda_mouseout)
 
 // GRAPH
 
@@ -492,6 +494,34 @@ function resize() {
 
 // EVENTS
 
+function legenda_mouseover(d) {
+
+	var svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
+	var scale = svg_w / width
+
+	var top = (d.y + 50) * scale
+	var left = 200 * scale
+
+	d3.selectAll('.tooltip-title')
+		.text(d.text)
+		.style('color', '#dddddd')
+
+	tooltip
+		.classed('show', true)
+		.style('top', top + 'px')
+		.transition()
+		.duration(100)
+		.style('left', left + 'px')
+
+	fx.setText(d.desc)
+	sound_over.play()
+}
+
+function legenda_mouseout(d) {
+	//fx.setText(d.nome)
+	tooltip.classed('show', false)
+}
+
 function node_mouseover(d) {
 
 	// label
@@ -573,7 +603,7 @@ function node_mouseout(d) {
 
 	//clearTimeout(fxto)
 	fx.setText(d.nome)
-	tooltip.classed('show', false)	
+	tooltip.classed('show', false)
 }
 
 function node_click(d) {
@@ -593,6 +623,8 @@ function node_click(d) {
 		}
 	}
 }
+
+// INFO PANEL
 
 var current_id = null
 
