@@ -110,7 +110,7 @@ var legendas = [
 	{ y: 175, text: 'Aplicativos'},
 	{ y: 250, text: 'Bases'},
 	{ y: 520, text: 'Órgãos'},
-	{ y: 800, text: 'Serviços e Políticas Públicas'}
+	{ y: 780, text: 'Serviços e Políticas Públicas'}
 ]
 
 var legendas_g = viewport.append("g")
@@ -133,7 +133,7 @@ legenda
 	.attr("class", 'legenda-text')
 	.text(function(d) { return d.text })
 	.attr('x', 20)
-	.attr('y', function(d){ return d.y + 30 })
+	.attr('y', function(d){ return d.y + 25 })
 
 // GRAPH
 
@@ -230,8 +230,8 @@ d3.csv('./data/data-nodes.csv')
 				})
 
 				d.weight = weight
-				d.color = orgao_scale(num_color)
-				d.tipo_label = label
+				d.color = node_color(d.tipo) // orgao_scale(num_color)
+				d.tipo_label = tipo_label(d.tipo) // label
 				d.rel_ids = _.uniq(_.map(arr,'source'))
 
 				//console.log(d.nome, num_color, _.indexOf(['gestao','operacao','canais'], cats[0]), label)
