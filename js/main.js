@@ -500,7 +500,7 @@ function legenda_mouseover(d) {
 	var scale = svg_w / width
 
 	var top = (d.y + 50) * scale
-	var left = 200 * scale
+	var left = 180
 
 	d3.selectAll('.tooltip-title')
 		.text(d.text)
