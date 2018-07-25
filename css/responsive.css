@@ -1,0 +1,21 @@
+@media screen and (min-width: 1441px) {
+
+	body {
+		font-size: 20px;
+	}
+
+	.mapa-vis {
+		font-size: 14px;
+	}
+
+	.show-info .mapa-viewport,
+	.show-info .mapa-vis {
+		width: calc(100vw - 500px);
+		height: calc(75vw - 375px);
+	}
+
+	.mapa-info {
+		width: 500px;
+		transform: translate(500px,0);
+	}
+}

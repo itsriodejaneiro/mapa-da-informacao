@@ -9,6 +9,7 @@ body {
 	background: #222;
 	color: #fff;
 	font-family: 'Fira Mono', monospace;
+	font-size: 16px;
 }
 
 a {
@@ -25,15 +26,19 @@ a:hover {
 	position: relative;
 	overflow: hidden;
 	margin: 0 auto;
+	/*
 	max-width: 1280px;
+	*/
 }
 
 .mapa-viewport,
 .mapa-vis {
 	width: 100vw;
 	height: 75vw;
+	/*	
 	max-width: 1280px;
 	max-height: 960px;
+	*/
 	transition: all 0.3s;
 	overflow: hidden;
 	}
@@ -42,14 +47,6 @@ a:hover {
 	.show-info .mapa-vis {
 		width: calc(100vw - 300px);
 		height: calc(75vw - 225px);
-	}
-
-	@media screen and (min-width: 1280px) {
-		.show-info .mapa-viewport,
-		.show-info .mapa-vis {
-			width: calc(1280px - 300px);
-			height: calc(1280px - 225px);
-		}
 	}
 
 .mapa-info {
@@ -74,21 +71,24 @@ a:hover {
 	.mapa-info-content {
 		font-family: 'Fira Sans', sans-serif;
 		font-weight: 200;
-		font-size: 12px;
 		clear: both;
 		margin-top: 15px;
 		color: rgba(255,255,255,0.8);
 	}
 	
+	.mapa-info-content p {
+		font-size: 0.75em;
+	}
+
 	.mapa-info-content .title {
 		font-weight: 400;
-		font-size: 14px;
+		font-size: 0.875em;
 		color: #fff;
 	}
 
 	.mapa-info-content .subtitle {
 		font-weight: 400;
-		font-size: 10px;
+		font-size: 0.625em;
 		color: #fff;
 	}
 
@@ -130,8 +130,8 @@ a:hover {
 
 .legenda .legenda-text {
 	fill: #fff;
-	opacity: 0.5;
-	font-size: 11px;
+	opacity: 0.7;
+	font-size: 0.75em;
 }
 
 .links path {
@@ -182,7 +182,7 @@ a:hover {
 }
 
 .label {
-	font-size: 11px;
+	font-size: 0.6875em;
 	fill: #fff;
 	pointer-events: none;
 /*	stroke: #000;
@@ -238,14 +238,14 @@ a:hover {
 }
 
 .tooltip-title {
-	font-size: 9px;
+	font-size: 0.5625em;
 	text-align: left;
 	text-transform: uppercase;
 	margin-bottom: 4px;
 }
 
 .tooltip-text {
-	font-size: 12px;
+	font-size: 0.75em;
 	text-align: left;
 	line-height: 1.4em;
 }
