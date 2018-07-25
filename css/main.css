@@ -165,6 +165,18 @@ a:hover {
 	stroke-width: 2px;
 }
 
+.show-info path.show.canais,
+.show-info path.show.highlight.canais,
+.highlight path.highlight.canais {
+	stroke-dasharray: 2,4;
+}
+
+.show-info path.show.operacao,
+.show-info path.show.highlight.operacao,
+.highlight path.highlight.operacao {
+	stroke-dasharray: 6,6;
+}
+
 .node circle {
 	/*stroke: #fff;*/
 	/*stroke-width: 1.5px;*/

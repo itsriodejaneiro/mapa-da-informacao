@@ -99,9 +99,9 @@ function tipo_rel(t){
 }
 
 var orgao_scale = d3.scaleLinear()
-        .domain([1, 4])
-        .range(['#fcd9b2', '#e07145'])
-        .interpolate(d3.interpolateHcl)
+	.domain([1, 4])
+	.range(['#fcd9b2', '#e07145'])
+	.interpolate(d3.interpolateHcl)
 
 // LEGENDAS UI
 
@@ -247,6 +247,25 @@ d3.csv('./data/data-nodes.csv')
 
 		})
 
+		// MULTIPLE LINKS: START
+
+		_.each(_links, function(link) {
+
+			var same = _.filter(_links, {
+				'source': link.source,
+				'target': link.target
+			})
+
+			_.each(same, function(s, i) {
+				if(!s.linkNum){
+					s.linkNum = (i + 1)
+				}
+			})
+
+		})
+
+		// MULTIPLE LINKS: END
+
 		graph.nodes = _nodes
 		graph.links = _links
 		graph.data = {}
@@ -332,6 +351,7 @@ function update(data_n,data_l){
 			return d3.select(this).attr("class")
 				+ ' ' + d.source
 				+ ' ' + d.target
+				+ ' ' + d.relation
 		})
 		.attr("opacity", 0)
 		//.attr("stroke-width", function(d) { return Math.sqrt(d.value); })
@@ -398,7 +418,7 @@ function ticked() {
 
 function positionLink(d) {
 
-	var offset = 30;
+	var offset = 30 * d.linkNum;
 
 	var midpoint_x = (d.source.x + d.target.x) / 2;
 	var midpoint_y = (d.source.y + d.target.y) / 2;
@@ -408,8 +428,8 @@ function positionLink(d) {
 
 	var normalise = Math.sqrt((dx * dx) + (dy * dy));
 
-	var offSetX = midpoint_x + offset*(dy/normalise);
-	var offSetY = midpoint_y - offset*(dx/normalise);
+	var offSetX = midpoint_x + offset * (dy/normalise);
+	var offSetY = midpoint_y - offset * (dx/normalise);
 
 	return  "M" + d.source.x + "," + d.source.y +
 			"S" + offSetX + "," + offSetY +
