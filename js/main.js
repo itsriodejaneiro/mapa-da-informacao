@@ -45,11 +45,11 @@ var fxto = null
 var color = d3.scaleOrdinal(d3.schemeCategory20)
 
 var templates = {
-	doc      : { size: 20, cluster: { y: 0.3, k: 4, size: 100 }, delay: 0, color: '#aec7e8' },
+	doc      : { size: 16, cluster: { y: 0.3, k: 4, size: 100 }, delay: 0, color: '#aec7e8' },
 	app      : { size:  5, cluster: { y: 1.2, k: 2, size:  60 }, delay: 1, color: '#98df89' },
 	base     : { size: 20, cluster: { y: 3.0, k: 4, size: 200 }, delay: 2, color: '#2077b4' },
-	orgao    : { size:  9, cluster: { y: 5.3, k: 4, size: 200 }, delay: 3, color: '#e07145' },
-	servico  : { size:  5, cluster: { y: 6.5, k: 4, size: 100 }, delay: 4, color: '#2d9f2c' },
+	ti       : { size: 12, cluster: { y: 4.2, k: 3, size:  60 }, delay: 3, color: '#e07145' },
+	orgao    : { size: 16, cluster: { y: 5.4, k: 3, size:  80 }, delay: 3, color: '#e07145' },
 	politica : { size:  5, cluster: { y: 7.0, k: 4, size: 100 }, delay: 5, color: '#ffbc78' },
 }
 
@@ -74,27 +74,16 @@ function tipo_label(t){
 	switch(t){
 		case 'orgao':
 			return 'Órgão'
+		case 'ti':
+			return 'Operador de TI'
 		case 'base':
 			return 'Base'
-		case 'servico':
-			return 'Serviços'
 		case 'politica':
 			return 'Políticas Públicas'
 		case 'app':
 			return 'App'
 		case 'doc':
 			return 'Documento'
-	}
-}
-
-function tipo_rel(t){
-	switch(t){
-		case 'gestao':
-			return 'Gestão'
-		case 'operacao':
-			return 'Operação'
-		case 'canais':
-			return 'Canal de acesso'
 	}
 }
 
@@ -108,8 +97,9 @@ var orgao_scale = d3.scaleLinear()
 var legendas = [
 	{ y:   5, text: 'Documentos', desc: "Documentos físicos do cidadão"},
 	{ y: 175, text: 'Aplicativos', desc: "Apps disponíveis pro cidadão"},
-	{ y: 250, text: 'Bases', desc: "Bases de dados dos registros e cadastros"},
-	{ y: 520, text: 'Órgãos', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
+	{ y: 240, text: 'Bases', desc: "Bases de dados dos registros e cadastros"},
+	{ y: 500, text: 'Operadores de TI', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
+	{ y: 640, text: 'Gestão', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
 	{ y: 780, text: 'Serviços e Políticas Públicas', desc: "Serviços e políticas públicas para o cidadão"}
 ]
 
@@ -170,8 +160,8 @@ d3.csv('./data/data-nodes.csv')
 		var _linksori = []
 		
 		_relations.map(function(d){
-			_links.push({source: d.source, relation: d.relation, target: d.target})	
-			_linksori.push({source: d.source, relation: d.relation, target: d.target})	
+			_links.push({base: d.base, source: d.source, relation: d.relation, target: d.target})	
+			_linksori.push({base: d.base, source: d.source, relation: d.relation, target: d.target})	
 		})
 
 		var k = {
@@ -179,6 +169,7 @@ d3.csv('./data/data-nodes.csv')
 			base: 0,
 			doc: 0,
 			orgao: 0,
+			ti: 0,
 			politica: 0,
 			servico: 0
 		}
@@ -195,57 +186,20 @@ d3.csv('./data/data-nodes.csv')
 			k[d.tipo] = k[d.tipo] % loop
 
 			// weight, color and label
-			if(d.tipo == 'base'){
+			
+			var arr = _.filter(_linksori, function(o) { return o.target  == d.id || o.source  == d.id })
 
-				var arr = _.filter(_linksori, function(o) { return o.source  == d.id })
-				d.weight = arr.length
-				d.color = node_color(d.tipo)
-				d.tipo_label = tipo_label(d.tipo)
-				d.rel_ids = _.uniq(_.map(arr,'target'))
+			d.color = node_color(d.tipo)
+			d.tipo_label = tipo_label(d.tipo)
+			d.rel_ids = _.uniq(_.map(arr,'base'))
 
-			} else if(d.tipo == 'orgao') {
-
-				var arr = _.filter(_linksori, function(o) { return o.target  == d.id })
-				var weight = arr.length * 7
-
-				var cats = _.map(_.uniqBy(arr,'relation'),'relation')
-
-				// if(arr.length > cats.length){
-				// 	console.log(d.nome,arr.length, cats.length, arr,cats)
-				// }
-
-				//console.log(d.nome, 'total', weight)
-
-				var num_color = cats.length > 1 ? 4 : _.indexOf(['canais','operacao','gestao'], cats[0]) + 1
-				var label = ''
-
-				cats.map(function(t,i){
-					if(i > 0){
-						if(i < cats.length - 1){
-							label += ', '
-						} else {
-							label += ' & '
-						}
-						
-					}
-					label += tipo_rel(t)
-				})
-
-				d.weight = weight
-				d.color = node_color(d.tipo) // orgao_scale(num_color)
-				d.tipo_label = tipo_label(d.tipo) // label
-				d.rel_ids = _.uniq(_.map(arr,'source'))
-
-				//console.log(d.nome, num_color, _.indexOf(['gestao','operacao','canais'], cats[0]), label)
-
+			if(d.tipo == 'ti'){
+				var arr2 = _.filter(arr, function(o) { return o.relation == 'gestao' })
+				d.weight = arr2.length * 4
 			} else {
-
-				var arr = _.filter(_linksori, function(o) { return o.target  == d.id })
 				d.weight = arr.length
-				d.color = node_color(d.tipo)
-				d.tipo_label = tipo_label(d.tipo)
-				d.rel_ids = _.uniq(_.map(arr,'source'))
 			}
+			
 
 		})
 
@@ -274,7 +228,7 @@ d3.csv('./data/data-nodes.csv')
 		graph.data.nodes = _nodesori
 		graph.data.links = _linksori
 
-		console.log(graph.data)
+		console.log(graph)
 		
 		update(graph.nodes, graph.links)
 	})
@@ -354,6 +308,7 @@ function update(data_n,data_l){
 				+ ' ' + d.source
 				+ ' ' + d.target
 				+ ' ' + d.relation
+				+ ' ' + d.base
 		})
 		.attr("opacity", 0)
 		//.attr("stroke-width", function(d) { return Math.sqrt(d.value); })
@@ -536,8 +491,12 @@ function node_mouseover(d) {
 	// links
 
 	d3.selectAll('.mapa').classed('highlight', true)
-	d3.selectAll('.link.' + d.id).classed('highlight',true)
-	d3.selectAll('.node.' + d.id).classed('highlight',true)
+	_.forEach(d.rel_ids, function(id){
+		d3.selectAll('.link.' + id).classed('highlight',true)
+		d3.selectAll('.node.' + id).classed('highlight',true)
+	})
+
+	console.log('contexts',d.rel_ids)
 
 	// tooltip
 
@@ -596,8 +555,10 @@ function node_mouseout(d) {
 	// links
 
 	d3.selectAll('.mapa').classed('highlight', false)
-	d3.selectAll('.link.' + d.id).classed('highlight', false)
-	d3.selectAll('.node.' + d.id).classed('highlight', false)
+	_.forEach(d.rel_ids, function(id){
+		d3.selectAll('.link.' + id).classed('highlight',false)
+		d3.selectAll('.node.' + id).classed('highlight',false)
+	})
 
 	// tooltip
 
@@ -613,13 +574,13 @@ function node_click(d) {
 	if(current_id == d.id){
 		closeInfo()
 	} else {
-		if (d.tipo == 'orgao') {
+		if (d.tipo == 'orgao' || d.tipo == 'ti') {
 			showInfoOrgao(d.id)
 		} else if (d.tipo == 'base') {
 			showInfoBase(d.id)
 		} else {
 			var base = _.find(graph.data.links, function(o) { return o.target == d.id })
-			showInfoBase(base.source)
+			showInfoBase(base.base)
 		}
 	}
 }
@@ -639,9 +600,14 @@ function showInfo(id) {
 	d3.selectAll('.label.show').classed('show', false)
 
 	// new 
-	d3.selectAll('.link.' + id).classed('show', true)
-	d3.selectAll('.node.' + id).classed('show', true)
-	d3.selectAll('.label.' + id).classed('show', true)
+	var arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
+	var bases = _.uniq(_.map(arr,'base'))
+
+	_.forEach(bases, function(base){
+		d3.selectAll('.link.' + base).classed('show', true)
+		d3.selectAll('.node.' + base).classed('show', true)
+		d3.selectAll('.label.' + base).classed('show', true)
+	})
 
 	current_id = id
 
