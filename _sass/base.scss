@@ -1,0 +1,30 @@
+html {
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+body {
+	background: #222;
+	color: #fff;
+	font-family: 'Fira Sans', sans-serif;
+	font-size: 16px;
+}
+
+a {
+	color: #fff;
+}
+
+a:hover {
+	color: #ddd;
+}
+
+

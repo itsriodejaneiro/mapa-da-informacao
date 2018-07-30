@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^7.1.5",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015-ie": "^6.7.0",
+    "bulma": "^0.6.0",
+    "node-sass": "^4.5.3",
+    "postcss-cli": "^4.1.1"
+  },
+  "scripts": {
+    "css-build": "node-sass _sass/main.scss css/main.css",
+    "css-deploy": "npm run css-build && npm run css-postcss",
+    "css-postcss": "postcss --use autoprefixer --output css/main.css css/main.css",
+    "css-watch": "npm run css-build -- --watch",
+    "deploy": "npm run css-deploy",
+    "start": "npm run css-watch"
+  }
+}

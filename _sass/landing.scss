@@ -1,0 +1,55 @@
+.landing {
+	
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	position: fixed;
+	transition: height 1s, opacity 1s;
+	
+	.landing-viewport,
+	.landing-viewport .columns {
+		height: 100vh;
+	}
+
+	&.close {
+		height: 0;
+		opacity: 0;
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+	.arrow-down {
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		margin-left: -12px;
+		font-size: 50px;
+		cursor: pointer;
+	}
+
+}
+
+.landing-spacer {
+	height: 100vh;
+	transition: all 1s;
+	&.close {
+		height: 0;
+	}
+}
+
+.landing-line {
+	font-size: 3em;
+	margin: 0 !important;
+	&.line-1 {
+		font-weight: 200;
+	}
+	&.line-2 {
+		font-weight: 600;
+	}
+}
+
+.landing-text {
+	max-width: 400px;
+}

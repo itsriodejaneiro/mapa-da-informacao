@@ -2,56 +2,127 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ITS – Mapa da Informação</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa da Informação</title>
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans:200,400,600" rel="stylesheet">
     <link href="https://unpkg.com/ionicons@4.2.4/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/responsive.css">
   </head>
   <body>
-
-    <section class="mapa">
-      <div class="mapa-viewport">
-        <svg class="mapa-vis" width="1280" height="960"></svg>
-        <div class="tooltip">
-          <div class="tooltip-wrapper">
-            <div class="tooltip-title"></div>
-            <div class="tooltip-text"></div>
+    
+    <section class="landing">
+      <div class="landing-viewport">
+        <div class="columns is-centered is-vcentered">
+          <div class="column is-narrow">
+            <img src="./img/documentos.gif" alt="">
+          </div>
+          <div class="column is-narrow">
+            <p class="landing-line line-1">Mapa da</p>
+            <p class="landing-line line-2">Informação</p>
+            <p class="landing-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum perspiciatis soluta adipisci cupiditate, minima, harum dolorem unde nostrum ducimus laudantium.</p>
           </div>
         </div>
-      </div>
-      <div class="mapa-info">
-        <a href="#" class="mapa-info-close" style="font-size: 22px;margin-right: -13px;margin-top: -8px;"><i class="icon ion-md-close"></i></a>
-        <div class="mapa-info-content"></div>
-        <div class="loading">
-          <img src="./img/loading.gif" width="40" alt="">
-        </div>
-        <script id="template-info-bases" type="text/x-handlebars-template">
-          <p class="title">{{title}}</p>
-          <p>{{texto}}</p>
-          {{#if gestaooperacao}}<p><span class="subtitle">Gestão e Operação</span><br>{{gestaooperacao}}</p>{{/if}}
-          {{#if gestao}}<p><span class="subtitle">Gestão</span><br>{{gestao}}</p>{{/if}}
-          {{#if operacao}}<p><span class="subtitle">Operação</span><br>{{operacao}}</p>{{/if}}
-          {{#if canais}}<p><span class="subtitle">Canais de acesso pelo cidadão</span><br>{{canais}}</p>{{/if}}
-          <p><a href="#">Mais informações</a></p>
-        </script>
-        <script id="template-info-orgaos" type="text/x-handlebars-template">
-          <p class="title">{{title}}</p>
-          <p>{{texto}}</p>
-          {{#if gestao}}<p><span class="subtitle">Gestor de</span><br>{{gestao}}</p>{{/if}}
-          {{#if operacao}}<p><span class="subtitle">Operador de</span><br>{{operacao}}</p>{{/if}}
-          {{#if canais}}<p><span class="subtitle">Canal de acesso para</span><br>{{canais}}</p>{{/if}}
-        </script>
+        <i class="arrow-down icon ion-md-arrow-dropdown"></i>
       </div>
     </section>
+
+    <div class="landing-spacer"></div>
+    
+    <section class="site">
+        
+        <nav class="site-nav">
+          <ul>
+            <li><a href="#" rel="sobre">Sobre</a></li>
+            <li><a href="#" rel="mapa">Mapa da Informação</a></li>
+            <li><a href="#" rel="historias">Histórias</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-nav-spacer"></div>
+
+        <div class="site-viewport">
+
+          <section class="sobre">
+            <div class="container">
+              <div class="columns is-centered">
+                <div class="column is-8-desktop">
+                  <div class="content">
+                    <p class="landing-line line-1">Mapa da</p>
+                    <p class="landing-line line-2">Informação</p>
+                    <p>&nbsp;</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi magni repellendus eum odio praesentium laborum impedit possimus necessitatibus harum, iste tempore sequi illo odit accusantium sed molestias quidem dolor. Similique. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi magni repellendus eum odio praesentium laborum impedit possimus necessitatibus harum, iste tempore sequi illo odit accusantium sed molestias quidem dolor. Similique.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi magni repellendus eum odio praesentium laborum impedit possimus necessitatibus harum, iste tempore sequi illo odit accusantium sed molestias quidem dolor. Similique.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi magni repellendus eum odio praesentium laborum impedit possimus necessitatibus harum, iste tempore sequi illo odit accusantium sed molestias quidem dolor. Similique. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi magni repellendus eum odio praesentium laborum impedit possimus necessitatibus harum, iste tempore sequi illo odit accusantium sed molestias quidem dolor. Similique.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mapa exit">
+            <div class="mapa-viewport">
+              <svg class="mapa-vis" width="1280" height="960"></svg>
+              <div class="tooltip">
+                <div class="tooltip-wrapper">
+                  <div class="tooltip-title"></div>
+                  <div class="tooltip-text"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mapa-info">
+              <a href="#" class="mapa-info-close" style="font-size: 22px;margin-right: -13px;margin-top: -8px;"><i class="icon ion-md-close"></i></a>
+              <div class="mapa-info-content"></div>
+              <div class="loading">
+                <img src="./img/loading.gif" width="40" alt="">
+              </div>
+              <script id="template-info-bases" type="text/x-handlebars-template">
+                <p class="title">{{title}}</p>
+                <p>{{texto}}</p>
+                {{#if gestaooperacao}}<p><span class="subtitle">Gestão e Operação</span><br>{{gestaooperacao}}</p>{{/if}}
+                {{#if gestao}}<p><span class="subtitle">Gestão</span><br>{{gestao}}</p>{{/if}}
+                {{#if operacao}}<p><span class="subtitle">Operação</span><br>{{operacao}}</p>{{/if}}
+                {{#if canais}}<p><span class="subtitle">Canais de acesso pelo cidadão</span><br>{{canais}}</p>{{/if}}
+                <p><a href="#">Mais informações</a></p>
+              </script>
+              <script id="template-info-orgaos" type="text/x-handlebars-template">
+                <p class="title">{{title}}</p>
+                <p>{{texto}}</p>
+                {{#if gestao}}<p><span class="subtitle">Gestor de</span><br>{{gestao}}</p>{{/if}}
+                {{#if operacao}}<p><span class="subtitle">Operador de</span><br>{{operacao}}</p>{{/if}}
+                {{#if canais}}<p><span class="subtitle">Canal de acesso para</span><br>{{canais}}</p>{{/if}}
+              </script>
+            </div>
+          </section>
+
+          <section class="historias exit">
+            <div class="container">
+              <div class="columns is-centered">
+                <div class="column is-8-desktop">
+                  <div class="content">
+                    <h1>histórias</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi magni repellendus eum odio praesentium laborum impedit possimus necessitatibus harum, iste tempore sequi illo odit accusantium sed molestias quidem dolor. Similique.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.12.0/js-yaml.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="./js/fx.js"></script>
-    <script src="./js/templates.js"></script>
+    <script src="./js/vendors/jquery.mousewheel.min.js"></script>
+    <script src="./js/vendors/text-scramble.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/templates.js"></script>
+    <script src="./js/landing.js"></script>
+    <script src="./js/nav.js"></script>
+    <script src="./js/mapa.js"></script>
   </body>
 </html>

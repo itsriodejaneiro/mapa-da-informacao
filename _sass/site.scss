@@ -1,0 +1,98 @@
+.site-nav {
+	
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	background: rgba(30,30,30,0.9);
+	padding: 30px;
+	text-align: center;
+	z-index: 1;
+
+	&.fixed {
+		position: fixed;
+	}
+	
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		display: inline-block;
+		margin: 0 20px;
+	}
+
+	a {
+		text-decoration: none;
+		text-transform: uppercase;
+		opacity: 0.5;
+
+		&:hover, &.ativo {
+			opacity: 1;
+		}
+
+		&.ativo {
+			font-weight: 600;
+		}
+	}
+
+
+}
+
+.site-nav-spacer {
+	height: 100px;
+}
+
+.site-viewport {
+	
+	position: relative;
+	overflow: hidden;
+
+	section {
+		position: absolute;
+		width: 100vw;
+		//transform: translate(100vw,0);
+
+		.content {
+			padding: 30px;
+		}
+	}
+
+	section.exit {
+		-webkit-animation: moveToLeft .6s ease both;
+		animation: moveToLeft .6s ease both;
+	}
+
+	section.enter {
+		-webkit-animation: moveFromRight .6s ease both;
+		animation: moveFromRight .6s ease both;
+	}
+}
+
+@-webkit-keyframes moveToLeft {
+	from { }
+	to {
+		-webkit-transform: translate(-100vw,0);
+	}
+}
+@keyframes moveToLeft {
+	from { }
+	to {
+		-webkit-transform: translate(-100vw,0);
+		transform: translate(-100vw,0);
+	}
+}
+
+@-webkit-keyframes moveFromRight {
+	from {
+		-webkit-transform: translate(100vw,0);
+	}
+}
+@keyframes moveFromRight {
+	from {
+		-webkit-transform: translate(100vw,0);
+		transform: translate(100vw,0);
+	}
+}
