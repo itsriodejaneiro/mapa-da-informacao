@@ -4,6 +4,12 @@ var svg = d3.select(".mapa-vis")
 	.attr("preserveAspectRatio", "xMinYMin meet")
 	.attr("viewBox", `0 0 ${width} ${height}`)
 
+svg.append("rect")
+        .attr("class", "vis-background")
+        .attr("width", width)
+        .attr("height", height)
+        .on("click", function() { closeInfo() })
+
 var viewport = svg.append("g")
 	.attr("class", "viewport")
 
