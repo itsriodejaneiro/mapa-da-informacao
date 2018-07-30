@@ -1,0 +1,10 @@
+texto: O CPF é o principal cadastro administrativo existente no Brasil, sendo sua chave de identificação o número de identificação pessoal mais conhecido pela população. Foi criado pela Lei 4.862 de 29 de novembro de 1965, que instituiu o Registro das Pessoas Físicas para que a Administração Tributária. Originalmente, era denominado como Cartão de Identificação do Contribuinte, mas que depois passou a ser chamado pelo nome atual. Desde sua criação, o CPF vem ampliando o seu público usuário, sendo hoje o cadastro administrativo com maior utilização tanto no setor público quanto no setor privado.
+
+gestao:
+  - Receita Federal do Brasil - RFB
+
+operacao:
+  - Serviço de Processamento de Dados Federal - Serpro
+
+info:
+  - http://idg.receita.fazenda.gov.br/orientacao/tributaria/cadastros/cadastro-de-pessoas-fisicas-cpf

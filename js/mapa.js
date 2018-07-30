@@ -23,7 +23,7 @@ var simulation = d3.forceSimulation()
 	.force("link", d3.forceLink().id(function(d) { return d.id; }))
 	.force("center", d3.forceCenter(width / 2, height / 2))
 	.force('collision', d3.forceCollide().radius(function(d) {
-		return node_size(d) * 2.4
+		return node_size(d) * 2.5
 	}))
 	.on("tick", ticked)
 	.alphaTarget(0.01)
@@ -570,13 +570,11 @@ function node_click(d) {
 	if(current_id == d.id){
 		closeInfo()
 	} else {
-		if (d.tipo == 'orgao' || d.tipo == 'ti') {
-			showInfoOrgao(d.id)
-		} else if (d.tipo == 'base') {
-			showInfoBase(d.id)
+		if (_.indexOf(['base','ti','orgao'], d.tipo) != -1) {
+			showInfo(d.tipo, d.id)
 		} else {
 			var base = _.find(graph.data.links, function(o) { return o.target == d.id })
-			showInfoBase(base.base)
+			showInfo('base', base.base)
 		}
 	}
 }
@@ -585,7 +583,7 @@ function node_click(d) {
 
 var current_id = null
 
-function showInfo(id) {
+function showInfo(tipo, id) {
 
 	var vis = d3.select(".mapa")
 	vis.classed("show-info", true)
@@ -605,59 +603,25 @@ function showInfo(id) {
 		d3.selectAll('.label.' + base).classed('show', true)
 	})
 
+	var info = d3.select('.mapa-info')
+	var content = d3.select('.mapa-info-content')
+
+	info.classed('is-loading',true)
+	content.html('')
+
+	var node = _.find(graph.nodes, function(o){ return id == o.id })
+
+	d3.text("./data/info/" + tipo + '-' + id + ".yml?v=" + now, function(error, text) {
+		if (error) throw error
+		var data = jsyaml.safeLoad(text)
+		data.title = node.nomecompleto || node.nome
+		content.html(template_info(data))
+		info.classed('is-loading',false)
+	})
+
 	current_id = id
 
 	//doScroll( 0 )
-}
-
-function showInfoOrgao(id){
-
-	console.log('open orgao',id)
-	
-	var info = d3.select('.mapa-info')
-	var content = d3.select('.mapa-info-content')
-
-	info.classed('is-loading',true)
-	content.html('')
-
-	var node = _.find(graph.nodes, function(o){ return id == o.id })
-
-	d3.text("./data/orgaos/" + id + ".yml?v=" + now, function(error, text) {
-		if (error) throw error
-		var data = jsyaml.safeLoad(text)
-		data.title = node.nomecompleto || node.nome
-		content.html(template_orgaos(data))
-		info.classed('is-loading',false)
-	})
-
-	showInfo(id)
-
-}
-
-function showInfoBase(id){
-	
-	console.log('open base',id)
-	
-	var info = d3.select('.mapa-info')
-	var content = d3.select('.mapa-info-content')
-
-	info.classed('is-loading',true)
-	content.html('')
-
-	var node = _.find(graph.nodes, function(o){ return id == o.id })
-
-	d3.text("./data/bases/" + id + ".yml?v=" + now, function(error, text) {
-		if (error) throw error
-		var data = jsyaml.safeLoad(text)
-		data.title = node.nomecompleto || node.nome
-		content.html(template_bases(data))
-		info.classed('is-loading',false)
-	})
-
-	showInfo(id)
-
-	
-
 }
 
 function closeInfo(){

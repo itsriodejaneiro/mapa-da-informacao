@@ -1,3 +1,10 @@
 texto: O documento chamado de Certificado de Reservista tem como finalidade comprovar a inclusão do cidadão na Reserva do Exército, Marinha ou da Aeronáutica.
-gestaooperacao: Ministério da Defesa
-canais: Internet e Unidades das Forças Amarmadas onde é realizado o alistamento militar
+
+gestao:
+  - Ministério da Defesa
+
+operacao:
+  - Ministério da Defesa
+
+info:
+  - https://www.alistamento.eb.mil.br/

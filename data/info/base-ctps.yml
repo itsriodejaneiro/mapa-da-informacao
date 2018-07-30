@@ -1,3 +1,10 @@
 texto: A Carteira de trabalho e Previdência Social (CTPS) é o documento obrigatório para toda pessoa que venha a prestar algum tipo de serviço, seja na indústria, no comércio, na agricultura, na pecuária ou mesmo de natureza doméstica. Desde sua criação, a carteira de trabalho sofreu várias modificações. O primeiro documento foi denominado Carteira de Trabalhador Agrícola, instituída por decretos assinados nos anos de 1904 a 1906. Em seguida, com a publicação do Decreto nº 21.175, de 21 de março de 1932, posteriormente regulamentado pelo Decreto nº. 22.035, de 29 de outubro de 1932, institui-se a Carteira Profissional. A Carteira de Trabalho e Previdência Social (CTPS), nomenclatura utilizada atualmente, foi criada pelo decreto-lei n.º 926, de 10 de outubro de 1969. Reconhecida por suas anotações, a CTPS é hoje um dos únicos documentos a reproduzir com tempestividade a vida funcional do trabalhador. Assim, garante o acesso a alguns dos principais direitos trabalhistas, como seguro-desemprego, benefícios previdenciários e FGTS.
-gestaooperacao: Ministério do Trabalho
-canais: Superintendências regionais do Trabalho e Emprego, na gerências regionais do Trabalho, nos postos de atendimento ao trabalhador (PAT) dos municípios, Unidades de atendimento integrados conveniados com o MTE
+
+gestao:
+  - Ministério do Trabalho
+
+operacao:
+  - Empresa de Tecnologia e Informações da Previdência Social - Dataprev
+
+info:
+  - http://portalfat.mte.gov.br/programas-e-acoes-2/carteira-de-trabalho-e-previdencia-social-ctps/

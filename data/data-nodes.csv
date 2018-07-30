@@ -4,7 +4,7 @@ base,ic,ID Civil,Identidade Civil
 base,cpf,CPF,CPF. Cadastro de Pessoa Física
 base,ctps,CTPS,CTPS. Carteira de Trabalho e Previdência Social
 base,renach,RENACH,Registro Nacional de Condutores Habilitados
-base,passaporte,Passaporte,
+base,passaporte,Passaporte,Passaporte - Documento de Viagem
 base,rani,RANI,RANI. Registro Administrativo de Nascimento de Indígena
 base,cam,CAM,CAM. Certificado de alistamento militar
 base,nis,NIS,NIS. Número de Informação Social
@@ -14,6 +14,7 @@ base,cadsus,CadSUS,CadSUS. Cartão Nacional de Saúde
 base,sinasc,SINASC,SINASC. Sistema de Informações sobre Nascidos Vivos
 base,sim,SIM,SIM. Sistema de Informações de Mortalidade
 base,sirc,SIRC,SIRC. Sistema Nacional de Informações de Registro Civil
+base,te,Tit.Eleitor,Título de Eleitor
 doc,crcnasc,Cert.Nascimento,Certidão de Nascimento
 doc,crccas,Cert.Casamento,Certidão de Casamento
 doc,crcobt,Cert.Óbito,Certidão de Óbito
@@ -25,7 +26,8 @@ doc,dnv,DNV,DNV. Declaração de Nascido Vivo
 doc,do,DO,Declaração de Óbito
 doc,certreservista,Reservista,Certificado de Reservista
 doc,ranidoc,RANI,Registro Administrativo de Nascimento de Indígena
-doc,passaportedoc,Passaporte,
+doc,passaportedoc,Passaporte,Passaporte - Documento de Viagem
+doc,tedoc,Tit.Eleitor,Título de Eleitor
 app,aplicativo_cpf,App Pessoa Física,
 app,app_ctps,CTPS Digital,
 app,app_cnhdigital,CNH Digital,

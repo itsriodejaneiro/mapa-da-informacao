@@ -1182,7 +1182,8 @@ a:hover {
   font-weight: 400;
   font-size: 0.8333em;
   line-height: 1.5em;
-  color: #fff; }
+  color: #fff;
+  margin-bottom: 0; }
 
 .mapa-info-content strong {
   font-weight: 400; }
@@ -1197,9 +1198,13 @@ a:hover {
 .mapa-info-content ul {
   margin: 0;
   padding: 0;
-  margin-left: 14px; }
+  list-style: none; }
 
 .mapa-info-content li {
+  font-size: 0.75em;
+  line-height: 1.5em; }
+
+.mapa-info-content .info li {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

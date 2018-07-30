@@ -1,0 +1,7 @@
+texto: A Carteira de Identidade ou RG (Registro Geral) é um documento de identificação civil emitido pelos Institutos Estaduais de Identificação, que são vinculados à Polícia Civil dos Governos Estaduais e do Distrito Federal, com exceção do Rio de Janeiro, cujo serviço de identificação civil está vinculado ao Dentran/RJ. O documento RG está previsto na Lei N° 7116/83, sendo regulamentado pelo Decreto nº 89.250/83.
+
+gestao:
+  - Institutos de Identificação das Polícias Civis dos Estados, menos o Rio de Janeiro, onde é o DETRAN.
+
+operacao:
+  - Cada entidade estadual tem seu próprio operador

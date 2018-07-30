@@ -75,21 +75,43 @@
             <div class="loading">
               <img src="./img/loading.gif" width="40" alt="">
             </div>
-            <script id="template-info-bases" type="text/x-handlebars-template">
+            <script id="template-info" type="text/x-handlebars-template">
               <p class="title">{{title}}</p>
               <p>{{texto}}</p>
-              {{#if gestaooperacao}}<p><span class="subtitle">Gestão e Operação</span><br>{{gestaooperacao}}</p>{{/if}}
-              {{#if gestao}}<p><span class="subtitle">Gestão</span><br>{{gestao}}</p>{{/if}}
-              {{#if operacao}}<p><span class="subtitle">Operação</span><br>{{operacao}}</p>{{/if}}
-              {{#if canais}}<p><span class="subtitle">Canais de acesso pelo cidadão</span><br>{{canais}}</p>{{/if}}
-              <p><a href="#">Mais informações</a></p>
-            </script>
-            <script id="template-info-orgaos" type="text/x-handlebars-template">
-              <p class="title">{{title}}</p>
-              <p>{{texto}}</p>
-              {{#if gestao}}<p><span class="subtitle">Gestor de</span><br>{{gestao}}</p>{{/if}}
-              {{#if operacao}}<p><span class="subtitle">Operador de</span><br>{{operacao}}</p>{{/if}}
-              {{#if canais}}<p><span class="subtitle">Canal de acesso para</span><br>{{canais}}</p>{{/if}}
+              {{#if gestao}}
+                <p class="subtitle">Gestão</p>
+                {{#list gestao}}
+                    {{this}}
+                {{/list}}
+              {{/if}}
+              {{#if operacao}}
+                <p class="subtitle">Operação de TI</p>
+                {{#list operacao}}
+                    {{this}}
+                {{/list}}
+              {{/if}}
+              {{#if canais}}
+                <p class="subtitle">Canais de acesso pelo cidadão</p>
+                {{#list canais}}
+                    {{this}}
+                {{/list}}
+              {{/if}}
+              {{#if legislacao}}
+                <div class="info">
+                <p class="subtitle">Legislação</p>
+                {{#list legislacao}}
+                    <a href="{{this}}" target="_blank">{{this}}</a>
+                {{/list}}
+                </div>
+              {{/if}}
+              {{#if info}}
+                <div class="info">
+                <p class="subtitle">Mais informações</p>
+                {{#list info}}
+                    <a href="{{this}}" target="_blank">{{this}}</a>
+                {{/list}}
+                </div>
+              {{/if}}
             </script>
           </div>
         </section>

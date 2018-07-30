@@ -1,0 +1,13 @@
+texto: O Passaporte é o documento oficial para identificação para entrada e saída no país, utilizado como também como documento de identidade no exterior. Para trânsito nos países membros do Mercosul é possível utilizar a Carteira de Identidade (R.G.) em vez do Passaporte. A base de dados do Passaporte armazena dados biométricos.
+
+gestao:
+  - Departamento de Polícia Federal
+
+operacao:
+  - Serviço de Processamento de Dados Federal - Serpro
+
+legislacao:
+  - http://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5978.htm
+
+info:
+  - http://www.pf.gov.br/servicos-pf/passaporte
