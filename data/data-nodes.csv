@@ -51,10 +51,10 @@ ti,serpro,Serpro,Serpro. Serviço de Processamento de Dados Federal
 ti,dataprev,Dataprev,
 ti,datasus,DataSUS,DataSUS. Ministério da Saúde
 ti,arpen,Arpen,Arpen Brasil. Associação Nacional dos Registradores de Pessoas Naturais
-ti,caixa2,Caixa, Caixa Econômica Federal
-ti,iie2,Inst.Ident.,Institutos de Identificação Estaduais
-ti,tse2,TSE,Tribunal Superior Eleitoral
-ti,funai2,Funai,
+ti,caixa--2,Caixa, Caixa Econômica Federal
+ti,iie--2,Inst.Ident.,Institutos de Identificação Estaduais
+ti,tse--2,TSE,Tribunal Superior Eleitoral
+ti,funai--2,Funai,
 politica,ir,Imposto de Renda,
 politica,servicos_bancarios,Serviços Bancários,
 politica,bolsa_familia,Programa Bolsa Família,

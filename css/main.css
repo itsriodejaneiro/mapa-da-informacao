@@ -1028,13 +1028,16 @@ body {
   background: #222;
   color: #fff;
   font-family: 'Fira Sans', sans-serif;
-  font-size: 16px; }
+  font-size: 16px;
+  line-height: 1.5em; }
 
 a {
-  color: #fff; }
+  color: #fff;
+  text-decoration: none; }
 
 a:hover {
-  color: #ddd; }
+  color: #ddd;
+  text-decoration: underline; }
 
 .site-nav {
   position: relative;
@@ -1070,6 +1073,10 @@ a:hover {
   display: none; }
   .site section .content {
     padding: 30px; }
+    .site section .content small {
+      color: #999; }
+      .site section .content small a {
+        color: #fff; }
 
 .landing {
   width: 100vw;
@@ -1101,6 +1108,7 @@ a:hover {
 
 .landing-line {
   font-size: 3em;
+  line-height: 1.2em;
   margin: 0 !important; }
   .landing-line.line-1 {
     font-weight: 200; }
@@ -1161,16 +1169,19 @@ a:hover {
   color: rgba(255, 255, 255, 0.8); }
 
 .mapa-info-content p {
-  font-size: 0.75em; }
+  font-size: 0.75em;
+  line-height: 1.5em; }
 
 .mapa-info-content .title {
   font-weight: 400;
   font-size: 0.875em;
+  line-height: 1.5em;
   color: #fff; }
 
 .mapa-info-content .subtitle {
   font-weight: 400;
   font-size: 0.8333em;
+  line-height: 1.5em;
   color: #fff; }
 
 .mapa-info-content strong {

@@ -51,6 +51,13 @@
 		display: none;
 		.content {
 			padding: 30px;
+
+			small {
+				color: #999;
+				a {
+					color: #fff;
+				}
+			}
 		}
 	}
 

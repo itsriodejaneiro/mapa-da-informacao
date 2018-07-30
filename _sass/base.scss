@@ -17,14 +17,15 @@ body {
 	color: #fff;
 	font-family: 'Fira Sans', sans-serif;
 	font-size: 16px;
+	line-height: 1.5em;
 }
 
 a {
 	color: #fff;
+	text-decoration: none;
 }
 
 a:hover {
 	color: #ddd;
+	text-decoration: underline;
 }
-
-
