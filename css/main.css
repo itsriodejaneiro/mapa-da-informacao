@@ -1312,12 +1312,14 @@ a:hover {
 
 .tooltip-title {
   font-size: 0.5625em;
+  line-height: 1.2em;
   text-align: left;
   text-transform: uppercase;
   margin-bottom: 4px; }
 
 .tooltip-text {
   font-size: 0.75em;
+  line-height: 1.2em;
   text-align: left;
   line-height: 1.4em; }
 
