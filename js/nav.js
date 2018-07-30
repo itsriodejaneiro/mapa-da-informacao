@@ -11,11 +11,10 @@ function changeSection(rel){
 
 	if(site_section && rel != site_section){
 		$('.site-nav a[rel="' + site_section + '"]').removeClass('ativo')
-		$('.site-viewport section.' + site_section).removeClass('enter').addClass('exit')
+		$('.site section.' + site_section).stop().hide(0)
 	}
 	$('.site-nav a[rel="' + rel + '"]').addClass('ativo')
-	$('.site-viewport section.' + rel).removeClass('exit').addClass('enter')
-	$('.site-viewport').height($('.site-viewport section.' + rel).height())
+	$('.site section.' + rel).stop().fadeOut(0).fadeIn(1000)
 
 	if(site_section == 'mapa'){
 		closeInfo()
@@ -26,6 +25,6 @@ function changeSection(rel){
 	sound_over.play()
 }
 
-$(window).resize(function(e){
-	$('.site-viewport').height($('.site-viewport section.' + site_section).height())
-})
+// $(window).resize(function(e){
+// 	$('.site-viewport').height($('.site-viewport section.' + site_section).height())
+// })

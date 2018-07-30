@@ -45,54 +45,13 @@
 	height: 100px;
 }
 
-.site-viewport {
-	
-	position: relative;
-	overflow: hidden;
+.site {
 
 	section {
-		position: absolute;
-		width: 100vw;
-		//transform: translate(100vw,0);
-
+		display: none;
 		.content {
 			padding: 30px;
 		}
 	}
 
-	section.exit {
-		-webkit-animation: moveToLeft .6s ease both;
-		animation: moveToLeft .6s ease both;
-	}
-
-	section.enter {
-		-webkit-animation: moveFromRight .6s ease both;
-		animation: moveFromRight .6s ease both;
-	}
-}
-
-@-webkit-keyframes moveToLeft {
-	from { }
-	to {
-		-webkit-transform: translate(-100vw,0);
-	}
-}
-@keyframes moveToLeft {
-	from { }
-	to {
-		-webkit-transform: translate(-100vw,0);
-		transform: translate(-100vw,0);
-	}
-}
-
-@-webkit-keyframes moveFromRight {
-	from {
-		-webkit-transform: translate(100vw,0);
-	}
-}
-@keyframes moveFromRight {
-	from {
-		-webkit-transform: translate(100vw,0);
-		transform: translate(100vw,0);
-	}
 }
