@@ -480,7 +480,7 @@ function node_mouseover(d) {
 	var text = d3.select('.label[label_id="' + d.id + '"]')
 	//.classed('show', true)
 
-	if(_.indexOf(['base','doc','orgao'], d.tipo) != -1){
+	if(_.indexOf(['base','doc','orgao','ti'], d.tipo) != -1){
 		text.classed('hidden',true)
 	}
 
@@ -544,7 +544,7 @@ function node_mouseout(d) {
 	var text = d3.select('.label[label_id="' + d.id + '"]')
 	//.classed('show', false)
 
-	if(_.indexOf(['base','doc','orgao'], d.tipo) != -1){
+	if(_.indexOf(['base','doc','orgao','ti'], d.tipo) != -1){
 		text.classed('hidden', false)
 	}
 
