@@ -1039,6 +1039,22 @@ a:hover {
   color: #ddd;
   text-decoration: underline; }
 
+/* width */
+::-webkit-scrollbar {
+  width: 8px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3); }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5); }
+
 .site-nav {
   position: relative;
   top: 0;
@@ -1155,7 +1171,7 @@ a:hover {
   padding: 20px 30px 30px;
   box-sizing: border-box;
   background: rgba(0, 0, 0, 0.1);
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 120px);
   overflow: auto; }
 
 .show-info .mapa-info {
