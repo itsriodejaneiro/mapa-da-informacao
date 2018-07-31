@@ -570,7 +570,7 @@ function node_click(d) {
 	if(current_id == d.id){
 		closeInfo()
 	} else {
-		if (_.indexOf(['base','ti','orgao'], d.tipo) != -1) {
+		if (_.indexOf(['base','ti','orgao','doc'], d.tipo) != -1) {
 			showInfo(d.tipo, d.id)
 		} else {
 			var base = _.find(graph.data.links, function(o) { return o.target == d.id })
