@@ -4,7 +4,7 @@
 	top: 0;
 	left: 0;
 	width: 100vw;
-	background: rgba(11, 45, 58, 0.9);
+	background: rgba(darken($color-bg, 2%), .9);
 	padding: 30px;
 	text-align: center;
 	z-index: 1;
