@@ -20,7 +20,7 @@ doc,crccas,Cert.Casamento,Certidão de Casamento
 doc,crcobt,Cert.Óbito,Certidão de Óbito
 doc,rg,RG,Registro Geral
 doc,doccpf,CPF,Cadastro de Pessoa Física
-doc,docctps,Cart.Trabalho,Carteira de Trabalho
+doc,ctpsdoc,Cart.Trabalho,Carteira de Trabalho
 doc,cnhdoc,CNH,Carteira Nacional de Habilitação
 doc,dnv,DNV,DNV. Declaração de Nascido Vivo
 doc,do,DO,Declaração de Óbito

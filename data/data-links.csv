@@ -15,7 +15,7 @@ cpf,receita,politicas,ir
 cpf,receita,politicas,servicos_bancarios
 cpf,receita,politicas,bolsa_familia
 cpf,cpf,app,aplicativo_cpf
-ctps,ctps,docs,docctps
+ctps,ctps,docs,ctpsdoc
 ctps,dataprev,gestao,trabalho
 ctps,ctps,operacao,dataprev
 ctps,trabalho,politicas,politicas_trabalho
