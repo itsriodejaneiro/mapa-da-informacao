@@ -39,14 +39,15 @@ var fxto = null
 // UTILS
 
 var color = d3.scaleOrdinal(d3.schemeCategory20)
+var paleta = ['#c8ae4e','#f5d76c','#18637b','#4fbdbd','#218f90','#1a6f70']
 
 var templates = {
-	doc      : { size: 16, cluster: { y: 0.3, k: 4, size: 100 }, delay: 0, color: '#aec7e8' },
-	app      : { size:  5, cluster: { y: 1.2, k: 2, size:  60 }, delay: 1, color: '#98df89' },
-	base     : { size: 20, cluster: { y: 3.0, k: 4, size: 200 }, delay: 2, color: '#2077b4' },
-	ti       : { size: 12, cluster: { y: 4.2, k: 3, size:  60 }, delay: 3, color: '#e07145' },
-	orgao    : { size: 16, cluster: { y: 5.4, k: 3, size:  80 }, delay: 3, color: '#e07145' },
-	politica : { size:  5, cluster: { y: 7.0, k: 4, size: 100 }, delay: 5, color: '#ffbc78' },
+	doc      : { size: 16, cluster: { y: 0.3, k: 4, size: 100 }, delay: 0, color: paleta[0] },
+	app      : { size:  5, cluster: { y: 1.2, k: 2, size:  60 }, delay: 1, color: paleta[1] },
+	base     : { size: 20, cluster: { y: 3.0, k: 4, size: 200 }, delay: 2, color: paleta[2] },
+	ti       : { size: 12, cluster: { y: 4.2, k: 3, size:  60 }, delay: 3, color: paleta[3] },
+	orgao    : { size: 16, cluster: { y: 5.4, k: 3, size:  80 }, delay: 3, color: paleta[4] },
+	politica : { size:  5, cluster: { y: 7.0, k: 4, size: 100 }, delay: 5, color: paleta[5] },
 }
 
 function node_size(d){
@@ -91,12 +92,12 @@ var orgao_scale = d3.scaleLinear()
 // LEGENDAS UI
 
 var legendas = [
-	{ y:   5, text: 'Documentos', desc: "Documentos físicos do cidadão"},
-	{ y: 175, text: 'Aplicativos', desc: "Apps disponíveis pro cidadão"},
-	{ y: 240, text: 'Bases', desc: "Bases de dados dos registros e cadastros"},
-	{ y: 500, text: 'Operadores de TI', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
-	{ y: 640, text: 'Gestão', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
-	{ y: 780, text: 'Serviços e Políticas Públicas', desc: "Serviços e políticas públicas para o cidadão"}
+	{ y:   5, color: paleta[0], text: 'Documentos', desc: "Documentos físicos do cidadão"},
+	{ y: 175, color: paleta[1], text: 'Aplicativos', desc: "Apps disponíveis pro cidadão"},
+	{ y: 240, color: paleta[2], text: 'Bases', desc: "Bases de dados dos registros e cadastros"},
+	{ y: 500, color: paleta[3], text: 'Operadores de TI', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
+	{ y: 640, color: paleta[4], text: 'Gestão', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
+	{ y: 780, color: paleta[5], text: 'Serviços e Políticas Públicas', desc: "Serviços e políticas públicas para o cidadão"}
 ]
 
 var legendas_g = viewport.append("g")
@@ -455,7 +456,7 @@ function legenda_mouseover(d) {
 
 	d3.selectAll('.tooltip-title')
 		.text(d.text)
-		.style('color', '#dddddd')
+		.style('color', d.color )
 
 	tooltip
 		.classed('show', true)

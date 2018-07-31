@@ -40,14 +40,17 @@
 }
 
 .landing-line {
+
 	font-size: 3em;
 	line-height: 1.2em;
 	margin: 0 !important;
 	&.line-1 {
 		font-weight: 200;
+		color: #f4d45f;
 	}
 	&.line-2 {
 		font-weight: 600;
+
 	}
 }
 

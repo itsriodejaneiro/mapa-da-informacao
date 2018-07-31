@@ -1025,7 +1025,7 @@ html, body {
   overflow-x: hidden; }
 
 body {
-  background: #222;
+  background: #0d3644;
   color: #fff;
   font-family: 'Fira Sans', sans-serif;
   font-size: 16px;
@@ -1060,7 +1060,7 @@ a:hover {
   top: 0;
   left: 0;
   width: 100vw;
-  background: rgba(30, 30, 30, 0.9);
+  background: rgba(11, 45, 58, 0.9);
   padding: 30px;
   text-align: center;
   z-index: 1; }
@@ -1089,10 +1089,8 @@ a:hover {
   display: none; }
   .site section .content {
     padding: 30px; }
-    .site section .content small {
-      color: #999; }
-      .site section .content small a {
-        color: #fff; }
+    .site section .content small a {
+      color: #fff; }
 
 .landing {
   width: 100vw;
@@ -1127,7 +1125,8 @@ a:hover {
   line-height: 1.2em;
   margin: 0 !important; }
   .landing-line.line-1 {
-    font-weight: 200; }
+    font-weight: 200;
+    color: #f4d45f; }
   .landing-line.line-2 {
     font-weight: 600; }
 
@@ -1278,7 +1277,7 @@ a:hover {
   transform: scale(1.2); }
 
 .show-info .node circle {
-  opacity: 0.5; }
+  opacity: 0.3; }
 
 .highlight .node.highlight circle,
 .show-info .node.show circle {
