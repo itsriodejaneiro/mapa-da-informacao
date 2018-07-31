@@ -1025,7 +1025,7 @@ html, body {
   overflow-x: hidden; }
 
 body {
-  background: #0d3644;
+  background: #2b2735;
   color: #fff;
   font-family: 'Fira Sans', sans-serif;
   font-size: 16px;
@@ -1126,7 +1126,7 @@ a:hover {
   margin: 0 !important; }
   .landing-line.line-1 {
     font-weight: 200;
-    color: #f4d45f; }
+    color: #ffc28f; }
   .landing-line.line-2 {
     font-weight: 600; }
 

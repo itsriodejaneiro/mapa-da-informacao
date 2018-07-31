@@ -39,7 +39,7 @@ var fxto = null
 // UTILS
 
 var color = d3.scaleOrdinal(d3.schemeCategory20)
-var paleta = ['#c8ae4e','#f5d76c','#18637b','#4fbdbd','#218f90','#1a6f70']
+var paleta = ['#c9b2fa','#ae92e9','#725f96','#ffc28f','#af7744','#ffc28f']
 
 var templates = {
 	doc      : { size: 16, cluster: { y: 0.3, k: 4, size: 100 }, delay: 0, color: paleta[0] },
