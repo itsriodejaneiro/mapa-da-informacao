@@ -166,11 +166,16 @@ a:hover {
   display: none;
 }
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">Config.ui.stowBarInitially = true;
-Config.saves.isAllowed = false;
+Config.saves.autoload = false;
+Config.saves.autosave = false;
 
 l10nStrings.cancel = "Cancelar";
 l10nStrings.restartTitle = "Recomeçar";
-l10nStrings.restartPrompt = "Tem certeza que quer recomeçar o jogo?";</script><tw-passagedata pid="1" name="CRISTIANE-START" tags="" position="600,300" size="100,100">!!!Bem-vinda ao mundo, Cristiane!
+l10nStrings.restartPrompt = "Tem certeza que quer recomeçar o jogo?";
+
+if (window.sessionStorage) {
+	sessionStorage.clear();
+}</script><tw-passagedata pid="1" name="CRISTIANE-START" tags="" position="600,300" size="100,100">!!!Bem-vinda ao mundo, Cristiane!
 
 Os olhos dos seus pais ainda estavam marejados quando decidiram registrar seu nascimento em um cartório de São Paulo, dois dias depois do parto.
 
