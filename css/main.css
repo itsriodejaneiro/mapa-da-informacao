@@ -1063,7 +1063,8 @@ a:hover {
   background: rgba(38, 35, 47, 0.9);
   padding: 30px;
   text-align: center;
-  z-index: 1; }
+  z-index: 1;
+  box-sizing: border-box; }
   .site-nav.fixed {
     position: fixed; }
   .site-nav ul {

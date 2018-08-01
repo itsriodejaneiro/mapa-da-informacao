@@ -8,6 +8,7 @@
 	padding: 30px;
 	text-align: center;
 	z-index: 1;
+	box-sizing: border-box;
 
 	&.fixed {
 		position: fixed;
