@@ -19,6 +19,14 @@ function changeSection(rel){
 	if(site_section == 'mapa'){
 		closeInfo()
 	}
+
+	if(site_section == 'historias'){
+		$('.site .historias iframe').remove()
+	}
+
+	if(rel == 'historias'){
+		$('.site .historias').append('<iframe src="./historias.html" frameborder="0"></iframe>')
+	}
 	
 	site_section = rel
 
