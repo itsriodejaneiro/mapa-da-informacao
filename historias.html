@@ -160,7 +160,9 @@ a:hover {
 }
 #ui-bar-body {
   margin-top: 60px;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">Config.ui.stowBarInitially = true;
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">Config.ui.stowBarInitially = true;
+
 </script><tw-passagedata pid="1" name="CRISTIANE-START" tags="" position="600,300" size="100,100">!!!Bem-vinda ao mundo, Cristiane!
 
 Os olhos dos seus pais ainda estavam marejados quando decidiram registrar seu nascimento em um cartório de São Paulo, dois dias depois do parto.
@@ -356,13 +358,13 @@ ops, você também precisa pagar.
 &lt;span id=&quot;toReplace&quot;&gt;
 &lt;&lt;link &quot;pagar R$ 35,34&quot;&gt;&gt;
 &lt;&lt;set $money-=5&gt;&gt;
-&lt;&lt;replace &quot;#toReplace&quot;&gt;&gt;
+&lt;&lt;replace &quot;#toReplace&quot;&gt;&gt;&lt;&lt;timed 10ms t8n&gt;&gt;
 &#39;&#39;R$ 35,34 pagos!&#39;&#39;
 
 Agora sim, faça a prova teórica.
 
 [[fazer prova teórica|cnh-prova-teorica-fazer]]
-&lt;&lt;/replace&gt;&gt;
+&lt;&lt;/timed&gt;&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;
 &lt;/span&gt;</tw-passagedata><tw-passagedata pid="30" name="cnh-prova-teorica-fazer" tags="" position="1200,1650" size="100,100">!!!Carteira Nacional de Habilitação
 
