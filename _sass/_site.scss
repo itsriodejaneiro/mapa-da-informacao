@@ -10,6 +10,9 @@
 	z-index: 1;
 	box-sizing: border-box;
 
+	font-size: 16px;
+	line-height: 1em;
+
 	&.fixed {
 		position: fixed;
 	}
@@ -60,6 +63,13 @@
 				}
 			}
 		}
+	}
+
+	.historias iframe {
+		position: relative;
+		top: 76px;
+		width: 100vw;
+		height: calc(100vh - 76px);
 	}
 
 }

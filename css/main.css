@@ -1064,7 +1064,9 @@ a:hover {
   padding: 30px;
   text-align: center;
   z-index: 1;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1em; }
   .site-nav.fixed {
     position: fixed; }
   .site-nav ul {
@@ -1092,6 +1094,12 @@ a:hover {
     padding: 30px; }
     .site section .content small a {
       color: #fff; }
+
+.site .historias iframe {
+  position: relative;
+  top: 76px;
+  width: 100vw;
+  height: calc(100vh - 76px); }
 
 .landing {
   width: 100vw;
