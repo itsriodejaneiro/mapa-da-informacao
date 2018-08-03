@@ -16,6 +16,10 @@
 		opacity: 0;
 	}
 
+	.container {
+		padding: 30px;
+	}
+
 	img {
 		max-width: 100%;
 	}
@@ -24,7 +28,7 @@
 		position: absolute;
 		bottom: 10px;
 		left: 50%;
-		margin-left: -12px;
+		margin-left: -32px;
 		font-size: 50px;
 		cursor: pointer;
 	}

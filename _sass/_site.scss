@@ -25,7 +25,12 @@
 
 	li {
 		display: inline-block;
-		margin: 0 20px;
+		margin: 0 10px;
+		@include tablet {
+			& {
+				margin: 0 20px;
+			}
+		}
 	}
 
 	a {
@@ -40,13 +45,24 @@
 		&.ativo {
 			font-weight: 600;
 		}
+		
+		@include mobile {
+			& span.hide {
+				display: none;
+			}
+		}
 	}
 
 
 }
 
 .site-nav-spacer {
-	height: 160px;
+	height: 100px;
+	@include tablet {
+		& {
+			height: 160px;
+		}
+	}
 }
 
 .site {

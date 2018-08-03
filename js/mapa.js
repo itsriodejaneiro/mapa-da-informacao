@@ -448,10 +448,12 @@ function resize() {
 
 function legenda_mouseover(d) {
 
+	if($(window).width() < 768) return
+
 	var svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
 	var scale = svg_w / width
 
-	var top = (d.y + 50) * scale
+	var top = 160 + (d.y + 50) * scale
 	var left = 180
 
 	d3.selectAll('.tooltip-title')
@@ -470,11 +472,16 @@ function legenda_mouseover(d) {
 }
 
 function legenda_mouseout(d) {
+
+	if($(window).width() < 768) return
+
 	//fx.setText(d.nome)
 	tooltip.classed('show', false)
 }
 
 function node_mouseover(d) {
+
+	if($(window).width() < 768) return
 
 	// label
 
@@ -501,8 +508,8 @@ function node_mouseover(d) {
 	var scale = svg_w / width
 
 	var top = d.y < height * .8
-		? d.y * scale + (node_size(d) * 0.5 + 30) * scale
-		: d.y * scale - (node_size(d) * scale + 70)
+		? d.y * scale + (node_size(d) * 0.5 + 30) * scale + 160
+		: d.y * scale - (node_size(d) * scale + 70) + 160
 
 	var left = d.x < width * .75
 		? (d.x + 20) * scale
@@ -540,6 +547,8 @@ function node_mouseover(d) {
 
 function node_mouseout(d) {
 	
+	if($(window).width() < 768) return
+
 	// label
 
 	var text = d3.select('.label[label_id="' + d.id + '"]')

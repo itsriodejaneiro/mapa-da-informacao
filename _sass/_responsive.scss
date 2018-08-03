@@ -1,3 +1,6 @@
+
+// LARGE
+
 @media screen and (min-width: 1441px) {
 
 	body {
@@ -18,4 +21,24 @@
 		width: 500px;
 		transform: translate(500px,0);
 	}
+}
+
+// MOBILE
+
+@media screen and (max-width: 768px) {
+	
+	body {
+		font-size: 14px;
+	}
+
+	.show-info .mapa-viewport,
+	.show-info .mapa-vis {
+		width: calc(100vw - 20px);
+		height: 75vw;
+	}
+
+	.mapa-info {
+		background: #272430;
+	}
+
 }
