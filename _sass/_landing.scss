@@ -17,11 +17,18 @@
 	}
 
 	.container {
-		padding: 30px;
+		padding: 50px;
 	}
 
 	img {
 		max-width: 100%;
+		@include mobile {
+			& {
+				max-width: auto;
+				max-height: 256px;
+				width: auto;
+			}
+		}
 	}
 
 	.arrow-down {
@@ -60,4 +67,7 @@
 
 .landing-text {
 	max-width: 400px;
+	@include mobile {
+		margin: 20px auto;
+	}
 }

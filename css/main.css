@@ -1820,9 +1820,14 @@ a:hover {
     height: 0;
     opacity: 0; }
   .landing .container {
-    padding: 30px; }
+    padding: 50px; }
   .landing img {
     max-width: 100%; }
+    @media screen and (max-width: 768px) {
+      .landing img {
+        max-width: auto;
+        max-height: 256px;
+        width: auto; } }
   .landing .arrow-down {
     position: absolute;
     bottom: 10px;
@@ -1849,6 +1854,9 @@ a:hover {
 
 .landing-text {
   max-width: 400px; }
+  @media screen and (max-width: 768px) {
+    .landing-text {
+      margin: 20px auto; } }
 
 /* MAPA */
 .mapa {
