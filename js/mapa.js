@@ -509,7 +509,7 @@ function node_mouseover(d) {
 
 	var top = d.y < height * .8
 		? d.y * scale + (node_size(d) * 0.5 + 30) * scale + 160
-		: d.y * scale - (node_size(d) * scale + 70) + 160
+		: d.y * scale - (node_size(d) * scale + 90) + 160
 
 	var left = d.x < width * .75
 		? (d.x + 20) * scale
@@ -580,12 +580,13 @@ function node_click(d) {
 	if(current_id == d.id){
 		closeInfo()
 	} else {
-		if (_.indexOf(['base','ti','orgao','doc'], d.tipo) != -1) {
-			showInfo(d.tipo, d.id)
-		} else {
-			var base = _.find(graph.data.links, function(o) { return o.target == d.id })
-			showInfo('base', base.base)
-		}
+		showInfo(d.tipo, d.id)
+		// if (_.indexOf(['base','ti','orgao','doc'], d.tipo) != -1) {
+		// 	showInfo(d.tipo, d.id)
+		// } else {
+		// 	var base = _.find(graph.data.links, function(o) { return o.target == d.id })
+		// 	showInfo('base', base.base)
+		// }
 	}
 }
 
