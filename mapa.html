@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa da Informação</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans:200,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
+    <section class="mapa exit">
+      <div class="site-nav-spacer"></div>
+      <div class="mapa-viewport">
+        <svg class="mapa-vis" width="1280" height="960"></svg>
+        <div class="tooltip">
+          <div class="tooltip-wrapper">
+            <div class="tooltip-title"></div>
+            <div class="tooltip-text"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mapa-info">
+        <a href="#" class="mapa-info-close" style="font-size: 22px;margin-right: -13px;margin-top: -8px;">
+          <img src="./img/fechar.svg" alt="">
+        </a>
+        <div class="mapa-info-content"></div>
+        <div class="loading">
+          <img src="./img/loading.gif" width="40" alt="">
+        </div>
+        <script id="template-info" type="text/x-handlebars-template">
+          <p class="title">{{title}}</p>
+          <p>{{texto}}</p>
+          {{#if eixos}}
+            {{#list eixos}}
+                {{this}}
+            {{/list}}
+          {{/if}}
+          {{#if gestao}}
+            <p class="subtitle">Gestão</p>
+            {{#list gestao}}
+                {{this}}
+            {{/list}}
+          {{/if}}
+          {{#if operacao}}
+            <p class="subtitle">Operação de TI</p>
+            {{#list operacao}}
+                {{this}}
+            {{/list}}
+          {{/if}}
+          {{#if canais}}
+            <p class="subtitle">Canais de acesso pelo cidadão</p>
+            {{#list canais}}
+                {{this}}
+            {{/list}}
+          {{/if}}
+          {{#if legislacao}}
+            <div class="info">
+            <p class="subtitle">Legislação</p>
+            {{#list legislacao}}
+                <a href="{{this}}" target="_blank">{{this}}</a>
+            {{/list}}
+            </div>
+          {{/if}}
+          {{#if usuario}}
+            <p class="subtitle">Usuário</p>
+            <ul><li>{{usuario}}</li></ul>
+          {{/if}}
+          {{#if info}}
+            <div class="info">
+            <p class="subtitle">Mais informações</p>
+            {{#list info}}
+                <a href="{{this}}" target="_blank">{{this}}</a>
+            {{/list}}
+            </div>
+          {{/if}}
+        </script>
+      </div>
+      <p class="is-hidden-tablet has-text-centered-mobile"><small>* Melhor visualizado no computador</small></p>
+    </section>
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-123331701-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+    <script>
+      var EDITMAP = true
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.12.0/js-yaml.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="./js/vendors/text-scramble.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/templates.js"></script>
+    <script src="./js/mapa.js"></script>
+  </body>
+</html>
