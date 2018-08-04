@@ -23,6 +23,7 @@
           </div>
         </div>
         </div>
+        <div class="arrow-label">Clique para entrar</div>
         <img src="./img/seta.svg" class="arrow-down" alt="">
       </div>
     </section>
@@ -106,6 +107,10 @@
                     <a href="{{this}}" target="_blank">{{this}}</a>
                 {{/list}}
                 </div>
+              {{/if}}
+              {{#if usuario}}
+                <p class="subtitle">Usuário</p>
+                <ul><li>{{usuario}}</li></ul>
               {{/if}}
               {{#if info}}
                 <div class="info">

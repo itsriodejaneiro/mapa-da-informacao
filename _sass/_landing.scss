@@ -17,7 +17,7 @@
 	}
 
 	.container {
-		padding: 50px;
+		padding: 0 50px;
 	}
 
 	img {
@@ -37,6 +37,18 @@
 		left: 50%;
 		margin-left: -32px;
 		font-size: 50px;
+		cursor: pointer;
+	}
+
+	.arrow-label {
+		position: absolute;
+		bottom: 70px;
+		left: 50%;
+		width: 120px;
+		margin-left: -60px;
+		font-size: 12px;
+		text-transform: uppercase;
+		text-align: center;
 		cursor: pointer;
 	}
 

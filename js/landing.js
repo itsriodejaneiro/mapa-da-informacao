@@ -34,7 +34,7 @@ function enableScroll() {
     document.onkeydown = null;  
 }
 
-$('.landing .arrow-down').click(function(e){
+$('.landing').click(function(e){
 	$('html, body').mousewheel()
 })
 

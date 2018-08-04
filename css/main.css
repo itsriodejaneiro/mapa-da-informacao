@@ -1820,7 +1820,7 @@ a:hover {
     height: 0;
     opacity: 0; }
   .landing .container {
-    padding: 50px; }
+    padding: 0 50px; }
   .landing img {
     max-width: 100%; }
     @media screen and (max-width: 768px) {
@@ -1834,6 +1834,16 @@ a:hover {
     left: 50%;
     margin-left: -32px;
     font-size: 50px;
+    cursor: pointer; }
+  .landing .arrow-label {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    width: 120px;
+    margin-left: -60px;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
     cursor: pointer; }
 
 .landing-spacer {
