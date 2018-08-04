@@ -581,6 +581,7 @@ function node_click(d) {
 		closeInfo()
 	} else {
 		showInfo(d.tipo, d.id)
+		ga('send', 'event', 'node', 'click', d.tipo + " - " + d.nomecompleto) 
 		// if (_.indexOf(['base','ti','orgao','doc'], d.tipo) != -1) {
 		// 	showInfo(d.tipo, d.id)
 		// } else {
