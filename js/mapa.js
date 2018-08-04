@@ -139,7 +139,7 @@ var _labels = viewport.append("g")
 
 // LOAD DATA
 
-d3.csv('./data/data-nodes.csv')
+d3.csv('./data/data-nodes.csv?v=' + now)
   .row(d3.dsvParse).get(function(data){
 
 	var _nodes = data
@@ -149,7 +149,7 @@ d3.csv('./data/data-nodes.csv')
 		_nodesori.push(o)
 	})
 
-	d3.csv('./data/data-links.csv')
+	d3.csv('./data/data-links.csv?v=' + now)
 	  .row(d3.dsvParse).get(function(data){
 
 		var _relations = data
