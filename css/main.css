@@ -1794,18 +1794,30 @@ a:hover {
     .site-nav-spacer {
       height: 160px; } }
 
-.site section {
+.site {
   display: none; }
-  .site section .content {
-    padding: 30px; }
-    .site section .content small a {
-      color: #fff; }
-
-.site .historias iframe {
-  position: relative;
-  top: 76px;
-  width: 100vw;
-  height: calc(100vh - 76px); }
+  body.iphone .site.has-iframe {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll; }
+  .site.after-landing {
+    display: block; }
+  .site section {
+    display: none; }
+    .site section .content {
+      padding: 30px; }
+      .site section .content small a {
+        color: #fff; }
+  .site .historias {
+    position: fixed;
+    top: 76px;
+    width: 100vw;
+    height: calc(100vh - 76px); }
+    body.iphone .site .historias {
+      -webkit-overflow-scrolling: touch;
+      overflow-y: scroll; }
+    .site .historias iframe {
+      width: 100vw;
+      height: calc(100vh - 76px); }
 
 .landing {
   width: 100vw;
@@ -1826,7 +1838,7 @@ a:hover {
     @media screen and (max-width: 768px) {
       .landing img {
         max-width: auto;
-        max-height: 256px;
+        max-height: 180px;
         width: auto; } }
   .landing .arrow-down {
     position: absolute;

@@ -66,6 +66,17 @@
 }
 
 .site {
+	
+	display: none;
+
+	body.iphone &.has-iframe{
+		-webkit-overflow-scrolling: touch;
+		overflow-y: scroll;
+	}
+
+	&.after-landing {
+		display: block;
+	}
 
 	section {
 		display: none;
@@ -81,11 +92,22 @@
 		}
 	}
 
-	.historias iframe {
-		position: relative;
+	.historias {
+
+		body.iphone & {
+			-webkit-overflow-scrolling: touch;
+			overflow-y: scroll;
+  		}
+  		
+  		position: fixed;
 		top: 76px;
 		width: 100vw;
 		height: calc(100vh - 76px);
+
+		iframe {
+			width: 100vw;
+			height: calc(100vh - 76px);
+		}
 	}
 
 }

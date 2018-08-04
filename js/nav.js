@@ -21,10 +21,12 @@ function changeSection(rel){
 	}
 
 	if(site_section == 'historias'){
+		$('.site').removeClass('has-iframe')
 		$('.site .historias iframe').remove()
 	}
 
 	if(rel == 'historias'){
+		$('.site').addClass('has-iframe')
 		$('.site .historias').append('<iframe src="./historias.html" frameborder="0"></iframe>')
 	}
 	

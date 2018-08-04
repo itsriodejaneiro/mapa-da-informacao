@@ -34,16 +34,23 @@ function enableScroll() {
     document.onkeydown = null;  
 }
 
-$('.landing').click(function(e){
+$('body').on('touchstart',function(e){
 	$('html, body').mousewheel()
+})
+
+$('.landing').click(function(e){
+  $('html, body').mousewheel()
 })
 
 $('html, body').mousewheel(function(e){
 	console.log('scroll')
 	var landing = $('.landing')
 	if(!landing.hasClass('close')){
+    $('.site').addClass('after-landing')
 		landing.addClass('close')
 		$('.landing-spacer').addClass('close')
+    $('.landing').unbind('click')
+    $('body').unbind('touchstart')
 		$('html, body').unbind('mousewheel')
 		$('html, body').animate({scrollTop: 0}, 1000)
 		disableScroll()
@@ -55,4 +62,3 @@ $('html, body').mousewheel(function(e){
 		},1000)
 	}
 })
-
