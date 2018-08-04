@@ -613,6 +613,8 @@ var current_id = null
 
 function showInfo(tipo, id) {
 
+	var w = $(window).width()
+
 	var vis = d3.select(".mapa")
 	vis.classed("show-info", true)
 
@@ -631,8 +633,8 @@ function showInfo(tipo, id) {
 		d3.selectAll('.label.' + base).classed('show', true)
 	})
 
-	var info = d3.select('.mapa-info')
-	var content = d3.select('.mapa-info-content')
+	var info = w < 768 ? d3.select('.mapa-info-mobile') : d3.select('.mapa-info')
+	var content = w < 768 ? d3.select('.mapa-info-mobile-content') : d3.select('.mapa-info-content')
 
 	info.classed('is-loading',true)
 	content.html('')
@@ -654,6 +656,8 @@ function showInfo(tipo, id) {
 
 function closeInfo(){
 
+	var w = $(window).width()
+
 	vis = d3.select(".mapa")
 	vis.classed("show-info", false)
 
@@ -662,6 +666,10 @@ function closeInfo(){
 	d3.selectAll('.label.show').classed('show', false)
 
 	current_id = null
+
+	if(w < 768) {
+		d3.select('.mapa-info-mobile-content').html('')
+	}
 
 }
 

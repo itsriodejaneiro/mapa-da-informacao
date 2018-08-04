@@ -1919,6 +1919,9 @@ a:hover {
   background: rgba(0, 0, 0, 0.1);
   max-height: calc(100vh - 120px);
   overflow: auto; }
+  @media screen and (max-width: 768px) {
+    .mapa-info {
+      display: none; } }
 
 .show-info .mapa-info {
   transform: translate(-20px, 0); }
@@ -1932,16 +1935,22 @@ a:hover {
   margin-top: 15px;
   color: rgba(255, 255, 255, 0.8); }
 
+.mapa-info-mobile {
+  padding: 0 30px 30px; }
+
+.mapa-info-mobile p,
 .mapa-info-content p {
   font-size: 0.75em;
   line-height: 1.5em; }
 
+.mapa-info-mobile .title,
 .mapa-info-content .title {
   font-weight: 400;
   font-size: 0.875em;
   line-height: 1.5em;
   color: #fff; }
 
+.mapa-info-mobile .subtitle,
 .mapa-info-content .subtitle {
   font-weight: 400;
   font-size: 0.8333em;
@@ -1949,30 +1958,36 @@ a:hover {
   color: #fff;
   margin-bottom: 0; }
 
+.mapa-info-mobile strong,
 .mapa-info-content strong {
   font-weight: 400; }
 
-.mapa-info .loading {
-  display: none;
-  margin-top: 10px; }
-
-.mapa-info.is-loading .loading {
-  display: block; }
-
+.mapa-info-mobile ul,
 .mapa-info-content ul {
   margin: 0;
   padding: 0;
   list-style: none; }
 
+.mapa-info-mobile li,
 .mapa-info-content li {
   font-size: 0.75em;
   line-height: 1.5em; }
 
+.mapa-info-mobile .info li,
 .mapa-info-content .info li {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   list-style-position: inside; }
+
+.mapa-info-mobile .loading,
+.mapa-info .loading {
+  display: none;
+  margin-top: 10px; }
+
+.mapa-info-mobile.is-loading .loading,
+.mapa-info.is-loading .loading {
+  display: block; }
 
 /* MAPA VIS D3 */
 .vis-background {
