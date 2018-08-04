@@ -102,7 +102,7 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<div id="store-area" hidden><tw-storydata name="Histórias" startnode="38" creator="Twine" creator-version="2.2.1" ifid="918400EF-7595-4FFB-938E-61280692FE92" zoom="1" format="SugarCube" format-version="2.21.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import "https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700|Fira+Sans:200,400,600";
+	<div id="store-area" hidden><tw-storydata name="Histórias" startnode="37" creator="Twine" creator-version="2.2.1" ifid="918400EF-7595-4FFB-938E-61280692FE92" zoom="1" format="SugarCube" format-version="2.21.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import "https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700|Fira+Sans:200,400,600";
 
 html {
 	text-rendering: optimizeLegibility;
@@ -172,12 +172,14 @@ a:hover {
 #menu-item-saves {
   display: none;
 }
+
 @media screen and (max-width: 768px) {
 	
 	body {
 		font-size: 12px;
 	}
 }
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">Config.ui.stowBarInitially = true;
 Config.saves.autoload = false;
 Config.saves.autosave = false;
@@ -188,7 +190,8 @@ l10nStrings.restartPrompt = "Tem certeza que quer recomeçar o jogo?";
 
 if (window.sessionStorage) {
 	sessionStorage.clear();
-}</script><tw-passagedata pid="1" name="CRISTIANE-START" tags="" position="600,300" size="100,100">!!!Bem-vinda ao mundo, Cristiane!
+}
+</script><tw-passagedata pid="1" name="HELOISA-START" tags="" position="600,300" size="100,100">!!!Bem-vinda ao mundo, Heloísa!
 
 Os olhos dos seus pais ainda estavam marejados quando decidiram registrar seu nascimento em um cartório de São Paulo, dois dias depois do parto.
 
@@ -382,7 +385,6 @@ ops, você também precisa pagar.
 
 &lt;span id=&quot;toReplace&quot;&gt;
 &lt;&lt;link &quot;pagar R$ 35,34&quot;&gt;&gt;
-&lt;&lt;set $money-=5&gt;&gt;
 &lt;&lt;replace &quot;#toReplace&quot;&gt;&gt;&lt;&lt;timed 10ms t8n&gt;&gt;
 &#39;&#39;R$ 35,34 pagos!&#39;&#39;
 
@@ -437,7 +439,7 @@ As carteiras de identificação da OAB, CREA, CRM e afins demonstram as classes 
 
 É por isso que tanta gente ainda dá a famosa carteirada.
 
-[[finalizar jogo|GAMEOVER]]</tw-passagedata><tw-passagedata pid="36" name="GAMEOVER" tags="" position="500,1800" size="100,100">!!! FIM DE JOGO
+[[finalizar jogo|GAMEOVER]]</tw-passagedata><tw-passagedata pid="36" name="GAMEOVER" tags="" position="76,1788" size="100,100">!!! FIM DE JOGO
 
 Tirando uma ou outra burocracia, você conseguiu chegar ao seu objetivo com certa facilidade.
 
@@ -447,8 +449,8 @@ Quer entender essa história melhor?
 
 Conheça a jornada que Manuel teve que fazer para retirar sua carteira de trabalho.
 
-[[História do Manuel|MANUEL]]
-</tw-passagedata><tw-passagedata pid="37" name="MANUEL" tags="" position="500,2000" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="38" name="GAMESTART" tags="" position="450,150" size="100,100">!Escolha uma história
+[[História do Manuel|MANUEL-START]]
+</tw-passagedata><tw-passagedata pid="37" name="GAMESTART" tags="" position="450,150" size="100,100">!Escolha uma história
 
 !!!Cristiane //&lt;span style=&quot;opacity:0.8;font-weight:200;&quot;&gt;ficcional&lt;/span&gt;//
 * Idade: Recém-nascida
@@ -456,7 +458,7 @@ Conheça a jornada que Manuel teve que fazer para retirar sua carteira de trabal
 * Renda: $ $ $ &lt;span style=&quot;opacity:0.5;&quot;&gt;$ $&lt;/span&gt;
 * Objetivo final: tirar CNH
 
-[[História da Cristiane|CRISTIANE-START]]
+[[História da Heloísa|HELOISA-START]]
 
 
 !!!Manuel //&lt;span style=&quot;opacity:0.8;font-weight:200;&quot;&gt;ficcional&lt;/span&gt;//
@@ -465,7 +467,7 @@ Conheça a jornada que Manuel teve que fazer para retirar sua carteira de trabal
 * Renda: $ &lt;span style=&quot;opacity:0.5;&quot;&gt;$ $ $ $&lt;/span&gt;
 * Objetivo final: tirar Carteira de Trabalho
 
-[[História do Manuel|MANUEL-START]]</tw-passagedata><tw-passagedata pid="39" name="MANUEL-START" tags="" position="300,300" size="100,100">!!!E aí, Manuel! Tudo bem?
+[[História do Manuel|MANUEL-START]]</tw-passagedata><tw-passagedata pid="38" name="MANUEL-START" tags="" position="300,300" size="100,100">!!!E aí, Manuel! Tudo bem?
 </tw-passagedata></tw-storydata></div>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
