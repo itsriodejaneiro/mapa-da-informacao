@@ -92,12 +92,12 @@ var orgao_scale = d3.scaleLinear()
 // LEGENDAS UI
 
 var legendas = [
-	{ y:   5, color: paleta[0], text: 'Documentos', desc: "Documentos físicos do cidadão"},
-	{ y: 175, color: paleta[1], text: 'Aplicativos', desc: "Apps disponíveis pro cidadão"},
-	{ y: 240, color: paleta[2], text: 'Bases', desc: "Bases de dados dos registros e cadastros"},
-	{ y: 500, color: paleta[3], text: 'Operadores de TI', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
-	{ y: 640, color: paleta[4], text: 'Gestão', desc: "Órgãos que gerem, operam ou servem de canal de acesso ao cidadão"},
-	{ y: 780, color: paleta[5], text: 'Serviços e Políticas Públicas', desc: "Serviços e políticas públicas para o cidadão"}
+	{ y:   5, color: paleta[0], text: 'Documentos', desc: "Documentos de identificação mais relevantes para o cidadão"},
+	{ y: 175, color: paleta[1], text: 'Aplicativos', desc: "O Brasil vive uma inflação de aplicativos móveis de identidade. Os principais constam neste mapa"},
+	{ y: 240, color: paleta[2], text: 'Bases', desc: "Repositórios de dados pessoais mais representativos e presentes no cotidiano do cidadão"},
+	{ y: 500, color: paleta[3], text: 'Operadores de TI', desc: "Instituições responsáveis pela sustentação operacional de soluções tecnológicas para os órgãos gestores"},
+	{ y: 640, color: paleta[4], text: 'Gestão', desc: "Órgãos que representam os mais importantes gestores de sistemas de identificação ou cadastros governamentais"},
+	{ y: 780, color: paleta[5], text: 'Serviços e Políticas Públicas', desc: "Lista não exaustiva de políticas públicas e serviços atrelados à rede mapeada"}
 ]
 
 var legendas_g = viewport.append("g")
