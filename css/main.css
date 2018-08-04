@@ -1812,7 +1812,7 @@ a:hover {
     top: 76px;
     width: 100vw;
     height: calc(100vh - 76px); }
-    body.iphone .site .historias {
+    html.ios .site .historias {
       -webkit-overflow-scrolling: touch;
       overflow-y: scroll; }
     .site .historias iframe {

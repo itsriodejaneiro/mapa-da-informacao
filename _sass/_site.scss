@@ -94,7 +94,7 @@
 
 	.historias {
 
-		body.iphone & {
+		html.ios & {
 			-webkit-overflow-scrolling: touch;
 			overflow-y: scroll;
   		}
