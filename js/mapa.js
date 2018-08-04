@@ -302,9 +302,9 @@ function update(data_n,data_l){
 		.attr("class", "link")
 		.attr("class", function(d) {
 			return d3.select(this).attr("class")
-				+ ' ' + d.source
-				+ ' ' + d.target
-				+ ' ' + d.relation
+				// + ' ' + d.source
+				// + ' ' + d.target
+				// + ' ' + d.relation
 				+ ' ' + d.base
 		})
 		.attr("opacity", 0)
