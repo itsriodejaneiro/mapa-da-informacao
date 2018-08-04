@@ -60,7 +60,7 @@ orgao,minsaude,Min.Saúde,Ministério da Saúde
 orgao,tse,TSE,Tribunal Superior Eleitoral
 orgao,mindessoc,Min.Des.Social,Ministério do Desenvolvimento Social
 orgao,iie,Inst.Ident.,Institutos de Identificação Estaduais
-orgao,minagro,Min.Agricultura,Ministério da Agricultura
+orgao,minagro,Min.Agricultura,MAPA. Ministério da Agricultura Pecuária e Abastecimento
 orgao,entclassegestao,Ent.Classes,Entidades de Representação de Classe (OAB, CRM, CREA),
 orgao,iti,ITI,ITI. Instituto Nacional de Tecnologia da Informação
 ti,serpro,Serpro,Serpro. Serviço de Processamento de Dados Federal
@@ -72,7 +72,7 @@ ti,iie--2,Inst.Ident.,Institutos de Identificação Estaduais
 ti,tse--2,TSE,Tribunal Superior Eleitoral
 ti,funai--2,Funai,
 ti,mindefesa--2,Min.Defesa,Ministério da Defesa
-ti,minagro--2,Min.Agricultura,Ministério da Agricultura
+ti,minagro--2,Min.Agricultura,"MAPA. Ministério da Agricultura Pecuária e Abastecimento"
 ti,entclasseti,Ent.Classes,Entidades de Representação de Classe (OAB, CRM, CREA)
 ti,policiafederal--2,P.Federal,Polícia Federal
 ti,iti--2,ITI,ITI. Instituto Nacional de Tecnologia da Informação

@@ -9,6 +9,7 @@ ic,ic,docs,rg
 ic,ic,operacao,iie--2
 ic,iie--2,gestao,iie
 cpf,cpf,docs,doccpf
+cpf,crc,docs,doccpf
 cpf,serpro,gestao,receita
 cpf,cpf,operacao,serpro
 cpf,receita,politicas,ir
