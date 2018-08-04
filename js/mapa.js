@@ -1,5 +1,8 @@
 // START VIS
 
+var width = 1280 //window.innerWidth,
+var height = 960 //window.innerHeight;
+
 var svg = d3.select(".mapa-vis")
 	.attr("preserveAspectRatio", "xMinYMin meet")
 	.attr("viewBox", `0 0 ${width} ${height}`)
