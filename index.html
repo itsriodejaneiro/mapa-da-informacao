@@ -82,6 +82,11 @@
             <script id="template-info" type="text/x-handlebars-template">
               <p class="title">{{title}}</p>
               <p>{{texto}}</p>
+              {{#if eixos}}
+                {{#list eixos}}
+                    {{this}}
+                {{/list}}
+              {{/if}}
               {{#if gestao}}
                 <p class="subtitle">Gestão</p>
                 {{#list gestao}}

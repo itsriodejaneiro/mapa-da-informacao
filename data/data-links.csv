@@ -4,7 +4,6 @@ crc,crc,docs,crccas
 crc,crc,docs,crcobt
 crc,crc,operacao,arpen
 crc,arpen,gestao,cartorios
-crc,cartorios,politicas,estatistica_nacional
 ic,ic,docs,rg
 ic,ic,operacao,iie--2
 ic,iie--2,gestao,iie
@@ -12,8 +11,6 @@ cpf,cpf,docs,doccpf
 cpf,crc,docs,doccpf
 cpf,serpro,gestao,receita
 cpf,cpf,operacao,serpro
-cpf,receita,politicas,ir
-cpf,receita,politicas,servicos_bancarios
 cpf,receita,politicas,bolsa_familia
 cpf,cpf,app,app_cpf
 cpf,receita,politicas,polrf1
@@ -30,7 +27,6 @@ cpf,receita,politicas,polrf11
 ctps,ctps,docs,ctpsdoc
 ctps,dataprev,gestao,trabalho
 ctps,ctps,operacao,dataprev
-ctps,trabalho,politicas,politicas_trabalho
 ctps,ctps,app,app_ctps
 icn,icn,operacao,tse--2
 icn,icn,operacao,serpro
@@ -46,8 +42,6 @@ nis,nis,app,app_idjovem
 cadunico,cadunico,operacao,caixa--2
 cadunico,caixa--2,gestao,mindessoc
 cadunico,mindessoc,politicas,bolsa_familia
-cadunico,mindessoc,politicas,politicas_trabalho
-cadunico,mindessoc,politicas,previdencia
 cadunico,mindessoc,politicas,minhacasa
 cadunico,mindessoc,politicas,bolsaverde
 cadunico,mindessoc,politicas,pol1
@@ -109,11 +103,11 @@ te,te,operacao,tse--2
 te,tse,gestao,tse--2
 pescador,pescador,operacao,minagro--2
 pescador,minagro,gestao,minagro--2
-entclasse,entclasse,docs,cart_oab
-entclasse,entclasse,docs,cart_crm
-entclasse,entclasse,docs,cart_crea
-entclasse,entclasse,operacao,entclasseti
-entclasse,entclassegestao,gestao,entclasseti
+cartprofissional,cartprofissional,docs,cart_oab
+cartprofissional,cartprofissional,docs,cart_crm
+cartprofissional,cartprofissional,docs,cart_crea
+cartprofissional,cartprofissional,operacao,entclasseti
+cartprofissional,entclassegestao,gestao,entclasseti
 rne,rne,docs,cie
 rne,rne,operacao,policiafederal--2
 rne,policiafederal,gestao,policiafederal--2

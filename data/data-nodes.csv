@@ -17,7 +17,7 @@ base,sim,SIM,SIM. Sistema de Informações de Mortalidade
 base,sirc,SIRC,SIRC. Sistema Nacional de Informações de Registro Civil
 base,te,Tit.Eleitor,Título de Eleitor
 base,pescador,Cad.Pescador,Cadastro do Pescador Profissional Artesanal
-base,entclasse,Ent.Classe,Entidade de classe
+base,cartprofissional,C.Profissional,Carteira Profissional
 base,rne,RNE,RNE. Registro Nacional de Estrangeiros
 doc,certdigital,Cert.Digital, Certificado Digital
 doc,crcnasc,Cert.Nascimento,Certidão de Nascimento
@@ -61,7 +61,7 @@ orgao,tse,TSE,Tribunal Superior Eleitoral
 orgao,mindessoc,Min.Des.Social,Ministério do Desenvolvimento Social
 orgao,iie,Inst.Ident.,Institutos de Identificação Estaduais
 orgao,minagro,Min.Agricultura,MAPA. Ministério da Agricultura Pecuária e Abastecimento
-orgao,entclassegestao,Ent.Classes,Entidades de Representação de Classe (OAB, CRM, CREA),
+orgao,entclassegestao,Ent.Classes,Entidades de Representação de Classe
 orgao,iti,ITI,ITI. Instituto Nacional de Tecnologia da Informação
 ti,serpro,Serpro,Serpro. Serviço de Processamento de Dados Federal
 ti,dataprev,Dataprev,
@@ -73,15 +73,10 @@ ti,tse--2,TSE,Tribunal Superior Eleitoral
 ti,funai--2,Funai,
 ti,mindefesa--2,Min.Defesa,Ministério da Defesa
 ti,minagro--2,Min.Agricultura,"MAPA. Ministério da Agricultura Pecuária e Abastecimento"
-ti,entclasseti,Ent.Classes,Entidades de Representação de Classe (OAB, CRM, CREA)
+ti,entclasseti,Ent.Classes,Entidades de Representação de Classe
 ti,policiafederal--2,P.Federal,Polícia Federal
 ti,iti--2,ITI,ITI. Instituto Nacional de Tecnologia da Informação
-politica,ir,Imposto de Renda,
-politica,servicos_bancarios,Serviços Bancários,
 politica,bolsa_familia,Programa Bolsa Família,
-politica,estatistica_nacional,Estatística Nacional,
-politica,politicas_trabalho,Políticas de Trabalho,
-politica,previdencia,Previdência,
 politica,minhacasa,Minha Casa Minha Vida,
 politica,bolsaverde,Bolsa Verde,
 politica,pol1,Tarifa Social de Energia Elétrica,
