@@ -102,7 +102,7 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<div id="store-area" hidden><tw-storydata name="Histórias" startnode="37" creator="Twine" creator-version="2.2.1" ifid="918400EF-7595-4FFB-938E-61280692FE92" zoom="1" format="SugarCube" format-version="2.21.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import "https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700|Fira+Sans:200,400,600";
+	<div id="store-area" hidden><tw-storydata name="Histórias" startnode="37" creator="Twine" creator-version="2.2.1" ifid="918400EF-7595-4FFB-938E-61280692FE92" zoom="0.6" format="SugarCube" format-version="2.21.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import "https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700|Fira+Sans:200,400,600";
 
 html {
 	text-rendering: optimizeLegibility;
@@ -180,6 +180,10 @@ a:hover {
 	}
 }
 
+
+
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">Config.ui.stowBarInitially = true;
 Config.saves.autoload = false;
 Config.saves.autosave = false;
@@ -191,55 +195,59 @@ l10nStrings.restartPrompt = "Tem certeza que quer recomeçar o jogo?";
 if (window.sessionStorage) {
 	sessionStorage.clear();
 }
-</script><tw-passagedata pid="1" name="HELOISA-START" tags="" position="600,300" size="100,100">!!!Bem-vinda ao mundo, Heloísa!
+
+
+
+
+</script><tw-passagedata pid="1" name="HELOISA-START" tags="" position="5110,391" size="100,100">!!!Você acaba de nascer.
 
 Os olhos dos seus pais ainda estavam marejados quando decidiram registrar seu nascimento em um cartório de São Paulo, dois dias depois do parto.
 
 Agora eles só precisam apresentar os seguintes documentos:
 
-* Carteira de Identidade (RG ou Carteira de Habilitação);
-* Declaração de Nascido Vivo (fornecida pelo hospital onde a criança nasceu);
-* Certidão de Casamento.
+* Sua declaração de Nascido Vivo (fornecida pelo hospital onde a criança nasceu);
+* Certidão de Casamento;
+* Carteira de Identidade (RG ou Carteira de Habilitação).
 
 [[apresentar documentos|certidao]]
 
 &lt;&lt;set $cpf to false&gt;&gt;
-&lt;&lt;set $rg to false&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="infancia" tags="" position="600,500" size="100,100">!!!6 anos depois...
+&lt;&lt;set $rg to false&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="infancia" tags="" position="5110,591" size="100,100">!!!6 anos depois...
 
 Agora que você completou seis anos, seus pais começaram a discutir de maneira mais concreta seu futuro. Por isso, decidiram abrir uma conta poupança em seu nome no banco de escolha deles...
 
-Antes disso, eles querem registrar seu CPF. Aproveitaram e decidiram fazer também seu RG.
+Antes disso, eles querem registrar seu RG e CPF.
 
-&#39;&#39;Qual documento tirar primeiro?&#39;&#39;
+&#39;&#39;Qual documento eles vão retirar primeiro?&#39;&#39;
 
-[[CPF]] [[RG]] </tw-passagedata><tw-passagedata pid="3" name="certidao" tags="" position="725,400" size="100,100">!!!Prontinho.
+[[CPF]] [[RG]] </tw-passagedata><tw-passagedata pid="3" name="certidao" tags="" position="5236,496" size="100,100">!!!Prontinho.
 
 Sua certidão de nascimento não custou nada e ficou pronta na hora!
 
 E que bom, não é? Afinal, para o Estado a pessoa sem certidão de nascimento não existe. 
 
-Só de posse dessa certidão você ou seus pais poderão retirar outros documentos civis, como a carteira de trabalho, a carteira de identidade, o título de eleitor e o CPF. Além disso, para você se matricular na escola e ter acesso a benefícios sociais, a apresentação do documento também é obrigatória.
+Só de posse dessa certidão você ou seus pais poderão retirar outros documentos civis, a carteira de identidade, o título de eleitor, o CPF e a carteira de trabalho. Além disso, para você se matricular na escola e ter acesso a benefícios sociais, a apresentação do documento também é obrigatória.
 
-[[obrigado, mãe, pai! |infancia]]</tw-passagedata><tw-passagedata pid="4" name="CPF" tags="" position="500,700" size="100,100">!!!CPF
+[[agradeça aos seus pais |infancia]]</tw-passagedata><tw-passagedata pid="4" name="CPF" tags="" position="5010,790" size="100,100">!!!CPF
 &lt;&lt;if !$rg&gt;&gt;
-Boa escolha! Quando seus pais derem entrada no seu RG podem aproveitar e pedir para o número CPF constar no documento.
+Agora, quando seus pais derem entrada no seu RG podem aproveitar e pedir para o número CPF constar no documento.
 &lt;&lt;/if&gt;&gt;
 Seus pais foram até os Correios e quando chegaram lá descobriram que precisariam pagar R$ 7,00 para retirar seu documento.
 
-[[pagar taxa |cpf-pagar]]</tw-passagedata><tw-passagedata pid="5" name="RG" tags="" position="700,700" size="100,100">!!!RG
+[[pagar taxa |cpf-pagar]]</tw-passagedata><tw-passagedata pid="5" name="RG" tags="" position="5210,791" size="100,100">!!!RG
 
 Como você mora em São Paulo, seus pais podem retirar sua carteira de identidade no Poupatempo. Antes, precisam agendar o atendimento pela Internet.
 
 [[agendar atendimento |rg-agendar]]
-</tw-passagedata><tw-passagedata pid="6" name="rg-agendar" tags="" position="825,700" size="100,100">!!!RG
+</tw-passagedata><tw-passagedata pid="6" name="rg-agendar" tags="" position="5335,791" size="100,100">!!!RG
 
 Você e seu pai conseguiram um horário para daqui a duas semanas
 
-[[aguardar |rg-aguardar]]</tw-passagedata><tw-passagedata pid="7" name="rg-aguardar" tags="" position="950,700" size="100,100">!!!RG
+[[aguardar |rg-aguardar]]</tw-passagedata><tw-passagedata pid="7" name="rg-aguardar" tags="" position="5460,791" size="100,100">!!!RG
 
 Duas semanas depois... vocês chegaram no local de atendimento com 15 minutos de antecedência. Ainda assim, pediram para esperar.
 
-[[esperar mais um pouquinho |rg-esperar]]</tw-passagedata><tw-passagedata pid="8" name="rg-esperar" tags="" position="1075,800" size="100,100">!!!RG
+[[esperar mais um pouquinho |rg-esperar]]</tw-passagedata><tw-passagedata pid="8" name="rg-esperar" tags="" position="5585,891" size="100,100">!!!RG
 
 Ufa, finalmente chegou a sua vez.
 
@@ -249,11 +257,11 @@ Agora você precisa apresentar:
 * Certidão de Nascimento
 * RG do seu pai
 
-[[apresentar documentos |rg-apresentar-docs]]</tw-passagedata><tw-passagedata pid="9" name="rg-apresentar-docs" tags="" position="950,900" size="100,100">!!!RG
+[[apresentar documentos |rg-apresentar-docs]]</tw-passagedata><tw-passagedata pid="9" name="rg-apresentar-docs" tags="" position="5460,991" size="100,100">!!!RG
 
 Pronto, agora é só voltar daqui a quinze dias para retirar seu documento. Como essa é a 1ª via, não há nenhum custo para o registro. 
 
-[[esperar 15 dias |rg-esperar-quinze-dias]]</tw-passagedata><tw-passagedata pid="10" name="rg-esperar-quinze-dias" tags="" position="825,900" size="100,100">!!!RG
+[[esperar 15 dias |rg-esperar-quinze-dias]]</tw-passagedata><tw-passagedata pid="10" name="rg-esperar-quinze-dias" tags="" position="5335,991" size="100,100">!!!RG
 
 Duas semanas depois...
 Finalmente com a carteira em mãos! A foto até que ficou boa...
@@ -265,27 +273,27 @@ Finalmente com a carteira em mãos! A foto até que ficou boa...
 [[criar poupança|POUPANCA]]
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set $rg to true&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="POUPANCA" tags="" position="600,1000" size="100,100">!!!Poupança
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="POUPANCA" tags="" position="5110,1091" size="100,100">!!!Poupança
 
 Que dia! Mesmo o banco lotado não atrapalha o bom humor da sua mãe, feliz por investir no seu futuro.
 
-&#39;&#39;Você precisa só apresentar esses documentos&#39;&#39;
+&#39;&#39;Você só precisa apresentar esses documentos&#39;&#39;
 
 * RG da mãe
 * CPF da mãe
 * Sua certidão de nascimento
 * Seu CPF
 
-[[apresentar documentos|poupanca-documentos]]</tw-passagedata><tw-passagedata pid="12" name="cpf-pagar" tags="" position="375,800" size="100,100">!!!CPF
+[[apresentar documentos|poupanca-documentos]]</tw-passagedata><tw-passagedata pid="12" name="cpf-pagar" tags="" position="4885,891" size="100,100">!!!CPF
 
 Você precisa apresentar os seguintes documentos: 
 
 * Certidão de Nascimento
 * RG da mãe
 
-[[apresentar documentos|cpf-apresentar]]</tw-passagedata><tw-passagedata pid="13" name="cpf-apresentar" tags="" position="400,925" size="100,100">!!!CPF
+[[apresentar documentos|cpf-apresentar]]</tw-passagedata><tw-passagedata pid="13" name="cpf-apresentar" tags="" position="4910,1016" size="100,100">!!!CPF
 
-Legal! Agora você tem um número identificador para o resto da sua vida. O CPF é único e definitivo, igualzinho a pinta que da lateral do seu pescoço.
+Legal! Agora você tem um número identificador para o resto da sua vida. O CPF é único e definitivo.
 
 &lt;&lt;nobr&gt;&gt;
 &lt;&lt;if !$rg&gt;&gt;
@@ -294,7 +302,7 @@ Legal! Agora você tem um número identificador para o resto da sua vida. O CPF 
 [[criar poupança|POUPANCA]]
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;set $cpf to true&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="poupanca-documentos" tags="" position="600,1125" size="100,100">!!!Poupança
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="poupanca-documentos" tags="" position="5110,1215" size="100,100">!!!Poupança
 
 Tudo certo!
 
@@ -302,41 +310,41 @@ Agora falta o mais difícil: ter certeza que seus pais vão seguir realizando de
 
 Você poderá movimentá-la quando completar 18 anos.
 
-[[não vejo a hora 😊|TITULOELEITOR]]</tw-passagedata><tw-passagedata pid="15" name="TITULOELEITOR" tags="" position="600,1300" size="100,100">!!!Título de Eleitor
+[[não vejo a hora 😊|TITULOELEITOR]]</tw-passagedata><tw-passagedata pid="15" name="TITULOELEITOR" tags="" position="5110,1345" size="100,100">!!!Título de Eleitor
 
 Sua infância passou voando e agora, aos 16 anos, você já quer votar.
 
-[[tirar título de eleitor|eleitor-start]]</tw-passagedata><tw-passagedata pid="16" name="eleitor-start" tags="" position="750,1300" size="100,100">!!!Título de Eleitor
+[[tirar título de eleitor|eleitor-start]]</tw-passagedata><tw-passagedata pid="16" name="eleitor-start" tags="" position="5260,1391" size="100,100">!!!Título de Eleitor
 
 Por incrível que pareça, esse é o primeiro documento que você vai retirar sozinha. Bateu até um friozinho na barriga.
 
 [[ir ao Cartório Eleitoral|eleitor-cartorio]]
-</tw-passagedata><tw-passagedata pid="17" name="eleitor-cartorio" tags="" position="900,1300" size="100,100">!!!Título de Eleitor
+</tw-passagedata><tw-passagedata pid="17" name="eleitor-cartorio" tags="" position="5410,1391" size="100,100">!!!Título de Eleitor
 
 Você precisa apresentar os seguintes documentos:
 
 * RG
 * Comprovante de residência
 
-[[apresentar|eleitor-apresentar-documentos]]</tw-passagedata><tw-passagedata pid="18" name="eleitor-apresentar-documentos" tags="" position="1050,1300" size="100,100">!!!Título de Eleitor
+[[apresentar|eleitor-apresentar-documentos]]</tw-passagedata><tw-passagedata pid="18" name="eleitor-apresentar-documentos" tags="" position="5560,1391" size="100,100">!!!Título de Eleitor
 
 Em São Paulo, o TRE começou a coletar a digital dos eleitores, a famosa biometria.
 
-[[cadastrar digital|eleitor-biometria]]</tw-passagedata><tw-passagedata pid="19" name="eleitor-biometria" tags="" position="1200,1300" size="100,100">!!!Título de Eleitor
+[[cadastrar digital|eleitor-biometria]]</tw-passagedata><tw-passagedata pid="19" name="eleitor-biometria" tags="" position="5710,1391" size="100,100">!!!Título de Eleitor
 
 Seu novo  título ficou pronto na hora sem custo algum, já que no Brasil votar é um direito.
 
 Agora você faz parte dos quase 150 milhões de eleitores brasileiros. Só não deixe de lembrar que a política vai muito além do voto. ;)
 
-[[pode deixar!|CNH]]</tw-passagedata><tw-passagedata pid="20" name="CNH" tags="" position="1200,1500" size="100,100">!!!Carteira Nacional de Habilitação
+[[pode deixar!|CNH]]</tw-passagedata><tw-passagedata pid="20" name="CNH" tags="" position="5710,1591" size="100,100">!!!Carteira Nacional de Habilitação
 
 Dirigir nunca foi muito sua praia, mas seus pais te pressionaram tanto que você decidiu tirar uma carteira de motorista, a CNH.
 
-[[agendar atendimento no DETRAN|cnh-agendar]]</tw-passagedata><tw-passagedata pid="21" name="cnh-agendar" tags="" position="1075,1500" size="100,100">!!!Carteira Nacional de Habilitação
+[[agendar atendimento no DETRAN|cnh-agendar]]</tw-passagedata><tw-passagedata pid="21" name="cnh-agendar" tags="" position="5585,1591" size="100,100">!!!Carteira Nacional de Habilitação
 
 Prontinho. Você conseguiu uma horário para a próxima semana.
 
-[[esperar|cnh-documentos]]</tw-passagedata><tw-passagedata pid="22" name="cnh-documentos" tags="" position="950,1500" size="100,100">!!!Carteira Nacional de Habilitação
+[[esperar|cnh-documentos]]</tw-passagedata><tw-passagedata pid="22" name="cnh-documentos" tags="" position="5460,1591" size="100,100">!!!Carteira Nacional de Habilitação
 
 Você precisa apresentar os documentos abaixo, original e cópia:
 
@@ -346,7 +354,7 @@ Você precisa apresentar os documentos abaixo, original e cópia:
 * Comprovante de residência
 
 [[apresentar|cnh-apresentar-docs]]
-</tw-passagedata><tw-passagedata pid="23" name="cnh-apresentar-docs" tags="" position="825,1500" size="100,100">!!!Carteira Nacional de Habilitação
+</tw-passagedata><tw-passagedata pid="23" name="cnh-apresentar-docs" tags="" position="5335,1591" size="100,100">!!!Carteira Nacional de Habilitação
 
 Agora você  precisa fazer um exame médico…
 e pagar por isso.
@@ -354,32 +362,32 @@ e pagar por isso.
 São R$ 84,81.
 
 [[pagar|cnh-pagar]]
-</tw-passagedata><tw-passagedata pid="24" name="cnh-pagar" tags="" position="700,1500" size="100,100">!!!Carteira Nacional de Habilitação
+</tw-passagedata><tw-passagedata pid="24" name="cnh-pagar" tags="" position="5210,1591" size="100,100">!!!Carteira Nacional de Habilitação
 
-Ainda bem que você já pode movimentar a conta corrente que seus pais criaram para você.
+Ainda bem que você já pode movimentar a conta corrente que seus pais criaram para você...
 
-[[fazer exame|cnh-exame]]</tw-passagedata><tw-passagedata pid="25" name="cnh-exame" tags="" position="575,1500" size="100,100">!!!Carteira Nacional de Habilitação
+[[fazer exame|cnh-exame]]</tw-passagedata><tw-passagedata pid="25" name="cnh-exame" tags="" position="5085,1591" size="100,100">!!!Carteira Nacional de Habilitação
 
-Tudo certo com o corpo...
+Tudo certo com o corpo,
 mas e com a mente? Você também precisa fazer um exame psicológico.
 
 [[pagar R$ 98,95|cnh-exame-psicologico]]
-</tw-passagedata><tw-passagedata pid="26" name="cnh-exame-psicologico" tags="" position="575,1650" size="100,100">!!!Carteira Nacional de Habilitação
+</tw-passagedata><tw-passagedata pid="26" name="cnh-exame-psicologico" tags="" position="5006,1741" size="100,100">!!!Carteira Nacional de Habilitação
 
 Exame feito!
 
 Você precisa se matricular em uma autoescola.
 
 [[pagar R$ 1.500|cnh-autoescola]]
-</tw-passagedata><tw-passagedata pid="27" name="cnh-autoescola" tags="" position="700,1650" size="100,100">!!!Carteira Nacional de Habilitação
+</tw-passagedata><tw-passagedata pid="27" name="cnh-autoescola" tags="" position="5246,1741" size="100,100">!!!Carteira Nacional de Habilitação
 
 Essa pesou um pouco.
 
-[[completar 45 horas de aulas teóricas|cnh-teoricas]]</tw-passagedata><tw-passagedata pid="28" name="cnh-teoricas" tags="" position="825,1650" size="100,100">!!!Carteira Nacional de Habilitação
+[[completar 45 horas de aulas teóricas|cnh-teoricas]]</tw-passagedata><tw-passagedata pid="28" name="cnh-teoricas" tags="" position="5376,1741" size="100,100">!!!Carteira Nacional de Habilitação
 
 Sono...
 
-[[fazer prova teórica|cnh-prova-teorica]]</tw-passagedata><tw-passagedata pid="29" name="cnh-prova-teorica" tags="" position="950,1650" size="100,100">!!!Carteira Nacional de Habilitação
+[[fazer prova teórica|cnh-prova-teorica]]</tw-passagedata><tw-passagedata pid="29" name="cnh-prova-teorica" tags="" position="5506,1741" size="100,100">!!!Carteira Nacional de Habilitação
 
 ops, você também precisa pagar.
 
@@ -393,39 +401,39 @@ Agora sim, faça a prova teórica.
 [[fazer prova teórica|cnh-prova-teorica-fazer]]
 &lt;&lt;/timed&gt;&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;
-&lt;/span&gt;</tw-passagedata><tw-passagedata pid="30" name="cnh-prova-teorica-fazer" tags="" position="1200,1650" size="100,100">!!!Carteira Nacional de Habilitação
+&lt;/span&gt;</tw-passagedata><tw-passagedata pid="30" name="cnh-prova-teorica-fazer" tags="" position="5710,1741" size="100,100">!!!Carteira Nacional de Habilitação
 
 Aprovadíssima.
 
 Agora chegou a parte divertida!
 
 [[complete 25 horas de aulas práticas|cnh-aulas-praticas]]
-</tw-passagedata><tw-passagedata pid="31" name="cnh-aulas-praticas" tags="" position="1200,1800" size="100,100">!!!Carteira Nacional de Habilitação
+</tw-passagedata><tw-passagedata pid="31" name="cnh-aulas-praticas" tags="" position="5710,1891" size="100,100">!!!Carteira Nacional de Habilitação
 
 Tirando umas derrapadinhas, tudo certo. ;)
 
 Só falta a prova prática para acabar com o nervosismo.
 
 [[Pagar R$ 35,34|cnh-aulas-praticas-pagar]]
-</tw-passagedata><tw-passagedata pid="32" name="cnh-aulas-praticas-pagar" tags="" position="1075,1800" size="100,100">!!!Carteira Nacional de Habilitação
+</tw-passagedata><tw-passagedata pid="32" name="cnh-aulas-praticas-pagar" tags="" position="5585,1891" size="100,100">!!!Carteira Nacional de Habilitação
 
 Agora só fazer a prova prática!
 
-[[fazer prova|cnh-prova-pratica]]</tw-passagedata><tw-passagedata pid="33" name="cnh-prova-pratica" tags="" position="950,1800" size="100,100">!!!Carteira Nacional de Habilitação
+[[fazer prova|cnh-prova-pratica]]</tw-passagedata><tw-passagedata pid="33" name="cnh-prova-pratica" tags="" position="5460,1891" size="100,100">!!!Carteira Nacional de Habilitação
 
 Sucesso!
 
 Agora é só pagar mais R$ 42,41 e retirar sua CNH.
 
 [[pagar|cnh-retirar]]
-</tw-passagedata><tw-passagedata pid="34" name="cnh-retirar" tags="" position="825,1800" size="100,100">!!!Carteira Nacional de Habilitação
+</tw-passagedata><tw-passagedata pid="34" name="cnh-retirar" tags="" position="5335,1891" size="100,100">!!!Carteira Nacional de Habilitação
 
 &#39;&#39;SIM! QUE EMOÇÃO. O FIM DE UMA ERA. &#39;&#39;
 
 Em quinze dias fica pronta sua CNH provisória.
 
 [[esperar|cnh-retirar-mesmo]]
-</tw-passagedata><tw-passagedata pid="35" name="cnh-retirar-mesmo" tags="" position="700,1800" size="100,100">!!!Carteira Nacional de Habilitação
+</tw-passagedata><tw-passagedata pid="35" name="cnh-retirar-mesmo" tags="" position="5210,1891" size="100,100">!!!Carteira Nacional de Habilitação
 
 Além de atestar para sua capacidade de direção de veículos motorizados, a CNH também é considerada um documento oficial de identificação no Brasil. 
 
@@ -435,40 +443,232 @@ Por isso, menos de 30% da população total do Brasil tem esse documento.
 
 Claro que existem outros documentos ainda mais exclusivos: são as carteiras funcionais.
 
-As carteiras de identificação da OAB, CREA, CRM e afins demonstram as classes sociais dos portadores; e o poder atrelado a elas.
+As carteiras de identificação da OAB, CREA, CRM e afins demonstram as classes sociais dos portadores; e o poder atrelado a elas. Não à toa tanta gente continua dando a famosa carteirada. No Brasil, todo documento de identidade é igual, mas alguns são mais iguais do que outros...
 
-É por isso que tanta gente ainda dá a famosa carteirada.
+[[finalizar jogo|END-HELO]]</tw-passagedata><tw-passagedata pid="36" name="END-HELO" tags="" position="3525,1096" size="100,100">!!! FIM DE JOGO
 
-[[finalizar jogo|GAMEOVER]]</tw-passagedata><tw-passagedata pid="36" name="GAMEOVER" tags="" position="76,1788" size="100,100">!!! FIM DE JOGO
+Tirando uma ou outra burocracia, você conseguiu chegar ao seu objetivo com certa facilidade. Mas nem sempre é assim, sabia? Um processo tão simples quanto tirar um RG às vezes pode demorar quase seis meses e demandar várias viagens.
 
-Tirando uma ou outra burocracia, você conseguiu chegar ao seu objetivo com certa facilidade.
+Quer entender essa história melhor? Conheça a jornada da Giselle para retirar seu RG.
 
-Mas nem sempre é assim, sabia? Um processo tão simples quanto tirar um RG às vezes pode demorar quase seis meses e demandar várias viagens.
+[[História da Giselle|GISELLE-START]]
+</tw-passagedata><tw-passagedata pid="37" name="GAMESTART" tags="" position="3641,325" size="100,100">!Escolha uma história
 
-Quer entender essa história melhor? 
+!!!Giselle //&lt;span style=&quot;opacity:0.8;font-weight:200;&quot;&gt;real&lt;/span&gt;//
+* Idade: 38 anos
+* Cidade: Rio de Janeiro
+* Renda: $ &lt;span style=&quot;opacity:0.5;&quot;&gt;$ $ $ $&lt;/span&gt;
+* Objetivo final: retirar RG
 
-Conheça a jornada que Manuel teve que fazer para retirar sua carteira de trabalho.
+[[História da Giselle|GISELLE-START]]
 
-[[História do Manuel|MANUEL-START]]
-</tw-passagedata><tw-passagedata pid="37" name="GAMESTART" tags="" position="450,150" size="100,100">!Escolha uma história
 
 !!!Heloísa //&lt;span style=&quot;opacity:0.8;font-weight:200;&quot;&gt;ficcional&lt;/span&gt;//
 * Idade: Recém-nascida
 * Cidade: São Paulo, capital
 * Renda: $ $ $ &lt;span style=&quot;opacity:0.5;&quot;&gt;$ $&lt;/span&gt;
-* Objetivo final: tirar CNH
+* Objetivo final: retirar CNH
+
+[[História da Heloísa|HELOISA-START]]</tw-passagedata><tw-passagedata pid="38" name="GISELLE-START" tags="" position="2023,418" size="100,100">!!!&quot;Essa fila tá enorme...&quot;
+
+A dor no braço começou ontem de manhã e foi piorando ao longo do dia. Quando você acordou, já estava quase insuportável.
+
+Você decidiu ir ao hospital, só por via das dúvidas. 
+
+[[ir|tique-taque]]</tw-passagedata><tw-passagedata pid="39" name="tique-taque" tags="" position="2278,449" size="100,100">!!!tique...
+Você só não esperava aguardar quatro horas por atendimento.
+
+[[...taque|sono]]</tw-passagedata><tw-passagedata pid="40" name="consulta" tags="" position="2295,815" size="100,100">!!!opa.
+
+Quando seus olhos começaram a fechar sua senha chegou.
+Você foi chamada ao balcão de atendimento.
+
+[[levantar|consulta2]]</tw-passagedata><tw-passagedata pid="41" name="sono" tags="" position="2013,545" size="100,100">!!!Olha o sono chegando...
+
+[[esperar|sono2]]</tw-passagedata><tw-passagedata pid="42" name="subregistro" tags="" position="2183,960" size="100,100">!!!Problemas pela frente.
+
+Você já conhece essa história. Sabe que não tem nenhum documento de identificação em mãos. Na verdade, nunca teve. Você e seus 16 irmãos viveram desde sempre assim, invisíveis para o Estado, sem nem mesmo certidão de nascimento.
+
+*Se você falar a verdade talvez não seja atendida. 
+*Você pensa que mentir ajudaria a evitar constrangimento...
+
+&#39;&#39;O que você quer fazer?&#39;&#39;
+
+[[falar a verdade|verdade]] [[mentir]] [[ir embora|embora]]</tw-passagedata><tw-passagedata pid="43" name="verdade" tags="" position="1945,1170" size="100,100">!!!Você respira, olha para trás
+e resolve explicar toda a história. Toda. Você conta que sua mãe nunca registrou seu nascimento. Que seus outros 16 irmãos também não têm nenhum documento que comprove existência civil. 
+
+Você conta que, mesmo sem documentos, já foi atendida em hospitais da rede pública. Que por mais que fosse difícil as pessoas entendiam sua situação, e que você precisava ver o que era essa dor que você estava sentindo desde ontem. 
+
+Diz que não vai embora sem ver essa dor...
+Ela precisa te atender...
+
+[[mas a história não para aí|início]]
+&lt;&lt;set $verdade to true&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="mentir" tags="" position="2171,1124" size="100,100">!!!Mentir
+
+Você diz que esqueceu em casa. Que a dor no braço estava tão forte que não deu tempo de pegar nada, nem mesmo a identidade... Você poderia voltar, mas mora longe, demoraria muito, e a dor no braço continua aumentando...
+
+[[tentar a sorte|atendente-negacao]]</tw-passagedata><tw-passagedata pid="45" name="embora" tags="" position="2386,1152" size="100,100">!!!A dor nem estava tão forte assim...
+Ou pelo menos é isso que você tenta se dizer.
+
+Na volta para casa, você lembra com um pouco de tristeza que sua mãe nunca registrou seu nascimento. Que seus outros 16 irmãos também não têm nenhum documento que comprove existência civil.
+
+Você lembra que, mesmo sem documentos, já conseguiu atendimento em alguns hospitais da rede pública. Mas a ausência deles te fez perder tantas oportunidades...
+
+[[você começa a lembrar de tudo|início]]</tw-passagedata><tw-passagedata pid="46" name="atendente-negacao" tags="" position="2173,1277" size="100,100">!!!fracassou.
+
+- Senhora, sem documento de identificação eu não posso te colocar no sistema. A gente infelizmente não pode te atender assim, eu preciso te identificar no computador...
+
+[[falar a verdade|verdade]] [[ir embora|embora]]</tw-passagedata><tw-passagedata pid="47" name="início" tags="" position="2135,1390" size="200,200">!!!Memórias
+
+Você começa a lembrar de quando sua mãe saía de casa para trabalhar nos Macedo. Trabalhou 50 anos com eles, cuidou de várias gerações mesma família.
+
+Você lembra que nenhuma das suas irmãs foi registrada no nome da sua mãe porque ela também não tinha documento. Por isso, foi enterrada como indigente. 
+
+Com dor no coração, você lembra que a patroa da sua mãe falou várias vezes para ela ir para Minas Gerais, onde nasceu, tentar registrar os documentos, mas ela nunca deu bola, nunca se interessou de verdade. Você até lembra dela falando que um dia teria que ir para Minas saber dessa historia, mas era complicado demais ter os documentos...
+
+[[e a patroa...|patroa]]</tw-passagedata><tw-passagedata pid="48" name="sono2" tags="" position="2280,575" size="100,100">!!!O som da sala começa a ficar abafado...
+
+[[esperar|sono3]]</tw-passagedata><tw-passagedata pid="49" name="sono3" tags="" position="2013,664" size="100,100">!!!e abafado...
+
+[[esperar|sono4]]</tw-passagedata><tw-passagedata pid="50" name="sono4" tags="" position="2288,695" size="100,100">!!!a cabeça começa a cair lentamente para o lado...
+
+[[esperar|sono5]]</tw-passagedata><tw-passagedata pid="51" name="sono5" tags="" position="2011,775" size="100,100">!!!...
+
+[[...|consulta]]</tw-passagedata><tw-passagedata pid="52" name="consulta2" tags="" position="2000,905" size="100,100">!!!consulta
+
+- Srª, vou precisar da sua identidade.
+
+[[de novo não...|subregistro]]</tw-passagedata><tw-passagedata pid="53" name="patroa" tags="" position="1970,1559" size="100,100">!!!A patroa da sua mãe gostava de você.
+
+Ela chegou a falar que queria ajudar a te criar, dar casa e apoio na educação. 
+
+No fim das contas, sua família achou melhor não. Você nunca entendeu bem o motivo, mas da mesma forma que as conversas sobre você ir para lá começaram também acabaram. Do nada.
+
+[[foi estranho mesmo|escola]]</tw-passagedata><tw-passagedata pid="54" name="escola" tags="" position="2538,1677" size="100,100">!!!A escola...
+
+O que mais empolgava na oportunidade de trabalhar para a patroa da sua mãe era saber que você voltaria a estudar. Você estava ficando mais velha agora.
+
+Mesmo sem documentos, você estudou até a 8ª série. No jeitinho...
+Lembra que estudou em várias escolas “fundo de quintal”, com pessoas que ensinavam informalmente. 
+
+Sua mãe bancava as despesas.
+
+[[era o jeito|escola2]]</tw-passagedata><tw-passagedata pid="55" name="trabalho" tags="" position="1951,1829" size="100,100">!!!Trabalho
+
+Mas se não dava para estudar na escola para sempre sem documentos, pelo menos trabalhar você trabalhou. Primeiro em uma escola de Duque de Caxias, colégio CEVE, depois em escola particular. Trabalhou também como cuidadora de idosos, babá. Um pouco de tudo.
+
+[[é...|trabalho2]]
+
+</tw-passagedata><tw-passagedata pid="56" name="trabalho2" tags="" position="2278,1809" size="100,100">!!!Trabalho
+
+Teve uma vez que uma patroa gostou de você, mas quando foi falar com o marido ele não aceitou, falou que era impossível ter alguém sem documento trabalhando na casa dele.
+
+[[fui me virando|trabalho3]]</tw-passagedata><tw-passagedata pid="57" name="trabalho3" tags="" position="2538,1810" size="100,100">!!!Uma descoberta
+
+Até os 16 anos você não sabia que não tinha documentos. Um dia, na casa da sua irmã, em Minas Gerais, a viu mexendo em alguns papeis. Perguntou o que era e ela respondeu que eram os documentos de outros familiares.
+
+Foi aí que você perguntou sobre seu próprio documento e ouviu em respota que não tinha.
+
+[[não dá para ficar assim|rj]]</tw-passagedata><tw-passagedata pid="58" name="escola2" tags="" position="2280,1675" size="100,100">!!!Escola
+
+Quando você se mudou para Araruama, com mais ou menos 13 anos, você conseguiu estudar em uma escola pública. A amiga da sua mãe era diretora e fez funcionar...
+
+[[:)|escola3]]</tw-passagedata><tw-passagedata pid="59" name="escola3" tags="" position="1961,1697" size="100,100">!!!Escola
+
+Você também estudou em uma escola no Rio de Janeiro, mesmo sem documento, porque sua mãe deu um jeito. Aliás, você nunca se importou com esse negócio de documentação. Quando sua mãe era viva, tudo que era para resolver ela ia na frente e resolvia.
+
+[[saudades|trabalho]]</tw-passagedata><tw-passagedata pid="60" name="rj" tags="" position="2685,1872" size="100,100">!!!De volta ao Rio de Janeiro,
+
+Você decidiu correr atrás dos seus documentos. Tentou de várias formas, até com um vereador falou, tudo sem sucesso.
+
+[[continue tentando|doc]]</tw-passagedata><tw-passagedata pid="61" name="doc" tags="" position="2496.3333333333335,1946.6666666666667" size="100,100">!!!Defensoria Pública de Belford Roxo
+
+Depois de um tempo você foi na Defensoria Pública de Belford Roxo. Você tentou retirar seus documentos por mais de 10 anos. Ia lá, eles mandavam voltar em dois meses, pediam testemunhas, por aí vai.
+
+Você nunca conseguiu superar a burocracia.
+
+[[continue tentando|presente]]</tw-passagedata><tw-passagedata pid="62" name="volta a casa2" tags="" position="1973,1947" size="100,100">!!!Chegando em casa...
+
+Quando você abre a porta, o tio da sua filha está na sala com um papel para Fundação Municipal de Desenvolvimento Social – FUMBEL - na área branca em Beldford Roxo.
+
+[[ler|fumbel]]</tw-passagedata><tw-passagedata pid="63" name="fumbel" tags="" position="1876.3333333333333,2087" size="100,100">!!!FUMBEL
+
+Lendo o papel, você achou que podiam te ajudar. Você contou sua história para eles, explicou a saga na Defensoria. A funcionária da FUMBEL disse que com certeza entre 2 e 3 meses, você teria o documento. 
+
+A essa altura, o que mais te motivava em buscar a documentação era a preocupação em relação à filha, que estava grávida e prestes a dar a luz. Você queria ter documentos para sua filha poder fazer o parto da sua primeira neta.
+
+[[continuar|centro]]</tw-passagedata><tw-passagedata pid="64" name="centro" tags="" position="2095,2096" size="100,100">!!!FUMBEL
+
+Depois de 3 meses você foi até o Centro do RJ para tentar retirar os documentos. Não deu certo. O pessoal da FUMBEL pagou um lanche para você e te deixaram em casa.
+
+[[continuar|centro2]]
+
+</tw-passagedata><tw-passagedata pid="65" name="centro2" tags="" position="2229,2105" size="100,100">!!!FUMBEL
+Na segunda vez que você foi ao Centro, no Fórum, explicou a situação para uma jornalista e relatou tudo novamente para o juiz. 
+
+[[esperar|centro22]]</tw-passagedata><tw-passagedata pid="66" name="centro3" tags="" position="2622,2101" size="100,100">!!!identidade impressa
+
+Com documentos, você também pôde registrar sua filha e neta. Sua vida mudou, sua filha pôde estudar e sua neta também poderá. O esforço de mais de dez anos para receber seus documentos foi finalmente recompensado.
+
+[[avançar|fim-gi]]
+</tw-passagedata><tw-passagedata pid="67" name="fim-gi" tags="" position="2631,2243" size="100,100">!!!Subidentificação
+
+Essa é uma história verídica, reflexo do problema de subregistro de nascimento.
+
+Nos últimos 20 anos, o Registro Civil vem passando por profundas transformações no Brasil. Em 2000, tínhamos um subregistro de nascimento em torno de 20%. Isso significa que aproximadamente 600.000 mil crianças completavam seu primeiro ano de vida sem registro, sem acesso a direitos básicos de identidade reconhecidos pelo Estado brasileiro.
+
+[[avançar|fim-gi2]]
+</tw-passagedata><tw-passagedata pid="68" name="fim-gi2" tags="" position="2494,2237" size="100,100">!!!Subidentificação
+
+Em 1997, foi aprovada a Lei da Gratuidade do Registro de Nascimento que foi fundamental para virar esse jogo e termos hoje menos de 1% de subregistro de nascimento.
+
+Em 2007, foi lançada uma política de erradicação do subregistro de nascimento e acesso à documentação civil básica que contribuiu para a sensibilização da população sobre a importância do Registro e realizou mutirões em áreas de população vulnerável, bem como tratou de questões estruturantes do Registro Civil.
+
+[[avançar|fim-gi3]]
+
+
+
+
+
+</tw-passagedata><tw-passagedata pid="69" name="fim-gi3" tags="" position="2357,2250" size="100,100">!!!Subidentificação
+
+Mas o modelo atual Registro Civil ainda tem muitos problemas no Brasil a serem superados.
+
+Os cartórios de São Paulo, Rio de Janeiro, Paraná e outros estados do Sul e Sudeste têm uma realidade bem diferente dos cartórios da região norte e nordeste. 
+
+Você consegue entender essa história melhor no vídeo que está na página inicial do site.
+
+[[avançar|END-GI]]
+
+
+</tw-passagedata><tw-passagedata pid="70" name="END-GI" tags="" position="3543,954" size="100,100">!!! FIM DE JOGO
+
+Jogue também com a Heloísa, que precisa retirar sua Carteira Nacional de Habilitação.
 
 [[História da Heloísa|HELOISA-START]]
+</tw-passagedata><tw-passagedata pid="71" name="voltaacasa1" tags="" position="2228,1939" size="100,100">!!!Voltando a si
+&lt;&lt;if $verdade is true&gt;&gt;
+Você continua em pé no balcão de atendimento... 
+Olhar distante. A atendente te encaminha a uma médica que lhe avalia e a libera sem grandes preocupações.
+&lt;&lt;/if&gt;&gt;
 
+Lembrar do passado todo trouxe uma mistura de sentimentos, alguns tristes. O braço incomoda, mas está parando de doer...
 
-!!!Manuel //&lt;span style=&quot;opacity:0.8;font-weight:200;&quot;&gt;ficcional&lt;/span&gt;//
-* Idade: 15 anos
-* Cidade: Interior do Espírito Santo
-* Renda: $ &lt;span style=&quot;opacity:0.5;&quot;&gt;$ $ $ $&lt;/span&gt;
-* Objetivo final: tirar Carteira de Trabalho
+[[ufa|volta a casa2]]</tw-passagedata><tw-passagedata pid="72" name="centro22" tags="" position="2361,2098" size="100,100">!!!Juiz diz:
 
-[[História do Manuel|MANUEL-START]]</tw-passagedata><tw-passagedata pid="38" name="MANUEL-START" tags="" position="300,300" size="100,100">!!!E aí, Manuel! Tudo bem?
-</tw-passagedata></tw-storydata></div>
+- Sua a certidão está pronta
+
+[[o que?!|centr22]]
+</tw-passagedata><tw-passagedata pid="73" name="centr22" tags="" position="2493,2103" size="100,100">!!!Felicidade
+
+Você chora de alegria. Já estava cansada de ter que contar sua história. Não aguentava mais repetir casos do passado para tentar conseguir documentos de identificação...
+
+[[avançar|centro3]]
+
+</tw-passagedata><tw-passagedata pid="74" name="presente" tags="" position="2369.666666666667,1921.3333333333333" size="100,100">!!!VOCÊ VOLTA AO PRESENTE
+Seu braço incomoda.
+
+[[nossa...|voltaacasa1]]</tw-passagedata><tw-passagedata pid="75" name="voltaaacasa1" tags="" position="2383,2118" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata></div>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
 	if(document.documentElement.getAttribute("data-init")==="loading"){!function(window,document,jQuery,undefined){"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=undefined;try{for(var o,s=e[Symbol.iterator]();!(n=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);n=!0);}catch(e){a=!0,i=e}finally{try{!n&&s.return&&s.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},Alert=function(){function e(e,t,r,n){var a="fatal"===e,i="Apologies! "+(a?"A fatal":"An")+" error has occurred.";i+=a?" Aborting.":" You may be able to continue, but some parts may not work properly.",null==t&&null==r||(i+="\n\nError",null!=t&&(i+=" ["+t+"]"),i+=null!=r?": "+r.replace(/^(?:(?:uncaught\s+(?:exception:\s+)?)?error:\s+)+/i,"")+".":": unknown error."),"object"===("undefined"==typeof n?"undefined":_typeof(n))&&n.stack&&(i+="\n\nStack Trace:\n"+n.stack),window.alert(i)}function t(t,r,n){e(null,t,r,n)}function r(t,r,n){e("fatal",t,r,n)}return function(e){window.onerror=function(n,a,i,o,s){"complete"===document.readyState?t(null,n,s):(r(null,n,s),window.onerror=e,"function"==typeof window.onerror&&window.onerror.apply(this,arguments))}}(window.onerror),Object.freeze(Object.defineProperties({},{error:{value:t},fatal:{value:r}}))}();!function(){function e(e,t){var a=String(e);switch(t){case"start":return a&&r.test(a)?a.replace(r,""):a;case"end":return a&&n.test(a)?a.replace(n,""):a;default:throw new Error('_trimFrom called with incorrect where parameter value: "'+t+'"')}}function t(e,t){var r=Number.parseInt(e,10)||0;if(r<1)return"";var n="undefined"==typeof t?"":String(t);for(""===n&&(n=" ");n.length<r;){var a=n.length,i=r-a;n+=a>i?n.slice(0,i):n}return n.length>r&&(n=n.slice(0,r)),n}var r=/^[\s\u00A0\uFEFF][\s\u00A0\uFEFF]*/,n=/[\s\u00A0\uFEFF][\s\u00A0\uFEFF]*$/;Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");if(0===arguments.length)return!1;var e=this.length>>>0;if(0===e)return!1;var t=arguments[0],r=Number(arguments[1])||0;for(r<0&&(r=Math.max(0,e+r));r<e;++r){var n=this[r];if(t===n||t!==t&&n!==n)return!0}return!1}}),String.prototype.padStart||Object.defineProperty(String.prototype,"padStart",{configurable:!0,writable:!0,value:function(e,r){if(null==this)throw new TypeError("String.prototype.padStart called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(e,10);return i<=a?n:t(i-a,r)+n}}),String.prototype.padEnd||Object.defineProperty(String.prototype,"padEnd",{configurable:!0,writable:!0,value:function(e,r){if(null==this)throw new TypeError("String.prototype.padEnd called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(e,10);return i<=a?n:n+t(i-a,r)}}),String.prototype.trimStart||Object.defineProperty(String.prototype,"trimStart",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimStart called on null or undefined");return e(this,"start")}}),String.prototype.trimLeft||Object.defineProperty(String.prototype,"trimLeft",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimLeft called on null or undefined");return e(this,"start")}}),String.prototype.trimEnd||Object.defineProperty(String.prototype,"trimEnd",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimEnd called on null or undefined");return e(this,"end")}}),String.prototype.trimRight||Object.defineProperty(String.prototype,"trimRight",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimRight called on null or undefined");return e(this,"end")}})}(),function(){function _random(){var e=void 0,t=void 0;switch(arguments.length){case 0:throw new Error("_random called with insufficient parameters");case 1:e=0,t=arguments[0];break;default:e=arguments[0],t=arguments[1]}if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.floor(_nativeMathRandom()*(t-e+1))+e}function _randomIndex(e,t){var r=void 0,n=void 0;switch(t.length){case 1:r=0,n=e-1;break;case 2:r=0,n=Math.trunc(t[1]);break;default:r=Math.trunc(t[1]),n=Math.trunc(t[2])}return Number.isNaN(r)?r=0:!Number.isFinite(r)||r>=e?r=e-1:r<0&&(r=e+r,r<0&&(r=0)),Number.isNaN(n)?n=0:!Number.isFinite(n)||n>=e?n=e-1:n<0&&(n=e+n,n<0&&(n=e-1)),_random(r,n)}function _getCodePointStartAndEnd(e,t){var r=e.charCodeAt(t);if(Number.isNaN(r))return{char:"",start:-1,end:-1};if(r<55296||r>57343)return{char:e.charAt(t),start:t,end:t};if(r>=55296&&r<=56319){var n=t+1;if(n>=e.length)throw new Error("high surrogate without trailing low surrogate");var a=e.charCodeAt(n);if(a<56320||a>57343)throw new Error("high surrogate without trailing low surrogate");return{char:e.charAt(t)+e.charAt(n),start:t,end:n}}if(0===t)throw new Error("low surrogate without leading high surrogate");var i=t-1,o=e.charCodeAt(i);if(o<55296||o>56319)throw new Error("low surrogate without leading high surrogate");return{char:e.charAt(i)+e.charAt(t),start:i,end:t}}var _nativeMathRandom=Math.random;Object.defineProperty(Array,"random",{configurable:!0,writable:!0,value:function(e){if(null==e||"object"!==("undefined"==typeof e?"undefined":_typeof(e))||!Object.prototype.hasOwnProperty.call(e,"length"))throw new TypeError("Array.random array parameter must be an array or array-lke object");var t=e.length>>>0;if(0!==t){var r=0===arguments.length?_random(0,t-1):_randomIndex(t,Array.prototype.slice.call(arguments,1));return e[r]}}}),Object.defineProperty(Array.prototype,"concatUnique",{configurable:!0,writable:!0,value:function e(){if(null==this)throw new TypeError("Array.prototype.concatUnique called on null or undefined");var t=Array.from(this);if(0===arguments.length)return t;var r=Array.prototype.reduce.call(arguments,function(e,t){return e.concat(t)},[]),n=r.length;if(0===n)return t;for(var a=Array.prototype.indexOf,i=Array.prototype.push,o=0;o<n;++o){var e=r[o];a.call(t,e)===-1&&i.call(t,e)}return t}}),Object.defineProperty(Array.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.count called on null or undefined");for(var e=Array.prototype.indexOf,t=arguments[0],r=Number(arguments[1])||0,n=0;(r=e.call(this,t,r))!==-1;)++n,++r;return n}}),Object.defineProperty(Array.prototype,"delete",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.delete called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.indexOf,r=Array.prototype.push,n=Array.prototype.splice,a=Array.prototype.concat.apply([],arguments),i=[],o=0,s=a.length;o<s;++o)for(var u=a[o],l=0;(l=t.call(this,u,l))!==-1;)r.apply(i,n.call(this,l,1));return i}}),Object.defineProperty(Array.prototype,"deleteAt",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.deleteAt called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.splice,r=[].concat(_toConsumableArray(new Set(Array.prototype.concat.apply([],arguments).map(function(t){return t<0?Math.max(0,e+t):t})).values())),n=[].concat(_toConsumableArray(r)).sort(function(e,t){return t-e}),a=[],i=0,o=r.length;i<o;++i)a[i]=this[r[i]];for(var s=0,u=n.length;s<u;++s)t.call(this,n[s],1);return a}}),Object.defineProperty(Array.prototype,"flatten",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatten called on null or undefined");return Array.prototype.reduce.call(this,function(e,t){return e.concat(Array.isArray(t)?t.flatten():t)},[])}}),Object.defineProperty(Array.prototype,"includesAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAll called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAll.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(!Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!1;return!0}}),Object.defineProperty(Array.prototype,"includesAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAny called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAny.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!0;return!1}}),Object.defineProperty(Array.prototype,"pluck",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pluck called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return Array.prototype.splice.call(this,t,1)[0]}}}),Object.defineProperty(Array.prototype,"pluckMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.pluckMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.pluckMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=Array.prototype.splice,a=[],i=t-1;do a.push(n.call(this,_random(0,i--),1)[0]);while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"pushUnique",{configurable:!0,writable:!0,value:function e(){if(null==this)throw new TypeError("Array.prototype.pushUnique called on null or undefined");var t=arguments.length;if(0===t)return this.length>>>0;for(var r=Array.prototype.indexOf,n=Array.prototype.push,a=0;a<t;++a){var e=arguments[a];r.call(this,e)===-1&&n.call(this,e)}return this.length>>>0}}),Object.defineProperty(Array.prototype,"random",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.random called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return this[t]}}}),Object.defineProperty(Array.prototype,"randomMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.randomMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.randomMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=new Map,a=[],i=t-1;do{var o=void 0;do o=_random(0,i);while(n.has(o));n.set(o,!0),a.push(this[o])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"shuffle",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.shuffle called on null or undefined");var e=this.length>>>0;if(0===e)return this;for(var t=e-1;t>0;--t){var r=Math.floor(_nativeMathRandom()*(t+1));if(t!==r){var n=this[t];this[t]=this[r],this[r]=n}}return this}}),Object.defineProperty(Array.prototype,"unshiftUnique",{configurable:!0,writable:!0,value:function e(){if(null==this)throw new TypeError("Array.prototype.unshiftUnique called on null or undefined");var t=arguments.length;if(0===t)return this.length>>>0;for(var r=Array.prototype.indexOf,n=Array.prototype.unshift,a=0;a<t;++a){var e=arguments[a];r.call(this,e)===-1&&n.call(this,e)}return this.length>>>0}}),Object.defineProperty(Function.prototype,"partial",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Function.prototype.partial called on null or undefined");var e=Array.prototype.slice,t=this,r=e.call(arguments,0);return function(){for(var n=[],a=0,i=0;i<r.length;++i)n.push(r[i]===undefined?arguments[a++]:r[i]);return t.apply(this,n.concat(e.call(arguments,a)))}}}),Object.defineProperty(Math,"clamp",{configurable:!0,writable:!0,value:function e(t,r,n){var e=Number(t);return Number.isNaN(e)?NaN:e.clamp(r,n)}}),Object.defineProperty(Math,"easeInOut",{configurable:!0,writable:!0,value:function(e){return 1-(Math.cos(Number(e)*Math.PI)+1)/2}}),Object.defineProperty(Number.prototype,"clamp",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Number.prototype.clamp called on null or undefined");if(2!==arguments.length)throw new Error("Number.prototype.clamp called with an incorrect number of parameters");var e=Number(arguments[0]),t=Number(arguments[1]);if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.min(Math.max(this,e),t)}}),RegExp.escape||!function(){var e=/[\\^$*+?.()|[\]{}]/g,t=new RegExp(e.source);Object.defineProperty(RegExp,"escape",{configurable:!0,writable:!0,value:function(r){var n=String(r);return n&&t.test(n)?n.replace(e,"\\$&"):n}})}(),function(){var e=/{(\d+)(?:,([+-]?\d+))?}/g,t=new RegExp(e.source);Object.defineProperty(String,"format",{configurable:!0,writable:!0,value:function(r){function n(e,t,r){if(!t)return e;var n=Math.abs(t)-e.length;if(n<1)return e;var a=String(r).repeat(n);return t<0?e+a:a+e}if(arguments.length<2)return 0===arguments.length?"":r;var a=2===arguments.length&&Array.isArray(arguments[1])?[].concat(_toConsumableArray(arguments[1])):Array.prototype.slice.call(arguments,1);return 0===a.length?r:t.test(r)?(e.lastIndex=0,r.replace(e,function(e,t,r){var i=a[t];if(null==i)return"";for(;"function"==typeof i;)i=i();switch("undefined"==typeof i?"undefined":_typeof(i)){case"string":break;case"object":i=JSON.stringify(i);break;default:i=String(i)}return n(i,r?Number.parseInt(r,10):0," ")})):r}})}(),Object.defineProperty(String.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.contains called on null or undefined");return String.prototype.indexOf.apply(this,arguments)!==-1}}),Object.defineProperty(String.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.count called on null or undefined");var e=String(arguments[0]||"");if(""===e)return 0;for(var t=String.prototype.indexOf,r=e.length,n=Number(arguments[1])||0,a=0;(n=t.call(this,e,n))!==-1;)++a,n+=r;return a}}),Object.defineProperty(String.prototype,"splice",{configurable:!0,writable:!0,value:function(e,t,r){if(null==this)throw new TypeError("String.prototype.splice called on null or undefined");var n=this.length>>>0;if(0===n)return"";var a=Number(e);Number.isSafeInteger(a)?a<0&&(a+=n,a<0&&(a=0)):a=0,a>n&&(a=n);var i=Number(t);(!Number.isSafeInteger(i)||i<0)&&(i=0);var o=this.slice(0,a);return"undefined"!=typeof r&&(o+=r),a+i<n&&(o+=this.slice(a+i)),o}}),Object.defineProperty(String.prototype,"splitOrEmpty",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.splitOrEmpty called on null or undefined");return""===String(this)?[]:String.prototype.split.apply(this,arguments)}}),Object.defineProperty(String.prototype,"toLocaleUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toLocaleUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return n===-1?"":r.toLocaleUpperCase()+e.slice(n+1)}}),Object.defineProperty(String.prototype,"toUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return n===-1?"":r.toUpperCase()+e.slice(n+1)}}),Object.defineProperty(Date.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:date)",this.toISOString()]}}),Object.defineProperty(Function.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)","("+this.toString()+")"]}}),Object.defineProperty(Map.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:map)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(RegExp.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)",this.toString()]}}),Object.defineProperty(Set.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:set)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(JSON,"reviveWrapper",{configurable:!0,writable:!0,value:function(e,t){if("string"!=typeof e)throw new TypeError("JSON.reviveWrapper code parameter must be a string");return["(revive:eval)",[e,t]]}}),Object.defineProperty(JSON,"_real_parse",{value:JSON.parse}),Object.defineProperty(JSON,"parse",{configurable:!0,writable:!0,value:function value(text,reviver){return JSON._real_parse(text,function(key,val){var value=val;if(Array.isArray(value)&&2===value.length)switch(value[0]){case"(revive:set)":value=new Set(value[1]);break;case"(revive:map)":value=new Map(value[1]);break;case"(revive:date)":value=new Date(value[1]);break;case"(revive:eval)":try{if(Array.isArray(value[1])){var $ReviveData$=value[1][1];value=eval(value[1][0])}else value=eval(value[1])}catch(e){}}else if("string"==typeof value&&"@@revive@@"===value.slice(0,10))try{value=eval(value.slice(10))}catch(e){}if("function"==typeof reviver)try{value=reviver(key,value)}catch(e){}return value})}}),Object.defineProperty(Array.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.contains called on null or undefined");return Array.prototype.includes.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAll called on null or undefined");return Array.prototype.includesAll.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAny called on null or undefined");return Array.prototype.includesAny.apply(this,arguments)}}),Object.defineProperty(String.prototype,"readBracketedList",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.readBracketedList called on null or undefined");for(var e=new RegExp("(?:\\[\\[((?:\\s|\\S)*?)\\]\\])|([^\"'\\s]\\S*)","gm"),t=[],r=void 0;null!==(r=e.exec(this));)r[1]?t.push(r[1]):r[2]&&t.push(r[2]);return t}})}();var Browser=function(){var e=navigator.userAgent.toLowerCase(),t=e.includes("windows phone"),r=Object.freeze({Android:!t&&e.includes("android"),BlackBerry:/blackberry|bb10/.test(e),iOS:!t&&/ip(?:hone|ad|od)/.test(e),Windows:t||e.includes("iemobile"),any:function(){return r.Android||r.BlackBerry||r.iOS||r.Windows}}),n=!r.Windows&&!/khtml|trident|edge/.test(e)&&e.includes("gecko"),a=!e.includes("opera")&&/msie|trident/.test(e),i=a?function(){var t=/(?:msie\s+|rv:)(\d+\.\d)/.exec(e);return t?Number(t[1]):0}():null,o=e.includes("opera")||e.includes(" opr/"),s=o?function(){var t=new RegExp((/khtml|chrome/.test(e)?"opr":"version")+"\\/(\\d+\\.\\d+)"),r=t.exec(e);return r?Number(r[1]):0}():null;return Object.freeze({userAgent:e,isMobile:r,isGecko:n,isIE:a,ieVersion:i,isOpera:o,operaVersion:s})}(),Has=function(){var e=function(){try{return"function"==typeof document.createElement("audio").canPlayType}catch(e){}return!1}(),t=function(){try{return"Blob"in window&&"File"in window&&"FileList"in window&&"FileReader"in window&&!Browser.isMobile.any()&&(!Browser.isOpera||Browser.operaVersion>=15)}catch(e){}return!1}(),r=function(){try{return"geolocation"in navigator&&"function"==typeof navigator.geolocation.getCurrentPosition&&"function"==typeof navigator.geolocation.watchPosition}catch(e){}return!1}(),n=function(){try{return"MutationObserver"in window&&"function"==typeof window.MutationObserver}catch(e){}return!1}(),a=function(){try{return"performance"in window&&"function"==typeof window.performance.now}catch(e){}return!1}();return Object.freeze({audio:e,fileAPI:t,geolocation:r,mutationObserver:n,performance:a})}(),_ref3=function(){function e(t){if("object"!==("undefined"==typeof t?"undefined":_typeof(t))||null==t)return t;if("function"==typeof t.clone)return t.clone(!0);if(t.nodeType&&"function"==typeof t.cloneNode)return t.cloneNode(!0);var r=void 0;return Array.isArray(t)?r=[]:t instanceof Date?r=new Date(t.getTime()):t instanceof Map?(r=new Map,t.forEach(function(t,n){r.set(n,e(t))})):t instanceof RegExp?r=new RegExp(t):t instanceof Set?(r=new Set,t.forEach(function(t){r.add(e(t))})):r=Object.create(Object.getPrototypeOf(t)),Object.keys(t).forEach(function(n){return r[n]=e(t[n])}),r}function t(e){for(var t=document.createDocumentFragment(),r=document.createElement("p"),n=void 0;null!==(n=e.firstChild);){if(n.nodeType===Node.ELEMENT_NODE){var a=n.nodeName.toUpperCase();switch(a){case"BR":if(null!==n.nextSibling&&n.nextSibling.nodeType===Node.ELEMENT_NODE&&"BR"===n.nextSibling.nodeName.toUpperCase()){e.removeChild(n.nextSibling),e.removeChild(n),t.appendChild(r),r=document.createElement("p");continue}if(!r.hasChildNodes()){e.removeChild(n);continue}break;case"ADDRESS":case"ARTICLE":case"ASIDE":case"BLOCKQUOTE":case"CENTER":case"DIV":case"DL":case"FIGURE":case"FOOTER":case"FORM":case"H1":case"H2":case"H3":case"H4":case"H5":case"H6":case"HEADER":case"HR":case"MAIN":case"NAV":case"OL":case"P":case"PRE":case"SECTION":case"TABLE":case"UL":r.hasChildNodes()&&(t.appendChild(r),r=document.createElement("p")),t.appendChild(n);continue}}r.appendChild(n)}r.hasChildNodes()&&t.appendChild(r),e.appendChild(t)}function r(){try{return document.activeElement||null}catch(e){return null}}function n(e,t,r){var n="object"===("undefined"==typeof e?"undefined":_typeof(e))?e:document.getElementById(e);if(null==n)return null;var a=Array.isArray(t)?t:[t];jQuery(n).empty();for(var i=0,o=a.length;i<o;++i)if(Story.has(a[i]))return new Wikifier(n,Story.get(a[i]).processText().trim()),n;if(null!=r){var s=String(r).trim();""!==s&&new Wikifier(n,s)}return n}function a(e,t,r){return jQuery(document.createElement("span")).addClass("error").attr("title",r).text(L10n.get("errorTitle")+": "+(t||"unknown error")).appendTo(e),!1}function i(e,t){var r=i;switch("undefined"==typeof e?"undefined":_typeof(e)){case"number":if(Number.isNaN(e))return t;break;case"object":if(null===e)return t;if(Array.isArray(e))return e.map(function(e){return r(e,t)}).join(", ");if(e instanceof Set)return[].concat(_toConsumableArray(e)).map(function(e){return r(e,t)}).join(", ");if(e instanceof Map){var n=[].concat(_toConsumableArray(e)).map(function(e){return r(e[0],t)+" ⇒ "+r(e[1],t)}).join("; ");return"( "+n+" )"}return e instanceof Date?e.toLocaleString():"function"==typeof e.toString?e.toString():Object.prototype.toString.call(e);case"function":case"undefined":return t}return String(e)}return Object.freeze(Object.defineProperties({},{clone:{value:e},convertBreaks:{value:t},safeActiveElement:{value:r},setPageElement:{value:n},throwError:{value:a},toStringOrDefault:{value:i}}))}(),clone=_ref3.clone,convertBreaks=_ref3.convertBreaks,safeActiveElement=_ref3.safeActiveElement,setPageElement=_ref3.setPageElement,throwError=_ref3.throwError,toStringOrDefault=_ref3.toStringOrDefault;!function(){function e(e){13!==e.which&&32!==e.which||(e.preventDefault(),jQuery(safeActiveElement()||this).trigger("click"))}function t(e){return function(){var t=jQuery(this);t.is("[aria-pressed]")&&t.attr("aria-pressed","true"===t.attr("aria-pressed")?"false":"true"),e.apply(this,arguments)}}function r(e){return t(function(){jQuery(this).off(".aria-clickable").removeAttr("tabindex aria-controls aria-pressed").not("a,button").removeAttr("role").end().filter("button").prop("disabled",!0),e.apply(this,arguments)})}jQuery.fn.extend({ariaClick:function(n,a){if(0===this.length||0===arguments.length)return this;var i=n,o=a;return null==o&&(o=i,i=undefined),i=jQuery.extend({namespace:undefined,one:!1,selector:undefined,data:undefined,controls:undefined,pressed:undefined,label:undefined},i),"string"!=typeof i.namespace?i.namespace="":"."!==i.namespace[0]&&(i.namespace="."+i.namespace),"boolean"==typeof i.pressed&&(i.pressed=i.pressed?"true":"false"),this.filter("button").prop("type","button"),this.not("a,button").attr("role","button"),this.attr("tabindex",0),null!=i.controls&&this.attr("aria-controls",i.controls),null!=i.pressed&&this.attr("aria-pressed",i.pressed),null!=i.label&&this.attr({"aria-label":i.label,title:i.label}),this.not("button").on("keypress.aria-clickable"+i.namespace,i.selector,e),this.on("click.aria-clickable"+i.namespace,i.selector,i.data,i.one?r(o):t(o)),this}})}(),function(){jQuery.extend({wikiWithOptions:function(e){for(var t=arguments.length,r=Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];if(0!==r.length){var a=document.createDocumentFragment();r.forEach(function(t){return new Wikifier(a,t,e)});var i=[].concat(_toConsumableArray(a.querySelectorAll(".error"))).map(function(e){return e.textContent.replace(/^(?:(?:Uncaught\s+)?Error:\s+)+/,"")});if(i.length>0)throw new Error(i.join("; "))}},wiki:function(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];this.wikiWithOptions.apply(this,[undefined].concat(t))}}),jQuery.fn.extend({wikiWithOptions:function(e){for(var t=arguments.length,r=Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];if(0===this.length||0===r.length)return this;var a=document.createDocumentFragment();return r.forEach(function(t){return new Wikifier(a,t,e)}),this.append(a),this},wiki:function(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];return this.wikiWithOptions.apply(this,[undefined].concat(t))}})}();var Util=function(){function e(e){return Object.freeze(Object.assign(Object.create(null),e))}function t(e){return Object.prototype.toString.call(e).slice(8,-1)}function r(e){var t=void 0;switch("undefined"==typeof e?"undefined":_typeof(e)){case"number":t=e;break;case"string":t=Number(e);break;default:return!1}return!Number.isNaN(t)&&Number.isFinite(t)}function n(e){return"boolean"==typeof e||"string"==typeof e&&("true"===e||"false"===e)}function a(e){return String(e).trim().replace(/[^\w\s\u2013\u2014-]+/g,"").replace(/[_\s\u2013\u2014-]+/g,"-").toLocaleLowerCase()}function i(e){if(null==e)return"";var t=String(e);return t&&h.test(t)?t.replace(p,function(e){return g[e]}):t}function o(e){if(null==e)return"";var t=String(e);return t&&y.test(t)?t.replace(m,function(e){return v[e.toLowerCase()]}):t}function s(e,t){var r=String(e),n=Math.trunc(t),a=r.charCodeAt(n);if(Number.isNaN(a))return{char:"",start:-1,end:-1};var i={char:r.charAt(n),start:n,end:n};if(a<55296||a>57343)return i;if(a>=55296&&a<=56319){var o=n+1;if(o>=r.length)return i;var s=r.charCodeAt(o);return s<56320||s>57343?i:(i.char=i.char+r.charAt(o),i.end=o,i)}if(0===n)return i;var u=n-1,l=r.charCodeAt(u);return l<55296||l>56319?i:(i.char=r.charAt(u)+i.char,i.start=u,i)}function u(){return(Has.performance?performance:Date).now()}function l(e){var t=/^([+-]?(?:\d*\.)?\d+)([Mm]?[Ss])$/,r=t.exec(String(e));if(null===r)throw new SyntaxError('invalid time value syntax: "'+e+'"');var n=Number(r[1]);if(/^[Ss]$/.test(r[2])&&(n*=1e3),Number.isNaN(n)||!Number.isFinite(n))throw new RangeError('invalid time value: "'+e+'"');return n}function c(e){if("number"!=typeof e||Number.isNaN(e)||!Number.isFinite(e)){var t=void 0;switch("undefined"==typeof e?"undefined":_typeof(e)){case"string":t='"'+e+'"';break;case"number":t=String(e);break;default:t=Object.prototype.toString.call(e)}throw new Error("invalid milliseconds: "+t)}return e+"ms"}function d(e){if(!e.includes("-"))switch(e){case"bgcolor":return"backgroundColor";case"float":return"cssFloat";default:return e}var t="-ms-"===e.slice(0,4)?e.slice(1):e;return t.split("-").map(function(e,t){return 0===t?e:e.toUpperFirst()}).join("")}function f(e){var t=document.createElement("a"),r=Object.create(null);t.href=e,t.search&&t.search.replace(/^\?/,"").splitOrEmpty(/(?:&(?:amp;)?|;)/).forEach(function(e){var t=e.split("="),n=_slicedToArray(t,2),a=n[0],i=n[1];r[a]=i});var n=t.host&&"/"!==t.pathname[0]?"/"+t.pathname:t.pathname;return{href:t.href,protocol:t.protocol,host:t.host,hostname:t.hostname,port:t.port,path:""+n+t.search,pathname:n,query:t.search,search:t.search,queries:r,searches:r,hash:t.hash}}var p=/[&<>"'`]/g,h=new RegExp(p.source),g=Object.freeze({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;","`":"&#96;"}),m=/&(?:amp|#38|#x26|lt|#60|#x3c|gt|#62|#x3e|quot|#34|#x22|apos|#39|#x27|#96|#x60);/gi,y=new RegExp(m.source,"i"),v=Object.freeze({"&amp;":"&","&#38;":"&","&#x26;":"&","&lt;":"<","&#60;":"<","&#x3c;":"<","&gt;":">","&#62;":">","&#x3e;":">","&quot;":'"',"&#34;":'"',"&#x22;":'"',"&apos;":"'","&#39;":"'","&#x27;":"'","&#96;":"`","&#x60;":"`"});return Object.freeze(Object.defineProperties({},{toEnum:{value:e},toStringTag:{value:t},isNumeric:{value:r},isBoolean:{value:n},slugify:{value:a},escape:{value:i},unescape:{value:o},charAndPosAt:{value:s},fromCssTime:{value:l},toCssTime:{value:c},fromCssProperty:{value:d},parseUrl:{value:f},now:{value:u},random:{value:Math.random},entityEncode:{value:i},entityDecode:{value:o},evalExpression:{value:function(){return Scripting.evalJavaScript.apply(Scripting,arguments)}},evalStatements:{value:function(){return Scripting.evalJavaScript.apply(Scripting,arguments)}}}))}(),SimpleAudio=function(){function e(){return g}function t(e){g=!!e,l("mute",g)}function r(){return p}function n(e){p=Math.clamp(e,.2,5),l("rate",p)}function a(){return h}function i(e){h=Math.clamp(e,0,1),l("volume",h)}function o(){l("stop")}function s(e,t){if("function"!=typeof t)throw new Error("callback parameter must be a function");f.set(e,t)}function u(e){f.delete(e)}function l(e,t){f.forEach(function(r){return r(e,t)})}function c(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];return new(Function.prototype.bind.apply(m,[null].concat(t)))}function d(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];return new(Function.prototype.bind.apply(y,[null].concat(t)))}var f=new Map,p=1,h=1,g=!1,m=function(){function e(t){if(_classCallCheck(this,e),Array.isArray(t))this._create(t);else{if(!(t instanceof e))throw new Error("sources parameter must be an array of either URLs or source objects");this._copy(t)}}return _createClass(e,[{key:"_create",value:function(t){if(!Array.isArray(t)||0===t.length)throw new Error("sources parameter must be an array of either URLs or source objects");var r=/^data:\s*audio\/([^;,]+)\s*[;,]/i,n=/\.([^.\/\\]+)$/,a=e.getType,i=[],o=document.createElement("audio");if(t.forEach(function(e){var t=null;switch("undefined"==typeof e?"undefined":_typeof(e)){case"string":var s=void 0;if("data:"===e.slice(0,5)){if(s=r.exec(e),null===s)throw new Error("source data URI missing media type")}else if(s=n.exec(Util.parseUrl(e).pathname),null===s)throw new Error("source URL missing file extension");var u=a(s[1]);null!==u&&(t={src:e,type:u});break;case"object":if(null===e)throw new Error("source object cannot be null");if(!e.hasOwnProperty("src"))throw new Error('source object missing required "src" property');
