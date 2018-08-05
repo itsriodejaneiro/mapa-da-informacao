@@ -33,6 +33,7 @@ function changeSection(rel){
 	site_section = rel
 
 	sound_over.play()
+	doScroll(0)
 }
 
 // $(window).resize(function(e){

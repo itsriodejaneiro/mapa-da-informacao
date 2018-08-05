@@ -1818,6 +1818,37 @@ a:hover {
     .site .historias iframe {
       width: 100vw;
       height: calc(100vh - 76px); }
+  .site .sobre .content small {
+    font-family: 'Fira Mono', monospaced;
+    opacity: 0.6; }
+  .site .sobre-footer {
+    font-family: 'Fira Mono', monospaced;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 3em 0; }
+    .site .sobre-footer .itslogo {
+      display: block; }
+      .site .sobre-footer .itslogo img {
+        transition: all 0.2s; }
+        .site .sobre-footer .itslogo img:hover {
+          transform: scale(1.1, 1.1); }
+    @media screen and (min-width: 769px), print {
+      .site .sobre-footer img {
+        margin-right: 100px; } }
+    .site .sobre-footer h3 {
+      font-size: 0.7em;
+      line-height: 1.2em;
+      margin-bottom: 0;
+      color: #ffc28f; }
+    .site .sobre-footer ul {
+      list-style: none;
+      margin: 0.5em 0;
+      padding: 0; }
+      @media screen and (min-width: 769px), print {
+        .site .sobre-footer ul {
+          margin-right: 50px; } }
+    .site .sobre-footer li {
+      font-size: 0.75em;
+      line-height: 1.5em; }
 
 .landing {
   width: 100vw;

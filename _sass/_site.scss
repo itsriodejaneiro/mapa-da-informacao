@@ -110,4 +110,54 @@
 		}
 	}
 
+	.sobre .content small {
+		//color: #ffc28f;
+		font-family: 'Fira Mono', monospaced;
+		opacity: 0.6;
+	}
+
+	.sobre-footer {
+		
+		font-family: 'Fira Mono', monospaced;
+		background: rgba(0,0,0,0.1);
+		padding: 3em 0;
+		
+		.itslogo {
+			display: block;
+			img {
+				transition: all 0.2s;
+				&:hover {
+					transform: scale(1.1,1.1);
+				}
+			}
+		}
+
+		img {
+			@include tablet {
+				margin-right: 100px;
+			}
+		}
+
+		h3 {
+			font-size: 0.7em;
+			line-height: 1.2em;
+			margin-bottom: 0;
+			color: #ffc28f;
+		}
+		
+		ul {
+			list-style: none;
+			margin: 0.5em 0;
+			padding: 0;
+			@include tablet {
+				margin-right: 50px;
+			}
+		}
+
+		li {
+			font-size: 0.75em;
+			line-height: 1.5em;
+		}
+	}
+
 }

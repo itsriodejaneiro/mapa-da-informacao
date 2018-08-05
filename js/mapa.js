@@ -652,12 +652,6 @@ function closeInfo(){
 
 }
 
-function doScroll(top){
-
-	$('html, body').animate({scrollTop: top}, 300)
-
-}
-
 d3.select(".mapa-info-close").on("click",function(e){
 
 	d3.event.preventDefault()
