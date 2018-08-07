@@ -1818,6 +1818,19 @@ a:hover {
     .site .historias iframe {
       width: 100vw;
       height: calc(100vh - 76px); }
+  .site .video-embed {
+    margin: 2em 0;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%; }
+    .site .video-embed iframe, .site .video-embed object, .site .video-embed embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
   .site .sobre .content small {
     font-family: 'Fira Mono', monospaced;
     opacity: 0.6; }
