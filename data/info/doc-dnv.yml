@@ -1,7 +1,0 @@
-texto: O SINASC é um sistema de informação sobre que capta informações sobre os nascidos no Brasil, capturando informações essenciais sobre as condições e características dos nascimentos para geração das estatísticas vitais. Uma das vias do documento emitido pelo SINASC nos estabelecimentos de saúde onde acontecem nascimentos é entregue à família, a Declaração de Nascido Vivo - DNV. Esse documento é exigido como documento originário para o Registro Civil de Nascimento nos Cartórios de Registro Civil de Pessoas Naturais.
-
-canais:
-	- A DNV é emitida nas unidades de saúde onde ocorrem nascimentos
-
-info:
-	- http://www.brasil.gov.br/cidadania-e-justica/2012/06/declaracao-de-nascido-vivo-e-emitida-apos-o-parto

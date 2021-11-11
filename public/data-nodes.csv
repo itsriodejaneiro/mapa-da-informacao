@@ -1,0 +1,118 @@
+tipo,id,nome,nomecompleto
+base,crc,CRC,CRC. Central de Informações do Registro Civil
+base,ic,ID Civil,Identidade Civil
+base,cpf,CPF,CPF. Cadastro de Pessoa Física
+base,ctps,CTPS,CTPS. Carteira de Trabalho e Previdência Social
+base,renach,RENACH,Registro Nacional de Condutores Habilitados
+base,passaporte,Passaporte,Passaporte - Documento de Viagem
+base,rani,RANI,RANI. Registro Administrativo de Nascimento de Indígena
+base,cam,CAM,CAM. Certificado de alistamento militar
+base,militar,Militar,Base de dados militar
+base,nis,NIS,NIS. Número de Informação Social
+base,icn,ICN,ICN. Identidade Civil Nacional
+base,cadunico,CadÚnico,CadÚnico. Cadastro Único para Programas Sociais
+base,cadsus,CadSUS,CadSUS. Cartão Nacional de Saúde
+base,sinasc,SINASC,SINASC. Sistema de Informações sobre Nascidos Vivos
+base,sim,SIM,SIM. Sistema de Informações de Mortalidade
+base,sirc,SIRC,SIRC. Sistema Nacional de Informações de Registro Civil
+base,te,Tit.Eleitor,Título de Eleitor
+base,pescador,Cad.Pescador,Cadastro do Pescador Profissional Artesanal
+base,cartprofissional,C.Profissional,Carteira Profissional
+base,rne,RNE,RNE. Registro Nacional de Estrangeiros
+doc,certdigital,Cert.Digital, Certificado Digital
+doc,crcnasc,Cert.Nascimento,Certidão de Nascimento
+doc,crccas,Cert.Casamento,Certidão de Casamento
+doc,crcobt,Cert.Óbito,Certidão de Óbito
+doc,cns,CNS,CNS. Cartão Nacional de Saúde
+doc,rg,RG,Registro Geral
+doc,doccpf,CPF,Cadastro de Pessoa Física
+doc,ctpsdoc,Cart.Trabalho,Carteira de Trabalho
+doc,cnhdoc,CNH,Carteira Nacional de Habilitação
+doc,dnv,DNV,DNV. Declaração de Nascido Vivo
+doc,do,DO,Declaração de Óbito
+doc,certreservista,Reservista,Certificado de Reservista
+doc,idmilitar,Id.Militar,Carteira de Identidade Militar
+doc,ranidoc,RANI,Registro Administrativo de Nascimento de Indígena
+doc,passaportedoc,Passaporte,Passaporte - Documento de Viagem
+doc,tedoc,Tit.Eleitor,Título de Eleitor
+doc,cart_oab,Cart.OAB,Carteira da OAB
+doc,cart_crm,Cart.CRM,Carteira da CRM
+doc,cart_crea,Cart.CREA,Carteira da CREA
+doc,cie,CIE,CIE. Cédula de Identidade para Estrangeiros
+app,app_cpf,App Pessoa Física,
+app,app_ctps,CTPS Digital,
+app,app_cnhdigital,CNH Digital,
+app,app_fgts,FGTS,
+app,app_caixa_trabalhador,Caixa Trabalhador,
+app,app_caixa_bolsafamilia,Bolsa Família CAIXA,
+app,app_idjovem,ID Jovem,
+app,dni,DNI,DNI - Documento Nacional de Identidade
+app,digisus,Meu digiSUS,
+orgao,receita,Receita,Receita Federal
+orgao,caixa,Caixa,Caixa Econômica Federal
+orgao,cartorios,Cartórios,
+orgao,trabalho,Min.Trabalho,Ministério do Trabalho
+orgao,denatran,Denatran,DENATRAN. Departamento Nacional de Trânsito
+orgao,policiafederal,P.Federal,Polícia Federal
+orgao,funai,Funai,
+orgao,mindefesa,Min.Defesa,Ministério da Defesa
+orgao,minsaude,Min.Saúde,Ministério da Saúde
+orgao,tse,TSE,Tribunal Superior Eleitoral
+orgao,mindessoc,Min.Des.Social,Ministério do Desenvolvimento Social
+orgao,iie,Inst.Ident.,Institutos de Identificação Estaduais
+orgao,minagro,Min.Agricultura,MAPA. Ministério da Agricultura Pecuária e Abastecimento
+orgao,entclassegestao,Ent.Classes,Entidades de Representação de Classe
+orgao,iti,ITI,ITI. Instituto Nacional de Tecnologia da Informação
+ti,serpro,Serpro,Serpro. Serviço de Processamento de Dados Federal
+ti,dataprev,Dataprev,
+ti,datasus,DataSUS,DataSUS. Ministério da Saúde
+ti,arpen,Arpen,Arpen Brasil. Associação Nacional dos Registradores de Pessoas Naturais
+ti,caixa--2,Caixa, Caixa Econômica Federal
+ti,iie--2,Inst.Ident.,Institutos de Identificação Estaduais
+ti,tse--2,TSE,Tribunal Superior Eleitoral
+ti,funai--2,Funai,
+ti,mindefesa--2,Min.Defesa,Ministério da Defesa
+ti,minagro--2,Min.Agricultura,"MAPA. Ministério da Agricultura Pecuária e Abastecimento"
+ti,entclasseti,Ent.Classes,Entidades de Representação de Classe
+ti,policiafederal--2,P.Federal,Polícia Federal
+ti,iti--2,ITI,ITI. Instituto Nacional de Tecnologia da Informação
+politica,bolsa_familia,Programa Bolsa Família,
+politica,minhacasa,Minha Casa Minha Vida,
+politica,bolsaverde,Bolsa Verde,
+politica,pol1,Tarifa Social de Energia Elétrica,
+politica,pol2,Isenção de taxa para concurso público,
+politica,pol3,Facultativo de Baixa Renda,
+politica,pol4,Água para todos,
+politica,pol5,Cisternas,
+politica,pol6,Reforma agrária,
+politica,pol7,Ater,
+politica,pol8,Programa Nacional do Crédito Fundiário,
+politica,pol9,Serviços Socioassistenciais,
+politica,pol10,Programa de Erradicação do Trabalho Infantil,
+politica,pol11,Brasil Alfabetizado,
+politica,pol12,Carteira do Idoso,
+politica,pol13,Telefone Popular,
+politica,polrf1,ADUANA – Importação e exportação de bens,
+politica,polrf2,Cálculo e emissão de documentos de arrecadação (DARF e GPS),
+politica,polrf3,Restituição do Imposto de Renda da Pessoa Física (IRPF),
+politica,polrf4,Consulta sobre a Classificação Fiscal de Mercadorias,
+politica,polrf5,Declarações,
+politica,polrf6,e-Social - Empregador Doméstico,
+politica,polrf7,Extrato completo do processamento da Declaração do Imposto de Renda da Pessoa Física (DIRPF),
+politica,polrf8,Malha Fiscal – Atendimento,
+politica,polrf9,Parcelamento Geral de Débitos,
+politica,polrf10,Pesquisa de Situação Fiscal, Cadastral e Relatório de Restrições,
+politica,polrf11,Simples Nacional,
+politica,polsaude1,Programa Farmácia Popular do Brasil,
+politica,polsaude2,Programa Mais Médicos,
+politica,polsaude3,Rede Cegonha,
+politica,polsaude4,Sistema Nacional de Transplante,
+politica,polsaude5,UPA 24h - Unidade de Pronto Atendimento,
+politica,polsaude6,Programa Saúde na Escola (PSE),
+politica,polsaude7,Programa Nacional de Imunizações (PNI),
+politica,polsaude8,Promoção da Doação Voluntária de Sangue,
+politica,polsaude9,Política Nacional de Saúde Bucal (Brasil Sorridente),
+politica,polsaude10,PMAQ-AB,
+politica,polsaude11,Melhor em Casa - Serviço de Atenção Domiciliar,
+politica,polsaude12,Estratégia Saúde da Família (ESF),
+politica,polsaude13,Atenção Integral à Saúde das Pessoas no Sistema Prisional,

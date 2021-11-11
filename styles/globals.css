@@ -1,0 +1,382 @@
+@font-face {
+  font-family: "Fira Mono Regular";
+  src: url("/fonts/Fira_Mono/FiraMono-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PT Sans Regular";
+  src: url("/fonts/PT_Sans_Narrow/PTSansNarrow-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Sans Regular";
+  src: url("/fonts/Fira_Sans/FiraSans-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Sans Thin";
+  src: url("/fonts/Fira_Sans/FiraSans-Thin.ttf");
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Sans SemiBold";
+  src: url("/fonts/Fira_Sans/FiraSans-SemiBold.ttf");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+html {
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; 
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Fira Sans Regular";
+  font-size: 16px;
+  line-height: 1.6em;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a:hover {
+  color: #ddd;
+  text-decoration: underline; 
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px; 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5); 
+}
+
+/* MAPA */
+.mapa {
+  position: relative;
+  overflow: hidden;
+  margin: 40px auto;
+}
+
+.mapa-viewport,
+.mapa-vis {
+  font-family: "Fira Sans Regular", monospace;
+  width: calc(100vw - 20px);
+  height: 75vw;
+  max-width: 100%;
+  transition: all 0.3s;
+  overflow: hidden; 
+  position: relative;
+}
+
+.show-info .mapa-viewport,
+.show-info .mapa-vis {
+  width: calc(100vw - 320px);
+  height: calc(75vw - 225px); 
+}
+
+.mapa-info {
+  position: fixed;
+  width: 300px;
+  top: 100px;
+  right: 0;
+  transform: translate(300px, 0);
+  transition: all 0.3s;
+  padding: 20px 30px 30px;
+  box-sizing: border-box;
+  background: rgba(38,35,47, 1);
+  max-height: calc(100vh - 120px);
+  overflow: auto; 
+}
+
+.show-info .mapa-info {
+  transform: translate(-20px, 0); 
+}
+
+.mapa-info-close {
+  float: right;
+  font-size: 30px;
+  transform: rotate(45deg); 
+}
+
+.mapa-info-close:hover {
+  text-decoration: none;
+}
+
+.mapa-info-content {
+  font-weight: 200;
+  clear: both;
+  margin-top: 15px;
+  color: rgba(255, 255, 255, 0.7); 
+}
+
+.mapa-info-mobile {
+  padding: 0 30px 30px; 
+}
+
+.mapa-info-mobile,
+.mapa-info-content {
+  font-size: 0.75em;
+  line-height: 1.5em;
+  margin: 0;
+  font-family: "Fira Sans Regular", monospace;
+}
+
+.mapa-info-mobile a,
+.mapa-info-content a {
+  color: rgba(255, 255, 255, 0.7); 
+}
+
+.mapa-info-mobile h3,
+.mapa-info-content h3 {
+  font-weight: 600;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  color: #fff;
+  margin: 1em 0;
+}
+
+.mapa-info-mobile h4,
+.mapa-info-content h4 {
+  font-weight: 600;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  color: #fff;
+  margin: 1em 0 .25em;
+}
+
+.mapa-info-mobile strong,
+.mapa-info-content strong {
+  font-weight: 400; 
+}
+
+.mapa-info-mobile ul,
+.mapa-info-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; 
+}
+
+.mapa-info-mobile li,
+.mapa-info-content li {
+  font-size: 0.75em;
+  line-height: 1.5em; 
+}
+
+.mapa-info-mobile .info li,
+.mapa-info-content .info li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  list-style-position: inside; 
+}
+
+.mapa-info-mobile .loading,
+.mapa-info .loading {
+  display: none;
+  margin-top: 10px; 
+}
+
+.mapa-info-mobile.is-loading .loading,
+.mapa-info.is-loading .loading {
+  display: block; 
+}
+
+/* MAPA VIS D3 */
+.vis-background {
+  fill: transparent; 
+}
+
+.legenda .legenda-line {
+  stroke: #fff;
+  stroke-opacity: 0.05;
+  stroke-width: 2px; 
+}
+
+.legenda .legenda-text {
+  fill: #fff;
+  opacity: 0.7;
+  font-size: 0.75em;
+  cursor: pointer; 
+}
+
+.links path {
+  stroke: #fff;
+  stroke-opacity: 0.1;
+  stroke-width: 1px;
+  fill: none;
+  /*transition: stroke-opacity 0.2s, stroke-width 0.2s;*/ 
+}
+
+.highlight path {
+  stroke-opacity: 0.05; 
+}
+
+.show-info path {
+  stroke-opacity: 0; }
+
+.show-info.highlight path.highlight {
+  stroke-opacity: 0.1; 
+}
+
+.show-info path.show,
+.show-info path.show.highlight,
+.highlight path.highlight {
+  stroke-opacity: 0.2;
+  stroke-width: 2px; 
+}
+
+.node circle {
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.node circle:hover {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 4px;
+  transform: scale(1.2); 
+}
+
+.show-info .node circle {
+  opacity: 0.3; 
+}
+
+.highlight .node.highlight circle,
+.show-info .node.show circle {
+  opacity: 1; 
+}
+
+.label {
+  font-size: 0.6875em;
+  fill: #fff;
+  pointer-events: none;
+  transition: opacity 0.3s; }
+
+.label.node-politica,
+.label.node-app,
+.label.node-servico,
+.show-info .label,
+.show-info .label.show.node-politica,
+.show-info .label.show.node-app,
+.show-info .label.show.node-servico {
+  opacity: 0; 
+}
+
+.show-info .label.show {
+  opacity: 1; 
+}
+
+.label.hidden {
+  opacity: 0; 
+}
+
+/* TOOLTIP */
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 300px;
+  text-align: center;
+  margin-left: -150px;
+  display: none;
+}
+
+.tooltip.show {
+  opacity: 1;
+  display: block; 
+}
+
+.tooltip-wrapper {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 12px 20px 10px 14px;
+  display: inline-block; 
+}
+
+.tooltip-title {
+  font-size: 0.65em;
+  line-height: 1.2em;
+  text-align: left;
+  text-transform: uppercase;
+  margin-bottom: 4px; 
+}
+
+.tooltip-text {
+  font-size: 0.75em;
+  line-height: 1.2em;
+  text-align: left;
+  line-height: 1.4em; 
+}
+
+.tooltip .dud {
+  opacity: 0.3; 
+}
+
+@media screen and (min-width: 1441px) {
+  body {
+    font-size: 20px; 
+  }
+  .mapa-vis {
+    font-size: 14px; 
+  }
+  .show-info .mapa-viewport,
+  .show-info .mapa-vis {
+    width: calc(100vw - 520px);
+    height: calc(75vw - 375px); 
+  }
+  .mapa-info {
+    width: 500px;
+    transform: translate(500px, 0); 
+  } 
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px; 
+  }
+  .show-info .mapa-viewport,
+  .show-info .mapa-vis {
+    width: calc(100vw - 20px);
+    height: 75vw; 
+  }
+  .mapa-info {
+    background: #272430; 
+  } 
+}

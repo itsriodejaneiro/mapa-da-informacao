@@ -1,11 +1,42 @@
-# Mapa da Informação
+<h1 align="center">
+    :clipboard: Mapa da informação
+</h1>
 
-O Brasil precisa de um mapa do recurso mais importante para o desenvolvimento econômico no mundo contemporâneo: a informação. No setor público, o tratamento das informações do cidadão é frequentemente caótico. Temos dezenas de sistemas que não conversam entre si, dados são perdidos constantemente, silos informacionais são mal utilizados e assim por diante.
+## :bulb: Deploy
 
-A primeira versão do mapa enfatiza os silos de informações relacionados aos documentos pessoais, que são fundamentais no relacionamento do Cidadão com o Estado.
+- [Access website](https://mapa-da-informacao.herokuapp.com/)
 
-Estão representadas seis camadas do ecossistema dos documentos no Brasil: os órgãos gestores, os operadores de tecnologia da informação, as bases de dados, os aplicativos (apps), os documentos e os serviços e políticas relacionados.
+## :bookmark: About
+Mapa da Informação is a tool made to help clarify the structure of the document system of Brazil.
 
-O mapeamento visa auxiliar na discussão melhor informada sobre documentos, desburocratização, acesso e qualidade dos serviços públicos no Brasil.
 
-O [Mapa da Informação](http://mapadainformacao.org.br) é um projeto do [Instituto de Tecnologia e Sociedade do Rio](http://itsrio.org) (ITS Rio).
+## :rocket: Technologies
+
+- [Node.js](https://nodejs.org/en/)
+- [ReactJS](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+
+
+## :boom: How to execute
+
+- ### **Prerequisites**
+
+  - It is **necessary** to have **[Node.js](https://nodejs.org/en/)** installed
+  - It is **necessary** to have **[Git](https://git-scm.com/)** installed
+  - Also, it is **necessary** to have a package manager, either **[NPM](https://www.npmjs.com/)** or **[Yarn](https://yarnpkg.com/)**.
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/grama-cc/mapa-informacao.git 
+```
+
+2. Executing the project:
+
+```sh
+$ cd mapa-informacao
+# Installing project dependencies.
+$ npm install # ou yarn install
+# Running the project
+$ npm run dev # ou yarn dev
+```
