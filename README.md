@@ -4,7 +4,7 @@
 
 ## :bulb: Deploy
 
-- [Access website](https://mapa-da-informacao.herokuapp.com/)
+- [Access website](http://mapadainformacao.com.br/)
 
 ## :bookmark: About
 Mapa da Informação is a tool made to help clarify the structure of the document system of Brazil.
@@ -28,15 +28,24 @@ Mapa da Informação is a tool made to help clarify the structure of the documen
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/grama-cc/mapa-informacao.git 
+git clone https://github.com/itsriodejaneiro/mapa-da-informacao.git
 ```
 
 2. Executing the project:
 
 ```sh
-$ cd mapa-informacao
+$ cd mapa-da-informacao
 # Installing project dependencies.
 $ npm install # ou yarn install
 # Running the project
 $ npm run dev # ou yarn dev
 ```
+
+3. Staging
+Heroku: mapa-da-informacao
+https://mapa-da-informacao.herokuapp.com/
+
+
+4. Production
+Heroku: prod-mapa-da-informacao
+http://mapadainformacao.com.br/
