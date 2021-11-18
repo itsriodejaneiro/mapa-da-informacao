@@ -50,6 +50,7 @@ function Chart({ data, query, baseUrl }) {
       }
 
       function node_size(d){
+				console.log(d)
       	return temp[d.tipo].size + d.weight
       }
       
@@ -69,16 +70,6 @@ function Chart({ data, query, baseUrl }) {
       	.domain([1, 4])
       	.range(['#fcd9b2', '#e07145'])
       	.interpolate(d3.interpolateHcl)
-      
-      // LEGENDAS UI
-      // const legendas = [
-      // 	{ y:   5, color: paleta[0], text: 'Documentos', desc: "Documentos de identificação mais relevantes para o cidadão"},
-      // 	{ y: 175, color: paleta[1], text: 'Aplicativos', desc: "O Brasil vive uma inflação de aplicativos móveis de identidade. Os principais constam neste mapa"},
-      // 	{ y: 240, color: paleta[2], text: 'Bases', desc: "Repositórios de dados pessoais mais representativos e presentes no cotidiano do cidadão"},
-      // 	{ y: 500, color: paleta[3], text: 'Operadores de TI', desc: "Instituições responsáveis pela sustentação operacional de soluções tecnológicas para os órgãos gestores"},
-      // 	{ y: 660, color: paleta[4], text: 'Gestão', desc: "Órgãos que representam os mais importantes gestores de sistemas de identificação ou cadastros governamentais"},
-      // 	{ y: 820, color: paleta[5], text: 'Serviços e Políticas Públicas', desc: "Lista não exaustiva de políticas públicas e serviços atrelados à rede mapeada"}
-      // ]
 
 			const legendas = data.categories
       const legendas_g = viewport.append("g")
@@ -118,19 +109,21 @@ function Chart({ data, query, baseUrl }) {
       d3.json(url, function (json) {
       	const category = json.categories
       	const mapping = json.node_mapping
+
+				// console.log(mapping)
       
-      	category.map(function(nodes){
+      	category.map(function(nodes, idx){
       		const node = nodes.nodes
       		node.map(function(item, index){
       			array_node.push({
       				id: item.id,
       				nome: item.label,
       				nomecompleto: item.title,
-      				tipo: nodes.order,
+      				tipo: nodes.order ? nodes.order : idx,
       				tipo_label: nodes.title,
       				decription: item.text,
       				x: item.x_position,
-      				y: item.y_position
+      				y: item.y_position,
       			})
       		})
       	})
@@ -147,7 +140,8 @@ function Chart({ data, query, baseUrl }) {
 	    			base: links.source.id,
 	    			relation: result[0].tipo,
 	    			source: links.source.id,
-	    			target: links.target.id
+	    			target: links.target.id,
+						context: links.context
 	    		})
 	    	})
 			
@@ -156,8 +150,8 @@ function Chart({ data, query, baseUrl }) {
 	    	const _linksori = []
 			
 	    	_relations.map(function(d){
-	    		_links.push({base: d.base, source: d.source, relation: d.relation, target: d.target})	
-	    		_linksori.push({base: d.base, source: d.source, relation: d.relation, target: d.target})	
+	    		_links.push({base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
+	    		_linksori.push({base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
 	    	})
 
 				const k = {
@@ -183,7 +177,9 @@ function Chart({ data, query, baseUrl }) {
 					const arr = _.filter(_linksori, function(o) { return o.target  == d.id || o.source  == d.id })
 				
 					d.color = node_color(d.tipo)
+
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
+					d.context = _.uniq(_.map(arr, 'context'))
 				
 					if(d.tipo == 3){
 						const arr2 = _.filter(arr, function(o) { return o.relation == 4 })
@@ -206,6 +202,7 @@ function Chart({ data, query, baseUrl }) {
 					})
 				})
 				// MULTIPLE LINKS: END
+
 				graph.nodes = _nodes
 				graph.links = _links
 				graph.data = {}
@@ -230,7 +227,7 @@ function Chart({ data, query, baseUrl }) {
 				nodes.enter()
 					.append("g")
 					.attr("class", function(d) {
-						return "node node-" + d.id + " " + d.rel_ids.join(" ")
+						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + "node-" + d.context.join(" node-")
 					})
 					.attr('node_id', function(d) {
 						return d.id;
@@ -249,7 +246,7 @@ function Chart({ data, query, baseUrl }) {
 				labels.enter()
 					.append("g")
 					.attr("class", function(d) {
-						return "label node-" + d.tipo + " label-" + d.id + " " + d.rel_ids.join(" ")
+						return "label node-" + d.tipo + " label-" + d.id + " " + d.rel_ids.join(" ") + " " + "label-" + d.context.join(" label-")
 					})
 					.attr('label_id', function(d) {
 						return d.id;
@@ -278,7 +275,7 @@ function Chart({ data, query, baseUrl }) {
 					.append("path")
 					.attr("class", "link")
 					.attr("class", function(d) {
-						return d3.select(this).attr("class") + ' link-' + d.base
+						return d3.select(this).attr("class") + ' link-' + d.base  + " " + "link-" + d.context
 					})
 					.attr("opacity", 0)
 					.transition(t)
@@ -410,10 +407,13 @@ function Chart({ data, query, baseUrl }) {
 				if(_.indexOf([0, 1, 2, 3, 4, 5], d.tipo) != -1){ // 'base','doc','orgao','ti'
 					text.classed('hidden',true)
 				}
+
+				console.log(d)
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', true)
-				_.forEach(d.rel_ids, function(id){
+				// _.forEach(d.rel_ids, function(id){
+				_.forEach(d.context, function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
 					d3.selectAll('.node.node-' + id).classed('highlight',true)
 				})
@@ -463,7 +463,8 @@ function Chart({ data, query, baseUrl }) {
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', false)
-				_.forEach(d.rel_ids, function(id){
+				// _.forEach(d.rel_ids, function(id){
+				_.forEach(d.context, function(id){
 					d3.selectAll('.link').classed('highlight', false)
 					d3.selectAll('.node').classed('highlight', false)
 				})
@@ -481,7 +482,9 @@ function Chart({ data, query, baseUrl }) {
 				if(current_id == d.id){
 					closeInfo()
 				} else {
-					showInfo(d.tipo, d.id)
+					showInfo(d.tipo, d.id, d.context)
+
+					console.log(d.tipo, d.id)
 					// ga('send', 'event', 'node', 'click', d.tipo + " - " + d.nomecompleto) 
 				}
 			}
@@ -489,10 +492,12 @@ function Chart({ data, query, baseUrl }) {
 			// INFO PANEL
 			let current_id = null
 
-			function showInfo(tipo, id) {
+			function showInfo(tipo, id, context) {
 				const w = $(window).width()
 				const vis = d3.select(".mapa")
 				vis.classed("show-info", true)
+
+				// console.log(tipo, id, context)
 			
 				// old
 				d3.selectAll('.link.show').classed('show', false)
@@ -501,12 +506,16 @@ function Chart({ data, query, baseUrl }) {
 			
 				// new 
 				const arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
-				const bases = _.uniq(_.map(arr,'base'))
+				const bases = _.uniq(_.map(arr,'context'))
+
+				// "link-" + d.context
 			
 				_.forEach(bases, function(base){
-					d3.selectAll('.link.link' + base).classed('show', true)
-					d3.selectAll('.node.node' + base).classed('show', true)
-					d3.selectAll('.label.label' + base).classed('show', true)
+				// _.forEach(bases, function(base){
+					console.log(base)
+					d3.selectAll('.link.link-' + base).classed('show', true)
+					d3.selectAll('.node.node-' + base).classed('show', true)
+					d3.selectAll('.label.label-' + base).classed('show', true)
 				})
 			
 				const info = w < 768 ? d3.select('.mapa-info-mobile') : d3.select('.mapa-info')

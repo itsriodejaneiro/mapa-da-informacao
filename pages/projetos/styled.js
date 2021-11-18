@@ -59,6 +59,9 @@ export const SingleProjectWrapper = styled.section`
 	p {
 		margin: 0 0 40px;
 	}
+	div {
+		color: #fff;
+	}
 	@media(max-width: 800px) {
 	  max-width: 100%;
 		padding: 150px 30px 0;
