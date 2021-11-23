@@ -9,7 +9,7 @@ const nextConfig = {
     ]
   },
   env: {
-    NODE_ENV: process.env.NODE_ENV,
+    STATUS: process.env.NODE_ENV,
   },
   reactStrictMode: true,
 }
