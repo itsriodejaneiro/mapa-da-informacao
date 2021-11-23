@@ -2,8 +2,6 @@ import axios from "axios";
 
 let url = process.env.STATUS == 'production' ? "https://api.mapadainformacao.com.br/" : "https://staging-mapa-da-informacao-api.herokuapp.com/"
 
-console.log(url)
-
 class Api {
   
   constructor() {

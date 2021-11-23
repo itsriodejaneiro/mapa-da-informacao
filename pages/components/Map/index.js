@@ -161,7 +161,7 @@ function Chart({ data, query, baseUrl }) {
 						// console.log( item.label, index, space, nodes )
 
 
-						// Colocar identificador do index de cada coluna aqui
+						// TODO: Colocar identificador do index de cada coluna aqui
 
 
 						
