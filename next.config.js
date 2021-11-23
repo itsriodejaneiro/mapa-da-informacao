@@ -8,6 +8,9 @@ const nextConfig = {
       'mapa-da-informacao-bucket.s3.sa-east-1.amazonaws.com',
     ]
   },
+  env: {
+    NODE_ENV: process.env.NODE_ENV,
+  },
   reactStrictMode: true,
 }
 
