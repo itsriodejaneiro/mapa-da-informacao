@@ -29,6 +29,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="icon" href="/favicon.png" />
           <meta name="description" content="mapa da informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro" />
           <meta
             name="viewport"

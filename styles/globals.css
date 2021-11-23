@@ -358,7 +358,7 @@ a:hover {
   }
   .show-info .mapa-viewport,
   .show-info .mapa-vis {
-    width: calc(100vw - 520px);
+    width: calc(100vw - 550px);
     height: calc(75vw - 375px); 
   }
   .mapa-info {
@@ -373,7 +373,7 @@ a:hover {
   }
   .show-info .mapa-viewport,
   .show-info .mapa-vis {
-    width: calc(100vw - 20px);
+    width: calc(100vw - 50px);
     height: 75vw; 
   }
   .mapa-info {

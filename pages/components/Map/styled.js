@@ -30,23 +30,28 @@ export const Wrapper = styled.div`
 			fill: transparent;
 		}
 	}
-	// .tooltip {
-	// 	background: rgba(0, 0, 0, 0.85);
-  //   padding: 12px 20px 10px 14px;
-	// 	font-size: 10px;
-	// 	width: 300px;
-	// 	position: absolute;
-	// 	display: none;
-	// 	&-title {
-	// 		text-transform: uppercase;
-	// 	}
-	// 	&-text {
-	// 		font-size: 12px;
-	// 		line-height: 1.2;
-	// 	}
-	// 	&.show {
-	// 		display: block;
-	// 	}
-	// }
+	.btn {
+		background: #fff;
+		padding: 7px 12px 6px;
+		border-radius: 8px;
+		color: #000;
+		display: flex;
+    align-items: center;
+		margin: 20px 0 0;
+		width: fit-content;
+		font-weight: 600;
+    font-size: 14px;
+		line-height: 1;
+		transition: background-color .4s ease;
+		img {
+			display: block;
+			margin-left: 10px;
+			height: 20px;
+		}
+		&:hover {
+			text-decoration: none;
+			background: rgba(255, 255, 255, .6);
+		}
+	}
 `;
 export default Wrapper;
