@@ -1,10 +1,8 @@
 import axios from "axios";
 
-let url = "https://staging-mapa-da-informacao-api.herokuapp.com/"
+let url = process.env.STATUS == 'production' ? "https://api.mapadainformacao.com.br/" : "https://staging-mapa-da-informacao-api.herokuapp.com/"
 
-const dev = process.env.NODE_ENV !== 'production';
-
-console.log(process.env.NODE_ENV, process.env.STATUS)
+console.log(url)
 
 class Api {
   
