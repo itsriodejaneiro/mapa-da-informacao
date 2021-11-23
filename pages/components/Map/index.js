@@ -146,7 +146,7 @@ function Chart({ data, query, baseUrl }) {
       	category.map(function(nodes, idx){
       		const node = nodes.nodes
 
-				// console.log('nodes', nodes)
+				// console.log(nodes, nodes.nodes, idx)
 
 				// if(nodes.show){
 
@@ -158,14 +158,16 @@ function Chart({ data, query, baseUrl }) {
 
 						// const real_size = return node_size(nodes) 
 
-						// console.log( item.label, index, space, nodes )
+					  // console.log( item )
+						console.log( index )
 
 
-						// Colocar identificador do index de cada coluna aqui
+						// TODO: Colocar identificador do index de cada coluna aqui
 
 
 						
       			array_node.push({
+							position: index,
 							show: nodes.show,
       				id: item.id,
       				nome: item.label,
@@ -177,12 +179,13 @@ function Chart({ data, query, baseUrl }) {
 							button_icon: item.button_icon ? item.button_icon.url : null,
 							button_link: item.button_link ? item.button_link : null,
 							button_text: item.button_text ? item.button_text : null,
+							height: nodes.height_area,
 							x_position: item.x_position,
       				y_position: item.y_position,
       				x: item.x_position ? item.x_position + 160 : 160 + space,
-      				y: item.y_position ? item.y_position + nodes.height_area : nodes.height_area + 20,
-							min_size: nodes.min_size ? nodes.min_size : 5,
-							max_size: nodes.max_size ? nodes.max_size : 50
+      				y: item.y_position ? item.y_position + nodes.height_area : nodes.height_area + 40,
+							min_size: nodes.min_size ? nodes.min_size : 10,
+							max_size: nodes.max_size ? nodes.max_size : 80
       			})
       		})
 
@@ -272,16 +275,21 @@ function Chart({ data, query, baseUrl }) {
 
 					// console.log(d.x_position, d, i, category)
 
+					function isOdd(num) { return num % 2;}
+
 
 					if(d.x_position == undefined) {
 						// console.log(1)
 						const index = i == 0 ? 0 : i - 1
-					  const real_size = ( ( d.min_size + _nodes[index].weight ) * 2 ) + 10
-					  const space = real_size * i 
+					  const real_size = ( ( d.min_size + _nodes[index].weight ) * 2 ) + 25
+					  const space = real_size * d.position 
 
-						// console.log(real_size, space)
+					// console.log(i, d)
+
+					console.log( isOdd(i) )
 
 						d.x = d.x_position ? d.x_position + 160 : 160 + space
+						d.y = d.y_position ? d.y_position + d.height : isOdd(i) > 0 ? d.height + 60 : d.height + 40 
 					}
 
 				})
