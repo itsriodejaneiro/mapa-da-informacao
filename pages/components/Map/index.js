@@ -70,6 +70,15 @@ function Chart({ data, query, baseUrl }) {
 
 				return d.min_size + d.weight
       }
+
+			function node_size_before(d, i){
+				// console.log(d)
+      	// return temp[d.tipo].size + d.weight
+
+				return d.min_size + d.weight
+      }
+
+		
       
       // function node_color(t){
       // 	return temp[t].color
@@ -137,13 +146,24 @@ function Chart({ data, query, baseUrl }) {
       	category.map(function(nodes, idx){
       		const node = nodes.nodes
 
-				console.log('nodes', nodes)
+				// console.log('nodes', nodes)
 
 				// if(nodes.show){
 
       		node.map(function(item, index){
 
-						// console.log('temp', index, )
+						
+
+						const space = nodes.min_size ? nodes.min_size * index : 5 * index
+
+						// const real_size = return node_size(nodes) 
+
+						// console.log( item.label, index, space, nodes )
+
+
+						// Colocar identificador do index de cada coluna aqui
+
+
 						
       			array_node.push({
 							show: nodes.show,
@@ -157,8 +177,10 @@ function Chart({ data, query, baseUrl }) {
 							button_icon: item.button_icon ? item.button_icon.url : null,
 							button_link: item.button_link ? item.button_link : null,
 							button_text: item.button_text ? item.button_text : null,
-      				x: item.x_position ? item.x_position + 160 : 160,
-      				y: item.y_position ? item.y_position + nodes.height_area : nodes.height_area,
+							x_position: item.x_position,
+      				y_position: item.y_position,
+      				x: item.x_position ? item.x_position + 160 : 160 + space,
+      				y: item.y_position ? item.y_position + nodes.height_area : nodes.height_area + 20,
 							min_size: nodes.min_size ? nodes.min_size : 5,
 							max_size: nodes.max_size ? nodes.max_size : 50
       			})
@@ -209,7 +231,7 @@ function Chart({ data, query, baseUrl }) {
 					5: 0, // politica
 				}
 			
-				_nodes.map(function(d){
+				_nodes.map(function(d, i){
 
 					// console.log(d)
 
@@ -248,7 +270,20 @@ function Chart({ data, query, baseUrl }) {
 						d.weight = arr.length
 					}
 
-					// console.log(d)
+					// console.log(d.x_position, d, i, category)
+
+
+					if(d.x_position == undefined) {
+						// console.log(1)
+						const index = i == 0 ? 0 : i - 1
+					  const real_size = ( ( d.min_size + _nodes[index].weight ) * 2 ) + 10
+					  const space = real_size * i 
+
+						// console.log(real_size, space)
+
+						d.x = d.x_position ? d.x_position + 160 : 160 + space
+					}
+
 				})
 			
 				// MULTIPLE LINKS: START
@@ -376,6 +411,7 @@ function Chart({ data, query, baseUrl }) {
 			
 				if(nodes){
 					nodes.attr("transform", function(d) {
+						// console.log('nodes', d)
 						return "translate(" + d.x + "," + d.y + ")";
 					})
 				}
@@ -386,6 +422,7 @@ function Chart({ data, query, baseUrl }) {
 			
 				if(labels){
 					labels.attr("transform", function(d) {
+						// console.log('labels', d)
 						return "translate(" + d.x + "," + d.y + ")";
 					})
 				}
