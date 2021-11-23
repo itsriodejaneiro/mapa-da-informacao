@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { useIsMounted } from '../../hooks/useIsMounted'
 import Head from 'next/head'
 import Title from '../components/Title'
-import Transition from '../components/Transition'
 import Map from '../components/Map'
 import Api from '../api/index'
 import * as S from './styled'
@@ -52,7 +51,7 @@ export default function SingleProject() {
   }, [projectData]);
 
   return (
-    <Transition parentLoading={parentLoading}>
+    <>
       <Head>
         <title>{projectData?.title?.length ? projectData?.title : null}</title>
       </Head>
@@ -60,9 +59,10 @@ export default function SingleProject() {
       <S.SingleProjectWrapper>
         <Title boldText={projectData?.title ? projectData?.title : null} />
         <p>{projectData?.synopsis ? projectData?.synopsis : null}</p>
+        {!projectData ? <div>Loading ...</div> : null}
       </S.SingleProjectWrapper>
 
       {projectData ? <Map data={projectData} query={projectData.id} baseUrl={Api.baseUrl} /> : null}
-    </Transition>
+    </>
   )
 }

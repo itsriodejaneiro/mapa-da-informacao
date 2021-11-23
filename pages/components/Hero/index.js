@@ -2,12 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Title from '../Title'
 import Text from '../Text'
-import Transition from '../Transition'
+// import Transition from '../Transition'
 import * as S from './styled'
 
 export default function Hero() {
   return (
-    <Transition>
+    <>
       <S.HeroContainer>
         <S.HeroTitle>
           <S.HeroImage>
@@ -41,6 +41,6 @@ export default function Hero() {
           </Link>
         </S.HeroCTA>
       </S.HeroContainer>
-    </Transition>
+    </>
   )
 }

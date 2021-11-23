@@ -39,13 +39,14 @@ $ cd mapa-da-informacao
 $ npm install # ou yarn install
 # Running the project
 $ npm run dev # ou yarn dev
+
 ```
 
 3. Staging
-Heroku: mapa-da-informacao
+- Heroku: mapa-da-informacao
 https://mapa-da-informacao.herokuapp.com/
 
 
 4. Production
-Heroku: prod-mapa-da-informacao
+- Heroku: prod-mapa-da-informacao
 http://mapadainformacao.com.br/

@@ -3,11 +3,11 @@ import Title from '../components/Title'
 import Text from '../components/Text'
 import * as S from './styled'
 import Disclaimer from '../components/Disclaimer'
-import Transition from '../components/Transition'
+// import Transition from '../components/Transition'
 
 export default function AboutPage() {
   return (
-    <Transition>
+    <>
       <Head>
         <title>Sobre - Mapa da Informação</title>
       </Head>
@@ -26,15 +26,13 @@ export default function AboutPage() {
           allowFullScreen
           title="Embedded youtube"
         />
-
         <Text text='A primeira versão do mapa enfatiza os silos de informações relacionados aos documentos pessoais, que são fundamentais no relacionamento do Cidadão com o Estado.' />
         <Text text='Estão representadas seis camadas do ecossistema dos documentos no Brasil: os órgãos gestores, os operadores de tecnologia da informação, as bases de dados, os aplicativos (apps), os documentos e os serviços e políticas relacionados.' />
         <Text text='O mapeamento visa auxiliar na discussão melhor informada sobre documentos, desburocratização, acesso e qualidade dos serviços públicos no Brasil.' />
         <Text text='O Mapa da Informação é um projeto do Instituto de Tecnologia e Sociedade do Rio (ITS Rio).' />
-        
         <Disclaimer text={'-'} />
         <Disclaimer text={'Em fase de testes. Se desejar contribuir envie um e-mail para its@itsrio.org.'} />
       </S.AboutWrapper>
-    </Transition>
+    </>
   )
 }

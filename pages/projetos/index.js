@@ -1,19 +1,14 @@
 import { useEffect, useState } from 'react'
-import Router, { withRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import Title from '../components/Title'
 import Text from '../components/Text'
-import Transition from '../components/Transition'
-
 import Api from '../api/index'
-
 import * as S from './styled'
 
-export default function ProjectsPage({ maps, categories, nodes }) {
+export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
-  
   useEffect( () => {
     Api.getMaps().then((response) => {
       if (response?.data?.length !== 0) {
@@ -23,13 +18,14 @@ export default function ProjectsPage({ maps, categories, nodes }) {
   }, [])
 
   return (
-    <Transition>
+    <>
       <Head>
         <title>Projetos - Mapa da Informação</title>
       </Head>
       <S.ProjectsWrapper>
         <Title lightText={'Projetos'} />
         <Text text='O Brasil precisa de um mapa do recurso mais importante para o desenvolvimento econômico no mundo contemporâneo: a informação. No setor público, o tratamento das informações do cidadão é frequentemente caótico.' />
+
         <S.ProjectList>
           {projects.length !== 0 ? projects.map((item) => (
             <S.ProjectItem key={item?.id}>
@@ -46,9 +42,9 @@ export default function ProjectsPage({ maps, categories, nodes }) {
                 <Text text={item?.synopsis} />
               </S.ProjectInfo>
             </S.ProjectItem>
-          )) : null}
+          )) : <div>Loading ...</div>}
         </S.ProjectList>
       </S.ProjectsWrapper> 
-    </Transition>
+    </>
   )
 }
