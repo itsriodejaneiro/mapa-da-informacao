@@ -29,6 +29,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/historias": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/historias.js"
+    ],
     "/sobre": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
