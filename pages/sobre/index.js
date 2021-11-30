@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Title from '../components/Title'
-import Text from '../components/Text'
+import Title from '../../components/Title'
+import Text from '../../components/Text'
 import * as S from './styled'
-import Disclaimer from '../components/Disclaimer'
+import Disclaimer from '../../components/Disclaimer'
 // import Transition from '../components/Transition'
 
 export default function AboutPage() {

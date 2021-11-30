@@ -2,9 +2,9 @@ import { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { useIsMounted } from '../../hooks/useIsMounted'
 import Head from 'next/head'
-import Title from '../components/Title'
-import Map from '../components/Map'
-import Api from '../api/index'
+import Title from '../../components/Title'
+import Map from '../../components/Map'
+import Api from '../../api/index'
 import * as S from './styled'
 
 export default function SingleProject() {

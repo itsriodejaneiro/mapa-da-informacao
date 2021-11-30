@@ -1,20 +1,20 @@
 {
+  "../components/Layout.js -> ./Footer": {
+    "id": "./components/Footer/index.js",
+    "files": [
+      "static/chunks/components_Footer_index_js.js"
+    ]
+  },
+  "../components/Layout.js -> ./Header": {
+    "id": "./components/Header/index.js",
+    "files": [
+      "static/chunks/components_Header_index_js.js"
+    ]
+  },
   "../node_modules/next/dist/client/next-dev.js -> ./dev/noop": {
     "id": "./node_modules/next/dist/client/dev/noop.js",
     "files": [
       "static/chunks/node_modules_next_dist_client_dev_noop_js.js"
-    ]
-  },
-  "components/Layout.js -> ./Footer": {
-    "id": "./pages/components/Footer/index.js",
-    "files": [
-      "static/chunks/pages_components_Footer_index_js.js"
-    ]
-  },
-  "components/Layout.js -> ./Header": {
-    "id": "./pages/components/Header/index.js",
-    "files": [
-      "static/chunks/pages_components_Header_index_js.js"
     ]
   }
 }

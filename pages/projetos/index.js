@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import Title from '../components/Title'
-import Text from '../components/Text'
-import Api from '../api/index'
+import Title from '../../components/Title'
+import Text from '../../components/Text'
+import Api from '../../api/index'
 import * as S from './styled'
 
 export default function ProjectsPage() {
