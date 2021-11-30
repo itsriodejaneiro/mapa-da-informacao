@@ -14,7 +14,7 @@ export default function Header() {
   ]
   return (
     <S.HeaderContainer>
-      <S.HeaderMenu onClick={() => setOpen(!open)} open={open}>
+      <S.HeaderMenu onClick={() => setOpen(!open)} open={open} aria-label="Menu">
         <span style={{display: 'none'}}>menu</span>
         <span></span>
       </S.HeaderMenu>
