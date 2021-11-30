@@ -5,10 +5,13 @@
   "cacheDirectories": [
     ".next/cache"
   ],
+
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
+    "clear-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
+    "heroku-postbuild": "yarn clear-cache && next build",
     "lint": "next lint"
   },
   "dependencies": {
