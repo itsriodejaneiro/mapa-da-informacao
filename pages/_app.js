@@ -1,8 +1,8 @@
 import '../styles/globals.css'
-import { GlobalStyle, theme } from './ThemeConfig'
+import { GlobalStyle, theme } from '../ThemeConfig'
 import { ThemeProvider } from "styled-components"
 // import { AnimatePresence } from 'framer-motion'
-import Layout from './components/Layout'
+import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps, router }) {
   const url = `${router.route}`

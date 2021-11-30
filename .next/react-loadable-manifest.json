@@ -1,4 +1,16 @@
 {
+  "../components/Layout.js -> ./Footer": {
+    "id": "./components/Footer/index.js",
+    "files": [
+      "static/chunks/components_Footer_index_js.js"
+    ]
+  },
+  "../components/Layout.js -> ./Header": {
+    "id": "./components/Header/index.js",
+    "files": [
+      "static/chunks/components_Header_index_js.js"
+    ]
+  },
   "../node_modules/next/dist/client/next-dev.js -> ./dev/noop": {
     "id": "./node_modules/next/dist/client/dev/noop.js",
     "files": [

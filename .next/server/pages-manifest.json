@@ -2,7 +2,12 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
+<<<<<<< HEAD
   "/sobre": "pages/sobre.js",
   "/projetos/[map]": "pages/projetos/[map].js",
   "/": "pages/index.js"
+=======
+  "/": "pages/index.js",
+  "/projetos/[map]": "pages/projetos/[map].js"
+>>>>>>> master
 }
