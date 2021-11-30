@@ -20,13 +20,16 @@ export const Footer = styled.footer`
 		img {
 			margin: 0 0 30px !important;
 		}
+		.image-wrapper {
+			margin-right: 0;
+		}
   }
 `;
 
 export const ItemsWrapper = styled.div`
 	display: flex;
 	justify-content: space-around;
-  	width: 65%;
+  width: 65%;
 	margin-left: 30px;
 	@media(max-width: 800px) {
 		margin-left: 0;
@@ -55,10 +58,16 @@ export const ColumnText = styled.p`
 	margin-bottom: 4px;
 	margin-right: 20px;
 	white-space: nowrap;
+	padding: 2px 0;
+	display: block;
 	@media(max-width: 800px) {
 		text-align: center;
-		margin-bottom: 0px;
-		margin-right: 30px;
+		margin-bottom: 0;
+		margin-right: 0;
+		a {
+			display: block;
+			margin: 6px 0;
+		}
   }
 `;
 
