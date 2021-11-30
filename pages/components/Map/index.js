@@ -194,13 +194,14 @@ function Chart({ data, query, baseUrl }) {
 				
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
 					d.context = _.uniq(_.map(arr, 'context'))
+					d.weight = arr.length
 				
-					if(d.tipo == 3){
-						const arr2 = _.filter(arr, function(o) { return o.relation == 4 })
-						d.weight = arr2.length * 4
-					} else {
-						d.weight = arr.length
-					}
+					// if(d.tipo == 3){
+					// 	const arr2 = _.filter(arr, function(o) { return o.relation == 4 })
+					// 	d.weight = arr2.length * 4
+					// } else {
+					//  d.weight = arr.length
+					// }
 
 					function isOdd(num) { 
 						return num % 2 
@@ -280,7 +281,7 @@ function Chart({ data, query, baseUrl }) {
 					.append("g")
 					.attr("class", function(d) {
 						const itemName = d.context ? d.context : d.rel_ids
-						return "label node-" + d.tipo + " label-" + d.id + " " + d.rel_ids.join(" ") + " " + "label-" + itemName.join(" label-")
+						return "label label-" + d.tipo + " label-" + d.id + " " + d.rel_ids.join(" ") + " " + "label-" + itemName.join(" label-")
 					})
 					.attr("style", function(d) {
 						return !d.show ? "display: none" : null;
@@ -312,7 +313,8 @@ function Chart({ data, query, baseUrl }) {
 					.append("path")
 					.attr("class", "link")
 					.attr("class", function(d) {
-						const itemName = d.context ? d.context : d.rel_ids
+						const itemName = d.context != undefined ? d.context : d.rel_ids != undefined ? d.d.rel_ids : null
+						console.log(itemName, d.base, d.context, d.rel_ids)
 						return d3.select(this).attr("class") + ' link-' + d.base  + " " + "link-" + itemName
 					})
 					.attr("style", function(d) {
@@ -320,7 +322,7 @@ function Chart({ data, query, baseUrl }) {
 					})
 					.attr("opacity", 0)
 					.transition(t)
-					.delay(4000)
+					.delay(3000)
 					.attr("opacity", 1)
 				
 				simulation
@@ -516,8 +518,12 @@ function Chart({ data, query, baseUrl }) {
 			}
 
 			function node_click(d, idx) {
-				const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
-				const name = d.context[idx] != undefined ? 'context' : 'ids'
+				const itemName = d.context.length >= 1 && d.context[0] != undefined ? d.context : d.rel_ids
+				const name = d.context.length >= 1 && d.context[0] != undefined ? 'context' : 'id'
+
+				
+
+				console.log(d, d.context.length, d.context[0])
 
 				sound_click.play()
 			
@@ -544,7 +550,11 @@ function Chart({ data, query, baseUrl }) {
 				const arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
 				const bases = name == 'context' ? _.uniq(_.map(arr,'context')) : _.uniq(_.map(arr,'base')) 
 
+				console.log(name)
+
 				_.forEach(bases, function(base){
+					console.log(base)
+
 					d3.selectAll('.link.link-' + base).classed('show', true)
 					d3.selectAll('.node.node-' + base).classed('show', true)
 					d3.selectAll('.label.label-' + base).classed('show', true)
