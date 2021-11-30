@@ -55,6 +55,8 @@ export const ColumnText = styled.p`
 	margin-bottom: 4px;
 	margin-right: 20px;
 	white-space: nowrap;
+	padding: 2px 0;
+	display: block;
 	@media(max-width: 800px) {
 		text-align: center;
 		margin-bottom: 0px;

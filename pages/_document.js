@@ -27,13 +27,13 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="pt-BR">
         <Head>
           <link rel="icon" href="/favicon.png" />
           <meta name="description" content="mapa da informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0"
+            content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
           />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <link

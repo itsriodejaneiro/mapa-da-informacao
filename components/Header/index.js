@@ -15,6 +15,7 @@ export default function Header() {
   return (
     <S.HeaderContainer>
       <S.HeaderMenu onClick={() => setOpen(!open)} open={open}>
+        <span style={{display: 'none'}}>menu</span>
         <span></span>
       </S.HeaderMenu>
       <S.HeaderNav open={open}>
