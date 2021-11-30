@@ -25,7 +25,7 @@ export default function Hero() {
           </S.HeroInfo>  
         </S.HeroTitle>
         
-        {/* <S.HeroCTA>
+        <S.HeroCTA>
           <Link href="/sobre" passHref>
             <a>Clique aqui para entrar</a>
           </Link>
@@ -39,7 +39,7 @@ export default function Hero() {
               />
             </a>
           </Link>
-        </S.HeroCTA> */}
+        </S.HeroCTA>
       </S.HeroContainer>
     </>
   )
