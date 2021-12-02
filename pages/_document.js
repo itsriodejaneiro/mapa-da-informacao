@@ -41,7 +41,7 @@ class MyDocument extends Document {
           <meta property="og:type" content="website"/>
           <meta property="og:title" content="Mapa da Informação - ITS"/>
           <meta property="og:description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
-          <meta property="og:url" content="https://itsrio.org/pt/home/"/>
+          <meta property="og:url" content="https://mapadainformacao.com.br/"/>
           <meta property="og:site_name" content="Mapa da Informação"/>
           <meta property="article:publisher" content="https://www.facebook.com/ITSriodejaneiro"/>
 
