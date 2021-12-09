@@ -53,7 +53,17 @@ export default function SingleProject() {
   return (
     <>
       <Head>
-        <title>{projectData?.title?.length ? projectData?.title : null}</title>
+        <title>{projectData?.title_seo?.length ? projectData?.title_seo : null}</title>
+
+        <meta name="description" content={projectData?.description_seo?.length ? projectData?.description_seo : 'Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro'} />
+    
+        <meta property="og:title" content={projectData?.title_seo?.length ? projectData?.title_seo : 'Mapa da Informação - ITS'} />
+        <meta property="og:description" content={projectData?.description_seo?.length ? projectData?.description_seo : 'Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro'} />
+        <meta property="og:url" content={`https://mapadainformacao.com.br/projetos/${projectData?.url_map}`} />
+        <meta property="og:site_name" content={projectData?.site_name_seo?.length ? projectData?.site_name_seo : 'Mapa da Informação'}/>
+
+        <meta property="og:image" content={projectData?.image_seo?.url} />
+        <meta name="twitter:image" content={projectData?.image_seo?.url} />
       </Head>
 
       <S.SingleProjectWrapper>
