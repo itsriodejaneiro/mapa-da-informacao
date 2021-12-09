@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Title from '../Title'
 import Text from '../Text'
-// import Transition from '../Transition'
 import * as S from './styled'
 
 export default function Hero() {

@@ -195,13 +195,6 @@ function Chart({ data, query, baseUrl }) {
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
 					d.context = _.uniq(_.map(arr, 'context'))
 					d.weight = arr.length
-				
-					// if(d.tipo == 3){
-					// 	const arr2 = _.filter(arr, function(o) { return o.relation == 4 })
-					// 	d.weight = arr2.length * 4
-					// } else {
-					//  d.weight = arr.length
-					// }
 
 					function isOdd(num) { 
 						return num % 2 
@@ -264,7 +257,6 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-						// return "node " + itemName.join(" ")
 						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
@@ -288,7 +280,6 @@ function Chart({ data, query, baseUrl }) {
 				labels.enter()
 					.append("g")
 					.attr("class", function(d) {
-						// const itemName = d.context ? d.context : d.rel_ids
 						let itemName = d.context ? d.context : d.rel_ids
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
@@ -297,8 +288,6 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-						// return "label label-" + d.tipo + " label-" + d.id + " " + d.rel_ids.join(" ") + " " + "label-" + itemName.join(" label-")
-						// return "label " + itemName.join(" ")
 						return "label label-" + d.tipo + " " + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
@@ -332,9 +321,6 @@ function Chart({ data, query, baseUrl }) {
 					.attr("class", "link")
 					.attr("class", function(d) {
 						let array = []
-						// const itemName = d.context != undefined ? d.context : d.rel_ids != undefined ? d.d.rel_ids : null
-						// console.log(itemName, d.base, d.context, d.rel_ids)
-
 						const itemName = d.context ? d.context : d.rel_ids
 						array.push(itemName)
 						array = array.filter(Boolean)
@@ -344,11 +330,7 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-
-						console.log(array)
-
             return d3.select(this).attr("class") + ' link-' + d.base  + " " + array.join(" ")
-					  // return d3.select(this).attr("class") + ' link-' + d.base  + " " + "link-" + itemName
 					})
 					.attr("style", function(d) {
 						return !d.show ? "display: none" : null;
@@ -488,8 +470,6 @@ function Chart({ data, query, baseUrl }) {
 				d3.selectAll('.mapa').classed('highlight', true)
 				const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
 
-				// d3.selectAll('.node.node-' + id).classed('highlight',true)
-
 				_.forEach(itemName, function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
 					d3.selectAll('.node.node-' + id).classed('highlight',true)
@@ -556,10 +536,6 @@ function Chart({ data, query, baseUrl }) {
 				const itemName = d.context.length >= 1 && d.context[0] != undefined ? d.context : d.rel_ids
 				const name = d.context.length >= 1 && d.context[0] != undefined ? 'context' : 'id'
 
-				
-
-				console.log(d, d.context.length, d.context[0])
-
 				sound_click.play()
 			
 				if(current_id == d.id){
@@ -585,14 +561,9 @@ function Chart({ data, query, baseUrl }) {
 				const arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
 				const bases = name == 'context' ? _.uniq(_.map(arr,'context')) : _.uniq(_.map(arr,'base')) 
 
-				console.log(name)
-
 				_.forEach(bases, function(base){
-					console.log(base)
-
 					d3.selectAll('.link.link-' + base).classed('show', true)
 					d3.selectAll('.node.node-' + base).classed('show', true)
-					// d3.selectAll('.node.' + base).classed('show', true)
 					d3.selectAll('.label.label-' + base).classed('show', true)
 				})
 			

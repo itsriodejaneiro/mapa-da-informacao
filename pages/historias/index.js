@@ -1,5 +1,4 @@
 import Head from 'next/head'
-// import Transition from '../components/Transition'
 import * as S from './styled'
 
 export default function StoriesPage() {
