@@ -13,8 +13,8 @@ export default function AboutPage() {
         <meta property="og:description" content="O Portal do Mapa da Informação é uma ferramenta para apoiar na governança de dados dos governos federal, estadual e municipal, proporcionando um maior entendimento do sistema de informação do objeto que se gostaria de aprofundar."/>
         <meta property="og:url" content="https://mapadainformacao.com.br/sobre"/>
         <meta name="description" content="O Portal do Mapa da Informação é uma ferramenta para apoiar na governança de dados dos governos federal, estadual e municipal, proporcionando um maior entendimento do sistema de informação do objeto que se gostaria de aprofundar."/>
-        <meta property="og:image" content=""/>
-        <meta name="twitter:image" content=""/> 
+        <meta property="og:image" content="https://mapadainformacao.com.br/share.jpg"/>
+        <meta name="twitter:image" content="https://mapadainformacao.com.br/share.jpg"/> 
         <meta property="og:site_name" content="Sobre o Portal Mapa da Informação "/>
 
         { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }

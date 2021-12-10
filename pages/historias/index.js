@@ -10,8 +10,8 @@ export default function StoriesPage() {
         <meta property="og:description" content="Conheça histórias real e fictícia sobre a importância e desafios da identificação da população brasileira."/>
         <meta property="og:url" content="https://mapadainformacao.com.br/historias"/>
         <meta name="description" content="Conheça histórias real e fictícia sobre a importância e desafios da identificação da população brasileira."/>
-        <meta property="og:image" content=""/>
-        <meta name="twitter:image" content=""/> 
+        <meta property="og:image" content="https://mapadainformacao.com.br/share.jpg"/>
+        <meta name="twitter:image" content="https://mapadainformacao.com.br/share.jpg"/> 
         <meta property="og:site_name" content="Histórias sobre a identificação dos cidadãos "/>
 
         { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }
