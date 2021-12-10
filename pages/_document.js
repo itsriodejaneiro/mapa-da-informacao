@@ -31,22 +31,7 @@ class MyDocument extends Document {
         <Head>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          
-          {/* <meta name="robots" content="index, follow">
-          <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-          <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> */}
-          
-          {/* 
-          
-          <meta property="og:title" content="Mapa da Informação - ITS"/>
-          <meta property="og:description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
-          <meta property="og:url" content="https://mapadainformacao.com.br/"/>
-          <meta name="description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
-          <meta property="og:image" content=""/>
-          <meta name="twitter:image" content=""/> 
-          <meta property="og:site_name" content="Mapa da Informação"/>
-          */}
-          
+
           <meta property="og:type" content="website"/>
           <meta property="og:locale" content="pt_BR"/>
           <meta property="article:publisher" content="https://www.facebook.com/ITSriodejaneiro"/>

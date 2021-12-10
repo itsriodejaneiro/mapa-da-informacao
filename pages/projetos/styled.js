@@ -13,6 +13,10 @@ export const ProjectsWrapper = styled.section`
   }
 `;
 
+export const Loading = styled.div`
+  margin: 40px 0 0;
+`;
+
 export const ProjectList = styled.ul`
 	padding-top: 50px;
 `;
@@ -70,5 +74,22 @@ export const SingleProjectWrapper = styled.section`
 		}
   }
 `;
+
+export const HeaderLink = styled.a`
+  font-size: ${(props) => props.theme.fontSizes.text};
+  font-family: ${(props) => props.theme.fontFamilies.firaSansRegular};
+  color: ${(props) => props.theme.colors.lightGray};
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+	text-decoration: none;
+  border-bottom: 1px solid ${(props) => props.theme.colors.lightGray};
+  &:hover {
+    color: ${(props) => props.theme.colors.white};
+		text-decoration: none;
+    border-bottom: 1px solid ${(props) => props.theme.colors.white};
+  }
+`;
+
 
 export default ProjectsWrapper;

@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import Hero from '../components/Hero'
-// import dynamic from 'next/dynamic'
-// const Hero = dynamic(() => import('./components/Hero'))
 
 export default function Home() {
+  console.log(process.env.STATUS)
   return (
     <>
       <Head>
@@ -15,6 +14,9 @@ export default function Home() {
         <meta property="og:image" content=""/>
         <meta name="twitter:image" content=""/> 
         <meta property="og:site_name" content="Mapa da Informação"/>
+        { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }
+        { process.env.STATUS == 'production' ? <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
+        { process.env.STATUS == 'production' ? <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
       </Head>
       <Hero />
     </>

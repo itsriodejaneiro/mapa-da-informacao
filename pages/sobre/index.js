@@ -9,14 +9,19 @@ export default function AboutPage() {
     <>
       <Head>
         <title>Sobre - Mapa da Informação</title>
-        <meta property="og:title" content="Mapa da Informação - ITS"/>
-        <meta property="og:description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
-        <meta property="og:url" content="https://mapadainformacao.com.br/"/>
-        <meta name="description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
+        <meta property="og:title" content="Sobre - Mapa da Informação"/>
+        <meta property="og:description" content="O Portal do Mapa da Informação é uma ferramenta para apoiar na governança de dados dos governos federal, estadual e municipal, proporcionando um maior entendimento do sistema de informação do objeto que se gostaria de aprofundar."/>
+        <meta property="og:url" content="https://mapadainformacao.com.br/sobre"/>
+        <meta name="description" content="O Portal do Mapa da Informação é uma ferramenta para apoiar na governança de dados dos governos federal, estadual e municipal, proporcionando um maior entendimento do sistema de informação do objeto que se gostaria de aprofundar."/>
         <meta property="og:image" content=""/>
         <meta name="twitter:image" content=""/> 
-        <meta property="og:site_name" content="Mapa da Informação"/>
+        <meta property="og:site_name" content="Sobre o Portal Mapa da Informação "/>
+
+        { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }
+        { process.env.STATUS == 'production' ? <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
+        { process.env.STATUS == 'production' ? <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
       </Head>
+      
       <S.AboutWrapper>
         <Title lightText={'Mapa da'} boldText={'Informação'} />
         <Text text='O Brasil precisa de um mapa do recurso mais importante para o desenvolvimento econômico no mundo contemporâneo: a informação. No setor público, o tratamento das informações do cidadão é frequentemente caótico. Temos dezenas de sistemas que não conversam entre si, dados são perdidos constantemente, silos informacionais são mal utilizados e assim por diante.' />

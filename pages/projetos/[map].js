@@ -5,11 +5,14 @@ import Head from 'next/head'
 import Title from '../../components/Title'
 import Map from '../../components/Map'
 import Api from '../../api/index'
+import Link from 'next/link'
 import * as S from './styled'
 
 export default function SingleProject() {
   const router = useRouter()
   const query = router.query
+  const [open, setOpen] = useState(false);
+
   const isMounted = useIsMounted();
   const [projectData, setProjectData] = useState();
   const [parentLoading, setParentLoading] = useState(false);
@@ -64,12 +67,25 @@ export default function SingleProject() {
 
         <meta property="og:image" content={projectData?.image_seo?.url} />
         <meta name="twitter:image" content={projectData?.image_seo?.url} />
+        
+        { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }
+        { process.env.STATUS == 'production' ? <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
+        { process.env.STATUS == 'production' ? <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
       </Head>
 
       <S.SingleProjectWrapper>
         <Title boldText={projectData?.title ? projectData?.title : null} />
         <p>{projectData?.synopsis ? projectData?.synopsis : null}</p>
-        {!projectData ? <div>Loading ...</div> : null}
+
+        {projectData?.url_map == 'mapa-brasil' ? 
+          <Link href={'/historias'} passHref>
+            <S.HeaderLink onClick={() => setOpen(!open)}>
+              Histórias
+            </S.HeaderLink>
+          </Link>
+        : null}
+
+        {!projectData ? <S.Loading>Loading ...</S.Loading> : null}
       </S.SingleProjectWrapper>
 
       {projectData ? <Map data={projectData} query={projectData.id} baseUrl={Api.baseUrl} /> : null}

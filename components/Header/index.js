@@ -10,7 +10,7 @@ export default function Header() {
     { title: 'Home', path: '/' },
     { title: 'Sobre', path: '/sobre' },
     { title: 'Projetos', path: '/projetos' },
-    { title: 'Histórias', path: '/historias' }
+    // { title: 'Histórias', path: '/historias' }
   ]
   return (
     <S.HeaderContainer>

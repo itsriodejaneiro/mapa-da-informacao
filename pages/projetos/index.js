@@ -21,7 +21,19 @@ export default function ProjectsPage() {
     <>
       <Head>
         <title>Projetos - Mapa da Informação</title>
+        <meta property="og:title" content="Mapa da Informação - ITS"/>
+        <meta property="og:description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
+        <meta property="og:url" content="https://mapadainformacao.com.br/"/>
+        <meta name="description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
+        <meta property="og:image" content=""/>
+        <meta name="twitter:image" content=""/> 
+        <meta property="og:site_name" content="Mapa da Informação"/>
+
+        { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }
+        { process.env.STATUS == 'production' ? <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
+        { process.env.STATUS == 'production' ? <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
       </Head>
+      
       <S.ProjectsWrapper>
         <Title lightText={'Projetos'} />
         <Text text='O Brasil precisa de um mapa do recurso mais importante para o desenvolvimento econômico no mundo contemporâneo: a informação. No setor público, o tratamento das informações do cidadão é frequentemente caótico.' />
