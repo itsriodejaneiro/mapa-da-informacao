@@ -25,8 +25,8 @@ export default function ProjectsPage() {
         <meta property="og:description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
         <meta property="og:url" content="https://mapadainformacao.com.br/"/>
         <meta name="description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
-        <meta property="og:image" content={`${window.location.origin}/share.jpg`} />
-        <meta name="twitter:image" content={`${window.location.origin}/share.jpg`} /> 
+        <meta property="og:image" content={process.env.STATUS == 'production' ? 'https://mapadainformacao.com.br/share.jpg' : 'http://mapa-da-informacao.herokuapp.com/share.jpg'} />
+        <meta name="twitter:image" content={process.env.STATUS == 'production' ? 'https://mapadainformacao.com.br/share.jpg' : 'http://mapa-da-informacao.herokuapp.com/share.jpg'}  /> 
         <meta property="og:site_name" content="Mapa da Informação"/>
 
         { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }

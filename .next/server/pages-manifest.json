@@ -3,6 +3,6 @@
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
   "/sobre": "pages/sobre.js",
-  "/projetos/[map]": "pages/projetos/[map].js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
 }
