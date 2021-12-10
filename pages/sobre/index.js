@@ -5,7 +5,6 @@ import * as S from './styled'
 import Disclaimer from '../../components/Disclaimer'
 
 export default function AboutPage() {
-  console.log(window.location.origin)
   return (
     <>
       <Head>
