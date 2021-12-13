@@ -39,6 +39,7 @@ export const ProjectInfo = styled.div`
 	margin-left: 20px;
 	a {
 		font-size: ${(props) => props.theme.fontSizes.title};
+		line-height: 1.2;
 		&:hover {
 			text-decoration: underline;
 		}
