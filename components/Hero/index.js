@@ -20,7 +20,7 @@ export default function Hero() {
 
           <S.HeroInfo>
             <Title lightText={'Mapa da'} boldText={'Informação'} />
-            <Text text={'Como o governo armazena e processa as informações de identificação dos cidadãos?'} />
+            <Text text={'Como o governo armazena e processa as informações para ofertar serviços para os cidadãos?'} />
           </S.HeroInfo>  
         </S.HeroTitle>
         

@@ -20,14 +20,14 @@ export default function ProjectsPage() {
   return (
     <>
       <Head>
-        <title>Projetos - Mapa da Informação</title>
-        <meta property="og:title" content="Mapa da Informação - ITS"/>
-        <meta property="og:description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
+        <title>Projetos - Portal Mapa da Informaçã</title>
+        <meta property="og:title" content="Projetos - Portal Mapa da Informaçã"/>
+        <meta property="og:description" content="A informação é a melhor ferramenta para tomadas de decisões. Conheça aqui os projetos do Portal Mapa da Informação"/>
         <meta property="og:url" content="https://mapadainformacao.com.br/"/>
-        <meta name="description" content="Mapa da Informação é uma ferramenta para facilitar a compreensão do sistema de documentos brasileiro"/>
+        <meta name="description" content="A informação é a melhor ferramenta para tomadas de decisões. Conheça aqui os projetos do Portal Mapa da Informação"/>
         <meta property="og:image" content={process.env.STATUS == 'production' ? 'https://mapadainformacao.com.br/share.jpg' : 'http://mapa-da-informacao.herokuapp.com/share.jpg'} />
         <meta name="twitter:image" content={process.env.STATUS == 'production' ? 'https://mapadainformacao.com.br/share.jpg' : 'http://mapa-da-informacao.herokuapp.com/share.jpg'}  /> 
-        <meta property="og:site_name" content="Mapa da Informação"/>
+        <meta property="og:site_name" content="Projetos do Portal do Mapa da Informação"/>
 
         { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }
         { process.env.STATUS == 'production' ? <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
@@ -36,7 +36,9 @@ export default function ProjectsPage() {
       
       <S.ProjectsWrapper>
         <Title lightText={'Projetos'} />
-        <Text text='O Brasil precisa de um mapa do recurso mais importante para o desenvolvimento econômico no mundo contemporâneo: a informação. No setor público, o tratamento das informações do cidadão é frequentemente caótico.' />
+        <Text text='A informação é um poderoso instrumento para tomadas de decisões. O Portal do Mapa da Informação apoia a governança de dados dos governos federal, estadual e municipal, proporcionando um maior entendimento do sistema de informação e do objeto a ser aprofundado.' />
+        
+        {/* <Text text='O Brasil precisa de um mapa do recurso mais importante para o desenvolvimento econômico no mundo contemporâneo: a informação. No setor público, o tratamento das informações do cidadão é frequentemente caótico.' /> */}
 
         <S.ProjectList>
           {projects.length !== 0 ? projects.map((item) => (

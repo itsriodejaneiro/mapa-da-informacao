@@ -8,36 +8,64 @@ const items = [
 		subItems: [
 			{
 				id: '11',
-				name: 'Celina Bottino',
+				name: 'Ana Carolina Benelli',
 			},
 			{
 				id: '12',
-				name: 'Ronaldo Lemos',
+				name: 'Celina Bottino',
 			},
 			{
 				id: '13',
-				name: 'Victor Vicente',
+				name: 'Christian Perrone',
 			},
+			{
+				id: '14',
+				name: 'Janaina Costa',
+			},
+			{
+				id: '15',
+				name: 'Lucas Muniz da Conceição',
+			},
+			{
+				id: '16',
+				name: 'Otávio Gomes',
+			},
+			{
+				id: '17',
+				name: 'Ronaldo Lemos',
+			},
+			// {
+			// 	id: '11',
+			// 	name: 'Celina Bottino',
+			// },
+			// {
+			// 	id: '12',
+			// 	name: 'Ronaldo Lemos',
+			// },
+			// {
+			// 	id: '13',
+			// 	name: 'Victor Vicente',
+			// },
 		]
 	},
-	{
-		id: '2',
-		name: 'Pesquisadores',
-		subItems: [
-			{
-				id: '21',
-				name: 'Claudio Machado',
-			},
-			{
-				id: '22',
-				name: 'Fernanda da Escóssia',
-			},
-			{
-				id: '23',
-				name: 'Giovanna Bruno Ventre',
-			},
-		]
-	},
+	// {
+	// 	id: '2',
+	// 	name: 'Pesquisadores',
+	// 	subItems: [
+	// 		{
+	// 			id: '21',
+	// 			name: 'Claudio Machado',
+	// 		},
+	// 		{
+	// 			id: '22',
+	// 			name: 'Fernanda da Escóssia',
+	// 		},
+	// 		{
+	// 			id: '23',
+	// 			name: 'Giovanna Bruno Ventre',
+	// 		},
+	// 	]
+	// },
 	{
 		id: '3',
 		name: 'Design e Dataviz',
@@ -60,12 +88,20 @@ const items = [
 		subItems: [
 			{
 				id: '41',
-				name: 'Armínio Fraga',
+				name: 'Cláudio Machado',
 			},
 			{
 				id: '42',
-				name: 'Luciano Huck',
+				name: 'Diego Cerqueira',
 			},
+			// {
+			// 	id: '41',
+			// 	name: 'Armínio Fraga',
+			// },
+			// {
+			// 	id: '42',
+			// 	name: 'Luciano Huck',
+			// },
 		]
 	},
 ]

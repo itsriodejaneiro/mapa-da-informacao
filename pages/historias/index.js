@@ -7,12 +7,12 @@ export default function StoriesPage() {
       <Head>
         <title>Histórias - Mapa da Informação</title>
         <meta property="og:title" content="Histórias - Mapa da Informação"/>
-        <meta property="og:description" content="Conheça histórias real e fictícia sobre a importância e desafios da identificação da população brasileira."/>
+        <meta property="og:description" content="Conheça histórias reais e fictícias sobre a importância e desafios da identificação da população brasileira."/>
         <meta property="og:url" content="https://mapadainformacao.com.br/historias"/>
-        <meta name="description" content="Conheça histórias real e fictícia sobre a importância e desafios da identificação da população brasileira."/>
+        <meta name="description" content="Conheça histórias reais e fictícias sobre a importância e desafios da identificação da população brasileira."/>
         <meta property="og:image" content={process.env.STATUS == 'production' ? 'https://mapadainformacao.com.br/share.jpg' : 'http://mapa-da-informacao.herokuapp.com/share.jpg'}  />
         <meta name="twitter:image" content={process.env.STATUS == 'production' ? 'https://mapadainformacao.com.br/share.jpg' : 'http://mapa-da-informacao.herokuapp.com/share.jpg'}  /> 
-        <meta property="og:site_name" content="Histórias sobre a identificação dos cidadãos "/>
+        <meta property="og:site_name" content="Histórias sobre a identificação dos cidadãos"/>
 
         { process.env.STATUS == 'production' ? <meta name="robots" content="index, follow" /> : null }
         { process.env.STATUS == 'production' ? <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" /> : null }
