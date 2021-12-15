@@ -2,6 +2,6 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/sobre": "pages/sobre.js",
-  "/": "pages/index.js"
+  "/projetos": "pages/projetos.js",
+  "/projetos/[map]": "pages/projetos/[map].js"
 }
