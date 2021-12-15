@@ -151,6 +151,8 @@ function Chart({ data, query, baseUrl }) {
 					const show = array_node.filter( (word) => {
 						return !word.show ? word.id : null
 					})
+
+					
 	    		array_link.push({
 	    			base: links.source.id,
 						show: show.length > 0 ? show[0].id == links.target.id || show[0].id == links.source.id ? false : true : true,
@@ -164,11 +166,14 @@ function Chart({ data, query, baseUrl }) {
 	    	const _relations = array_link
 	    	const _links = []
 	    	const _linksori = []
+
 			
 	    	_relations.map(function(d){
 	    		_links.push({show: d.show, base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
 	    		_linksori.push({show: d.show, base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
 	    	})
+
+				// console.log(_links)
 
 				const k = {
 					0: 0, // doc
@@ -257,6 +262,7 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
+						
 						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
@@ -318,19 +324,16 @@ function Chart({ data, query, baseUrl }) {
 				links.exit().remove()
 				links.enter()
 					.append("path")
-					.attr("class", "link")
 					.attr("class", function(d) {
-						let array = []
-						const itemName = d.context ? d.context : d.rel_ids
-						array.push(itemName)
-						array = array.filter(Boolean)
-						array = array.map(
+						let itemName = d.context ? d.context : d.source
+						itemName = itemName.split(', ')
+						itemName = itemName.map(
 							( each ) =>  {
 								each = `link-${each}` 
 								return each
 							}
 						);
-            return d3.select(this).attr("class") + ' link-' + d.base  + " " + array.join(" ")
+						return "link link-" + d.base + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
 						return !d.show ? "display: none" : null;
