@@ -324,17 +324,41 @@ function Chart({ data, query, baseUrl }) {
 				links.exit().remove()
 				links.enter()
 					.append("path")
+					.attr("class", "link")
 					.attr("class", function(d) {
-						let itemName = d.context ? d.context : d.rel_ids
+						// let array = []
+						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
 						itemName = itemName.split(', ')
+
+						// console.log(itemName)
+
+						// array.push(itemName)
+						itemName = itemName.filter(Boolean)
+
+						// console.log(itemName)
+
 						itemName = itemName.map(
 							( each ) =>  {
 								each = `link-${each}` 
 								return each
 							}
-						)
-						return "link link-" + d.base + " " + itemName.join(" ")
+						);
+            return d3.select(this).attr("class") + ' link-' + d.base  + " " + itemName.join(" ")
 					})
+
+
+					// .attr("class", function(d) {
+					// 	let itemName = d.context ? d.context : d.rel_ids
+					// 	itemName = itemName.split(', ')
+					// 	itemName = itemName.map(
+					// 		( each ) =>  {
+					// 			each = `link-${each}` 
+					// 			return each
+					// 		}
+					// 	)
+					// 	return "link link-" + d.base + " " + itemName.join(" ")
+					// })
+
 					.attr("style", function(d) {
 						return !d.show ? "display: none" : null;
 					})
