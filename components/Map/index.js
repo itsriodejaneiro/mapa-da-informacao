@@ -325,7 +325,7 @@ function Chart({ data, query, baseUrl }) {
 				links.enter()
 					.append("path")
 					.attr("class", function(d) {
-						let itemName = d.context ? d.context : d.source
+						let itemName = d.context ? d.context : d.rel_ids
 						itemName = itemName.split(', ')
 						itemName = itemName.map(
 							( each ) =>  {
