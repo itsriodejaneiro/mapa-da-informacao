@@ -332,7 +332,7 @@ function Chart({ data, query, baseUrl }) {
 								each = `link-${each}` 
 								return each
 							}
-						);
+						)
 						return "link link-" + d.base + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
