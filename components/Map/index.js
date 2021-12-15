@@ -326,17 +326,24 @@ function Chart({ data, query, baseUrl }) {
 					.append("path")
 					.attr("class", "link")
 					.attr("class", function(d) {
-						let array = []
-						const itemName = d.context ? d.context : d.rel_ids
-						array.push(itemName)
-						array = array.filter(Boolean)
-						array = array.map(
+						// let array = []
+						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
+						itemName = itemName.split(', ')
+
+						// console.log(itemName)
+
+						// array.push(itemName)
+						itemName = itemName.filter(Boolean)
+
+						// console.log(itemName)
+
+						itemName = itemName.map(
 							( each ) =>  {
 								each = `link-${each}` 
 								return each
 							}
 						);
-            return d3.select(this).attr("class") + ' link-' + d.base  + " " + array.join(" ")
+            return d3.select(this).attr("class") + ' link-' + d.base  + " " + itemName.join(" ")
 					})
 
 
