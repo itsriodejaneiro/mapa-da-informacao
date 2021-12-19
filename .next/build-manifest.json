@@ -24,6 +24,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/projetos": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/projetos.js"
+    ],
     "/projetos/[map]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
