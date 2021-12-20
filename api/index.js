@@ -1,6 +1,8 @@
 import axios from "axios";
 
-let url = process.env.STATUS == 'production' ? "https://api.mapadainformacao.com.br/" : "https://staging-mapa-da-informacao-api.herokuapp.com/"
+// let url = process.env.STATUS == 'production' ? "https://api.mapadainformacao.com.br/" : "https://staging-mapa-da-informacao-api.herokuapp.com/"
+
+let url = "https://api.mapadainformacao.com.br/"
 
 class Api {
   
