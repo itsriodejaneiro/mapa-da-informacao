@@ -122,6 +122,7 @@ function Chart({ data, query, baseUrl }) {
 							show: nodes.show,
       				id: item.id,
       				nome: item.label,
+							context: item.context,
       				nomecompleto: item.title,
 							color: nodes.node_color ? nodes.node_color : idx < 6 ? paleta[idx] : '#c9b2fa',
       				tipo: nodes.order ? nodes.order : idx,
@@ -166,7 +167,6 @@ function Chart({ data, query, baseUrl }) {
 	    	const _links = []
 	    	const _linksori = []
 
-			
 	    	_relations.map(function(d){
 	    		_links.push({show: d.show, base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
 	    		_linksori.push({show: d.show, base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
@@ -193,14 +193,8 @@ function Chart({ data, query, baseUrl }) {
 					d.y = Number(d.y)
 				
 					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
-					const ctx = arr.map(function(d, i) {
-						let array1 = d.context
-						const array2 = array1.concat(array1);
-						return array2[array2.length - 1]
-					})
 
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
-					d.context = ctx
 					d.weight = arr.length
 
 					function isOdd(num) { 
@@ -256,9 +250,6 @@ function Chart({ data, query, baseUrl }) {
 				nodes.enter()
 					.append("g")
 					.attr("class", function(d, i) {
-
-						console.log(d.nome, d)
-
 
 						let itemName = d.context ? d.context : d.rel_ids
 
