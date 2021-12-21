@@ -112,7 +112,7 @@ function Chart({ data, query, baseUrl }) {
       	const category = json.categories
       	const mapping = json.node_mapping
 
-				// console.log(json)
+				console.log(json)
 
       	category.map(function(nodes, idx){
       		const node = nodes.nodes
@@ -196,8 +196,9 @@ function Chart({ data, query, baseUrl }) {
 				
 					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
 					const ctx = arr.map(function(d, i) {
+						// console.log(d)
 						let array1 = d.context
-						array1 = array1.split(', ')
+						// array1 = array1.split(', ')
 						const array2 = array1.concat(array1);
 						return array2[array2.length - 1]
 					})
@@ -260,6 +261,7 @@ function Chart({ data, query, baseUrl }) {
 					.append("g")
 					.attr("class", function(d, i) {
 						let itemName = d.context ? d.context : d.rel_ids
+						// console.log(d.nome, itemName, d.context)
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -332,7 +334,7 @@ function Chart({ data, query, baseUrl }) {
 					.attr("class", "link")
 					.attr("class", function(d) {
 						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
-						itemName = itemName.split(', ')
+						// itemName = itemName.split(', ')
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
