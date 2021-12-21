@@ -31,10 +31,10 @@ function Chart({ data, query, baseUrl }) {
 			const viewport = svg.append("g").attr("class", "viewport")
       const simulation = d3.forceSimulation().force("link", d3.forceLink().id(function(d) { return d.id; }))
 
+			// .on("tick", ticked)
+
       // Tooltip
       const tooltip = d3.select('.tooltip')
-      // var fx = new TextScramble(document.querySelector('.tooltip-text'), 15)
-      // var fxto = null
 
       // UTILS
       const color = d3.scaleOrdinal(d3.schemeCategory20)
@@ -112,6 +112,8 @@ function Chart({ data, query, baseUrl }) {
       	const category = json.categories
       	const mapping = json.node_mapping
 
+				// console.log(json)
+
       	category.map(function(nodes, idx){
       		const node = nodes.nodes
 
@@ -151,7 +153,6 @@ function Chart({ data, query, baseUrl }) {
 					const show = array_node.filter( (word) => {
 						return !word.show ? word.id : null
 					})
-
 					
 	    		array_link.push({
 	    			base: links.source.id,
@@ -173,8 +174,6 @@ function Chart({ data, query, baseUrl }) {
 	    		_linksori.push({show: d.show, base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
 	    	})
 
-				// console.log(_links)
-
 				const k = {
 					0: 0, // doc
 					1: 0, // app
@@ -195,10 +194,16 @@ function Chart({ data, query, baseUrl }) {
 					d.x = Number(d.x)
 					d.y = Number(d.y)
 				
-					const arr = _.filter(_linksori, function(o) { return o.target  == d.id || o.source  == d.id })
-				
+					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
+					const ctx = arr.map(function(d, i) {
+						let array1 = d.context
+						array1 = array1.split(', ')
+						const array2 = array1.concat(array1);
+						return array2[array2.length - 1]
+					})
+
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
-					d.context = _.uniq(_.map(arr, 'context'))
+					d.context = ctx
 					d.weight = arr.length
 
 					function isOdd(num) { 
@@ -214,7 +219,7 @@ function Chart({ data, query, baseUrl }) {
 						d.y = d.y_position ? d.y_position + d.height : isOdd(i) > 0 ? d.height + 60 : d.height + 40 
 					}
 				})
-			
+
 				// MULTIPLE LINKS: START
 				_.each(_links, function(link) {
 					const same = _.filter(_links, {
@@ -262,7 +267,6 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-						
 						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
@@ -272,6 +276,7 @@ function Chart({ data, query, baseUrl }) {
 					.attr('node_id', function(d) {
 						return d.id;
 					})
+		      // .call(drag_handler)
 					.append("circle")
 					.attr("r", 0)
 					.on("mouseover", node_mouseover)
@@ -326,17 +331,9 @@ function Chart({ data, query, baseUrl }) {
 					.append("path")
 					.attr("class", "link")
 					.attr("class", function(d) {
-						// let array = []
 						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
 						itemName = itemName.split(', ')
-
-						// console.log(itemName)
-
-						// array.push(itemName)
 						itemName = itemName.filter(Boolean)
-
-						// console.log(itemName)
-
 						itemName = itemName.map(
 							( each ) =>  {
 								each = `link-${each}` 
@@ -345,20 +342,6 @@ function Chart({ data, query, baseUrl }) {
 						);
             return d3.select(this).attr("class") + ' link-' + d.base  + " " + itemName.join(" ")
 					})
-
-
-					// .attr("class", function(d) {
-					// 	let itemName = d.context ? d.context : d.rel_ids
-					// 	itemName = itemName.split(', ')
-					// 	itemName = itemName.map(
-					// 		( each ) =>  {
-					// 			each = `link-${each}` 
-					// 			return each
-					// 		}
-					// 	)
-					// 	return "link link-" + d.base + " " + itemName.join(" ")
-					// })
-
 					.attr("style", function(d) {
 						return !d.show ? "display: none" : null;
 					})
@@ -371,13 +354,13 @@ function Chart({ data, query, baseUrl }) {
 					.nodes(data_n)
 					.force("link")
 					.links(data_l)
+	      
+				simulation.alpha(0.1)
 				
 				ticked()
 			}
 
 			function ticked() {
-				simulation.alpha(0)
-
 				const nodes  = _nodes.selectAll('.node')
 				const links  = _links.selectAll('.link')
 				const labels = _labels.selectAll('.label')
@@ -474,8 +457,6 @@ function Chart({ data, query, baseUrl }) {
       		.transition()
       		.duration(100)
       		.style('left', left + 'px')
-      
-      	// fx.setText(d.description)
       	sound_over.play()
       }
 
@@ -495,8 +476,7 @@ function Chart({ data, query, baseUrl }) {
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', true)
-				const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
-
+				const itemName = d.context[0] != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
 					d3.selectAll('.node.node-' + id).classed('highlight',true)
@@ -531,7 +511,6 @@ function Chart({ data, query, baseUrl }) {
 					.duration(100)
 					.style('left', left + 'px')
 
-				// fx.setText(d.nomecompleto || d.nome)
 				sound_over.play()
 			}
 
@@ -586,7 +565,15 @@ function Chart({ data, query, baseUrl }) {
 				d3.selectAll('.label.show').classed('show', false)
 			
 				const arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
-				const bases = name == 'context' ? _.uniq(_.map(arr,'context')) : _.uniq(_.map(arr,'base')) 
+
+				const ctx = arr.map(function(d, i) {
+					let array1 = d.context
+					array1 = array1.split(', ')
+					const array2 = array1.concat(array1);
+					return array2[array2.length - 1]
+				})
+
+				const bases = name == 'context' ? ctx : _.uniq(_.map(arr,'base')) 
 
 				_.forEach(bases, function(base){
 					d3.selectAll('.link.link-' + base).classed('show', true)
@@ -647,6 +634,7 @@ function Chart({ data, query, baseUrl }) {
 					s += el.tipo + ',' + el.id + ',' + el.nome + ',' + el.nomecompleto + ',' + Math.round(el.x) + ',' + Math.round(el.y) + '\n'
 				})
 			}
+
 		}
 	)
 
