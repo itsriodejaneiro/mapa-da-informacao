@@ -112,8 +112,6 @@ function Chart({ data, query, baseUrl }) {
       	const category = json.categories
       	const mapping = json.node_mapping
 
-				console.log(json)
-
       	category.map(function(nodes, idx){
       		const node = nodes.nodes
 
@@ -196,9 +194,7 @@ function Chart({ data, query, baseUrl }) {
 				
 					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
 					const ctx = arr.map(function(d, i) {
-						// console.log(d)
 						let array1 = d.context
-						// array1 = array1.split(', ')
 						const array2 = array1.concat(array1);
 						return array2[array2.length - 1]
 					})
@@ -241,10 +237,10 @@ function Chart({ data, query, baseUrl }) {
 				graph.data.nodes = _nodesori
 				graph.data.links = _linksori
 
-				update(graph.nodes, graph.links)
+				update(graph.nodes, graph.links, graph.data.links)
 			});
 
-			function update(data_n,data_l){
+			function update(data_n, data_l, _linksori){
 				const t = d3.transition().duration(750);
 				const nodes  = _nodes.selectAll('.node').data(data_n, function(d) { return d.id })
 				const labels = _labels.selectAll('.label').data(data_n, function(d) { return d.id })
@@ -260,8 +256,12 @@ function Chart({ data, query, baseUrl }) {
 				nodes.enter()
 					.append("g")
 					.attr("class", function(d, i) {
+
+						console.log(d.nome, d)
+
+
 						let itemName = d.context ? d.context : d.rel_ids
-						// console.log(d.nome, itemName, d.context)
+
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -334,7 +334,6 @@ function Chart({ data, query, baseUrl }) {
 					.attr("class", "link")
 					.attr("class", function(d) {
 						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
-						// itemName = itemName.split(', ')
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -570,7 +569,6 @@ function Chart({ data, query, baseUrl }) {
 
 				const ctx = arr.map(function(d, i) {
 					let array1 = d.context
-					array1 = array1.split(', ')
 					const array2 = array1.concat(array1);
 					return array2[array2.length - 1]
 				})
