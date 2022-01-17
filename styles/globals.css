@@ -97,7 +97,7 @@ a:hover {
 .mapa-viewport,
 .mapa-vis {
   font-family: "Fira Sans Regular", monospace;
-  /* width: calc(100vw - 20px); */
+  width: calc(100vw - 20px);
   min-height: 100vw;
   max-width: 100%;
   transition: all 0.3s;
