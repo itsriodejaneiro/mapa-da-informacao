@@ -16,7 +16,7 @@ function Chart({ data, query, baseUrl }) {
 	const ref = useD3(
     (svg) => {
 	    const width = 1280 // window.innerWidth,
-      const height = 960 // window.innerHeight;
+      const height = 1000 // window.innerHeight;
 
       var svg = d3.select(".mapa-vis")
       	.attr("preserveAspectRatio", "xMinYMin meet")
@@ -30,7 +30,6 @@ function Chart({ data, query, baseUrl }) {
 
 			const viewport = svg.append("g").attr("class", "viewport")
       const simulation = d3.forceSimulation().force("link", d3.forceLink().id(function(d) { return d.id; }))
-
 			// .on("tick", ticked)
 
       // Tooltip
@@ -110,7 +109,9 @@ function Chart({ data, query, baseUrl }) {
       
       d3.json(url, function (json) {
       	const category = json.categories
-      	const mapping = json.node_mapping
+      	const mapping = json.node_mappings
+
+				console.log(json)
 
 				// console.log(json)
 
@@ -267,6 +268,8 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
+						// console.log(d.nome, itemName, d)
+
 						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
@@ -364,7 +367,7 @@ function Chart({ data, query, baseUrl }) {
 				const nodes  = _nodes.selectAll('.node')
 				const links  = _links.selectAll('.link')
 				const labels = _labels.selectAll('.label')
-			
+				
 				if(nodes){
 					nodes.attr("transform", function(d) {
 						return "translate(" + d.x + "," + d.y + ")";
@@ -476,7 +479,9 @@ function Chart({ data, query, baseUrl }) {
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', true)
-				const itemName = d.context[0] != undefined ? d.context : d.rel_ids
+				
+        const itemName = d.context[0] != undefined ? d.context : d.rel_ids
+				// const itemName = d.context != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
 					d3.selectAll('.node.node-' + id).classed('highlight',true)
@@ -486,16 +491,21 @@ function Chart({ data, query, baseUrl }) {
 				const svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
 				const scale = svg_w / width
 
-				const top = d.y < height * .8
-					? d.y * scale + (node_size(d) * 0.5 + 30) * scale + 0 // 160
-					: d.y * scale - (node_size(d) * scale + 90) + 0 // 160
-			
-				let left = d.x < width * .75
-					? (d.x + 20) * scale
-					: (d.x - 20) * scale
-			
-				// window safe area
-				left = Math.min(Math.max(180,left),width * scale - 180)
+				const top = d.height + ( node_size(d) ) + d.y_position + 30
+
+				let left = d.x_position + 180 - ( node_size(d) * 2 )
+			  left = Math.min(Math.max(120, left), width * scale - 120) // window safe area
+
+				// var svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
+				// var scale = svg_w / width
+				// var top = d.y < height * .8
+				// 	? d.y * scale + (node_size(d) * 0.5 + 30) * scale + 160
+				// 	: d.y * scale - (node_size(d) * scale + 90) + 160
+				// var left = d.x < width * .75
+				// 	? (d.x + 20) * scale
+				// 	: (d.x - 20) * scale
+				// // window safe area
+				// left = Math.min(Math.max(180,left),width * scale - 180)
 			
 				d3.selectAll('.tooltip-title')
 					.text(d.tipo_label)
@@ -526,6 +536,7 @@ function Chart({ data, query, baseUrl }) {
 				// links
 				d3.selectAll('.mapa').classed('highlight', false)
 				const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
+				// const itemName = d.context != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id){
 					d3.selectAll('.link').classed('highlight', false)
 					d3.selectAll('.node').classed('highlight', false)
@@ -641,8 +652,9 @@ function Chart({ data, query, baseUrl }) {
   return (
     <S.Wrapper>
 			<section className="mapa exit">
+
         <div className="mapa-viewport">
-          <svg className="mapa-vis" ref={ref} width="1280" height="960"></svg>
+          <svg className="mapa-vis" ref={ref} width="1280" height="1000"></svg>
           <div className="tooltip">
             <div className="tooltip-wrapper">
               <div className="tooltip-title"></div>

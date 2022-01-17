@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Wrapper = styled.div`
-	padding: 0 30px;
+	// padding: 0 30px;
 	color: #fff;
 	font-family: 'Fira Mono', monospace;
 	position: relative;

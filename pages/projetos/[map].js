@@ -41,6 +41,7 @@ export default function SingleProject() {
 
       if (queryId?.length) {
         await Api.getMap(queryId).then((response) => {
+          console.log(response)
           setProjectData(response?.data)
         })
       }
@@ -87,7 +88,7 @@ export default function SingleProject() {
 
         {!projectData ? <S.Loading>Loading ...</S.Loading> : null}
       </S.SingleProjectWrapper>
-
+      
       {projectData ? <Map data={projectData} query={projectData.id} baseUrl={Api.baseUrl} /> : null}
     </>
   )
