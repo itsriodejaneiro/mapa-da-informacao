@@ -196,15 +196,15 @@ function Chart({ data, query, baseUrl }) {
 					d.y = Number(d.y)
 				
 					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
-					const ctx = arr.map(function(d, i) {
-						let array1 = d.context
-						array1 = array1.split(', ')
-						const array2 = array1.concat(array1);
-						return array2[array2.length - 1]
-					})
+					// const ctx = arr.map(function(d, i) {
+					// 	let array1 = d.context
+					// 	// array1 = array1.split(', ')
+					// 	const array2 = array1.concat(array1);
+					// 	return array2[array2.length - 1]
+					// })
 
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
-					d.context = ctx
+					// d.context = ctx
 					d.weight = arr.length
 
 					function isOdd(num) { 
@@ -335,7 +335,7 @@ function Chart({ data, query, baseUrl }) {
 					.attr("class", "link")
 					.attr("class", function(d) {
 						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
-						itemName = itemName.split(', ')
+						// itemName = itemName.split(', ')
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -480,8 +480,8 @@ function Chart({ data, query, baseUrl }) {
 				// links
 				d3.selectAll('.mapa').classed('highlight', true)
 				
-        const itemName = d.context[0] != undefined ? d.context : d.rel_ids
-				// const itemName = d.context != undefined ? d.context : d.rel_ids
+        // const itemName = d.context[0] != undefined ? d.context : d.rel_ids
+				const itemName = d.context != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
 					d3.selectAll('.node.node-' + id).classed('highlight',true)
@@ -535,8 +535,8 @@ function Chart({ data, query, baseUrl }) {
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', false)
-				const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
-				// const itemName = d.context != undefined ? d.context : d.rel_ids
+				// const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
+				const itemName = d.context != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id){
 					d3.selectAll('.link').classed('highlight', false)
 					d3.selectAll('.node').classed('highlight', false)
@@ -550,15 +550,20 @@ function Chart({ data, query, baseUrl }) {
 			}
 
 			function node_click(d, idx) {
-				const itemName = d.context.length >= 1 && d.context[0] != undefined ? d.context : d.rel_ids
-				const name = d.context.length >= 1 && d.context[0] != undefined ? 'context' : 'id'
+				// const itemName = d.context.length >= 1 && d.context != undefined ? d.context : d.rel_ids
+				// const name = d.context.length >= 1 && d.context != undefined ? 'context' : 'id'
+
+				const name = d.context != undefined ? 'context' : 'id'
+
+				// const itemName = d.context.length >= 1 && d.context[0] != undefined ? d.context : d.rel_ids
+				// const name = d.context.length >= 1 && d.context[0] != undefined ? 'context' : 'id'
 
 				sound_click.play()
 			
 				if(current_id == d.id){
 					closeInfo()
 				} else {
-					showInfo(d.tipo, d.id, itemName, name)
+					showInfo(d.tipo, d.id, name)
 					// ga('send', 'event', 'node', 'click', d.tipo + " - " + d.nomecompleto) 
 				}
 			}
@@ -566,7 +571,7 @@ function Chart({ data, query, baseUrl }) {
 			// INFO PANEL
 			let current_id = null
 
-			function showInfo(tipo, id, context, name) {
+			function showInfo(tipo, id, name) {
 				const w = $(window).width()
 				const vis = d3.select(".mapa")
 
@@ -578,10 +583,11 @@ function Chart({ data, query, baseUrl }) {
 				const arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
 
 				const ctx = arr.map(function(d, i) {
-					let array1 = d.context
-					array1 = array1.split(', ')
-					const array2 = array1.concat(array1);
-					return array2[array2.length - 1]
+					// let array1 = d.context
+					// array1 = array1.split(', ')
+					// const array2 = array1.concat(array1);
+					// return array2[array2.length - 1]
+					return d.context
 				})
 
 				const bases = name == 'context' ? ctx : _.uniq(_.map(arr,'base')) 

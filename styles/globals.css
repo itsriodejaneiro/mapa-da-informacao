@@ -97,23 +97,20 @@ a:hover {
 .mapa-viewport,
 .mapa-vis {
   font-family: "Fira Sans Regular", monospace;
-<<<<<<< Updated upstream
-  width: calc(100vw - 20px);
-  height: 80vw;
-=======
   /* width: calc(100vw - 20px); */
   min-height: 100vw;
->>>>>>> Stashed changes
   max-width: 100%;
   transition: all 0.3s;
   overflow: hidden; 
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .show-info .mapa-viewport,
 .show-info .mapa-vis {
   width: calc(100vw - 360px);
-  height: calc(80vw - 225px); 
+  min-height: calc(85vw - 225px); 
 }
 
 .mapa-info {
