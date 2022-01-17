@@ -111,7 +111,7 @@ function Chart({ data, query, baseUrl }) {
       	const category = json.categories
       	const mapping = json.node_mappings
 
-				console.log(json)
+				// console.log(json)
 
 				// console.log(json)
 
@@ -120,8 +120,10 @@ function Chart({ data, query, baseUrl }) {
 
       		node.map(function(item, index){
 						const space = nodes.min_size ? nodes.min_size * index : 5 * index
+						// console.log(item)
       			array_node.push({
 							position: index,
+							context: item.context,
 							show: nodes.show,
       				id: item.id,
       				nome: item.label,
@@ -204,8 +206,10 @@ function Chart({ data, query, baseUrl }) {
 					// })
 
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
-					// d.context = ctx
+					// d.context = d.context
 					d.weight = arr.length
+
+					console.log(d.context)
 
 					function isOdd(num) { 
 						return num % 2 
