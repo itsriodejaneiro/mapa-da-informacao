@@ -36,7 +36,7 @@ function Chart({ data, query, baseUrl }) {
       const tooltip = d3.select('.tooltip')
 
       // UTILS
-      const color = d3.scaleOrdinal(d3.schemeCategory20)
+      // const color = d3.scaleOrdinal(d3.schemeCategory20)
       const paleta = ['#c9b2fa','#ae92e9','#725f96','#ffc28f','#af7744','#ffc28f']
 
 			const temp = {
@@ -60,10 +60,10 @@ function Chart({ data, query, baseUrl }) {
       	return temp[t].delay * 100 + i * 50
       }
 
-      const orgao_scale = d3.scaleLinear()
-      	.domain([1, 4])
-      	.range(['#fcd9b2', '#e07145'])
-      	.interpolate(d3.interpolateHcl)
+      // const orgao_scale = d3.scaleLinear()
+      // 	.domain([1, 4])
+      // 	.range(['#fcd9b2', '#e07145'])
+      // 	.interpolate(d3.interpolateHcl)
 
 			const legendas = data.categories
 
@@ -80,16 +80,19 @@ function Chart({ data, query, baseUrl }) {
 				.attr('style', function(d){ 
 					return !d.show ? "display: none" : null;
 				})
-      	.attr("x1", 20 )
+      	// .attr("x1", 20 )
+				.attr("x1", 0 )
       	.attr("y1", function(d) { return d.height_area })
-      	.attr("x2", width - 20)
+      	// .attr("x2", width - 20)
+				.attr("x2", width)
       	.attr("y2", function(d) { return d.height_area });
 
       legenda
       	.append('text')
       	.attr("class", 'legenda-text')
       	.text(function(d) { return d.title })
-      	.attr('x', 20)
+      	.attr('x', 0)
+				// .attr('x', 20)
       	.attr('y', function(d){ return d.height_area + 25 })
 				.attr('style', function(d){ 
 					return !d.show ? "display: none" : null;
@@ -112,7 +115,6 @@ function Chart({ data, query, baseUrl }) {
       	const mapping = json.node_mappings
 
 				// console.log(json)
-
 				// console.log(json)
 
       	category.map(function(nodes, idx){
@@ -138,8 +140,10 @@ function Chart({ data, query, baseUrl }) {
 							height: nodes.height_area,
 							x_position: item.x_position,
       				y_position: item.y_position,
-      				x: item.x_position ? item.x_position + 160 : 160 + space,
+							x: item.x_position ? item.x_position + 160 : 160 + space,
       				y: item.y_position ? item.y_position + nodes.height_area : nodes.height_area + 40,
+      				x_pos: item.x_position ? item.x_position + 160 : 160 + space,
+      				y_pos: item.y_position ? item.y_position + nodes.height_area : nodes.height_area + 40,
 							min_size: nodes.min_size ? nodes.min_size : 10,
 							max_size: nodes.max_size ? nodes.max_size : 80
       			})
@@ -171,7 +175,6 @@ function Chart({ data, query, baseUrl }) {
 	    	const _links = []
 	    	const _linksori = []
 
-			
 	    	_relations.map(function(d){
 	    		_links.push({show: d.show, base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
 	    		_linksori.push({show: d.show, base: d.base, source: d.source, relation: d.relation, target: d.target, context: d.context})	
@@ -189,13 +192,17 @@ function Chart({ data, query, baseUrl }) {
 				array_node.map(function(d, i){
 					const loop = d.max_size
 					const step = loop / temp[d.tipo].cluster.k
+
+					// .log(d)
 				
 					d.offsetY = k[d.tipo]
 					k[d.tipo] += step
 					k[d.tipo] = k[d.tipo] % loop
-				
-					d.x = Number(d.x)
-					d.y = Number(d.y)
+
+					// console.log(d.x)
+					// d.x = Number(d.x)
+					// d.y = Number(d.y)
+					// console.log(d.x)
 				
 					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
 					// const ctx = arr.map(function(d, i) {
@@ -209,19 +216,23 @@ function Chart({ data, query, baseUrl }) {
 					// d.context = d.context
 					d.weight = arr.length
 
-					console.log(d.context)
+					// console.log(d.context)
 
 					function isOdd(num) { 
 						return num % 2 
 					}
 
 					if(d.x_position == undefined) {
+						console.log('aqui')
 						const index = i == 0 ? 0 : i - 1
 					  const real_size = ( ( d.min_size + array_node[index].weight ) * 2 ) + 25
 					  const space = real_size * d.position 
 
 						d.x = d.x_position ? d.x_position + 160 : 160 + space
 						d.y = d.y_position ? d.y_position + d.height : isOdd(i) > 0 ? d.height + 60 : d.height + 40 
+
+						d.x_pos = d.x_position ? d.x_position + 160 : 160 + space
+						d.y_pos = d.y_position ? d.y_position + d.height : isOdd(i) > 0 ? d.height + 60 : d.height + 40 
 					}
 				})
 
@@ -371,12 +382,16 @@ function Chart({ data, query, baseUrl }) {
 				const nodes  = _nodes.selectAll('.node')
 				const links  = _links.selectAll('.link')
 				const labels = _labels.selectAll('.label')
+
+				// console.log(d)
 				
 				if(nodes){
 					nodes.attr("transform", function(d) {
-						return "translate(" + d.x + "," + d.y + ")";
+						return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
+
+				// 120 - 137 (17) / 328 - 372 (44)
 			
 				if(links){
 					links.attr("d", positionLink)
@@ -384,7 +399,7 @@ function Chart({ data, query, baseUrl }) {
 			
 				if(labels){
 					labels.attr("transform", function(d) {
-						return "translate(" + d.x + "," + d.y + ")";
+						return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 			}
@@ -411,8 +426,8 @@ function Chart({ data, query, baseUrl }) {
 
 			function drag_start(d) {
 				if (!d3.event.active) simulation.alphaTarget(0.1).restart();
-				d.fx = d.x;
-				d.fy = d.y;
+				d.fx = d.x_pos;
+				d.fy = d.y_pos;
 			}
 
 			function drag_drag(d) {
@@ -472,7 +487,7 @@ function Chart({ data, query, baseUrl }) {
       	tooltip.classed('show', false)
       }
 
-			function node_mouseover(d, idx) {
+			function node_mouseover(d) {
 				if($(window).width() < 768) return
 			
 				// label
@@ -493,12 +508,36 @@ function Chart({ data, query, baseUrl }) {
 			
 				// tooltip
 				const svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
-				const scale = svg_w / width
+				const window_w = svg_w + 60
+				const scale = svg_w / window_w
 
-				const top = d.height + ( node_size(d) ) + d.y_position + 30
+				console.log( d.x_pos, node_size(d), d )
 
-				let left = d.x_position + 180 - ( node_size(d) * 2 )
-			  left = Math.min(Math.max(120, left), width * scale - 120) // window safe area
+				// const top = ( node_size(d) * 2 ) + d.y_pos + 30
+				// let left =  d.x_pos 
+
+				const top = d.tipo <= 1 ? d.y_pos + node_size(d) + 25 : d.y_pos + node_size(d);
+				let left = d.x_pos - node_size(d);
+
+
+
+
+				// < window_w * .75 ? (d.x_pos) * scale : ( d.x_pos ) * scale
+				// d.x_position + 160
+				// d.x_pos + node_size(d)
+				// + 300
+				// let left = 0
+			  // console.log(left)
+				// + 180 - ( node_size(d) * 2 )
+				// let left = d.x_position + 180 - ( node_size(d) * 2 )
+			  left = Math.min(Math.max(100, left), width * scale - 100) // window safe area
+
+
+
+
+
+
+
 
 				// var svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
 				// var scale = svg_w / width

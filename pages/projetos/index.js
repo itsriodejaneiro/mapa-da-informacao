@@ -11,7 +11,6 @@ export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
   useEffect( () => {
     Api.getMaps().then((response) => {
-      // console.log(response.data)
       if (response?.data?.length !== 0) {
         setProjects(response.data);
       }

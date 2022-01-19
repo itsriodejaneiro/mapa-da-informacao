@@ -41,7 +41,6 @@ export default function SingleProject() {
 
       if (queryId?.length) {
         await Api.getMap(queryId).then((response) => {
-          console.log(response)
           setProjectData(response?.data)
         })
       }

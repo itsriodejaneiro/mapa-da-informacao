@@ -92,14 +92,19 @@ a:hover {
   position: relative;
   overflow: hidden;
   margin: 40px auto;
+  /* background: black; */
+  display: flex;
+  justify-content: center;
 }
+
 
 .mapa-viewport,
 .mapa-vis {
   font-family: "Fira Sans Regular", monospace;
-  width: calc(100vw - 20px);
-  min-height: 100vw;
-  max-width: 100%;
+  /* width: calc(100vw - 20px); */
+  height: 1280px;
+  width: 1280px;
+  /* width: 100%; */
   transition: all 0.3s;
   overflow: hidden; 
   position: relative;
@@ -345,10 +350,12 @@ a:hover {
   top: 0;
   left: 0;
   opacity: 0;
-  width: fit-content;
-  max-width: 300px;
+  width: 300px;
+  /* width: fit-content;
+  max-width: 300px; */
   text-align: center;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
+  margin-left: -150px;
   display: none;
 }
 
