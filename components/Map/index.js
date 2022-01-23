@@ -332,6 +332,7 @@ function Chart({ data, query, baseUrl }) {
 						.text(function(d) { 
 							const size = node_size(d)
 							return size <= 10 ? '' : d.nome
+							// return d.nome
 						})
 						.attr("text-anchor", "middle")
 						.attr('x', 0)
