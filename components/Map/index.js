@@ -29,8 +29,10 @@ function Chart({ data, query, baseUrl }) {
         .on("click", function() { closeInfo() })
 
 			const viewport = svg.append("g").attr("class", "viewport")
-      const simulation = d3.forceSimulation().force("link", d3.forceLink().id(function(d) { return d.id; }))
-			// .on("tick", ticked)
+      const simulation = d3
+				.forceSimulation()
+				.force("link", d3.forceLink().id(function(d) { return d.id; }))
+				// .on("tick", ticked) // Para mudar dos itens de lugar
 
       // Tooltip
       const tooltip = d3.select('.tooltip')
@@ -52,9 +54,9 @@ function Chart({ data, query, baseUrl }) {
 				return d.min_size + d.weight
       }
 
-			function node_size_before(d, i){
-				return d.min_size + d.weight
-      }
+			// function node_size_before(d, i){
+			// 	return d.min_size + d.weight
+      // }
 
       function node_delay(t,i){
       	return temp[t].delay * 100 + i * 50
@@ -114,15 +116,13 @@ function Chart({ data, query, baseUrl }) {
       	const category = json.categories
       	const mapping = json.node_mappings
 
-				// console.log(json)
+				console.log(json)
 				// console.log(json)
 
       	category.map(function(nodes, idx){
       		const node = nodes.nodes
-
       		node.map(function(item, index){
 						const space = nodes.min_size ? nodes.min_size * index : 5 * index
-						// console.log(item)
       			array_node.push({
 							position: index,
 							context: item.context,
@@ -223,7 +223,7 @@ function Chart({ data, query, baseUrl }) {
 					}
 
 					if(d.x_position == undefined) {
-						console.log('aqui')
+						// console.log('aqui')
 						const index = i == 0 ? 0 : i - 1
 					  const real_size = ( ( d.min_size + array_node[index].weight ) * 2 ) + 25
 					  const space = real_size * d.position 
@@ -294,12 +294,12 @@ function Chart({ data, query, baseUrl }) {
 					.attr('node_id', function(d) {
 						return d.id;
 					})
-		      // .call(drag_handler)
+		      .call(drag_handler)
 					.append("circle")
 					.attr("r", 0)
-					.on("mouseover", node_mouseover)
-					.on("mouseout", node_mouseout)
-					.on("click", node_click)
+					// .on("mouseover", node_mouseover)
+					// .on("mouseout", node_mouseout)
+					// .on("click", node_click)
 					.transition(t)
 					.delay(function(d, i) { return node_delay(d.tipo,i) })
 					.attr("r", function(d){ return node_size(d) } )
@@ -372,6 +372,8 @@ function Chart({ data, query, baseUrl }) {
 					.nodes(data_n)
 					.force("link")
 					.links(data_l)
+
+					// console.log(data_n)
 	      
 				simulation.alpha(0.1)
 				
@@ -387,7 +389,8 @@ function Chart({ data, query, baseUrl }) {
 				
 				if(nodes){
 					nodes.attr("transform", function(d) {
-						return "translate(" + d.x_pos + "," + d.y_pos + ")";
+						return "translate(" + d.x + "," + d.y + ")";
+						// return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 
@@ -399,7 +402,8 @@ function Chart({ data, query, baseUrl }) {
 			
 				if(labels){
 					labels.attr("transform", function(d) {
-						return "translate(" + d.x_pos + "," + d.y_pos + ")";
+						return "translate(" + d.x + "," + d.y + ")";
+						// return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 			}
@@ -511,13 +515,15 @@ function Chart({ data, query, baseUrl }) {
 				const window_w = svg_w + 60
 				const scale = svg_w / window_w
 
-				console.log( d.x_pos, node_size(d), d )
+				// console.log( d.x_pos, node_size(d), d )
 
 				// const top = ( node_size(d) * 2 ) + d.y_pos + 30
 				// let left =  d.x_pos 
 
 				const top = d.tipo <= 1 ? d.y_pos + node_size(d) + 25 : d.y_pos + node_size(d);
 				let left = d.x_pos - node_size(d);
+
+				// Ver node denuncie procon que deve ter so a classe 07 e precisa remover a 23
 
 
 
