@@ -20,7 +20,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Head>
-        <title>Projetos - Portal Mapa da Informaçã</title>
+        <title>Projetos - Portal Mapa da Informação</title>
         <meta property="og:title" content="Projetos - Portal Mapa da Informaçã"/>
         <meta property="og:description" content="A informação é a melhor ferramenta para tomadas de decisões. Conheça aqui os projetos do Portal Mapa da Informação"/>
         <meta property="og:url" content="https://mapadainformacao.com.br/"/>
@@ -37,24 +37,23 @@ export default function ProjectsPage() {
       <S.ProjectsWrapper>
         <Title lightText={'Projetos'} />
         <Text text='A informação é um poderoso instrumento para tomadas de decisões. O Portal do Mapa da Informação apoia a governança de dados dos governos federal, estadual e municipal, proporcionando um maior entendimento do sistema de informação e do objeto a ser aprofundado.' />
+        <Text text='Confira aqui os projetos que já foram feitos:' />
         
-        {/* <Text text='O Brasil precisa de um mapa do recurso mais importante para o desenvolvimento econômico no mundo contemporâneo: a informação. No setor público, o tratamento das informações do cidadão é frequentemente caótico.' /> */}
-
         <S.ProjectList>
           {projects.length !== 0 ? projects.map((item) => (
             <S.ProjectItem key={item?.id}>
               <Image
               	alt={item?.title}
-                src={`${item?.project_cover?.url}`}
-                width={300}
-                height={200}
+                src={`${item?.project_cover}`}
+                width={380}
+                height={280}
               />
               <S.ProjectInfo>
                 <Link href={{ pathname: `/projetos/[map]/`, query:{ map: item?.url_map, id: item?.id }}} as={`/projetos/${item?.url_map}/`}>
                   {item?.title}
                 </Link>
-                <Text text={item?.synopsis} />
-              </S.ProjectInfo>
+                <Text text={item?.summary} />
+              </S.ProjectInfo> 
             </S.ProjectItem>
           )) : <div>Loading ...</div>}
         </S.ProjectList>

@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 	color: #fff;
 	font-family: 'Fira Mono', monospace;
 	position: relative;
+	// background: green;
 	svg {
 		.legenda {
 			.legenda-text {

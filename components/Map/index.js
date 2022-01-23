@@ -16,7 +16,7 @@ function Chart({ data, query, baseUrl }) {
 	const ref = useD3(
     (svg) => {
 	    const width = 1280 // window.innerWidth,
-      const height = 960 // window.innerHeight;
+      const height = 1000 // window.innerHeight;
 
       var svg = d3.select(".mapa-vis")
       	.attr("preserveAspectRatio", "xMinYMin meet")
@@ -29,15 +29,16 @@ function Chart({ data, query, baseUrl }) {
         .on("click", function() { closeInfo() })
 
 			const viewport = svg.append("g").attr("class", "viewport")
-      const simulation = d3.forceSimulation().force("link", d3.forceLink().id(function(d) { return d.id; }))
-
-			// .on("tick", ticked)
+      const simulation = d3
+				.forceSimulation()
+				.force("link", d3.forceLink().id(function(d) { return d.id; }))
+				// .on("tick", ticked) // Para mudar dos itens de lugar
 
       // Tooltip
       const tooltip = d3.select('.tooltip')
 
       // UTILS
-      const color = d3.scaleOrdinal(d3.schemeCategory20)
+      // const color = d3.scaleOrdinal(d3.schemeCategory20)
       const paleta = ['#c9b2fa','#ae92e9','#725f96','#ffc28f','#af7744','#ffc28f']
 
 			const temp = {
@@ -53,18 +54,18 @@ function Chart({ data, query, baseUrl }) {
 				return d.min_size + d.weight
       }
 
-			function node_size_before(d, i){
-				return d.min_size + d.weight
-      }
+			// function node_size_before(d, i){
+			// 	return d.min_size + d.weight
+      // }
 
       function node_delay(t,i){
       	return temp[t].delay * 100 + i * 50
       }
 
-      const orgao_scale = d3.scaleLinear()
-      	.domain([1, 4])
-      	.range(['#fcd9b2', '#e07145'])
-      	.interpolate(d3.interpolateHcl)
+      // const orgao_scale = d3.scaleLinear()
+      // 	.domain([1, 4])
+      // 	.range(['#fcd9b2', '#e07145'])
+      // 	.interpolate(d3.interpolateHcl)
 
 			const legendas = data.categories
 
@@ -81,16 +82,19 @@ function Chart({ data, query, baseUrl }) {
 				.attr('style', function(d){ 
 					return !d.show ? "display: none" : null;
 				})
-      	.attr("x1", 20 )
+      	// .attr("x1", 20 )
+				.attr("x1", 0 )
       	.attr("y1", function(d) { return d.height_area })
-      	.attr("x2", width - 20)
+      	// .attr("x2", width - 20)
+				.attr("x2", width)
       	.attr("y2", function(d) { return d.height_area });
 
       legenda
       	.append('text')
       	.attr("class", 'legenda-text')
       	.text(function(d) { return d.title })
-      	.attr('x', 20)
+      	.attr('x', 0)
+				// .attr('x', 20)
       	.attr('y', function(d){ return d.height_area + 25 })
 				.attr('style', function(d){ 
 					return !d.show ? "display: none" : null;
@@ -110,15 +114,14 @@ function Chart({ data, query, baseUrl }) {
       
       d3.json(url, function (json) {
       	const category = json.categories
-      	const mapping = json.node_mapping
-
+      	const mapping = json.node_mappings
       	category.map(function(nodes, idx){
       		const node = nodes.nodes
-
       		node.map(function(item, index){
 						const space = nodes.min_size ? nodes.min_size * index : 5 * index
       			array_node.push({
 							position: index,
+							context: item.context,
 							show: nodes.show,
       				id: item.id,
       				nome: item.label,
@@ -134,8 +137,10 @@ function Chart({ data, query, baseUrl }) {
 							height: nodes.height_area,
 							x_position: item.x_position,
       				y_position: item.y_position,
-      				x: item.x_position ? item.x_position + 160 : 160 + space,
+							x: item.x_position ? item.x_position + 160 : 160 + space,
       				y: item.y_position ? item.y_position + nodes.height_area : nodes.height_area + 40,
+      				x_pos: item.x_position ? item.x_position + 160 : 160 + space,
+      				y_pos: item.y_position ? item.y_position + nodes.height_area : nodes.height_area + 40,
 							min_size: nodes.min_size ? nodes.min_size : 10,
 							max_size: nodes.max_size ? nodes.max_size : 80
       			})
@@ -184,30 +189,48 @@ function Chart({ data, query, baseUrl }) {
 				array_node.map(function(d, i){
 					const loop = d.max_size
 					const step = loop / temp[d.tipo].cluster.k
+
+					// .log(d)
 				
 					d.offsetY = k[d.tipo]
 					k[d.tipo] += step
 					k[d.tipo] = k[d.tipo] % loop
-				
-					d.x = Number(d.x)
-					d.y = Number(d.y)
+
+					// console.log(d.x)
+					// d.x = Number(d.x)
+					// d.y = Number(d.y)
+					// console.log(d.x)
 				
 					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
 
+					// const ctx = arr.map(function(d, i) {
+					// 	let array1 = d.context
+					// 	// array1 = array1.split(', ')
+					// 	const array2 = array1.concat(array1);
+					// 	return array2[array2.length - 1]
+					// })
+
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
+					// d.context = d.context
 					d.weight = arr.length
+
+					// console.log(d.context)
 
 					function isOdd(num) { 
 						return num % 2 
 					}
 
 					if(d.x_position == undefined) {
+						// console.log('aqui')
 						const index = i == 0 ? 0 : i - 1
 					  const real_size = ( ( d.min_size + array_node[index].weight ) * 2 ) + 25
 					  const space = real_size * d.position 
 
 						d.x = d.x_position ? d.x_position + 160 : 160 + space
 						d.y = d.y_position ? d.y_position + d.height : isOdd(i) > 0 ? d.height + 60 : d.height + 40 
+
+						d.x_pos = d.x_position ? d.x_position + 160 : 160 + space
+						d.y_pos = d.y_position ? d.y_position + d.height : isOdd(i) > 0 ? d.height + 60 : d.height + 40 
 					}
 				})
 
@@ -260,6 +283,8 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
+						// console.log(d.nome, itemName, d)
+
 						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
@@ -269,7 +294,7 @@ function Chart({ data, query, baseUrl }) {
 					.attr('node_id', function(d) {
 						return d.id;
 					})
-		      // .call(drag_handler)
+		      .call(drag_handler)
 					.append("circle")
 					.attr("r", 0)
 					.on("mouseover", node_mouseover)
@@ -325,6 +350,8 @@ function Chart({ data, query, baseUrl }) {
 					.attr("class", "link")
 					.attr("class", function(d) {
 						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
+
+						// itemName = itemName.split(', ')
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -346,6 +373,8 @@ function Chart({ data, query, baseUrl }) {
 					.nodes(data_n)
 					.force("link")
 					.links(data_l)
+
+					// console.log(data_n)
 	      
 				simulation.alpha(0.1)
 				
@@ -356,12 +385,17 @@ function Chart({ data, query, baseUrl }) {
 				const nodes  = _nodes.selectAll('.node')
 				const links  = _links.selectAll('.link')
 				const labels = _labels.selectAll('.label')
-			
+
+				// console.log(d)
+				
 				if(nodes){
 					nodes.attr("transform", function(d) {
 						return "translate(" + d.x + "," + d.y + ")";
+						// return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
+
+				// 120 - 137 (17) / 328 - 372 (44)
 			
 				if(links){
 					links.attr("d", positionLink)
@@ -370,6 +404,7 @@ function Chart({ data, query, baseUrl }) {
 				if(labels){
 					labels.attr("transform", function(d) {
 						return "translate(" + d.x + "," + d.y + ")";
+						// return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 			}
@@ -396,8 +431,8 @@ function Chart({ data, query, baseUrl }) {
 
 			function drag_start(d) {
 				if (!d3.event.active) simulation.alphaTarget(0.1).restart();
-				d.fx = d.x;
-				d.fy = d.y;
+				d.fx = d.x_pos;
+				d.fy = d.y_pos;
 			}
 
 			function drag_drag(d) {
@@ -457,7 +492,7 @@ function Chart({ data, query, baseUrl }) {
       	tooltip.classed('show', false)
       }
 
-			function node_mouseover(d, idx) {
+			function node_mouseover(d) {
 				if($(window).width() < 768) return
 			
 				// label
@@ -468,7 +503,9 @@ function Chart({ data, query, baseUrl }) {
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', true)
-				const itemName = d.context[0] != undefined ? d.context : d.rel_ids
+				
+        // const itemName = d.context[0] != undefined ? d.context : d.rel_ids
+				const itemName = d.context != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
 					d3.selectAll('.node.node-' + id).classed('highlight',true)
@@ -476,18 +513,49 @@ function Chart({ data, query, baseUrl }) {
 			
 				// tooltip
 				const svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
-				const scale = svg_w / width
+				const window_w = svg_w + 60
+				const scale = svg_w / window_w
 
-				const top = d.y < height * .8
-					? d.y * scale + (node_size(d) * 0.5 + 30) * scale + 0 // 160
-					: d.y * scale - (node_size(d) * scale + 90) + 0 // 160
-			
-				let left = d.x < width * .75
-					? (d.x + 20) * scale
-					: (d.x - 20) * scale
-			
-				// window safe area
-				left = Math.min(Math.max(180,left),width * scale - 180)
+				// console.log( d.x_pos, node_size(d), d )
+
+				// const top = ( node_size(d) * 2 ) + d.y_pos + 30
+				// let left =  d.x_pos 
+
+				const top = d.tipo <= 1 ? d.y_pos + node_size(d) + 25 : d.y_pos + node_size(d);
+				let left = d.x_pos - node_size(d);
+
+				// Ver node denuncie procon que deve ter so a classe 07 e precisa remover a 23
+
+
+
+
+				// < window_w * .75 ? (d.x_pos) * scale : ( d.x_pos ) * scale
+				// d.x_position + 160
+				// d.x_pos + node_size(d)
+				// + 300
+				// let left = 0
+			  // console.log(left)
+				// + 180 - ( node_size(d) * 2 )
+				// let left = d.x_position + 180 - ( node_size(d) * 2 )
+			  left = Math.min(Math.max(100, left), width * scale - 100) // window safe area
+
+
+
+
+
+
+
+
+				// var svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
+				// var scale = svg_w / width
+				// var top = d.y < height * .8
+				// 	? d.y * scale + (node_size(d) * 0.5 + 30) * scale + 160
+				// 	: d.y * scale - (node_size(d) * scale + 90) + 160
+				// var left = d.x < width * .75
+				// 	? (d.x + 20) * scale
+				// 	: (d.x - 20) * scale
+				// // window safe area
+				// left = Math.min(Math.max(180,left),width * scale - 180)
 			
 				d3.selectAll('.tooltip-title')
 					.text(d.tipo_label)
@@ -517,7 +585,8 @@ function Chart({ data, query, baseUrl }) {
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', false)
-				const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
+				// const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
+				const itemName = d.context != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id){
 					d3.selectAll('.link').classed('highlight', false)
 					d3.selectAll('.node').classed('highlight', false)
@@ -531,15 +600,20 @@ function Chart({ data, query, baseUrl }) {
 			}
 
 			function node_click(d, idx) {
-				const itemName = d.context.length >= 1 && d.context[0] != undefined ? d.context : d.rel_ids
-				const name = d.context.length >= 1 && d.context[0] != undefined ? 'context' : 'id'
+				// const itemName = d.context.length >= 1 && d.context != undefined ? d.context : d.rel_ids
+				// const name = d.context.length >= 1 && d.context != undefined ? 'context' : 'id'
+
+				const name = d.context != undefined ? 'context' : 'id'
+
+				// const itemName = d.context.length >= 1 && d.context[0] != undefined ? d.context : d.rel_ids
+				// const name = d.context.length >= 1 && d.context[0] != undefined ? 'context' : 'id'
 
 				sound_click.play()
 			
 				if(current_id == d.id){
 					closeInfo()
 				} else {
-					showInfo(d.tipo, d.id, itemName, name)
+					showInfo(d.tipo, d.id, name)
 					// ga('send', 'event', 'node', 'click', d.tipo + " - " + d.nomecompleto) 
 				}
 			}
@@ -547,7 +621,7 @@ function Chart({ data, query, baseUrl }) {
 			// INFO PANEL
 			let current_id = null
 
-			function showInfo(tipo, id, context, name) {
+			function showInfo(tipo, id, name) {
 				const w = $(window).width()
 				const vis = d3.select(".mapa")
 
@@ -559,9 +633,12 @@ function Chart({ data, query, baseUrl }) {
 				const arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
 
 				const ctx = arr.map(function(d, i) {
-					let array1 = d.context
-					const array2 = array1.concat(array1);
-					return array2[array2.length - 1]
+
+					// let array1 = d.context
+					// array1 = array1.split(', ')
+					// const array2 = array1.concat(array1);
+					// return array2[array2.length - 1]
+					return d.context
 				})
 
 				const bases = name == 'context' ? ctx : _.uniq(_.map(arr,'base')) 
@@ -632,8 +709,9 @@ function Chart({ data, query, baseUrl }) {
   return (
     <S.Wrapper>
 			<section className="mapa exit">
+
         <div className="mapa-viewport">
-          <svg className="mapa-vis" ref={ref} width="1280" height="960"></svg>
+          <svg className="mapa-vis" ref={ref} width="1280" height="1000"></svg>
           <div className="tooltip">
             <div className="tooltip-wrapper">
               <div className="tooltip-title"></div>
