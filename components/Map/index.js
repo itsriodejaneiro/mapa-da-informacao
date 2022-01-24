@@ -29,10 +29,12 @@ function Chart({ data, query, baseUrl }) {
         .on("click", function() { closeInfo() })
 
 			const viewport = svg.append("g").attr("class", "viewport")
+
+			// var manyBody = d3.forceManyBody()
       const simulation = d3
 				.forceSimulation()
-				.force("link", d3.forceLink().id(function(d) { return d.id; }))
-				// .on("tick", ticked) // Para mudar dos itens de lugar
+	      .force("link", d3.forceLink().id(function(d) { return d.id; }))
+	      // .on("tick", ticked)
 
       // Tooltip
       const tooltip = d3.select('.tooltip')
@@ -302,7 +304,15 @@ function Chart({ data, query, baseUrl }) {
 					.on("click", node_click)
 					.transition(t)
 					.delay(function(d, i) { return node_delay(d.tipo,i) })
-					.attr("r", function(d){ return node_size(d) } )
+					.attr("r", function(d){ 
+						if(node_size(d) > d.max_size ) {
+							return d.max_size 
+
+						} else {
+							return node_size(d) 
+						}
+						// return node_size(d) 
+					} )
 					.attr("fill", function(d) { return d.color })
 
 				// LABELS
@@ -374,12 +384,12 @@ function Chart({ data, query, baseUrl }) {
 					.nodes(data_n)
 					.force("link")
 					.links(data_l)
-
-					// console.log(data_n)
 	      
-				simulation.alpha(0.1)
+				// // simulation.alpha(0.1)
 				
 				ticked()
+
+				// simulation.on("tick", ticked)
 			}
 
 			function ticked() {
@@ -517,46 +527,10 @@ function Chart({ data, query, baseUrl }) {
 				const window_w = svg_w + 60
 				const scale = svg_w / window_w
 
-				// console.log( d.x_pos, node_size(d), d )
-
-				// const top = ( node_size(d) * 2 ) + d.y_pos + 30
-				// let left =  d.x_pos 
-
 				const top = d.tipo <= 1 ? d.y_pos + node_size(d) + 25 : d.y_pos + node_size(d);
 				let left = d.x_pos - node_size(d);
 
-				// Ver node denuncie procon que deve ter so a classe 07 e precisa remover a 23
-
-
-
-
-				// < window_w * .75 ? (d.x_pos) * scale : ( d.x_pos ) * scale
-				// d.x_position + 160
-				// d.x_pos + node_size(d)
-				// + 300
-				// let left = 0
-			  // console.log(left)
-				// + 180 - ( node_size(d) * 2 )
-				// let left = d.x_position + 180 - ( node_size(d) * 2 )
 			  left = Math.min(Math.max(100, left), width * scale - 100) // window safe area
-
-
-
-
-
-
-
-
-				// var svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
-				// var scale = svg_w / width
-				// var top = d.y < height * .8
-				// 	? d.y * scale + (node_size(d) * 0.5 + 30) * scale + 160
-				// 	: d.y * scale - (node_size(d) * scale + 90) + 160
-				// var left = d.x < width * .75
-				// 	? (d.x + 20) * scale
-				// 	: (d.x - 20) * scale
-				// // window safe area
-				// left = Math.min(Math.max(180,left),width * scale - 180)
 			
 				d3.selectAll('.tooltip-title')
 					.text(d.tipo_label)

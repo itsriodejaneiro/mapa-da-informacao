@@ -166,11 +166,6 @@ a:hover {
   font-family: "Fira Sans Regular", monospace;
 }
 
-.mapa-info-mobile a,
-.mapa-info-content a {
-  color: rgba(255, 255, 255, 0.7); 
-}
-
 .mapa-info-mobile h3,
 .mapa-info-content h3 {
   font-weight: 600;
@@ -213,6 +208,26 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   list-style-position: inside; 
+}
+
+.mapa-info-content font {
+  color: #fff !important;
+}
+
+.mapa-info-content p, .mapa-info-content span {
+  background: transparent !important;
+  font-family: "Fira Sans Regular" !important;
+  color: #fff !important;
+}
+
+.mapa-info-mobile a,
+.mapa-info-content a {
+  color: rgba(255, 255, 255, 0.7); 
+}
+
+.mapa-info-mobile a span,
+.mapa-info-content a span {
+  color: rgba(38,35,47, 1) !important;
 }
 
 .mapa-info-mobile .loading,
