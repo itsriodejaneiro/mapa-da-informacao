@@ -42,6 +42,7 @@ export default function ProjectsPage() {
         <S.ProjectList>
           {projects.length !== 0 ? projects.map((item) => (
             <S.ProjectItem key={item?.id}>
+              {console.log(item.id)}
               <Image
               	alt={item?.title}
                 src={`${item?.project_cover}`}

@@ -26,20 +26,21 @@ export default function SingleProject() {
       setParentLoading(true);
 
       let queryId = query?.id || '';
+      queryId = Number(queryId)
 
       if (!queryId?.length) {
         await Api.getMaps().then((response) => {
           if (response?.data?.length) {
             const currentMap = response?.data?.find((map) => map.url_map === query?.map);
 
-            if (currentMap?.id?.length) {
+            if (currentMap?.id) {
               queryId = currentMap?.id;
             }
           }
         });
       }
 
-      if (queryId?.length) {
+      if (queryId) {
         await Api.getMap(queryId).then((response) => {
           setProjectData(response?.data)
         })
