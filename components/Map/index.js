@@ -484,7 +484,7 @@ function Chart({ data, query, baseUrl }) {
       
       	d3.selectAll('.tooltip-title')
       		.text(d.title)
-      		.style('color', d.color )
+      		.style('color', d.node_color )
 
 				d3.selectAll('.tooltip-text')
       		.text(d.description)
@@ -534,7 +534,9 @@ function Chart({ data, query, baseUrl }) {
 			
 				d3.selectAll('.tooltip-title')
 					.text(d.tipo_label)
-					.style('color', function(){ return d.color })
+					.style('color', function(){
+						return d.color 
+					})
 
 				d3.selectAll('.tooltip-text')
       		.text(d.nomecompleto || d.nome)
