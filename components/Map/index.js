@@ -29,8 +29,6 @@ function Chart({ data, query, baseUrl }) {
         .on("click", function() { closeInfo() })
 
 			const viewport = svg.append("g").attr("class", "viewport")
-
-			// var manyBody = d3.forceManyBody()
       const simulation = d3
 				.forceSimulation()
 	      .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -56,18 +54,9 @@ function Chart({ data, query, baseUrl }) {
 				return d.min_size + d.weight
       }
 
-			// function node_size_before(d, i){
-			// 	return d.min_size + d.weight
-      // }
-
       function node_delay(t,i){
       	return temp[t].delay * 100 + i * 50
       }
-
-      // const orgao_scale = d3.scaleLinear()
-      // 	.domain([1, 4])
-      // 	.range(['#fcd9b2', '#e07145'])
-      // 	.interpolate(d3.interpolateHcl)
 
 			const legendas = data.categories
 
@@ -84,10 +73,8 @@ function Chart({ data, query, baseUrl }) {
 				.attr('style', function(d){ 
 					return !d.show ? "display: none" : null;
 				})
-      	// .attr("x1", 20 )
 				.attr("x1", 0 )
       	.attr("y1", function(d) { return d.height_area })
-      	// .attr("x2", width - 20)
 				.attr("x2", width)
       	.attr("y2", function(d) { return d.height_area });
 
@@ -96,7 +83,6 @@ function Chart({ data, query, baseUrl }) {
       	.attr("class", 'legenda-text')
       	.text(function(d) { return d.title })
       	.attr('x', 0)
-				// .attr('x', 20)
       	.attr('y', function(d){ return d.height_area + 25 })
 				.attr('style', function(d){ 
 					return !d.show ? "display: none" : null;
@@ -192,38 +178,20 @@ function Chart({ data, query, baseUrl }) {
 					const loop = d.max_size
 					const step = loop / temp[d.tipo].cluster.k
 
-					// .log(d)
-				
 					d.offsetY = k[d.tipo]
 					k[d.tipo] += step
 					k[d.tipo] = k[d.tipo] % loop
 
-					// console.log(d.x)
-					// d.x = Number(d.x)
-					// d.y = Number(d.y)
-					// console.log(d.x)
-				
 					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
 
-					// const ctx = arr.map(function(d, i) {
-					// 	let array1 = d.context
-					// 	// array1 = array1.split(', ')
-					// 	const array2 = array1.concat(array1);
-					// 	return array2[array2.length - 1]
-					// })
-
 					d.rel_ids = _.uniq(_.map(arr, 'base'))
-					// d.context = d.context
 					d.weight = arr.length
-
-					// console.log(d.context)
 
 					function isOdd(num) { 
 						return num % 2 
 					}
 
 					if(d.x_position == undefined) {
-						// console.log('aqui')
 						const index = i == 0 ? 0 : i - 1
 					  const real_size = ( ( d.min_size + array_node[index].weight ) * 2 ) + 25
 					  const space = real_size * d.position 
@@ -277,7 +245,6 @@ function Chart({ data, query, baseUrl }) {
 					.attr("class", function(d, i) {
 
 						let itemName = d.context ? d.context : d.rel_ids
-
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -285,8 +252,6 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-						// console.log(d.nome, itemName, d)
-
 						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
@@ -307,11 +272,9 @@ function Chart({ data, query, baseUrl }) {
 					.attr("r", function(d){ 
 						if(node_size(d) > d.max_size ) {
 							return d.max_size 
-
 						} else {
 							return node_size(d) 
 						}
-						// return node_size(d) 
 					} )
 					.attr("fill", function(d) { return d.color })
 
@@ -342,7 +305,6 @@ function Chart({ data, query, baseUrl }) {
 						.text(function(d) { 
 							const size = node_size(d)
 							return size <= 10 ? '' : d.nome
-							// return d.nome
 						})
 						.attr("text-anchor", "middle")
 						.attr('x', 0)
@@ -361,8 +323,6 @@ function Chart({ data, query, baseUrl }) {
 					.attr("class", "link")
 					.attr("class", function(d) {
 						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
-
-						// itemName = itemName.split(', ')
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -384,12 +344,8 @@ function Chart({ data, query, baseUrl }) {
 					.nodes(data_n)
 					.force("link")
 					.links(data_l)
-	      
-				// // simulation.alpha(0.1)
-				
-				ticked()
 
-				// simulation.on("tick", ticked)
+				ticked()
 			}
 
 			function ticked() {
@@ -397,25 +353,21 @@ function Chart({ data, query, baseUrl }) {
 				const links  = _links.selectAll('.link')
 				const labels = _labels.selectAll('.label')
 
-				// console.log(d)
-				
 				if(nodes){
 					nodes.attr("transform", function(d) {
-						return "translate(" + d.x + "," + d.y + ")";
-						// return "translate(" + d.x_pos + "," + d.y_pos + ")";
+						// return "translate(" + d.x + "," + d.y + ")";
+						return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 
-				// 120 - 137 (17) / 328 - 372 (44)
-			
 				if(links){
 					links.attr("d", positionLink)
 				}
 			
 				if(labels){
 					labels.attr("transform", function(d) {
-						return "translate(" + d.x + "," + d.y + ")";
-						// return "translate(" + d.x_pos + "," + d.y_pos + ")";
+						// return "translate(" + d.x + "," + d.y + ")";
+						return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 			}
@@ -514,8 +466,7 @@ function Chart({ data, query, baseUrl }) {
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', true)
-				
-        // const itemName = d.context[0] != undefined ? d.context : d.rel_ids
+
 				const itemName = d.context != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
@@ -527,9 +478,9 @@ function Chart({ data, query, baseUrl }) {
 				const window_w = svg_w + 60
 				const scale = svg_w / window_w
 
-				const top = d.tipo <= 1 ? d.y_pos + node_size(d) + 25 : d.y_pos + node_size(d);
-				let left = d.x_pos - node_size(d);
+				const top = d.tipo <= 1 ? d.y_pos + node_size(d) + 25 : d.y_pos + node_size(d) + 20;
 
+				let left = d.x_pos - node_size(d);
 			  left = Math.min(Math.max(100, left), width * scale - 100) // window safe area
 			
 				d3.selectAll('.tooltip-title')
@@ -562,7 +513,7 @@ function Chart({ data, query, baseUrl }) {
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', false)
-				// const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
+
 				const itemName = d.context != undefined ? d.context : d.rel_ids
 				_.forEach(itemName, function(id){
 					d3.selectAll('.link').classed('highlight', false)
@@ -577,13 +528,7 @@ function Chart({ data, query, baseUrl }) {
 			}
 
 			function node_click(d, idx) {
-				// const itemName = d.context.length >= 1 && d.context != undefined ? d.context : d.rel_ids
-				// const name = d.context.length >= 1 && d.context != undefined ? 'context' : 'id'
-
 				const name = d.context != undefined ? 'context' : 'id'
-
-				// const itemName = d.context.length >= 1 && d.context[0] != undefined ? d.context : d.rel_ids
-				// const name = d.context.length >= 1 && d.context[0] != undefined ? 'context' : 'id'
 
 				sound_click.play()
 			
@@ -607,14 +552,11 @@ function Chart({ data, query, baseUrl }) {
 				d3.selectAll('.node.show').classed('show', false)
 				d3.selectAll('.label.show').classed('show', false)
 			
-				const arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
+				const arr = _.filter(graph.data.links, function(o) { 
+					return o.target  == id || o.source  == id 
+				})
 
 				const ctx = arr.map(function(d, i) {
-
-					// let array1 = d.context
-					// array1 = array1.split(', ')
-					// const array2 = array1.concat(array1);
-					// return array2[array2.length - 1]
 					return d.context
 				})
 
