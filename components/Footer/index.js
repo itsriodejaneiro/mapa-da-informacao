@@ -34,6 +34,14 @@ const items = [
 				id: '17',
 				name: 'Ronaldo Lemos',
 			},
+			{
+				id: '18',
+				name: 'Fabro Steibel',
+			},
+			{
+				id: '19',
+				name: 'Nina Desgranges',
+			},
 			// {
 			// 	id: '11',
 			// 	name: 'Celina Bottino',

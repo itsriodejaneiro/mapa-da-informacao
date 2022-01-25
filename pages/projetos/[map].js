@@ -76,7 +76,8 @@ export default function SingleProject() {
 
       <S.SingleProjectWrapper>
         <Title boldText={projectData?.title ? projectData?.title : null} />
-        <p>{projectData?.synopsis ? projectData?.synopsis : null}</p>
+
+        <div className="text" dangerouslySetInnerHTML={{ __html: projectData?.synopsis ? projectData?.synopsis : null }}></div>
 
         {projectData?.url_map == 'mapa-brasil' ? 
           <Link href={'/historias'} passHref>

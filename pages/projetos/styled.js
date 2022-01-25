@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ProjectsWrapper = styled.section`
 	padding: 180px 30px;
-	// max-width: 62%;
 	max-width: 840px;
 	margin: 0 auto;
 	@media(max-width: 800px) {
@@ -63,7 +62,11 @@ export const SingleProjectWrapper = styled.section`
 		margin: 0 0 20px;
 	}
 	p {
+		margin: 0 0 20px;
+	}
+	.text {
 		margin: 0 0 40px;
+		color: #fff;
 	}
 	div {
 		color: #fff;
