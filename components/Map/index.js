@@ -1,17 +1,9 @@
 import { useD3 } from '../../hooks/useD3'
-import useScript from '../../hooks/useScript'
 import * as S from './styled'
 import * as d3 from 'd3'
 
 function Chart({ data, query, baseUrl }) {
-	useScript('https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js');
-	useScript('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js');
-	useScript('https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js');
-	useScript('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js');
-
-	useScript('../vendors/jquery.mousewheel.min.js');
-	useScript('../vendors/browser.js');
-	useScript('../vendors/main.js');
+  const sound_click = new Audio('../snd/switch37.wav')
 
 	const ref = useD3(
     (svg) => {
@@ -38,7 +30,6 @@ function Chart({ data, query, baseUrl }) {
       const tooltip = d3.select('.tooltip')
 
       // UTILS
-      // const color = d3.scaleOrdinal(d3.schemeCategory20)
       const paleta = ['#c9b2fa','#ae92e9','#725f96','#ffc28f','#af7744','#ffc28f']
 
 			const temp = {
@@ -177,14 +168,11 @@ function Chart({ data, query, baseUrl }) {
 				array_node.map(function(d, i){
 					const loop = d.max_size
 					const step = loop / temp[d.tipo].cluster.k
+					const arr = _linksori.filter(function(o) { return o.target == d.id || o.source == d.id })
 
 					d.offsetY = k[d.tipo]
 					k[d.tipo] += step
 					k[d.tipo] = k[d.tipo] % loop
-
-					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
-
-					d.rel_ids = _.uniq(_.map(arr, 'base'))
 					d.weight = arr.length
 
 					function isOdd(num) { 
@@ -203,20 +191,6 @@ function Chart({ data, query, baseUrl }) {
 						d.y_pos = d.y_position ? d.y_position + d.height : isOdd(i) > 0 ? d.height + 60 : d.height + 40 
 					}
 				})
-
-				// MULTIPLE LINKS: START
-				_.each(_links, function(link) {
-					const same = _.filter(_links, {
-						'source': link.source,
-						'target': link.target
-					})
-					_.each(same, function(s, i) {
-						if(!s.linkNum){
-							s.linkNum = (i + 1)
-						}
-					})
-				})
-				// MULTIPLE LINKS: END
 
 				graph.nodes = array_node
 				graph.links = _links
@@ -243,8 +217,7 @@ function Chart({ data, query, baseUrl }) {
 				nodes.enter()
 					.append("g")
 					.attr("class", function(d, i) {
-
-						let itemName = d.context ? d.context : d.rel_ids
+						let itemName = d.context 
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -252,7 +225,7 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
+						return "node node-" + d.id + " " + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
 						d.show
@@ -261,7 +234,7 @@ function Chart({ data, query, baseUrl }) {
 					.attr('node_id', function(d) {
 						return d.id;
 					})
-		      .call(drag_handler)
+		      // .call(drag_handler)
 					.append("circle")
 					.attr("r", 0)
 					.on("mouseover", node_mouseover)
@@ -282,7 +255,7 @@ function Chart({ data, query, baseUrl }) {
 				labels.enter()
 					.append("g")
 					.attr("class", function(d) {
-						let itemName = d.context ? d.context : d.rel_ids
+						let itemName = d.context 
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -290,7 +263,7 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-						return "label label-" + d.tipo + " " + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
+						return "label label-" + d.tipo + " " + d.id + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
 						return !d.show ? "display: none" : null;
@@ -322,7 +295,7 @@ function Chart({ data, query, baseUrl }) {
 					.append("path")
 					.attr("class", "link")
 					.attr("class", function(d) {
-						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
+						let itemName = d.context 
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -355,7 +328,6 @@ function Chart({ data, query, baseUrl }) {
 
 				if(nodes){
 					nodes.attr("transform", function(d) {
-						// return "translate(" + d.x + "," + d.y + ")";
 						return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
@@ -366,23 +338,18 @@ function Chart({ data, query, baseUrl }) {
 			
 				if(labels){
 					labels.attr("transform", function(d) {
-						// return "translate(" + d.x + "," + d.y + ")";
 						return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 			}
 
 			function positionLink(d) {
-				const offset = 30 * d.linkNum;
-			
+				const offset = 30 
 				const midpoint_x = (d.source.x + d.target.x) / 2;
 				const midpoint_y = (d.source.y + d.target.y) / 2;
-			
 				const dx = (d.target.x - d.source.x);
 				const dy = (d.target.y - d.source.y);
-			
 				const normalise = Math.sqrt((dx * dx) + (dy * dy));
-			
 				const offSetX = midpoint_x + offset * (dy/normalise);
 				const offSetY = midpoint_y - offset * (dx/normalise);
 			
@@ -407,28 +374,11 @@ function Chart({ data, query, baseUrl }) {
 				if (!d3.event.active) simulation.alphaTarget(0.01);
 			}
 
-			function dblclick(d) {
-				d.fx = null;
-				d.fy = null;
-			}
-
-			// ZOOM
-			const zoom_handler = d3.zoom().on("zoom", zoom_actions)
-			function zoom_actions(){
-				viewport.attr("transform", d3.event.transform)
-			}
-
-			// RESIZE
-			function resize() {
-				width = window.innerWidth
-				height = window.innerHeight
-				svg.attr("width", width).attr("height", height);
-			}
-
       // EVENTS
       function legenda_mouseover(d) {
-      	if($(window).width() < 768) return
-      
+        const window_width = d3.select('body').node().getBoundingClientRect().width
+				if(window_width < 768) return
+
       	const svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
       	const scale = svg_w / width
       	const top = 0 + (d.height_area + 50) * scale // 160
@@ -447,32 +397,28 @@ function Chart({ data, query, baseUrl }) {
       		.transition()
       		.duration(100)
       		.style('left', left + 'px')
-      	sound_over.play()
       }
 
       function legenda_mouseout(d) {
-      	if($(window).width() < 768) return
+				const window_width = d3.select('body').node().getBoundingClientRect().width
+				if(window_width < 768) return
+
       	tooltip.classed('show', false)
       }
 
 			function node_mouseover(d) {
-				if($(window).width() < 768) return
-			
-				// label
-				const text = d3.select('.label[label_id="' + d.id + '"]')
-				if(_.indexOf([0, 1, 2, 3, 4, 5], d.tipo) != -1){ // 'base','doc','orgao','ti'
-					text.classed('hidden',true)
-				}
+				const window_width = d3.select('body').node().getBoundingClientRect().width
+				if(window_width < 768) return
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', true)
 
-				const itemName = d.context != undefined ? d.context : d.rel_ids
-				_.forEach(itemName, function(id) {
+				const itemName = d.context 
+				itemName.forEach( function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
 					d3.selectAll('.node.node-' + id).classed('highlight',true)
 				})
-			
+
 				// tooltip
 				const svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
 				const window_w = svg_w + 60
@@ -498,38 +444,28 @@ function Chart({ data, query, baseUrl }) {
 					.transition()
 					.duration(100)
 					.style('left', left + 'px')
-
-				sound_over.play()
 			}
 
 			function node_mouseout(d, idx) {
-				if($(window).width() < 768) return
-			
-				// label
-				const text = d3.select('.label[label_id="' + d.id + '"]')
-				if(_.indexOf([0, 1, 2, 3, 4, 5], d.tipo) != -1){ // 'base','doc','orgao','ti'
-					text.classed('hidden', false)
-				}
-			
+				const window_width = d3.select('body').node().getBoundingClientRect().width
+				if(window_width < 768) return
+
 				// links
 				d3.selectAll('.mapa').classed('highlight', false)
 
-				const itemName = d.context != undefined ? d.context : d.rel_ids
-				_.forEach(itemName, function(id){
+				const itemName = d.context 
+				itemName.forEach( function(id){
 					d3.selectAll('.link').classed('highlight', false)
 					d3.selectAll('.node').classed('highlight', false)
 				})
 			
 				// tooltip
-				// fx.setText(d.nome)
-				d3.selectAll('.tooltip-text')
-      		.text(d.nome)
+				d3.selectAll('.tooltip-text').text(d.nome)
 				tooltip.classed('show', false)
 			}
 
 			function node_click(d, idx) {
 				const name = d.context != undefined ? 'context' : 'id'
-
 				sound_click.play()
 			
 				if(current_id == d.id){
@@ -544,7 +480,7 @@ function Chart({ data, query, baseUrl }) {
 			let current_id = null
 
 			function showInfo(tipo, id, name) {
-				const w = $(window).width()
+				const window_width = d3.select('body').node().getBoundingClientRect().width
 				const vis = d3.select(".mapa")
 
 				vis.classed("show-info", true)
@@ -552,7 +488,7 @@ function Chart({ data, query, baseUrl }) {
 				d3.selectAll('.node.show').classed('show', false)
 				d3.selectAll('.label.show').classed('show', false)
 			
-				const arr = _.filter(graph.data.links, function(o) { 
+				const arr = graph.data.links.filter( function(o) { 
 					return o.target  == id || o.source  == id 
 				})
 
@@ -560,16 +496,16 @@ function Chart({ data, query, baseUrl }) {
 					return d.context
 				})
 
-				_.forEach(ctx, function(base){
+				ctx.forEach( function(base) {
 					base.map(function(item) {
 						d3.selectAll('.link.link-' + item).classed('show', true)
 					  d3.selectAll('.node.node-' + item).classed('show', true)
 					  d3.selectAll('.label.label-' + item).classed('show', true)
 					})
 				})
-			
-				const info = w < 768 ? d3.select('.mapa-info-mobile') : d3.select('.mapa-info')
-				const content = w < 768 ? d3.select('.mapa-info-mobile-content') : d3.select('.mapa-info-content')
+
+				const info = window_width < 768 ? d3.select('.mapa-info-mobile') : d3.select('.mapa-info')
+				const content = window_width < 768 ? d3.select('.mapa-info-mobile-content') : d3.select('.mapa-info-content')
 			
 				info.classed('is-loading', true)
 				content.html('')
@@ -594,8 +530,9 @@ function Chart({ data, query, baseUrl }) {
 			}
 
 			function closeInfo(){
-				const w = $(window).width()
+				const window_width = d3.select('body').node().getBoundingClientRect().width
 				const vis = d3.select(".mapa")
+
 				vis.classed("show-info", false)
 			
 				d3.selectAll('.link.show').classed('show', false)
@@ -604,7 +541,7 @@ function Chart({ data, query, baseUrl }) {
 			
 				current_id = null
 			
-				if(w < 768) {
+				if(window_width < 768) {
 					d3.select('.mapa-info-mobile-content').html('')
 				}
 			}
@@ -614,21 +551,12 @@ function Chart({ data, query, baseUrl }) {
 				sound_click.play()
 				closeInfo()
 			})
-
-			function exportcsv(){
-				const s = ''
-				graph.nodes.map(function(el){
-					s += el.tipo + ',' + el.id + ',' + el.nome + ',' + el.nomecompleto + ',' + Math.round(el.x) + ',' + Math.round(el.y) + '\n'
-				})
-			}
-
 		}
 	)
 
   return (
     <S.Wrapper>
 			<section className="mapa exit">
-
         <div className="mapa-viewport">
           <svg className="mapa-vis" ref={ref} width="1280" height="1000"></svg>
           <div className="tooltip">
