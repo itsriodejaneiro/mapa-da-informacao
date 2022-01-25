@@ -560,12 +560,12 @@ function Chart({ data, query, baseUrl }) {
 					return d.context
 				})
 
-				const bases = name == 'context' ? ctx : _.uniq(_.map(arr,'base')) 
-
-				_.forEach(bases, function(base){
-					d3.selectAll('.link.link-' + base).classed('show', true)
-					d3.selectAll('.node.node-' + base).classed('show', true)
-					d3.selectAll('.label.label-' + base).classed('show', true)
+				_.forEach(ctx, function(base){
+					base.map(function(item) {
+						d3.selectAll('.link.link-' + item).classed('show', true)
+					  d3.selectAll('.node.node-' + item).classed('show', true)
+					  d3.selectAll('.label.label-' + item).classed('show', true)
+					})
 				})
 			
 				const info = w < 768 ? d3.select('.mapa-info-mobile') : d3.select('.mapa-info')
