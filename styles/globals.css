@@ -97,19 +97,20 @@ a:hover {
   justify-content: center;
 }
 
+.mapa.show-info {
+  justify-content: flex-start;
+}
+
 
 .mapa-viewport,
 .mapa-vis {
   font-family: "Fira Sans Regular", monospace;
-  /* width: calc(100vw - 20px); */
+  width: 100%;
   height: 1280px;
-  width: 1280px;
-  /* width: 100%; */
+  max-width: 1280px;
   transition: all 0.3s;
   overflow: hidden; 
   position: relative;
-  display: flex;
-  justify-content: center;
 }
 
 .show-info .mapa-viewport,
@@ -165,11 +166,6 @@ a:hover {
   font-family: "Fira Sans Regular", monospace;
 }
 
-.mapa-info-mobile a,
-.mapa-info-content a {
-  color: rgba(255, 255, 255, 0.7); 
-}
-
 .mapa-info-mobile h3,
 .mapa-info-content h3 {
   font-weight: 600;
@@ -212,6 +208,26 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   list-style-position: inside; 
+}
+
+.mapa-info-content font {
+  color: #fff !important;
+}
+
+.mapa-info-content p, .mapa-info-content span {
+  background: transparent !important;
+  font-family: "Fira Sans Regular" !important;
+  color: #fff !important;
+}
+
+.mapa-info-mobile a,
+.mapa-info-content a {
+  color: rgba(255, 255, 255, 0.7); 
+}
+
+.mapa-info-mobile a span,
+.mapa-info-content a span {
+  color: rgba(38,35,47, 1) !important;
 }
 
 .mapa-info-mobile .loading,
@@ -283,33 +299,6 @@ a:hover {
   stroke-width: 4px;
   transform: scale(1.2); 
 }
-
-/* .tool {
-  pointer-events: none;
-  transition: opacity 0.3s; 
-}
-
-.tool g {
-  position: relative;
-
-}
-
-/* .tool g:before {
-  padding: 12px 20px 10px 14px;
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: red;
-} 
-
-.tool text {
-  font-size: .68em;
-  fill: #fff;
-} */
-
 .show-info .node circle {
   opacity: 0.3; 
 }

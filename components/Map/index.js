@@ -1,17 +1,9 @@
 import { useD3 } from '../../hooks/useD3'
-import useScript from '../../hooks/useScript'
 import * as S from './styled'
 import * as d3 from 'd3'
 
 function Chart({ data, query, baseUrl }) {
-	useScript('https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js');
-	useScript('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js');
-	useScript('https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js');
-	useScript('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js');
-
-	useScript('../vendors/jquery.mousewheel.min.js');
-	useScript('../vendors/browser.js');
-	useScript('../vendors/main.js');
+  const sound_click = new Audio('../snd/switch37.wav')
 
 	const ref = useD3(
     (svg) => {
@@ -31,14 +23,13 @@ function Chart({ data, query, baseUrl }) {
 			const viewport = svg.append("g").attr("class", "viewport")
       const simulation = d3
 				.forceSimulation()
-				.force("link", d3.forceLink().id(function(d) { return d.id; }))
-				// .on("tick", ticked) // Para mudar dos itens de lugar
+	      .force("link", d3.forceLink().id(function(d) { return d.id; }))
+	      // .on("tick", ticked)
 
       // Tooltip
       const tooltip = d3.select('.tooltip')
 
       // UTILS
-      // const color = d3.scaleOrdinal(d3.schemeCategory20)
       const paleta = ['#c9b2fa','#ae92e9','#725f96','#ffc28f','#af7744','#ffc28f']
 
 			const temp = {
@@ -54,18 +45,9 @@ function Chart({ data, query, baseUrl }) {
 				return d.min_size + d.weight
       }
 
-			// function node_size_before(d, i){
-			// 	return d.min_size + d.weight
-      // }
-
       function node_delay(t,i){
       	return temp[t].delay * 100 + i * 50
       }
-
-      // const orgao_scale = d3.scaleLinear()
-      // 	.domain([1, 4])
-      // 	.range(['#fcd9b2', '#e07145'])
-      // 	.interpolate(d3.interpolateHcl)
 
 			const legendas = data.categories
 
@@ -82,10 +64,8 @@ function Chart({ data, query, baseUrl }) {
 				.attr('style', function(d){ 
 					return !d.show ? "display: none" : null;
 				})
-      	// .attr("x1", 20 )
 				.attr("x1", 0 )
       	.attr("y1", function(d) { return d.height_area })
-      	// .attr("x2", width - 20)
 				.attr("x2", width)
       	.attr("y2", function(d) { return d.height_area });
 
@@ -94,7 +74,6 @@ function Chart({ data, query, baseUrl }) {
       	.attr("class", 'legenda-text')
       	.text(function(d) { return d.title })
       	.attr('x', 0)
-				// .attr('x', 20)
       	.attr('y', function(d){ return d.height_area + 25 })
 				.attr('style', function(d){ 
 					return !d.show ? "display: none" : null;
@@ -115,10 +94,6 @@ function Chart({ data, query, baseUrl }) {
       d3.json(url, function (json) {
       	const category = json.categories
       	const mapping = json.node_mappings
-
-				console.log(json)
-				// console.log(json)
-
       	category.map(function(nodes, idx){
       		const node = nodes.nodes
       		node.map(function(item, index){
@@ -129,6 +104,7 @@ function Chart({ data, query, baseUrl }) {
 							show: nodes.show,
       				id: item.id,
       				nome: item.label,
+							context: item.context,
       				nomecompleto: item.title,
 							color: nodes.node_color ? nodes.node_color : idx < 6 ? paleta[idx] : '#c9b2fa',
       				tipo: nodes.order ? nodes.order : idx,
@@ -192,38 +168,18 @@ function Chart({ data, query, baseUrl }) {
 				array_node.map(function(d, i){
 					const loop = d.max_size
 					const step = loop / temp[d.tipo].cluster.k
+					const arr = _linksori.filter(function(o) { return o.target == d.id || o.source == d.id })
 
-					// .log(d)
-				
 					d.offsetY = k[d.tipo]
 					k[d.tipo] += step
 					k[d.tipo] = k[d.tipo] % loop
-
-					// console.log(d.x)
-					// d.x = Number(d.x)
-					// d.y = Number(d.y)
-					// console.log(d.x)
-				
-					const arr = _.filter(_linksori, function(o) { return o.target == d.id || o.source == d.id })
-					// const ctx = arr.map(function(d, i) {
-					// 	let array1 = d.context
-					// 	// array1 = array1.split(', ')
-					// 	const array2 = array1.concat(array1);
-					// 	return array2[array2.length - 1]
-					// })
-
-					d.rel_ids = _.uniq(_.map(arr, 'base'))
-					// d.context = d.context
 					d.weight = arr.length
-
-					// console.log(d.context)
 
 					function isOdd(num) { 
 						return num % 2 
 					}
 
 					if(d.x_position == undefined) {
-						// console.log('aqui')
 						const index = i == 0 ? 0 : i - 1
 					  const real_size = ( ( d.min_size + array_node[index].weight ) * 2 ) + 25
 					  const space = real_size * d.position 
@@ -236,30 +192,16 @@ function Chart({ data, query, baseUrl }) {
 					}
 				})
 
-				// MULTIPLE LINKS: START
-				_.each(_links, function(link) {
-					const same = _.filter(_links, {
-						'source': link.source,
-						'target': link.target
-					})
-					_.each(same, function(s, i) {
-						if(!s.linkNum){
-							s.linkNum = (i + 1)
-						}
-					})
-				})
-				// MULTIPLE LINKS: END
-
 				graph.nodes = array_node
 				graph.links = _links
 				graph.data = {}
 				graph.data.nodes = _nodesori
 				graph.data.links = _linksori
 
-				update(graph.nodes, graph.links)
+				update(graph.nodes, graph.links, graph.data.links)
 			});
 
-			function update(data_n,data_l){
+			function update(data_n, data_l, _linksori){
 				const t = d3.transition().duration(750);
 				const nodes  = _nodes.selectAll('.node').data(data_n, function(d) { return d.id })
 				const labels = _labels.selectAll('.label').data(data_n, function(d) { return d.id })
@@ -275,7 +217,7 @@ function Chart({ data, query, baseUrl }) {
 				nodes.enter()
 					.append("g")
 					.attr("class", function(d, i) {
-						let itemName = d.context ? d.context : d.rel_ids
+						let itemName = d.context 
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -283,9 +225,7 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-						// console.log(d.nome, itemName, d)
-
-						return "node node-" + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
+						return "node node-" + d.id + " " + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
 						d.show
@@ -294,22 +234,28 @@ function Chart({ data, query, baseUrl }) {
 					.attr('node_id', function(d) {
 						return d.id;
 					})
-		      .call(drag_handler)
+		      // .call(drag_handler)
 					.append("circle")
 					.attr("r", 0)
-					// .on("mouseover", node_mouseover)
-					// .on("mouseout", node_mouseout)
-					// .on("click", node_click)
+					.on("mouseover", node_mouseover)
+					.on("mouseout", node_mouseout)
+					.on("click", node_click)
 					.transition(t)
 					.delay(function(d, i) { return node_delay(d.tipo,i) })
-					.attr("r", function(d){ return node_size(d) } )
+					.attr("r", function(d){ 
+						if(node_size(d) > d.max_size ) {
+							return d.max_size 
+						} else {
+							return node_size(d) 
+						}
+					} )
 					.attr("fill", function(d) { return d.color })
 
 				// LABELS
 				labels.enter()
 					.append("g")
 					.attr("class", function(d) {
-						let itemName = d.context ? d.context : d.rel_ids
+						let itemName = d.context 
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -317,7 +263,7 @@ function Chart({ data, query, baseUrl }) {
 								return each
 							}
 						);
-						return "label label-" + d.tipo + " " + d.id + " " + d.rel_ids.join(" ") + " " + itemName.join(" ")
+						return "label label-" + d.tipo + " " + d.id + " " + itemName.join(" ")
 					})
 					.attr("style", function(d) {
 						return !d.show ? "display: none" : null;
@@ -349,8 +295,7 @@ function Chart({ data, query, baseUrl }) {
 					.append("path")
 					.attr("class", "link")
 					.attr("class", function(d) {
-						let itemName = d.context ? d.context : d.rel_ids ? d.rel_ids : ''
-						// itemName = itemName.split(', ')
+						let itemName = d.context 
 						itemName = itemName.filter(Boolean)
 						itemName = itemName.map(
 							( each ) =>  {
@@ -373,10 +318,6 @@ function Chart({ data, query, baseUrl }) {
 					.force("link")
 					.links(data_l)
 
-					// console.log(data_n)
-	      
-				simulation.alpha(0.1)
-				
 				ticked()
 			}
 
@@ -385,40 +326,30 @@ function Chart({ data, query, baseUrl }) {
 				const links  = _links.selectAll('.link')
 				const labels = _labels.selectAll('.label')
 
-				// console.log(d)
-				
 				if(nodes){
 					nodes.attr("transform", function(d) {
-						return "translate(" + d.x + "," + d.y + ")";
-						// return "translate(" + d.x_pos + "," + d.y_pos + ")";
+						return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 
-				// 120 - 137 (17) / 328 - 372 (44)
-			
 				if(links){
 					links.attr("d", positionLink)
 				}
 			
 				if(labels){
 					labels.attr("transform", function(d) {
-						return "translate(" + d.x + "," + d.y + ")";
-						// return "translate(" + d.x_pos + "," + d.y_pos + ")";
+						return "translate(" + d.x_pos + "," + d.y_pos + ")";
 					})
 				}
 			}
 
 			function positionLink(d) {
-				const offset = 30 * d.linkNum;
-			
+				const offset = 30 
 				const midpoint_x = (d.source.x + d.target.x) / 2;
 				const midpoint_y = (d.source.y + d.target.y) / 2;
-			
 				const dx = (d.target.x - d.source.x);
 				const dy = (d.target.y - d.source.y);
-			
 				const normalise = Math.sqrt((dx * dx) + (dy * dy));
-			
 				const offSetX = midpoint_x + offset * (dy/normalise);
 				const offSetY = midpoint_y - offset * (dx/normalise);
 			
@@ -443,28 +374,11 @@ function Chart({ data, query, baseUrl }) {
 				if (!d3.event.active) simulation.alphaTarget(0.01);
 			}
 
-			function dblclick(d) {
-				d.fx = null;
-				d.fy = null;
-			}
-
-			// ZOOM
-			const zoom_handler = d3.zoom().on("zoom", zoom_actions)
-			function zoom_actions(){
-				viewport.attr("transform", d3.event.transform)
-			}
-
-			// RESIZE
-			function resize() {
-				width = window.innerWidth
-				height = window.innerHeight
-				svg.attr("width", width).attr("height", height);
-			}
-
       // EVENTS
       function legenda_mouseover(d) {
-      	if($(window).width() < 768) return
-      
+        const window_width = d3.select('body').node().getBoundingClientRect().width
+				if(window_width < 768) return
+
       	const svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
       	const scale = svg_w / width
       	const top = 0 + (d.height_area + 50) * scale // 160
@@ -472,7 +386,7 @@ function Chart({ data, query, baseUrl }) {
       
       	d3.selectAll('.tooltip-title')
       		.text(d.title)
-      		.style('color', d.color )
+      		.style('color', d.node_color )
 
 				d3.selectAll('.tooltip-text')
       		.text(d.description)
@@ -483,82 +397,43 @@ function Chart({ data, query, baseUrl }) {
       		.transition()
       		.duration(100)
       		.style('left', left + 'px')
-      	sound_over.play()
       }
 
       function legenda_mouseout(d) {
-      	if($(window).width() < 768) return
+				const window_width = d3.select('body').node().getBoundingClientRect().width
+				if(window_width < 768) return
+
       	tooltip.classed('show', false)
       }
 
 			function node_mouseover(d) {
-				if($(window).width() < 768) return
-			
-				// label
-				const text = d3.select('.label[label_id="' + d.id + '"]')
-				if(_.indexOf([0, 1, 2, 3, 4, 5], d.tipo) != -1){ // 'base','doc','orgao','ti'
-					text.classed('hidden',true)
-				}
+				const window_width = d3.select('body').node().getBoundingClientRect().width
+				if(window_width < 768) return
 			
 				// links
 				d3.selectAll('.mapa').classed('highlight', true)
-				
-        // const itemName = d.context[0] != undefined ? d.context : d.rel_ids
-				const itemName = d.context != undefined ? d.context : d.rel_ids
-				_.forEach(itemName, function(id) {
+
+				const itemName = d.context 
+				itemName.forEach( function(id) {
 					d3.selectAll('.link.link-' + id).classed('highlight',true)
 					d3.selectAll('.node.node-' + id).classed('highlight',true)
 				})
-			
+
 				// tooltip
 				const svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
 				const window_w = svg_w + 60
 				const scale = svg_w / window_w
 
-				// console.log( d.x_pos, node_size(d), d )
+				const top = d.tipo <= 1 ? d.y_pos + node_size(d) + 25 : d.y_pos + node_size(d) + 20;
 
-				// const top = ( node_size(d) * 2 ) + d.y_pos + 30
-				// let left =  d.x_pos 
-
-				const top = d.tipo <= 1 ? d.y_pos + node_size(d) + 25 : d.y_pos + node_size(d);
 				let left = d.x_pos - node_size(d);
-
-				// Ver node denuncie procon que deve ter so a classe 07 e precisa remover a 23
-
-
-
-
-				// < window_w * .75 ? (d.x_pos) * scale : ( d.x_pos ) * scale
-				// d.x_position + 160
-				// d.x_pos + node_size(d)
-				// + 300
-				// let left = 0
-			  // console.log(left)
-				// + 180 - ( node_size(d) * 2 )
-				// let left = d.x_position + 180 - ( node_size(d) * 2 )
 			  left = Math.min(Math.max(100, left), width * scale - 100) // window safe area
-
-
-
-
-
-
-
-
-				// var svg_w = d3.select('.mapa-viewport').node().getBoundingClientRect().width
-				// var scale = svg_w / width
-				// var top = d.y < height * .8
-				// 	? d.y * scale + (node_size(d) * 0.5 + 30) * scale + 160
-				// 	: d.y * scale - (node_size(d) * scale + 90) + 160
-				// var left = d.x < width * .75
-				// 	? (d.x + 20) * scale
-				// 	: (d.x - 20) * scale
-				// // window safe area
-				// left = Math.min(Math.max(180,left),width * scale - 180)
 			
 				d3.selectAll('.tooltip-title')
 					.text(d.tipo_label)
-					.style('color', function(){ return d.color })
+					.style('color', function(){
+						return d.color 
+					})
 
 				d3.selectAll('.tooltip-text')
       		.text(d.nomecompleto || d.nome)
@@ -569,44 +444,28 @@ function Chart({ data, query, baseUrl }) {
 					.transition()
 					.duration(100)
 					.style('left', left + 'px')
-
-				sound_over.play()
 			}
 
 			function node_mouseout(d, idx) {
-				if($(window).width() < 768) return
-			
-				// label
-				const text = d3.select('.label[label_id="' + d.id + '"]')
-				if(_.indexOf([0, 1, 2, 3, 4, 5], d.tipo) != -1){ // 'base','doc','orgao','ti'
-					text.classed('hidden', false)
-				}
-			
+				const window_width = d3.select('body').node().getBoundingClientRect().width
+				if(window_width < 768) return
+
 				// links
 				d3.selectAll('.mapa').classed('highlight', false)
-				// const itemName = d.context[idx] != undefined ? d.context : d.rel_ids
-				const itemName = d.context != undefined ? d.context : d.rel_ids
-				_.forEach(itemName, function(id){
+
+				const itemName = d.context 
+				itemName.forEach( function(id){
 					d3.selectAll('.link').classed('highlight', false)
 					d3.selectAll('.node').classed('highlight', false)
 				})
 			
 				// tooltip
-				// fx.setText(d.nome)
-				d3.selectAll('.tooltip-text')
-      		.text(d.nome)
+				d3.selectAll('.tooltip-text').text(d.nome)
 				tooltip.classed('show', false)
 			}
 
 			function node_click(d, idx) {
-				// const itemName = d.context.length >= 1 && d.context != undefined ? d.context : d.rel_ids
-				// const name = d.context.length >= 1 && d.context != undefined ? 'context' : 'id'
-
 				const name = d.context != undefined ? 'context' : 'id'
-
-				// const itemName = d.context.length >= 1 && d.context[0] != undefined ? d.context : d.rel_ids
-				// const name = d.context.length >= 1 && d.context[0] != undefined ? 'context' : 'id'
-
 				sound_click.play()
 			
 				if(current_id == d.id){
@@ -621,7 +480,7 @@ function Chart({ data, query, baseUrl }) {
 			let current_id = null
 
 			function showInfo(tipo, id, name) {
-				const w = $(window).width()
+				const window_width = d3.select('body').node().getBoundingClientRect().width
 				const vis = d3.select(".mapa")
 
 				vis.classed("show-info", true)
@@ -629,26 +488,24 @@ function Chart({ data, query, baseUrl }) {
 				d3.selectAll('.node.show').classed('show', false)
 				d3.selectAll('.label.show').classed('show', false)
 			
-				const arr = _.filter(graph.data.links, function(o) { return o.target  == id || o.source  == id })
+				const arr = graph.data.links.filter( function(o) { 
+					return o.target  == id || o.source  == id 
+				})
 
 				const ctx = arr.map(function(d, i) {
-					// let array1 = d.context
-					// array1 = array1.split(', ')
-					// const array2 = array1.concat(array1);
-					// return array2[array2.length - 1]
 					return d.context
 				})
 
-				const bases = name == 'context' ? ctx : _.uniq(_.map(arr,'base')) 
-
-				_.forEach(bases, function(base){
-					d3.selectAll('.link.link-' + base).classed('show', true)
-					d3.selectAll('.node.node-' + base).classed('show', true)
-					d3.selectAll('.label.label-' + base).classed('show', true)
+				ctx.forEach( function(base) {
+					base.map(function(item) {
+						d3.selectAll('.link.link-' + item).classed('show', true)
+					  d3.selectAll('.node.node-' + item).classed('show', true)
+					  d3.selectAll('.label.label-' + item).classed('show', true)
+					})
 				})
-			
-				const info = w < 768 ? d3.select('.mapa-info-mobile') : d3.select('.mapa-info')
-				const content = w < 768 ? d3.select('.mapa-info-mobile-content') : d3.select('.mapa-info-content')
+
+				const info = window_width < 768 ? d3.select('.mapa-info-mobile') : d3.select('.mapa-info')
+				const content = window_width < 768 ? d3.select('.mapa-info-mobile-content') : d3.select('.mapa-info-content')
 			
 				info.classed('is-loading', true)
 				content.html('')
@@ -673,8 +530,9 @@ function Chart({ data, query, baseUrl }) {
 			}
 
 			function closeInfo(){
-				const w = $(window).width()
+				const window_width = d3.select('body').node().getBoundingClientRect().width
 				const vis = d3.select(".mapa")
+
 				vis.classed("show-info", false)
 			
 				d3.selectAll('.link.show').classed('show', false)
@@ -683,7 +541,7 @@ function Chart({ data, query, baseUrl }) {
 			
 				current_id = null
 			
-				if(w < 768) {
+				if(window_width < 768) {
 					d3.select('.mapa-info-mobile-content').html('')
 				}
 			}
@@ -693,21 +551,12 @@ function Chart({ data, query, baseUrl }) {
 				sound_click.play()
 				closeInfo()
 			})
-
-			function exportcsv(){
-				const s = ''
-				graph.nodes.map(function(el){
-					s += el.tipo + ',' + el.id + ',' + el.nome + ',' + el.nomecompleto + ',' + Math.round(el.x) + ',' + Math.round(el.y) + '\n'
-				})
-			}
-
 		}
 	)
 
   return (
     <S.Wrapper>
 			<section className="mapa exit">
-
         <div className="mapa-viewport">
           <svg className="mapa-vis" ref={ref} width="1280" height="1000"></svg>
           <div className="tooltip">
