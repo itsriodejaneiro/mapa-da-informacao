@@ -6,8 +6,12 @@ const nextConfig = {
     domains: [
       'https://mapa-da-informacao-bucket.s3.sa-east-1.amazonaws.com',
       'mapa-da-informacao-bucket.s3.sa-east-1.amazonaws.com',
+      
       'https://mapa-da-informacao-test-bucket.s3.amazonaws.com',
-      'mapa-da-informacao-test-bucket.s3.amazonaws.com'
+      'mapa-da-informacao-test-bucket.s3.amazonaws.com',
+
+      'https://mapa-da-informacao-multimidia.s3.amazonaws.com/',
+      'mapa-da-informacao-multimidia.s3.amazonaws.com',
     ]
   },
   env: {

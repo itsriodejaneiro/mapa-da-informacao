@@ -45,8 +45,8 @@ class MyDocument extends Document {
 
           <link rel="canonical" href="https://mapadainformacao.com.br/"/>
           <link rel="shortlink" href="https://mapadainformacao.com.br/"/>
-          <link rel="alternate" href="https://mapadainformacao.com.br/" hreflang="pt"/>
-          <link rel="alternate" href="https://mapadainformacao.com.br/" hreflang="x-default"/>
+          <link rel="alternate" href="https://mapadainformacao.com.br/" hrefLang="pt"/>
+          <link rel="alternate" href="https://mapadainformacao.com.br/" hrefLang="x-default"/>
           <link rel="icon" href="/favicon.png" />
           
           <link rel="preload" href="/fonts/Fira_Mono/FiraMono-Regular.ttf" as="font" crossOrigin="" />

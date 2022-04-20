@@ -110,7 +110,7 @@ function Chart({ data, query, baseUrl }) {
       				tipo: nodes.order ? nodes.order : idx,
       				tipo_label: nodes.title,
       				decription: item.text ? item.text : '',
-							button_icon: item.button_icon ? item.button_icon.url : null,
+							button_icon: item.button_icon ? item.button_icon : null,
 							button_link: item.button_link ? item.button_link : null,
 							button_text: item.button_text ? item.button_text : null,
 							height: nodes.height_area,
@@ -511,6 +511,8 @@ function Chart({ data, query, baseUrl }) {
 				content.html('')
 			
 				const items = array_node.filter(item => item.id == id);
+
+				console.log(items)
 			
 				items.map(function(item) {
 					content.html(`
